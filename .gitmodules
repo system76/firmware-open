@@ -10,3 +10,15 @@
 	path = edk2-platforms
 	url = https://github.com/system76/edk2-platforms.git
 	branch = system76
+[submodule "tools/unME12"]
+	path = tools/unME12
+	url = https://github.com/ptresearch/unME12.git
+	branch = master
+[submodule "tools/unME11"]
+	path = tools/unME11
+	url = https://github.com/ptresearch/unME11.git
+	branch = master
+[submodule "tools/UEFITool"]
+	path = tools/UEFITool
+	url = https://github.com/LongSoft/UEFITool.git
+	branch = new_engine
