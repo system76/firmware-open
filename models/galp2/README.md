@@ -3,6 +3,7 @@
 https://system76.com/guides/galp2
 
 ## Contents
+
 - [EC](./ec.rom)
   - Size: 128 KB
   - Model: N130BU

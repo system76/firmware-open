@@ -3,6 +3,7 @@
 https://system76.com/guides/darp5
 
 ## Contents
+
 - [EC](./ec.rom)
   - Size: 128 KB
   - Model: N150ZU

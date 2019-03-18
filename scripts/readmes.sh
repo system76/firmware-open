@@ -22,6 +22,7 @@ function readme_model {
 
         echo >> README.md
         echo "## Contents" >> README.md
+        echo >> README.md
         "$MODELTOOL" . >> README.md
     popd > /dev/null
 }
@@ -34,24 +35,25 @@ done
 function readme_line {
     echo -e "  \x1B[1m$1\x1B[0m" >&2
 
-    if [ -f "$1/README.md" ]
+    name="$(basename "$1")"
+    description=""
+
+    readme="$(find "$1" -maxdepth 1 -iname README.md)"
+    if [ -n "$readme" ]
     then
         # Get first line, removing the trailing pounds and spaces
-        description="$(head -n 1 "$1/README.md" | sed -e 's/^[#[:space:]]*//')"
-    else
-        # Use the directory name as the description
-        description="$(basename "$1")"
+        description=" - $(head -n 1 "$readme" | sed -e 's/^[#[:space:]]*//')"
     fi
 
     submodule="$(git submodule status "$1" 2> /dev/null | cut -d ' ' -f 3 || true)"
-    if [ "$submodule" == "$dir" ]
+    if [ "$submodule" == "$1" ]
     then
         # Link to submodule URL
-        origin="$(git -C "$dir" remote get-url origin)"
-        echo "- [$description]($origin)"
+        origin="$(git -C "$1" remote get-url origin)"
+        echo "- [$name]($origin)$description"
     else
         # Link to directory
-        echo "- [$description](./$dir)"
+        echo "- [$name](./$1)$description"
     fi
 }
 
@@ -63,6 +65,7 @@ function readme_dir {
 
         echo >> README.md
         echo "## Contents" >> README.md
+        echo >> README.md
         for dir in */
         do
             readme_line "${dir%/}" >> README.md

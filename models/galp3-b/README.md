@@ -3,6 +3,7 @@
 https://system76.com/guides/galp3
 
 ## Contents
+
 - [EC](./ec.rom)
   - Size: 128 KB
   - Model: N140WU
