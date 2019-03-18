@@ -62,3 +62,7 @@
 	path = apps/firmware-setup
 	url = https://github.com/system76/firmware-setup.git
 	branch = master
+[submodule "tools/MEAnalyzer"]
+	path = tools/MEAnalyzer
+	url = https://github.com/platomav/MEAnalyzer.git
+	branch = master
