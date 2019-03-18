@@ -10,7 +10,7 @@ https://system76.com/guides/darp5
   - Version: 1.07.04
 - [FD](./fd.rom)
   - Size: 4 KB
-  - HAP: false
+  - HAP: true
 - [ME](./me.rom)
   - Size: 6140 KB
   - Version: 12.0.8.1123
