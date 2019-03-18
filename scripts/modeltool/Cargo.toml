@@ -1,0 +1,9 @@
+[package]
+name = "modeltool"
+version = "0.1.0"
+authors = ["Jeremy Soller <jeremy@system76.com>"]
+edition = "2018"
+
+[dependencies]
+redox_intelflash = "0.1.0"
+system76_ecflash = "0.1.0"

@@ -2,7 +2,12 @@
 
 System76 Open Source Firmware
 
-- [Applications](./apps)
-- [Libraries](./libs)
-- [Models](./models)
-- [Tools](./tools)
+## Contents
+- [Applications](./apps/)
+- [coreboot README](./coreboot/)
+- [edk2](./edk2/)
+- [edk2-platforms](./edk2-platforms/)
+- [Libraries](./libs/)
+- [Models](./models/)
+- [scripts](./scripts/)
+- [Tools](./tools/)

@@ -1,0 +1,44 @@
+[[package]]
+name = "bitflags"
+version = "1.0.4"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+
+[[package]]
+name = "modeltool"
+version = "0.1.0"
+dependencies = [
+ "redox_intelflash 0.1.0 (registry+https://github.com/rust-lang/crates.io-index)",
+ "system76_ecflash 0.1.0 (registry+https://github.com/rust-lang/crates.io-index)",
+]
+
+[[package]]
+name = "plain"
+version = "0.2.3"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+
+[[package]]
+name = "redox_intelflash"
+version = "0.1.0"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+dependencies = [
+ "bitflags 1.0.4 (registry+https://github.com/rust-lang/crates.io-index)",
+ "plain 0.2.3 (registry+https://github.com/rust-lang/crates.io-index)",
+ "redox_uefi 0.1.0 (registry+https://github.com/rust-lang/crates.io-index)",
+]
+
+[[package]]
+name = "redox_uefi"
+version = "0.1.0"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+
+[[package]]
+name = "system76_ecflash"
+version = "0.1.0"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+
+[metadata]
+"checksum bitflags 1.0.4 (registry+https://github.com/rust-lang/crates.io-index)" = "228047a76f468627ca71776ecdebd732a3423081fcf5125585bcd7c49886ce12"
+"checksum plain 0.2.3 (registry+https://github.com/rust-lang/crates.io-index)" = "b4596b6d070b27117e987119b4dac604f3c58cfb0b191112e24771b2faeac1a6"
+"checksum redox_intelflash 0.1.0 (registry+https://github.com/rust-lang/crates.io-index)" = "49e6f45d8c070090589005869e0b776f52c735f9b5411fca369229135fa1dbd8"
+"checksum redox_uefi 0.1.0 (registry+https://github.com/rust-lang/crates.io-index)" = "dafc50645c27c55ca19d27645a6d91e2a8cbc7aabb2ed024ce914512c75e1217"
+"checksum system76_ecflash 0.1.0 (registry+https://github.com/rust-lang/crates.io-index)" = "d2a81b23cd826ce944029420978cce3be94363188ed87ff8cc0778f80adac547"
