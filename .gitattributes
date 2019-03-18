@@ -1,0 +1,2 @@
+*.efi filter=lfs diff=lfs merge=lfs -text
+*.rom filter=lfs diff=lfs merge=lfs -text
