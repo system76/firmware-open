@@ -23,7 +23,7 @@ function recursive_readme {
             origin="$(git -C "$dir" remote get-url origin)"
             echo "- [$description]($origin)" >> README.md
         else
-            echo "- [$description](./$readme)" >> README.md
+            echo "- [$description](./$dir)" >> README.md
         fi
     done
     popd > /dev/null
