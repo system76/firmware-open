@@ -22,3 +22,35 @@
 	path = tools/UEFITool
 	url = https://github.com/LongSoft/UEFITool.git
 	branch = new_engine
+[submodule "libs/intelflash"]
+	path = libs/intelflash
+	url = https://gitlab.redox-os.org/redox-os/intelflash.git
+	branch = master
+[submodule "libs/uefi"]
+	path = libs/uefi
+	url = https://gitlab.redox-os.org/redox-os/uefi.git
+	branch = master
+[submodule "libs/uefi_alloc"]
+	path = libs/uefi_alloc
+	url = https://gitlab.redox-os.org/redox-os/uefi_alloc.git
+	branch = master
+[submodule "libs/uefi_std"]
+	path = libs/uefi_std
+	url = https://gitlab.redox-os.org/redox-os/uefi_std.git
+	branch = master
+[submodule "libs/coreboot-table"]
+	path = libs/coreboot-table
+	url = https://gitlab.redox-os.org/redox-os/coreboot-table.git
+	branch = master
+[submodule "libs/intel-spi"]
+	path = libs/intel-spi
+	url = https://github.com/system76/intel-spi.git
+	branch = master
+[submodule "libs/ecflash"]
+	path = libs/ecflash
+	url = https://github.com/system76/ecflash.git
+	branch = master
+[submodule "tools/coreboot-collector"]
+	path = tools/coreboot-collector
+	url = https://github.com/system76/coreboot-collector.git
+	branch = master
