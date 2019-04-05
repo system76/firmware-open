@@ -66,3 +66,6 @@
 	path = tools/MEAnalyzer
 	url = https://github.com/platomav/MEAnalyzer.git
 	branch = master
+[submodule "libs/coreboot-fs"]
+	path = libs/coreboot-fs
+	url = https://gitlab.redox-os.org/redox-os/coreboot-fs.git
