@@ -37,7 +37,7 @@ COREBOOT="$(realpath "build/${MODEL}.rom")"
 # Rebuild firmware-update
 set -x
 SHASUM="$(sha384sum "${COREBOOT}" | cut -d " " -f 1)"
-USB="$(realpath "build/${MODEL}.usb")"
+USB="$(realpath "build/${MODEL}.img")"
 export BASEDIR="system76-${SHASUM}"
 pushd apps/firmware-update >/dev/null
   rm -rf "build/x86_64-efi-pe"
