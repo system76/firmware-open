@@ -24,7 +24,9 @@ touch apps/firmware-setup/Cargo.toml
 make -C apps/firmware-setup
 
 # Rebuild CorebootPayloadPkg using edk2
-./scripts/_build/edk2.sh build/UEFIPAYLOAD.fd
+export
+./scripts/_build/edk2.sh build/UEFIPAYLOAD.fd \
+  -D FIRMWARE_OPEN_FIRMWARE_SETUP="firmware-setup/firmware-setup.inf"
 
 # Rebuild coreboot
 export FIRMWARE_OPEN_UEFIPAYLOAD="$(realpath build/UEFIPAYLOAD.fd)"
