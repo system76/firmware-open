@@ -68,7 +68,10 @@ function readme_dir {
         echo >> README.md
         for dir in */
         do
-            readme_line "${dir%/}" >> README.md
+            if ! git check-ignore --quiet "${dir}"
+            then
+                readme_line "${dir%/}" >> README.md
+            fi
         done
     popd > /dev/null
 }
