@@ -31,4 +31,19 @@ export
 # Rebuild coreboot
 export FIRMWARE_OPEN_UEFIPAYLOAD="$(realpath build/UEFIPAYLOAD.fd)"
 export FIRMWARE_OPEN_MODEL_DIR="${MODEL_DIR}"
-./scripts/_build/coreboot.sh "${MODEL_DIR}/coreboot.config" "build/$MODEL.rom"
+COREBOOT="$(realpath "build/${MODEL}.rom")"
+./scripts/_build/coreboot.sh "${MODEL_DIR}/coreboot.config" "${COREBOOT}"
+
+# Rebuild firmware-update
+set -x
+SHASUM="$(sha384sum "${COREBOOT}" | cut -d " " -f 1)"
+USB="$(realpath "build/${MODEL}.usb")"
+export BASEDIR="system76-${SHASUM}"
+pushd apps/firmware-update >/dev/null
+  rm -rf "build/x86_64-efi-pe"
+  make "build/x86_64-efi-pe/boot.img"
+  cp -v "build/x86_64-efi-pe/boot.img" "${USB}.partial"
+popd >/dev/null
+mmd -i "${USB}.partial@@1M" "::${BASEDIR}/firmware"
+mcopy -i "${USB}.partial@@1M" "${COREBOOT}" "::${BASEDIR}/firmware/firmware.rom"
+mv -v "${USB}.partial" "${USB}"
