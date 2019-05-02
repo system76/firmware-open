@@ -5,7 +5,7 @@
 [submodule "coreboot"]
 	path = coreboot
 	url = https://github.com/system76/coreboot.git
-	branch = system76
+	branch = system76_cleanup
 [submodule "edk2-platforms"]
 	path = edk2-platforms
 	url = https://github.com/system76/edk2-platforms.git
@@ -57,7 +57,7 @@
 [submodule "apps/firmware-update"]
 	path = apps/firmware-update
 	url = https://github.com/system76/firmware-update.git
-	branch = master
+	branch = coreboot
 [submodule "apps/firmware-setup"]
 	path = apps/firmware-setup
 	url = https://github.com/system76/firmware-setup.git
