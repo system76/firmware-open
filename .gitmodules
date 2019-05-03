@@ -70,3 +70,7 @@
 	path = libs/coreboot-fs
 	url = https://gitlab.redox-os.org/redox-os/coreboot-fs.git
 	branch = master
+[submodule "apps/gop-policy"]
+	path = apps/gop-policy
+	url = https://github.com/system76/gop-policy.git
+	branch = master

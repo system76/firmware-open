@@ -30,12 +30,18 @@ USB="${BUILD}/usb.img"
 touch apps/firmware-setup/Cargo.toml
 make -C apps/firmware-setup
 
+# Rebuild gop-policy (used by edk2)
+touch apps/gop-policy/Cargo.toml
+FIRMWARE_OPEN_VBT="${MODEL_DIR}/vbt.rom" \
+    make -C apps/gop-policy
+
 # Rebuild CorebootPayloadPkg using edk2
 PACKAGES_PATH="${MODEL_DIR}:$(realpath edk2-platforms):$(realpath apps)" \
     ./scripts/_build/edk2.sh \
         "${UEFIPAYLOAD}" \
-        -D FIRMWARE_OPEN_FIRMWARE_SETUP="firmware-setup/firmware-setup.inf"
-#        -D FIRMWARE_OPEN_GOP="IntelGopDriver.inf"
+        -D FIRMWARE_OPEN_FIRMWARE_SETUP="firmware-setup/firmware-setup.inf" \
+        -D FIRMWARE_OPEN_GOP_POLICY="gop-policy/gop-policy.inf" \
+        -D FIRMWARE_OPEN_GOP="IntelGopDriver.inf"
 
 # Rebuild coreboot
 FIRMWARE_OPEN_MODEL_DIR="${MODEL_DIR}" \
