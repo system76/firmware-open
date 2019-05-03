@@ -16,9 +16,9 @@ then
 fi
 MODEL_DIR="$(realpath "models/${MODEL}")"
 
-BUILD="$(realpath "build/${MODEL}")"
-
 # Clean build directory
+mkdir -p build
+BUILD="$(realpath "build/${MODEL}")"
 rm -rf "${BUILD}"
 mkdir -p "${BUILD}"
 
