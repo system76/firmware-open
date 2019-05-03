@@ -34,8 +34,8 @@ make -C apps/firmware-setup
 PACKAGES_PATH="${MODEL_DIR}:$(realpath edk2-platforms):$(realpath apps)" \
     ./scripts/_build/edk2.sh \
         "${UEFIPAYLOAD}" \
-        -D FIRMWARE_OPEN_FIRMWARE_SETUP="firmware-setup/firmware-setup.inf" \
-        -D FIRMWARE_OPEN_GOP="IntelGopDriver.inf"
+        -D FIRMWARE_OPEN_FIRMWARE_SETUP="firmware-setup/firmware-setup.inf"
+#        -D FIRMWARE_OPEN_GOP="IntelGopDriver.inf"
 
 # Rebuild coreboot
 FIRMWARE_OPEN_MODEL_DIR="${MODEL_DIR}" \
