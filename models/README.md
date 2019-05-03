@@ -7,3 +7,4 @@
 - [galp3](./galp3) - System76 Galago Pro (galp3)
 - [galp3-b](./galp3-b) - System76 Galago Pro (galp3-b)
 - [galp3-c](./galp3-c) - System76 Galago Pro (galp3-c)
+- [thelio-b1](./thelio-b1) - System76 Thelio (thelio-b1)
