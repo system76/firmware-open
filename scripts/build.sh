@@ -9,35 +9,43 @@ then
 fi
 MODEL="$1"
 
-if [ ! -d "models/${MODEL}" ]
+if [ ! -d "models/$1" ]
 then
-  echo "model '${MODEL}' not found" >&2
+  echo "model '$1' not found" >&2
   exit 1
 fi
 MODEL_DIR="$(realpath "models/${MODEL}")"
 
-rm -rf build
-mkdir -p build
+BUILD="$(realpath "build/${MODEL}")"
+
+# Clean build directory
+rm -rf "${BUILD}"
+mkdir -p "${BUILD}"
+
+UEFIPAYLOAD="${BUILD}/UEFIPAYLOAD.fd"
+COREBOOT="${BUILD}/coreboot.rom"
+USB="${BUILD}/usb.img"
 
 # Rebuild firmware-setup (used by edk2)
 touch apps/firmware-setup/Cargo.toml
 make -C apps/firmware-setup
 
 # Rebuild CorebootPayloadPkg using edk2
-export
-./scripts/_build/edk2.sh build/UEFIPAYLOAD.fd \
-  -D FIRMWARE_OPEN_FIRMWARE_SETUP="firmware-setup/firmware-setup.inf"
+PACKAGES_PATH="${MODEL_DIR}:$(realpath edk2-platforms):$(realpath apps)" \
+    ./scripts/_build/edk2.sh \
+        "${UEFIPAYLOAD}" \
+        -D FIRMWARE_OPEN_FIRMWARE_SETUP="firmware-setup/firmware-setup.inf" \
+        -D FIRMWARE_OPEN_GOP="IntelGopDriver.inf"
 
 # Rebuild coreboot
-export FIRMWARE_OPEN_UEFIPAYLOAD="$(realpath build/UEFIPAYLOAD.fd)"
-export FIRMWARE_OPEN_MODEL_DIR="${MODEL_DIR}"
-COREBOOT="$(realpath "build/${MODEL}.rom")"
-./scripts/_build/coreboot.sh "${MODEL_DIR}/coreboot.config" "${COREBOOT}"
+FIRMWARE_OPEN_MODEL_DIR="${MODEL_DIR}" \
+FIRMWARE_OPEN_UEFIPAYLOAD="${UEFIPAYLOAD}" \
+    ./scripts/_build/coreboot.sh \
+        "${MODEL_DIR}/coreboot.config" \
+        "${COREBOOT}"
 
 # Rebuild firmware-update
-set -x
 SHASUM="$(sha384sum "${COREBOOT}" | cut -d " " -f 1)"
-USB="$(realpath "build/${MODEL}.img")"
 export BASEDIR="system76-${SHASUM}"
 pushd apps/firmware-update >/dev/null
   rm -rf "build/x86_64-efi-pe"

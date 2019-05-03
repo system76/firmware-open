@@ -12,8 +12,6 @@ UEFIPAYLOAD="$(realpath "$1")"
 BUILD_TYPE=RELEASE
 TOOLCHAIN=GCC5
 
-export PACKAGES_PATH="$(realpath edk2-platforms):$(realpath apps)"
-
 pushd edk2 >/dev/null
   make -C BaseTools --jobs="$(nproc)"
   source edksetup.sh --reconfig
