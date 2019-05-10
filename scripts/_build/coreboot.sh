@@ -11,7 +11,10 @@ CONFIG="$(realpath "$1")"
 COREBOOT="$(realpath "$2")"
 
 pushd coreboot >/dev/null
-  make CPUS="$(nproc)" crossgcc-i386
+  if [ ! -d util/crossgcc/xgcc ]
+  then
+    make CPUS="$(nproc)" crossgcc-i386
+  fi
   make distclean
   cp -v "${CONFIG}" .config
   make --jobs="$(nproc)"
