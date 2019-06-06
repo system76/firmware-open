@@ -9,7 +9,7 @@ then
 fi
 UEFIPAYLOAD="$(realpath "$1")"
 
-BUILD_TYPE=RELEASE
+BUILD_TYPE=DEBUG
 TOOLCHAIN=GCC5
 
 pushd edk2 >/dev/null

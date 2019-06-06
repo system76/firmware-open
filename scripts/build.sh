@@ -19,7 +19,7 @@ MODEL_DIR="$(realpath "models/${MODEL}")"
 # Clean build directory
 mkdir -p build
 BUILD="$(realpath "build/${MODEL}")"
-rm -rf "${BUILD}"
+#rm -rf "${BUILD}"
 mkdir -p "${BUILD}"
 
 UEFIPAYLOAD="${BUILD}/UEFIPAYLOAD.fd"
@@ -28,17 +28,19 @@ USB="${BUILD}/usb.img"
 
 # Rebuild firmware-setup (used by edk2)
 touch apps/firmware-setup/Cargo.toml
-make -C apps/firmware-setup
+echo make -C apps/firmware-setup
 
 # Rebuild gop-policy (used by edk2)
 touch apps/gop-policy/Cargo.toml
 FIRMWARE_OPEN_VBT="${MODEL_DIR}/vbt.rom" \
-    make -C apps/gop-policy
+    echo make -C apps/gop-policy
 
 # Rebuild CorebootPayloadPkg using edk2
 PACKAGES_PATH="${MODEL_DIR}:$(realpath edk2-platforms):$(realpath apps)" \
-    ./scripts/_build/edk2.sh \
+    echo ./scripts/_build/edk2.sh \
         "${UEFIPAYLOAD}" \
+        -D SOURCE_DEBUG_ENABLE=TRUE \
+        -D USE_HPET_TIMER=TRUE \
         -D FIRMWARE_OPEN_FIRMWARE_SETUP="firmware-setup/firmware-setup.inf" \
         -D FIRMWARE_OPEN_GOP_POLICY="gop-policy/gop-policy.inf" \
         -D FIRMWARE_OPEN_GOP="IntelGopDriver.inf"
@@ -49,6 +51,8 @@ FIRMWARE_OPEN_UEFIPAYLOAD="${UEFIPAYLOAD}" \
     ./scripts/_build/coreboot.sh \
         "${MODEL_DIR}/coreboot.config" \
         "${COREBOOT}"
+
+exit 0
 
 # Rebuild firmware-update
 SHASUM="$(sha384sum "${COREBOOT}" | cut -d " " -f 1)"
