@@ -28,16 +28,16 @@ USB="${BUILD}/usb.img"
 
 # Rebuild firmware-setup (used by edk2)
 touch apps/firmware-setup/Cargo.toml
-echo make -C apps/firmware-setup
+make -C apps/firmware-setup
 
 # Rebuild gop-policy (used by edk2)
 touch apps/gop-policy/Cargo.toml
 FIRMWARE_OPEN_VBT="${MODEL_DIR}/vbt.rom" \
-    echo make -C apps/gop-policy
+    make -C apps/gop-policy
 
 # Rebuild CorebootPayloadPkg using edk2
 PACKAGES_PATH="${MODEL_DIR}:$(realpath edk2-platforms):$(realpath apps)" \
-    echo ./scripts/_build/edk2.sh \
+    ./scripts/_build/edk2.sh \
         "${UEFIPAYLOAD}" \
         -D SOURCE_DEBUG_ENABLE=TRUE \
         -D USE_HPET_TIMER=TRUE \
@@ -51,8 +51,6 @@ FIRMWARE_OPEN_UEFIPAYLOAD="${UEFIPAYLOAD}" \
     ./scripts/_build/coreboot.sh \
         "${MODEL_DIR}/coreboot.config" \
         "${COREBOOT}"
-
-exit 0
 
 # Rebuild firmware-update
 SHASUM="$(sha384sum "${COREBOOT}" | cut -d " " -f 1)"
