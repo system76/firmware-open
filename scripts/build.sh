@@ -39,7 +39,6 @@ FIRMWARE_OPEN_VBT="${MODEL_DIR}/vbt.rom" \
 PACKAGES_PATH="${MODEL_DIR}:$(realpath edk2-platforms):$(realpath apps)" \
     ./scripts/_build/edk2.sh \
         "${UEFIPAYLOAD}" \
-        -D SOURCE_DEBUG_ENABLE=TRUE \
         -D USE_HPET_TIMER=TRUE \
         -D FIRMWARE_OPEN_FIRMWARE_SETUP="firmware-setup/firmware-setup.inf" \
         -D FIRMWARE_OPEN_GOP_POLICY="gop-policy/gop-policy.inf" \
