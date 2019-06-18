@@ -19,7 +19,7 @@ MODEL_DIR="$(realpath "models/${MODEL}")"
 # Clean build directory
 mkdir -p build
 BUILD="$(realpath "build/${MODEL}")"
-#rm -rf "${BUILD}"
+rm -rf "${BUILD}"
 mkdir -p "${BUILD}"
 
 UEFIPAYLOAD="${BUILD}/UEFIPAYLOAD.fd"
@@ -40,6 +40,7 @@ PACKAGES_PATH="${MODEL_DIR}:$(realpath edk2-platforms):$(realpath apps)" \
     ./scripts/_build/edk2.sh \
         "${UEFIPAYLOAD}" \
         -D USE_HPET_TIMER=TRUE \
+        -D SOURCE_DEBUG_ENABLE=FALSE \
         -D FIRMWARE_OPEN_FIRMWARE_SETUP="firmware-setup/firmware-setup.inf" \
         -D FIRMWARE_OPEN_GOP_POLICY="gop-policy/gop-policy.inf" \
         -D FIRMWARE_OPEN_GOP="IntelGopDriver.inf"
