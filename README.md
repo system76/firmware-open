@@ -38,6 +38,8 @@ cargo install cargo-xbuild
 ./scripts/build.sh darp5
 ```
 
+### Flashing firmware manually is not recommended for the normal user. For the advanced user, there is a script flash.sh which takes the same arguments as build.sh
+
 ## Contents
 
 - [apps](./apps) - Applications
