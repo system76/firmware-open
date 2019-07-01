@@ -1,3 +1,41 @@
 # firmware-open
 
 System76 Open Source Firmware
+
+## Dependencies
+
+### Install toolchain
+```
+sudo apt-get install \
+  build-essential \
+  bison \
+  ccache \
+  flex \
+  git-lfs \
+  gnat \
+  mtools \
+  nasm \
+  uuid-dev
+```
+
+### Install rust nightly
+```
+curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y --default-toolchain nightly
+```
+
+### Load cargo environment (or optionally reboot)
+```
+source ~/.cargo/env
+```
+
+### Install cargo-xbuild
+```
+cargo install cargo-xbuild
+```
+
+### Build firmware, replace darp5 with your model (look in the models directory for examples)
+```
+./scripts/build.sh darp5
+```
+
+### Flashing firmware manually is not recommended for the normal user. For the advanced user, there is a script flash.sh which takes the same arguments as build.sh
