@@ -61,5 +61,6 @@ pushd apps/firmware-update >/dev/null
   cp -v "build/x86_64-efi-pe/boot.img" "${USB}.partial"
 popd >/dev/null
 mmd -i "${USB}.partial@@1M" "::${BASEDIR}/firmware"
+mcopy -i "${USB}.partial@@1M" "${MODEL_DIR}/ec.rom" "::${BASEDIR}/firmware/ec.rom"
 mcopy -i "${USB}.partial@@1M" "${COREBOOT}" "::${BASEDIR}/firmware/firmware.rom"
 mv -v "${USB}.partial" "${USB}"
