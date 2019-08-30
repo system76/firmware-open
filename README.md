@@ -15,12 +15,14 @@ sudo apt-get install \
   gnat \
   mtools \
   nasm \
-  uuid-dev
+  uuid-dev \
+  zlib1g-dev
 ```
 
-### Install rust nightly
+### Install rust
 ```
-curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y --default-toolchain nightly
+curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs \
+  | sh -s -- -y --default-toolchain "$(cat rust-toolchain)"
 ```
 
 ### Load cargo environment (or optionally reboot)
@@ -46,7 +48,7 @@ cargo install cargo-xbuild
 - [coreboot](https://github.com/system76/coreboot.git) - coreboot README
 - [edk2](https://github.com/system76/edk2.git) - EDK II Project
 - [edk2-non-osi](https://github.com/tianocore/edk2-non-osi.git)
-- [edk2-platforms](https://github.com/system76/edk2-platforms.git) - **EDK II Minimum Platform Firmware for Intel(R) Platforms**
+- [edk2-platforms](https://github.com/system76/edk2-platforms.git) - This branch holds all platforms actively maintained against the
 - [FSP](https://github.com/IntelFsp/FSP.git) - Intel® Firmware Support Package (Intel® FSP) Binaries
 - [libs](./libs) - Libraries
 - [models](./models) - Models

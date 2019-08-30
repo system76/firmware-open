@@ -15,12 +15,14 @@ sudo apt-get install \
   gnat \
   mtools \
   nasm \
-  uuid-dev
+  uuid-dev \
+  zlib1g-dev
 ```
 
-### Install rust nightly
+### Install rust
 ```
-curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y --default-toolchain nightly
+curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs \
+  | sh -s -- -y --default-toolchain "$(cat rust-toolchain)"
 ```
 
 ### Load cargo environment (or optionally reboot)
