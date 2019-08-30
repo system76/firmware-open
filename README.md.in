@@ -19,6 +19,12 @@ sudo apt-get install \
   zlib1g-dev
 ```
 
+### Make sure git lfs is set up
+```
+git lfs install
+git lfs pull
+```
+
 ### Install rust
 ```
 curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs \
