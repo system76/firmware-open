@@ -7,7 +7,7 @@ https://system76.com/guides/galp3
 - [EC](./ec.rom)
   - Size: 128 KB
   - Model: N140WU
-  - Version: 1.07.03
+  - Version: 1.05.02
 - [FD](./fd.rom)
   - Size: 4 KB
   - HAP: true

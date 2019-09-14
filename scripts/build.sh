@@ -39,6 +39,8 @@ FIRMWARE_OPEN_VBT="${MODEL_DIR}/vbt.rom" \
 PACKAGES_PATH="${MODEL_DIR}:$(realpath edk2-platforms):$(realpath apps)" \
     ./scripts/_build/edk2.sh \
         "${UEFIPAYLOAD}" \
+        -D USE_HPET_TIMER=TRUE \
+        -D SOURCE_DEBUG_ENABLE=FALSE \
         -D FIRMWARE_OPEN_FIRMWARE_SETUP="firmware-setup/firmware-setup.inf" \
         -D FIRMWARE_OPEN_GOP_POLICY="gop-policy/gop-policy.inf" \
         -D FIRMWARE_OPEN_GOP="IntelGopDriver.inf"
@@ -60,4 +62,6 @@ pushd apps/firmware-update >/dev/null
 popd >/dev/null
 mmd -i "${USB}.partial@@1M" "::${BASEDIR}/firmware"
 mcopy -i "${USB}.partial@@1M" "${COREBOOT}" "::${BASEDIR}/firmware/firmware.rom"
+mcopy -i "${USB}.partial@@1M" "${MODEL_DIR}/ec.rom" "::${BASEDIR}/firmware/ec.rom"
+mcopy -i "${USB}.partial@@1M" "${MODEL_DIR}/uecflash.efi" "::${BASEDIR}/firmware/uecflash.efi"
 mv -v "${USB}.partial" "${USB}"
