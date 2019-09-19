@@ -6,44 +6,12 @@ System76 Open Source Firmware
 
 ### Install toolchain
 ```
-sudo apt-get install \
-  build-essential \
-  bison \
-  ccache \
-  flex \
-  git-lfs \
-  gnat \
-  mtools \
-  nasm \
-  uuid-dev \
-  zlib1g-dev
+./scripts/deps.sh
 ```
 
-### Make sure git lfs is set up
-```
-git lfs install
-git lfs pull
-```
-
-### Install rust
-```
-curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs \
-  | sh -s -- -y --default-toolchain nightly
-```
-
-### Load cargo environment (or optionally reboot)
+### Load Rust environment (or optionally reboot)
 ```
 source ~/.cargo/env
-```
-
-### Ensure rust source is installed for current toolchain
-```
-rustup component add --toolchain "$(cat rust-toolchain)" rust-src
-```
-
-### Install cargo-xbuild
-```
-cargo install cargo-xbuild
 ```
 
 ### Build firmware, replace darp5 with your model (look in the models directory for examples)
