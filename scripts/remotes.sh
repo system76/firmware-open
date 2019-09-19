@@ -10,7 +10,7 @@ set -e
 
 function git_remote {
     echo -e "\x1B[1m$1\x1B[0m"
-    cd "$1"
+    pushd "$1" > /dev/null
     if git remote | grep "^$2\$"
     then
         git remote set-url "$2" "$3"
@@ -18,7 +18,7 @@ function git_remote {
         git remote add "$2" "$3"
     fi
     git fetch "$2"
-    cd ..
+    popd > /dev/null
 }
 
 for remote in "${REMOTES[@]}"
