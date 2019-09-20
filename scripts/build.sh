@@ -9,9 +9,9 @@ then
 fi
 MODEL="$1"
 
-if [ ! -d "models/$1" ]
+if [ ! -d "models/${MODEL}" ]
 then
-  echo "model '$1' not found" >&2
+  echo "model '${MODEL}' not found" >&2
   exit 1
 fi
 MODEL_DIR="$(realpath "models/${MODEL}")"
@@ -62,21 +62,24 @@ FIRMWARE_OPEN_UEFIPAYLOAD="${UEFIPAYLOAD}" \
         "${MODEL_DIR}/coreboot.config" \
         "${COREBOOT}"
 
-# Rebuild firmware-update
-SHASUM="$(sha384sum "${COREBOOT}" | cut -d " " -f 1)"
-export BASEDIR="system76-${SHASUM}"
-pushd apps/firmware-update >/dev/null
-  rm -rf "build/x86_64-efi-pe"
-  make "build/x86_64-efi-pe/boot.img"
-  cp -v "build/x86_64-efi-pe/boot.img" "${USB}.partial"
-popd >/dev/null
-
-# Copy firmware to USB image
-mmd -i "${USB}.partial@@1M" "::${BASEDIR}/firmware"
-mcopy -i "${USB}.partial@@1M" "${COREBOOT}" "::${BASEDIR}/firmware/firmware.rom"
-if [ -e "${MODEL_DIR}/ec.rom" -a -e "${MODEL_DIR}/uecflash.efi" ]
+if [ "${MODEL}" != "qemu" ]
 then
-    mcopy -i "${USB}.partial@@1M" "${MODEL_DIR}/ec.rom" "::${BASEDIR}/firmware/ec.rom"
-    mcopy -i "${USB}.partial@@1M" "${MODEL_DIR}/uecflash.efi" "::${BASEDIR}/firmware/uecflash.efi"
+    # Rebuild firmware-update
+    SHASUM="$(sha384sum "${COREBOOT}" | cut -d " " -f 1)"
+    export BASEDIR="system76-${SHASUM}"
+    pushd apps/firmware-update >/dev/null
+      rm -rf "build/x86_64-efi-pe"
+      make "build/x86_64-efi-pe/boot.img"
+      cp -v "build/x86_64-efi-pe/boot.img" "${USB}.partial"
+    popd >/dev/null
+
+    # Copy firmware to USB image
+    mmd -i "${USB}.partial@@1M" "::${BASEDIR}/firmware"
+    mcopy -i "${USB}.partial@@1M" "${COREBOOT}" "::${BASEDIR}/firmware/firmware.rom"
+    if [ -e "${MODEL_DIR}/ec.rom" -a -e "${MODEL_DIR}/uecflash.efi" ]
+    then
+        mcopy -i "${USB}.partial@@1M" "${MODEL_DIR}/ec.rom" "::${BASEDIR}/firmware/ec.rom"
+        mcopy -i "${USB}.partial@@1M" "${MODEL_DIR}/uecflash.efi" "::${BASEDIR}/firmware/uecflash.efi"
+    fi
+    mv -v "${USB}.partial" "${USB}"
 fi
-mv -v "${USB}.partial" "${USB}"
