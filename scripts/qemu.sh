@@ -19,5 +19,7 @@ MODEL_DIR="$(realpath "models/${MODEL}")"
 
 kvm -M q35 -m 1024 -vga std \
     -bios "build/${MODEL}/coreboot.rom" \
-    -chardev stdio,id=debug -device isa-debugcon,iobase=0x402,chardev=debug \
+    -chardev stdio,mux=on,id=debug \
+    -device isa-serial,chardev=debug \
+    -device isa-debugcon,iobase=0x402,chardev=debug \
     "$@"
