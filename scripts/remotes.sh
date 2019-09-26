@@ -3,6 +3,7 @@
 REMOTES=(
     "coreboot upstream https://github.com/coreboot/coreboot.git"
     "edk2 upstream https://github.com/tianocore/edk2.git"
+    "edk2 mrchromebox https://github.com/MrChromebox/edk2.git"
     "edk2-platforms upstream https://github.com/tianocore/edk2-platforms.git"
 )
 
