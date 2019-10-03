@@ -20,11 +20,11 @@ MODEL_DIR="$(realpath "models/${MODEL}")"
 kvm -M q35 -m 1024 -vga std \
     -bios "build/${MODEL}/coreboot.rom" \
     -chardev stdio,mux=on,id=debug \
-    -device isa-serial,iobase=0x3e8,irq=4,chardev=debug \
+    -device isa-serial,index=2,chardev=debug \
     -device isa-debugcon,iobase=0x402,chardev=debug \
     "$@"
 
-# COM1: -device isa-serial,iobase=0x3f8,irq=4,chardev=debug
-# COM2: -device isa-serial,iobase=0x2f8,irq=3,chardev=debug
-# COM3: -device isa-serial,iobase=0x3e8,irq=4,chardev=debug
-# COM4: -device isa-serial,iobase=0x2e8,irq=3,chardev=debug
+# COM1: -device isa-serial,index=0,chardev=debug
+# COM2: -device isa-serial,index=1,chardev=debug
+# COM3: -device isa-serial,index=2,chardev=debug
+# COM4: -device isa-serial,index=3,chardev=debug
