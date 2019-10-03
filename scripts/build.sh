@@ -16,6 +16,11 @@ then
 fi
 MODEL_DIR="$(realpath "models/${MODEL}")"
 
+DATE="$(git show --format="%cd" --date="format:%Y-%m-%d" --no-patch)"
+REV="$(git describe --always --dirty)"
+VERSION="${DATE}_${REV}"
+echo "Building '${VERSION}' for '${MODEL}'"
+
 # Clean build directory
 mkdir -p build
 BUILD="$(realpath "build/${MODEL}")"
@@ -59,6 +64,7 @@ PACKAGES_PATH="${MODEL_DIR}:$(realpath edk2-platforms):$(realpath apps)" \
 # Rebuild coreboot
 FIRMWARE_OPEN_MODEL_DIR="${MODEL_DIR}" \
 FIRMWARE_OPEN_UEFIPAYLOAD="${UEFIPAYLOAD}" \
+KERNELVERSION="${VERSION}" \
     ./scripts/_build/coreboot.sh \
         "${MODEL_DIR}/coreboot.config" \
         "${COREBOOT}"
@@ -84,3 +90,5 @@ then
     fi
     mv -v "${USB}.partial" "${USB}"
 fi
+
+echo "Built '${VERSION}' for '${MODEL}'"
