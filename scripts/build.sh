@@ -27,6 +27,7 @@ COREBOOT="${BUILD}/coreboot.rom"
 USB="${BUILD}/usb.img"
 EDK2_ARGS=(
     -D USE_HPET_TIMER=TRUE
+    -D SHELL_TYPE=NONE
     -D SOURCE_DEBUG_ENABLE=FALSE
 )
 
