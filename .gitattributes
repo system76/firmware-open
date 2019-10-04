@@ -1,3 +1,4 @@
 *.efi filter=lfs diff=lfs merge=lfs -text
 *.rom filter=lfs diff=lfs merge=lfs -text
 *.fd filter=lfs diff=lfs merge=lfs -text
+*.pdf filter=lfs diff=lfs merge=lfs -text
