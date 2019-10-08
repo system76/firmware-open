@@ -82,3 +82,7 @@
 	path = FSP
 	url = https://github.com/IntelFsp/FSP.git
 	branch = master
+[submodule "libs/smmstore"]
+	path = libs/smmstore
+	url = https://github.com/system76/smmstore.git
+	branch = master
