@@ -14,4 +14,5 @@
 - [gaze14_1650_17](./gaze14_1650_17) - System76 Gazelle (gaze14)
 - [gaze14_1660ti_15](./gaze14_1660ti_15) - System76 Gazelle (gaze14)
 - [gaze14_1660ti_17](./gaze14_1660ti_17) - System76 Gazelle (gaze14)
+- [qemu](./qemu) - QEMU (Virtualization)
 - [thelio-b1](./thelio-b1) - System76 Thelio (thelio-b1)

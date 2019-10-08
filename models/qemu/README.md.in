@@ -1,0 +1,8 @@
+# QEMU (Virtualization)
+
+This provides a target for running the firmware inside of QEMU. Use the following commands:
+
+```
+./scripts/build.sh qemu 
+./scripts/qemu.sh
+```

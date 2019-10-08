@@ -7,6 +7,7 @@
 - [ecflash](https://github.com/system76/ecflash.git) - ecflash
 - [intelflash](https://gitlab.redox-os.org/redox-os/intelflash.git) - intelflash
 - [intel-spi](https://github.com/system76/intel-spi.git) - intel-spi
+- [smmstore](https://github.com/system76/smmstore.git) - smmstore
 - [uefi](https://gitlab.redox-os.org/redox-os/uefi.git)
 - [uefi_alloc](https://gitlab.redox-os.org/redox-os/uefi_alloc.git)
 - [uefi_std](https://gitlab.redox-os.org/redox-os/uefi_std.git) - uefi_std
