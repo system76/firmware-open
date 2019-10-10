@@ -1,6 +1,6 @@
-# firmware-open
+# System76 Open Firmware
 
-System76 Open Firmware
+An open source distribution of firmware utilizing Coreboot, EDK2, and System76 firmware applications.
 
 ## Dependencies
 
