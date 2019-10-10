@@ -22,6 +22,9 @@ kvm -M q35 -m 4096 -vga std \
     -chardev stdio,mux=on,id=debug \
     -device isa-serial,index=2,chardev=debug \
     -device isa-debugcon,iobase=0x402,chardev=debug \
+    -device pcie-root-port,bus=pcie.0,id=rp1 \
+    -device pcie-pci-bridge,id=br1,bus=rp1 \
+    -net none \
     "$@"
 
 # COM1: -device isa-serial,index=0,chardev=debug
