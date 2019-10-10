@@ -1,6 +1,6 @@
 # firmware-open
 
-System76 Open Source Firmware
+System76 Open Firmware
 
 ## Dependencies
 
