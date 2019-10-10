@@ -28,3 +28,8 @@ kvm -M q35 -m 4096 -vga std \
 # COM2: -device isa-serial,index=1,chardev=debug
 # COM3: -device isa-serial,index=2,chardev=debug
 # COM4: -device isa-serial,index=3,chardev=debug
+
+# PCIe hotplugging (https://github.com/qemu/qemu/blob/master/docs/pcie_pci_bridge.txt):
+#  Root port:   -device pcie-root-port,bus=pcie.0,id=rp1
+#  PCIe bridge: -device pcie-pci-bridge,id=br1,bus=rp1
+
