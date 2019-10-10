@@ -14,9 +14,14 @@ System76 Open Firmware
 source ~/.cargo/env
 ```
 
-### Build firmware, replace darp5 with your model (look in the models directory for examples)
+### Build firmware, replace qemu with your model (look in the models directory for examples)
 ```
-./scripts/build.sh darp5
+./scripts/build.sh qemu
+```
+
+### Emulate firmware, only available after building the qemu model
+```
+./scripts/qemu.sh
 ```
 
 ### Flashing firmware manually is not recommended for the normal user. For the advanced user, there is a script flash.sh which takes the same arguments as build.sh
