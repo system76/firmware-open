@@ -20,6 +20,7 @@ then
     gnat \
     mtools \
     nasm \
+    python3-distutils \
     uuid-dev \
     zlib1g-dev
 else
