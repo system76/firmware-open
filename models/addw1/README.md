@@ -1,6 +1,6 @@
-# System76 Adder Pro (addp1)
+# System76 Adder Workstation (addw1)
 
-https://system76.com/guides/addp1
+https://system76.com/guides/addw1
 
 ## Contents
 
