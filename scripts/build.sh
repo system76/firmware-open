@@ -43,6 +43,16 @@ EDK2_ARGS+=(
     -D FIRMWARE_OPEN_FIRMWARE_SETUP="firmware-setup/firmware-setup.inf"
 )
 
+# Rebuild firmware-smmstore (used by edk2)
+if [ "${MODEL}" != "qemu" ]
+then
+    touch apps/firmware-smmstore/Cargo.toml
+    make -C apps/firmware-smmstore
+    EDK2_ARGS+=(
+        -D FIRMWARE_OPEN_FIRMWARE_SMMSTORE="firmware-smmstore/firmware-smmstore.inf"
+    )
+fi
+
 # Rebuild gop-policy (used by edk2)
 if [ -e "${MODEL_DIR}/IntelGopDriver.inf" -a -e "${MODEL_DIR}/vbt.rom" ]
 then
