@@ -35,7 +35,7 @@ source ~/.cargo/env
 - [apps](./apps) - Applications
 - [coreboot](https://github.com/system76/coreboot.git) - coreboot README
 - [edk2](https://github.com/system76/edk2.git) - EDK II Project
-- [edk2-non-osi](https://github.com/tianocore/edk2-non-osi.git) - This branch holds modules not compatible with the normal
+- [edk2-non-osi](https://github.com/tianocore/edk2-non-osi.git)
 - [edk2-platforms](https://github.com/system76/edk2-platforms.git) - This branch holds all platforms actively maintained against the
 - [FSP](https://github.com/IntelFsp/FSP.git) - Intel® Firmware Support Package (Intel® FSP) Binaries
 - [libs](./libs) - Libraries
