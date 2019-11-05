@@ -2,6 +2,10 @@
 
 An open source distribution of firmware utilizing coreboot, EDK2, and System76 firmware applications.
 
+Please note that only the darp6 and galp4 models are officially supported - if you brick your device it will be up to you to restore the current firmware using an external programmer.
+
+If you would like to view schematics for any supported System76 model, please send an email to firmware@system76.com with the subject line Schematics for MODEL, where MODEL is the name of a directory in the models directory, such as darp6.
+
 ## Dependencies
 
 ### Install toolchain
