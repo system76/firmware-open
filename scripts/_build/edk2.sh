@@ -9,7 +9,10 @@ then
 fi
 UEFIPAYLOAD="$(realpath "$1")"
 
+PACKAGE=CorebootPayloadPkg
+#PACKAGE=UefiPayloadPkg
 BUILD_TYPE=RELEASE
+#BUILD_TYPE=DEBUG
 TOOLCHAIN=GCC5
 
 pushd edk2 >/dev/null
@@ -21,10 +24,10 @@ pushd edk2 >/dev/null
     -a X64 \
     -b "${BUILD_TYPE}" \
     -t "${TOOLCHAIN}" \
-    -p CorebootPayloadPkg/CorebootPayloadPkgIa32X64.dsc \
+    -p "${PACKAGE}/${PACKAGE}Ia32X64.dsc" \
     "${@:2}"
 
   cp -v \
-    "Build/CorebootPayloadPkgX64/${BUILD_TYPE}_${TOOLCHAIN}/FV/UEFIPAYLOAD.fd" \
+    "Build/${PACKAGE}X64/${BUILD_TYPE}_${TOOLCHAIN}/FV/UEFIPAYLOAD.fd" \
     "${UEFIPAYLOAD}"
 popd >/dev/null
