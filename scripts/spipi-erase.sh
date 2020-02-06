@@ -13,5 +13,5 @@ source scripts/_spipi.sh
 
 ssh -T "${SPIPI}" <<EOF
 cd firmware
-./spipi.sh -c "${CHIP}" -E
+./scripts/spipi.sh -c "${CHIP}" -E
 EOF

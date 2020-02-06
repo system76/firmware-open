@@ -18,5 +18,5 @@ EOF
 
 ssh -T "${SPIPI}" <<EOF
 cd firmware
-./spipi.sh -c "${CHIP}" -w "${MODEL}.rom"
+./scripts/spipi.sh -c "${CHIP}" -w "${MODEL}.rom"
 EOF

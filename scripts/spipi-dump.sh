@@ -13,7 +13,7 @@ source scripts/_spipi.sh
 
 ssh -T "${SPIPI}" <<EOF
 cd firmware
-./spipi.sh -c "${CHIP}" -r dump.rom
+./scripts/spipi.sh -c "${CHIP}" -r dump.rom
 EOF
 
 sftp "${SPIPI}" <<EOF
