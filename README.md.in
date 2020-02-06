@@ -28,4 +28,54 @@ source ~/.cargo/env
 ./scripts/qemu.sh
 ```
 
-### Flashing firmware manually is not recommended for the normal user. For the advanced user, there is a script flash.sh which takes the same arguments as build.sh
+## Flashing
+
+**Flashing firmware manually is *not* recommended for the normal user!**
+
+### Internal programmer
+
+Use this method for flashing a system already running System76 Open Firmware.
+
+```
+./scripts/flash.sh <model>
+```
+
+### External programmer
+
+Use this method for first-time flashing or flashing a bricked system.
+
+#### Creating a SPI Pi
+
+SPI Pi is a Raspberry Pi used to flash the SPI ROM. To create a SPI Pi:
+
+- Get a Raspberry Pi 2 or 3 with Ubuntu 16.04
+- Hook up a SPI clip to the SPI Pi
+  - The SPI Pi's SPI pinout can be found here: https://pinout.xyz/pinout/spi#
+  - The pinout of a SPI rom can be found here: https://www.totalphase.com/media/wysiwyg/soic8-pinout.png
+  - If you need more instructions, you should not be hooking up the SPI clip
+- Connect the SPI Pi's SPI clip to the SPI ROM, ensuring pin 1 of the clip aligns with pin 1 on the ROM
+- On the SPI Pi, run the following commands:
+
+```
+sudo apt install flashrom
+git clone https://github.com/system76/firmware-open.git firmware
+```
+
+#### Flashing with a SPI Pi
+
+1. Turn off the computer
+2. Remove the bottom panel
+3. Attach the clip to the SPI ROM chip
+4. Connect to the Raspberry Pi and wait it for boot
+```
+sudo tio -b 115200 /dev/ttyUSB0
+```
+5. From the RPi session, test that the chip is detected.
+```
+cd firmware
+./scripts/spipi.sh -r backup.rom
+```
+6. From the host, flash the firmware
+```
+SPIPI=<user@spipi> ./scripts/spipi-flash.sh <model>
+```
