@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-SPIPI="ubuntu@10.17.89.179"
+SPIPI=${SPIPI:-"ubuntu@10.17.89.179"}
 
 if [ ! -d "models/${MODEL}" ]
 then
