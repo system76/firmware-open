@@ -10,7 +10,7 @@ https://system76.com/guides/galp3
   - Version: 1.05.03MI1
 - [FD](./fd.rom)
   - Size: 4 KB
-  - HAP: true
+  - HAP: false
 - [ME](./me.rom)
   - Size: 2044 KB
-  - Version: 11.8.50.3399
+  - Version: 11.8.70.3626
