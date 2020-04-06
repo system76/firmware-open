@@ -94,3 +94,7 @@
 	path = tools/ipxe
 	url = https://github.com/ipxe/ipxe.git
 	branch = master
+[submodule "ec"]
+	path = ec
+	url = https://github.com/system76/ec.git
+	branch = master
