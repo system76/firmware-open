@@ -4,7 +4,7 @@ set -e
 
 if [ -z "$1" ]
 then
-  echo "$0 [model]" >&2
+  echo "$0 <model>" >&2
   exit 1
 fi
 MODEL="$1"
@@ -78,6 +78,15 @@ KERNELVERSION="${VERSION}" \
     ./scripts/_build/coreboot.sh \
         "${MODEL_DIR}/coreboot.config" \
         "${COREBOOT}"
+
+# Rebuild EC firmware for System76 EC models
+if [ ! -e  "${MODEL_DIR}/ec.rom" -a -e "${MODEL_DIR}/ec.config" ]
+then
+    env VERSION="${VERSION}" \
+        ./scripts/_build/ec.sh \
+        "${MODEL_DIR}/ec.config" \
+        "${BUILD}/ec.rom"
+fi
 
 if [ "${MODEL}" != "qemu" ]
 then
