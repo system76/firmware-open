@@ -4,10 +4,16 @@ set -e
 
 if [ -z "$1" ]
 then
-  echo "$0 [model]" >&2
+  echo "$0 <model> [--without-ec]" >&2
   exit 1
 fi
 MODEL="$1"
+
+WITH_EC=true
+if [ "$2" = "--without-ec" ]
+then
+    WITH_EC=false
+fi
 
 if [ ! -d "models/${MODEL}" ]
 then
@@ -25,3 +31,14 @@ fi
 
 cargo build --release --manifest-path libs/intel-spi/Cargo.toml
 sudo libs/intel-spi/target/release/intel-spi "build/${MODEL}/coreboot.rom"
+
+if [ "$WITH_EC" = true ]
+then
+    if [ -e "build/${MODEL}/ec.rom" ]
+    then
+        cargo build --release --manifest-path ec/tool/Cargo.toml
+        sudo ec/tool/target/release/system76_ectool flash "build/${MODEL}/ec.rom"
+    fi
+else
+    echo "Skipping EC flash"
+fi
