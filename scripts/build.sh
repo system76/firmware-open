@@ -101,11 +101,14 @@ then
 
     # Copy firmware to USB image
     mmd -i "${USB}.partial@@1M" "::${BASEDIR}/firmware"
-    mcopy -i "${USB}.partial@@1M" "${COREBOOT}" "::${BASEDIR}/firmware/firmware.rom"
-    if [ -e "${MODEL_DIR}/ec.rom" -a -e "${MODEL_DIR}/uecflash.efi" ]
+    mcopy -v -i "${USB}.partial@@1M" "${COREBOOT}" "::${BASEDIR}/firmware/firmware.rom"
+    if [ -e "${BUILD}/ec.rom" ]
     then
-        mcopy -i "${USB}.partial@@1M" "${MODEL_DIR}/ec.rom" "::${BASEDIR}/firmware/ec.rom"
-        mcopy -i "${USB}.partial@@1M" "${MODEL_DIR}/uecflash.efi" "::${BASEDIR}/firmware/uecflash.efi"
+        mcopy -v -i "${USB}.partial@@1M" "${BUILD}/ec.rom" "::${BASEDIR}/firmware/ec.rom"
+    elif [ -e "${MODEL_DIR}/ec.rom" -a -e "${MODEL_DIR}/uecflash.efi" ]
+    then
+        mcopy -v -i "${USB}.partial@@1M" "${MODEL_DIR}/ec.rom" "::${BASEDIR}/firmware/ec.rom"
+        mcopy -v -i "${USB}.partial@@1M" "${MODEL_DIR}/uecflash.efi" "::${BASEDIR}/firmware/uecflash.efi"
     fi
     mv -v "${USB}.partial" "${USB}"
 fi
