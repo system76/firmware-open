@@ -28,7 +28,7 @@ rm -rf "${BUILD}"
 mkdir -p "${BUILD}"
 
 UEFIPAYLOAD="${BUILD}/UEFIPAYLOAD.fd"
-COREBOOT="${BUILD}/coreboot.rom"
+COREBOOT="${BUILD}/firmware.rom"
 USB="${BUILD}/usb.img"
 EDK2_ARGS=(
     -D USE_HPET_TIMER=FALSE
@@ -91,8 +91,7 @@ fi
 if [ "${MODEL}" != "qemu" ]
 then
     # Rebuild firmware-update
-    SHASUM="$(sha384sum "${COREBOOT}" | cut -d " " -f 1)"
-    export BASEDIR="system76-${SHASUM}"
+    export BASEDIR="system76_${MODEL}_${VERSION}"
     pushd apps/firmware-update >/dev/null
       rm -rf "build/x86_64-efi-pe"
       make "build/x86_64-efi-pe/boot.img"
