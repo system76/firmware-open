@@ -13,7 +13,7 @@ source scripts/_spipi.sh
 
 sftp "${SPIPI}" <<EOF
 cd firmware
-put "build/${MODEL}/coreboot.rom" "${MODEL}.rom"
+put "build/${MODEL}/firmware.rom" "${MODEL}.rom"
 EOF
 
 ssh -T "${SPIPI}" <<EOF

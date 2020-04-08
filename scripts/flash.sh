@@ -30,7 +30,7 @@ then
 fi
 
 cargo build --release --manifest-path libs/intel-spi/Cargo.toml
-sudo libs/intel-spi/target/release/intel-spi "build/${MODEL}/coreboot.rom"
+sudo libs/intel-spi/target/release/intel-spi "build/${MODEL}/firmware.rom"
 
 if [ "$WITH_EC" = true ]
 then

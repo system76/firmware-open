@@ -18,7 +18,7 @@ fi
 MODEL_DIR="$(realpath "models/${MODEL}")"
 
 kvm -M q35 -m 4096 -vga std \
-    -bios "build/${MODEL}/coreboot.rom" \
+    -bios "build/${MODEL}/firmware.rom" \
     -chardev stdio,mux=on,id=debug \
     -device isa-serial,index=2,chardev=debug \
     -device isa-debugcon,iobase=0x402,chardev=debug \
@@ -35,4 +35,3 @@ kvm -M q35 -m 4096 -vga std \
 # PCIe hotplugging (https://github.com/qemu/qemu/blob/master/docs/pcie_pci_bridge.txt):
 #  Root port:   -device pcie-root-port,bus=pcie.0,id=rp1
 #  PCIe bridge: -device pcie-pci-bridge,id=br1,bus=rp1
-
