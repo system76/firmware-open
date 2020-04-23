@@ -5,7 +5,7 @@ set -e
 rm -rf build/pxestick
 mkdir -p build/pxestick
 
-make -C tools/ipxe/src bin-x86_64-efi/axge.efi
+make -C tools/ipxe/src bin-x86_64-efi/axge.efi -j "$(nproc)"
 cp tools/ipxe/src/bin-x86_64-efi/axge.efi build/pxestick/ipxe.efi
 
 cd build/pxestick
