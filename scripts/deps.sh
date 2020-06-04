@@ -20,7 +20,9 @@ then
     gnat \
     mtools \
     nasm \
+    python \
     python3-distutils \
+    sdcc \
     uuid-dev \
     zlib1g-dev
 else
