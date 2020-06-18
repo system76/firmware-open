@@ -15,6 +15,8 @@ then
     build-essential \
     bison \
     ccache \
+    curl \
+    dosfstools \
     flex \
     git-lfs \
     gnat \
@@ -25,6 +27,21 @@ then
     sdcc \
     uuid-dev \
     zlib1g-dev
+elif which dnf > /dev/null
+then
+  msg "Installing system build dependencies"
+  sudo dnf group install c-development
+  sudo dnf install \
+    curl \
+    dosfstools \
+    gcc-gnat \
+    git-lfs \
+    libuuid-devel \
+    mtools \
+    nasm \
+    patch \
+    sdcc \
+    zlib-devel
 else
   msg "Please add support for your distribution to:"
   msg "scripts/deps.sh"
