@@ -29,53 +29,21 @@ sudo bash -c 'echo 1 > /sys/bus/pci/rescan'
 
 ## Generating required output
 
-- Create a directory under `model/`
-- Create `README.md.in` with basic info about the board
-    - Title should be "\<manufacturer\> \<product\> (\<version\>)"
-- Generate `coreboot-collector.txt` using [coreboot-collector]
+The `generate.sh` script will perform most steps for collecting the required
+data for coreboot and EC firmware development. If regenerating for an existing
+model, it will automatically overwrite the data.
+
+If planning to use System76 EC firmware, perform the following before running:
+- Set keyboard backlight to full brightness and white light
+- Set display backlight to full brightness
+- Set CPU fan to full speed
 
 ```
-cargo build --release --manifest-path=tools/coreboot-collector/Cargo.toml
-sudo ./tools/coreboot-collector/target/release/coreboot-collector > models/<model>/coreboot-collector.txt
+./scripts/generate.sh <model> <firmware.rom> [ec.rom]
 ```
 
-- Generate `gpio.h` and `hda.h`
-
-```
-./scripts/coreboot-gpio.sh models/<model>/coreboot-collector.txt > models/<model>/gpio.h
-./scripts/coreboot-hda.sh models/<model>/coreboot-collector.txt > models/<model>/hda.h
-```
-
-- Extract the flash descriptor and Intel ME
-
-```
-make -C coreboot/util/ifdtool
-coreboot/util/ifdtool/ifdtool -x <bios_image>
-mv flashregion_0_flashdescriptor.bin models/<model>/fd.rom
-mv flashregion_2_intel_me.bin models/<model>/me.rom
-rm -f flashregion_*.bin
-```
-
-- If using the proprietary EC firmware, add it as `ec.rom`
-- Otherwise, generate `ecspy.txt`
-    - Set keyboard backlight to full brightness, white color
-    - Set display backlight to full brightness
-    - Set fans to full speed
-
-```
-cargo build --release --manifest-path=ec/ecspy/Cargo.toml
-sudo ./ec/ecspy/target/release/ecspy > models/<model>/ecspy.txt
-# Strip EC RAM entries
-sed -i '/^0x/d' models/<model>/ecspy.txt
-```
-
-- Generate `microcode.rom` from the private [intel-microcode] repo
-
-- Generate the READMEs
-
-```
-./scripts/readmes.sh
-```
+You will additionally need to generate the correct `microcode.rom` for the CPU
+family from the private [intel-microcode] repo.
 
 ## Porting coreboot
 
@@ -103,5 +71,4 @@ firmware-open (e.g., `galp3-c` used for `galp4`).
 If the proprietary EC was previously used, remove `ec.rom` and regenerate the
 READMEs.
 
-[coreboot-collector]: https://github.com/system76/coreboot-collector
 [intel-microcode]: https://github.com/system76/intel-microcode
