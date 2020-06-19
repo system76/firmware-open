@@ -117,6 +117,7 @@ not used as it does not support IME version 14.0.
 
 - [apps](./apps) - Applications
 - [coreboot](https://github.com/system76/coreboot.git) - coreboot README
+- [docs](./docs) - System76 Open Firmware Documentation
 - [ec](https://github.com/system76/ec.git) - System76 EC
 - [edk2](https://github.com/system76/edk2.git) - EDK II Project
 - [edk2-non-osi](https://github.com/tianocore/edk2-non-osi.git)
