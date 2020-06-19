@@ -2,6 +2,8 @@
 
 set -e
 
+PATH="$PATH:/usr/sbin"
+
 rm -rf build/pxestick
 mkdir -p build/pxestick
 

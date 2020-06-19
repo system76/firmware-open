@@ -2,6 +2,9 @@
 
 set -e
 
+# TODO: Move this to build scripts that require it on Debian
+PATH="$PATH:/usr/sbin"
+
 if [ -z "$1" ]
 then
   echo "$0 <model>" >&2
