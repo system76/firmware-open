@@ -67,11 +67,5 @@ rustup toolchain install "$(cat rust-toolchain)"
 msg "Installing source for pinned Rust toolchain"
 rustup component add --toolchain "$(cat rust-toolchain)" rust-src
 
-if ! which cargo-xbuild > /dev/null
-then
-  msg "Installing cargo-xbuild"
-  cargo +nightly install cargo-xbuild --version=0.5.29
-fi
-
 msg "\x1B[32mSuccessfully installed dependencies"
 echo "Ready to run ./scripts/build.sh [model]" >&2
