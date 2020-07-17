@@ -104,9 +104,12 @@ then
     if [ -e "${BUILD}/ec.rom" ]
     then
         mcopy -v -i "${USB}.partial@@1M" "${BUILD}/ec.rom" "::${BASEDIR}/firmware/ec.rom"
-    elif [ -e "${MODEL_DIR}/ec.rom" -a -e "${MODEL_DIR}/uecflash.efi" ]
+    elif [ -e "${MODEL_DIR}/ec.rom" ]
     then
         mcopy -v -i "${USB}.partial@@1M" "${MODEL_DIR}/ec.rom" "::${BASEDIR}/firmware/ec.rom"
+    fi
+    if [ -e "${MODEL_DIR}/uecflash.efi" ]
+    then
         mcopy -v -i "${USB}.partial@@1M" "${MODEL_DIR}/uecflash.efi" "::${BASEDIR}/firmware/uecflash.efi"
     fi
     mv -v "${USB}.partial" "${USB}"
