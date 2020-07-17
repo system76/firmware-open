@@ -9,6 +9,6 @@ then
 fi
 
 source "$1"
-make -C ec clean
+make -C ec BOARD=${BOARD} VERSION=${VERSION} clean
 make -C ec BOARD=${BOARD} VERSION=${VERSION} -j $(nproc)
 cp "ec/build/${BOARD}/${VERSION}/ec.rom" "$2"
