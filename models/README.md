@@ -4,6 +4,7 @@
 
 - [addw1](./addw1) - System76 Adder Workstation (addw1)
 - [addw2](./addw2) - System76 Adder WS (addw2)
+- [bonw14](./bonw14) - System76 Bonobo WS (bonw14)
 - [darp5](./darp5) - System76 Darter Pro (darp5)
 - [darp6](./darp6) - System76 Darter Pro (darp6)
 - [galp2](./galp2) - System76 Galago Pro (galp2)
