@@ -59,6 +59,12 @@ mv flashregion_0_flashdescriptor.bin "${MODEL_DIR}/fd.rom"
 mv flashregion_2_intel_me.bin "${MODEL_DIR}/me.rom"
 rm -f flashregion_*.bin
 
+# Get the Video BIOS Table for Intel systems
+if sudo [ -e /sys/kernel/debug/dri/0/i915_vbt ]
+then
+    sudo cat /sys/kernel/debug/dri/0/i915_vbt > "${MODEL_DIR}/vbt.rom"
+fi
+
 # XXX: More reliable way to determine if system has an EC?
 DMI_CHASSIS_TYPE=$(cat /sys/class/dmi/id/chassis_type)
 if [ "${DMI_CHASSIS_TYPE}" = "9" ] || [ "${DMI_CHASSIS_TYPE}" = "10" ]
