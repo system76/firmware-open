@@ -1,0 +1,605 @@
+This document refers to the AMD Secure Processor technology as Platform Security Processor (PSP).
+
+//----------------------------------------------------------------------------
+// PSP FW Delivery Release Note
+//
+// Date:   August 21, 2019
+//----------------------------------------------------------------------------
+
+// Copyright 2015-2018 Advanced Micro Devices, Inc. All rights reserved.
+
+// AMD is granting you permission to use this software and documentation (if any) (collectively, the "Materials")
+// pursuant to the terms and conditions of the Software License Agreement included with the Materials.
+// If you do not have a copy of the Software License Agreement, contact your AMD representative for a copy.
+//
+// You agree that you will not reverse engineer or decompile the Materials, in whole or in part, except as
+// allowed by applicable law.
+//
+// WARRANTY DISCLAIMER: THE MATERIALS ARE PROVIDED "AS IS" WITHOUT WARRANTY OF ANY KIND.
+// AMD DISCLAIMS ALL WARRANTIES, EXPRESS, IMPLIED, OR STATUTORY, INCLUDING BUT NOT LIMITED TO THE IMPLIED
+// WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE, TITLE, NON-INFRINGEMENT, THAT THE MATERIALS
+// WILL RUN UNINTERRUPTED OR ERROR-FREE OR WARRANTIES ARISING FROM CUSTOM OF TRADE OR COURSE OF USAGE.
+// THE ENTIRE RISK ASSOCIATED WITH THE USE OF THE MATERIAL IS ASSUMED BY YOU.
+// Some jurisdictions do not allow the exclusion of implied warranties, so the above exclusion may not
+// apply to You.
+//
+// LIMITATION OF LIABILITY AND INDEMNIFICATION:
+// AMD AND ITS LICENSORS WILL NOT, UNDER ANY CIRCUMSTANCES BE LIABLE TO YOU FOR ANY PUNITIVE, DIRECT, INCIDENTAL,
+// INDIRECT, SPECIAL OR CONSEQUENTIAL DAMAGES ARISING FROM USE OF THE MATERIALS OR THIS AGREEMENT EVEN IF AMD
+// AND ITS LICENSORS HAVE BEEN ADVISED OF THE POSSIBILITY OF SUCH DAMAGES.
+// In no event shall AMD's total liability to You for all damages, losses, and causes of action (whether in contract,
+// tort (including negligence) or otherwise) exceed the amount of $100 USD.
+// You agree to defend, indemnify and hold harmless AMD and its licensors, and any of their directors, officers,
+// employees, affiliates or agents from and against any and all loss, damage, liability and other expenses
+// (including reasonable attorneys' fees), resulting from Your use of the Materials or violation of the terms
+// and conditions of this Agreement.
+//
+// U.S. GOVERNMENT RESTRICTED RIGHTS: The Materials are provided with "RESTRICTED RIGHTS." Use, duplication, or
+// disclosure by the Government is subject to the restrictions as set forth in FAR 52.227-14 and DFAR252.227-7013,
+// et seq., or its successor.  Use of the Materials by the Government constitutes acknowledgement of AMD's proprietary
+// rights in them.
+//
+// EXPORT RESTRICTIONS: The Materials may be subject to export restrictions as stated in the Software License Agreement.
+//----------------------------------------------------------------------------
+
+Content:
+	PSP FW Deliverables for Starship. Sync-up to HW register to SoC CL#907297
+	This Build is compiled using the ARM license from the AMD license server.
+
+Files:
+
+ 1. PspBootLoader_mts.sbin          [Updated: 00.0D.00.2C] - PSP offchip BootLoader (type 0x1), signed with 4K AMD Root key
+ 2. psp_os_combined_mts.sbin        [Updated: 00.0D.00.2C] - PSP Secure OS firmware (type 0x2), signed with Trusted OS key
+ 3. drv_sys_mts.sbin                [Updated: 00.0D.00.2C] - System Driver (type 0x28), signed with Trusted OS Key
+ 4. SecureDebugUnlock_mts.sbin      [Updated: 00.0D.00.2C] - This is PSP Early unlock debug image (type 0x13) signed with SDU key
+ 5. RsmuSecPolicy_mts.sbin          [Updated: 11.3.0.15]   - RSMU security Policy entry type 0x24 signed with Security Gaskey key
+ 6. dr_ftpm_mts.sbin                [Updated: 3.37.05]     - This is fTPM driver (type 0x0C) signed with AMDTEE key
+ 7. bl_errorcodes.h                 [Updated: 00.0D.00.2C] - Error codes for this PSP FW release
+ 8. bl_syscall.h                    [Updated: 00.0D.00.2C] - SVC interface file
+ 9. PSP_ReleaseNotes_mts.txt        [Updated: 00.0D.00.2C] - This file
+
+ver 00.0D.00.2C:
+================
+Base Bios: WMX9814N & WQX9814N
+
+Changes:
+1. PLAT-49192: [CP] Secure Debug Unlock not done for all CCDs
+2. PLAT-49543: Set TWIX ERROR_MASK before very first access to CCD
+3. PLAT-48743: PLAT-49193: [MTS/CP]: Remove the workaround done to get scan working
+4. PLAT-49189: Fix Windows build issue after migrating to Git
+5. PLAT-49637: [MTS/VMR]: Workaround for issue due to SPI controller line floating
+
+ver 00.0D.00.2B:
+================
+Note: This release was made for VMR program and it is not applicable for MTS
+
+ver 00.0D.00.2A:
+================
+Base Bios: TMX1003FABA & TQX1003FABA
+
+Changes:
+1. PLAT-46375:[CPK]:System can not boot with some "Quad" SPI Mode
+2. PLAT-48766: Buffer overflow caused by using invalid key
+3. PLAT-48743: Matisse BIOS is advertising SEV support
+4. PLAT-48926: [CP] Make changes to load Secure OS in Castle Peak WS
+5. PLAT-47573: [MTS/CP] Read the Bixby Device information from SVC call
+6. PLAT-47340: [CP] SME not enabled
+7. PLAT-49099: Update Makefile to build System Driver and Secure OS in git
+
+ver 00.0D.00.29:
+================
+Base Bios: TMX1003FABA & TQX1003FABA
+
+Changes:
+1. PLAT-47739: CPK: Data abort in NBIO harvesting-fuses
+2. PLAT-47492: token unlock fails on two CCD target
+3. PLAT-48646: [MTS][Qogir]Bixby downgraded from gen4 to gen2 with bios TQX1004D
+
+ver 00.0D.00.28:
+================
+Base Bios: WMX9626N & WQX9626N
+
+Changes:
+1. PLAT-43796: [VMR] Integrate the Emulation changes
+2. Update the MTS security policy to 11.3.0.15
+
+ver 00.0D.00.27:
+================
+Base Bios: WMX9626N & WQX9626N
+
+Changes:
+1. PLAT-47737: Set the RSMU_SW_STRAP_ADDR/DATA to disable PCIE Gen4
+2. Update the MTS security policy to 11.3.0.14
+3. PLAT-47012: Set the Quad IO mode for SPIROM based on the QE bit
+4. PLAT-47571: [CP] Pull-in harvesting changes from Rome branch
+5. PLAT-47994: Pull-in changes w.r.t debug unlock from Rome branch
+6. PLAT-47576: CP: System stuck at PC 0007 when Channel H is populated
+7. PLAT-47964: [MTS/CP] Remove stale code from the bootloader
+8. PLAT-47977: Enable KVM support for Castle Peak
+9. PLAT-48057: Fail signature verification of unencrypted KVM Fw binary
+
+ver 00.0D.00.26:
+================
+Base Bios: WMX9619N & WQX9619N
+
+Changes:
+1. PLAT-46138: CPK- enable PSB by default
+2. PLAT-46919: [MTS] Bug Fix: Use the correct FUSE_EFUSE_PGATER_SHIFT value during hard fuse of a bit
+3. PLAT-46871: Read CPK B0 secure part UMC\Ctrl and UMC\PHY register fail
+4. PLAT-31498: Merge 11.0-SSP changes till 00.0C.00.5D
+5. PLAT-47433: [MTS] PSB: Bring-in changes from Renior branch
+6. PLAT-47577: [MTS] Validate the USB PHY f/w before loading
+7. PLAT-47594: [MTS/CP] Clear SDU bit in HSTI part of the C2PMSG_38
+8. PLAT-47572: [MTS]: Set the STRAPRX_LOCK bit as part of disabling PCIE Gen4
+9. PLAT-47442: [MTS] PSB: Add support for Anti-rollback feature 
+
+ver 00.0D.00.25:
+================
+Base Bios: WMX9529N & WQX9529N
+
+Changes:
+1. PLAT-45999: Support HDT in proper showing the PSP FW version
+2. PLAT-45187: FastRegs MMIO needs to be disabled
+3. PLAT-45247: [Castle Peak] PSP FW Status shows error code 0x43 even system is idle in OS
+4. PLAT-44221: Verify PMU FW using PMU public key in PSP BL
+5. PLAT-45527: [Castle Peak] Secure part system failed resume from s3, PC=0025
+6. PLAT-46754: Update the correct error code in postcode
+7. PLAT-46667: [MTS] Fake unlock - HDT says "Unlock completed - closing the dialogue" but CPU is still in secured state after click restart in Windows
+8. PLAT-42971: support secure enablement of PCIe Gen4 capabilities on AM4/MTS based on version of chipset on board
+9. PLAT-46191: [MTS] Update PSP Authentication for PROM19 Variants
+
+ver 00.0D.00.24:
+================
+Base Bios: WMX9529N & WQX9529N
+
+Changes:
+1. PLAT-43521: Add range validation for SPI-ROM Signature data speed and dummy cycle
+2. PLAT-45973: RSMU INTR instance ID Mask error fix
+3. PLAT-45256: failed to unlock MTS B0 secure part using NDA account
+4. PLAT-45587: [MTS/CP] Add support to unlock the whitelisted part
+5. PLAT-31498: Merge 11.0-SSP changes
+6. PLAT-45194: [RyzenMaster] Failed to set Manual OC mode after resuming from sleep state
+7. PLAT-46576: [MTS-Myrtle] System hang at 10E1 with S3 after seting OC.
+
+ver 00.0D.00.23:
+================
+Base Bios: WMX9508N & WQX9508N
+
+Changes:
+1. PLAT-46059: [MTS/CP] Update the signing servers in the configuration files
+2. PLAT-42459: Implement the SVC call for ABL to pass Bixby information
+3. PLAT-42914: PSP FW Recovery mode info for ABL
+4. PLAT-45058: ComboAM4 1001a RC2 copyright issue
+5. PLAT-42145: SPClient folder should update to the Matisse program
+6. PLAT-46045: [MTS/CP] Validation of the Bixby Firmware Images in SMU Secure DRAM
+7. PLAT-46101: correct CS and PIE initial values in MBAT programming
+
+ver 00.0D.00.22:
+================
+Base Bios: WMX9417N & WQX9417N
+
+Changes:
+1.  PLAT-44953: [CP] Make changes to Root Bus number and SWUS Bus number
+2.  PLAT-45127: [CP] Add support for unsecure SoC + secure Bixby
+3.  PLAT-44955: [CP] Add sequence to download Bixby firmware images using E0/E4
+4.  PLAT-43729: Enable SDU FW signing with SDU signing key
+5.  PLAT-45115: [CP] Add support for Bixby Device A for Castle Peak
+6.  PLAT-31498: Merge 11.0-SSP changes till CL# 62252
+7.  PLAT-45361: Build at the tip of PSP tree is broken
+8.  PLAT-44954: [CP] Add SDP Master programming sequence to access Bixby
+9.  PLAT-45364: [BXB] Build at the tip broken when built for Bixby
+10. PLAT-43730: Enable Security Gasket FW to be signed with Security Gasket signing key
+11. PLAT-42660: [MTS/CP] PSP BL gets stuck at 0x71 when RSMU interrupts are enabled
+12. PLAT-43371: Enable Secure OS and System Driver to be signed with Secure OS signing key only.
+13. PLAT-35504: [PSP Phase II] Stack overrun in ValidateAndLoadOemxTrustletKey()
+14. PLAT-45419: Support Non-secure SoC with Secure Bxb
+15. PLAT-45108: [Castle Peak] System is stuck at postcode 000D once plugging memory on Channel D
+
+
+ver 00.0D.00.21:
+================
+Base Bios: WMX9417N & WQX9417N
+
+Changes:
+1. PLAT-45242: Ignore loading the USB PHY f/w if the PSP entry not found
+
+ver 00.0D.00.20:
+================
+Base Bios: WMX9417N & WQX9417N
+
+Changes:
+1. PLAT-45013: [CP] Do not program the VmGuard registers
+2. PLAT-43957: Cannot resume from sleep on Qogir / Myrtle with secure B0 MTS part
+3. PLAT-43628: Matisse USB3.1 FW Enablement: IQ OFFSET MUST BE ENABLED VIA SRAM FOR MATISSE AM4
+4. PLAT-45123 : [CP] Program the TWIX RequestOutputPortEnable for all TWIX instances in debug unlock
+5. PLAT-45107: Encrypt the bixby device ID
+
+ver 00.0D.00.1F:
+================
+Base Bios: WMX9410N & WQX9410N
+
+Changes:
+1. PLAT-44968: MP5 scan does not work on B0 Secure Unlocked target
+2. PLAT-44908: [MTS/CP] Cannot boot with Knoll connected on Myrtle
+
+ver 00.0D.00.1E:
+================
+Base Bios: WMX9410N & WQX9410N
+
+Changes:
+1. PLAT-44591: Write all RSMU_AEB_OVERRIDE_x registers during debug unlock sequence
+2. PLAT-44211: [MTS] Revert Security policy after debug unlock
+3. PLAT-44126: [MTS] PDM doesn't work after unlock if PC6 and CC6 are enabled
+4. PLAT-44628: Link width only train to X2 on J10(X16) slot when change to "2X8" in SBIOS
+5. PLAT-44743: Enable RO access to C2PMSG_98-103, required for APML command
+6. PLAT-44838: Set the VmGuardCtrl registers in S5 and S3 paths
+7. PLAT-44705: Cannot Boot Secure part on Myrtle with Knoll or Qogir with Knoll
+8. Merge the latest 10-RV (psp_os, psp_kernel & drv_sys) changes till CL# 62660
+9. PLAT-44796: Changelist 62971 has resulted in s3 failures.
+
+ver 00.0D.00.1D:
+================
+Base Bios: WMX9403N & WQX9403N
+
+Changes:
+1. PLAT-43513: Validate bixby's security policy binary using bixby's security policy Key
+2. Merge the latest 10-RV changes
+3. PLAT-43101: Enable MBAT/MDOM initialization
+4. PLAT-42974: Enable Ras features part-2
+5. PLAT-44494: Read the Bixby Device ID
+
+
+ver 00.0D.00.1C:
+================
+Base Bios: TMX1000E.FD & TQX1000E.FD
+
+Changes:
+1. PLAT-44274: CTS Test Failing on MTS/Qogir Platform
+
+ver 00.0D.00.1B:
+================
+Base Bios: TMX1000E.FD & TQX1000E.FD
+
+Changes:
+1. PLAT-44235: CHIPSET_AUTHENTICATION_VALID in BIOSSMC_MSG_GetOverclockCap is not set properly
+2. PLAT-44154: S3 resume will halt at 0C33 in DXIO_MSG_LISM_RESUME if PSP Authentication is enabled
+3. PLAT-44047: SMMLOCK bit is restored by PSP on S3 resume path at point of reset vector
+4. PLAT-43097: System hang at PC:1d42 on B0 Part with RX BIOS
+5. PLAT-44129 : Update DF security policy for SKINIT
+6. PLAT-44437: Fix the missing operation done in system driver suspend
+
+ver 00.0D.00.1A:
+================
+Base Bios: WMX9320N.FD & WQX9320N.FD
+
+Changes:
+1.  PLAT-42658: [MTS/CP] Enable token unlock
+2.  PLAT-42973: Remove Bixby ABL f/w load
+3.  PLAT-43493: Bixby authentication succeeds even if the response is incorrect.
+4.  PLAT-43697: Add support in the SoC to validate 2K signed binaries.
+5.  PLAT-37829: Validate images loaded into Bixby MP1 SRAM
+6.  PLAT-43053: Read wrapped iKEK before starting Bixby authentication
+7.  PLAT-42814: Secure Debug unlock for Bixby
+8.  PLAT-43514: Validate the SDU binary with SDU binary key
+9.  PLAT-43649: [MTS/CP] Correct the offsets of SMU_PCIE_FENCED1
+10. PLAT-41647: Validate, Load, apply and revert Bixby's Security Gasket
+11. PLAT-43054: Read the Bixby Device ID and enable features based on that
+12. PLAT-44064: Use dev server for signing Bixby SDU
+13. PLAT-42273: [MTS] Test and validate the promontory chipset authentication
+14. PLAT-43730:  Enable Security Gasket FW to be signed with Security Gasket signing key
+
+ver 00.0D.00.19:
+================
+Base Bios: WMX9227N.FD & WQX9227N.FD
+
+Changes:
+1.  PLAT-31498: Merge the latest 11.0-SSP bootloader changes till 00.0C.00.54 except CL# 62012
+2.  PLAT-42590: [CP] DXIO_PHY_SRAM_FW_PUBLIC_KEY Validation Hangs System with Postcode 0xE0CC
+3.  PLAT-36998: Enable the RAS features for Matisse
+4.  PLAT-42990: Bixby BL code re-organisation 
+5.  PLAT-43102: Disable MBAT/MDOM init to enable secure boot
+6.  PLAT-43110: Do not copy security policy to PSP DRAM
+7.  PLAT-42981: Update the f/w version for Bixby Bootloader
+8.  PLAT-43060: Correct the instances of the PCIE_LC_STATE0 registers scanned for checking PCIE Link Status
+9.  PLAT-42441: Svc_LoadValidateBinaryFromOffset API should support firmware subtype
+10. PLAT-43210: Pull-in fix from the Vega20 Bootloader
+
+ver 00.0D.00.18:
+================
+Base Bios: WMX9213N.FD
+
+Changes:
+1. PLAT-40254: Set the ForceEncrEn bit when enabled in BIOS
+2. PLAT-41004: AM4 Secure part not entering PDM mode during debug unlock
+3. PLAT-41276 : [MTS] DrvSys_EccPointMul returns CCP_ERR_ODMA1_AXI_SLVERR
+4. PLAT-42067: Fix the data abort in PSP BL in the Qogir+NJ card configuration
+5. PLAT-27882: Enable the RSMU thread in Secure OS (correct violation logging)
+6. PLAT-42301: Remove Warm Boot PSP BXB FW Loading Workaround
+7. PLAT-42270: CTS tests: Fix the privileged Escalation tests failure
+8. PLAT-41699: System hang at PC:1d11 on 12C Proto Part with WRX BIOS
+9. Merge the latest 10-RV (psp_os, psp_kernel & drv_sys) changes till CL# 61997
+
+ver 00.0D.00.17:
+================
+Base Bios: WMX9123N.FD
+
+Changes:
+1. PLAT-31498: Merge the latest 11.0-SSP bootloader changes till 00.0C.00.50
+2. PLAT-30882: Merge the latest 10-RV (psp_os, psp_kernel & drv_sys) changes till CL# 61569
+3. PLAT-39995: Matisse - AM4 secure part not posting
+4. PLAT-41509: Secure boot fails with APCB_TOKEN_UID_DF_SAVE_RESTORE_MEM_ENCRYPT_VALUE=1
+5. PLAT-41510: Enabling DF LOCK causes Secure boot to fail:
+6. PLAT-41627: Correct the PSP directory ID of Bixby Image
+
+ver 00.0D.00.16:
+================
+Base Bios: WMX9109N.FD
+
+Changes:
+1. PLAT-40539: AP launch failed when boot from ROM
+2. PLAT-36578: [MTS] Halt at 00C3 when do warm reset on Qogir Bixby Board
+3. PLAT-27883: Enable the debug unlock thread in Secure OS
+
+ver 00.0D.00.15:
+================
+Base Bios: WMX8C19N.FD
+
+Changes:
+1. PLAT-30882: Merge latest 10-RV bootloader changes
+2. PLAT-37726: [MTS] PSP BL set SPI Speed and Mode according to the new assigned ROMSIG offset 0x47 and 0xCP
+3. PLAT-37731: [MTS] PSP BL set SPI Dummycycle according to new assigned ROMSIG offset 0x48
+4. PLAT-31498: Merge the latest 11.0-SSP bootloader changes till 00.0C.00.45
+
+ver 00.0D.00.14:
+================
+Base Bios: WMX8C05N.FD
+
+Changes:
+1. PLAT-36023: Implement the Bixby Authentication sequence
+2. PLAT-30882: Merge the latest 10-RV (psp_os, psp_kernel & drv_sys) changes till CL# 60733
+3. PLAT-39081: Update the late DF security policy
+4. PLAT-39848: Program the RSMU timeout registers
+5. PLAT-37500: Pass the BIOS copy bit information to secure OS
+
+ver 00.0D.00.13:
+================
+Base Bios: WMX8B21N.FD
+
+Changes:
+1. PLAT-30882: Merge the latest 10-RV (psp_os, psp_kernel & drv_sys) changes
+2. PLAT-39644: Correct Reference clock frequency in MTS.
+3. PLAT-39667 : Enable Nwd access to PIC0 and Timer3 registers  in case of MTS.
+4. PLAT-31498: Merge the latest 11.0-SSP bootloader changes till 00.0C.00.40
+
+ver 00.0D.00.12:
+================
+Base Bios: WMX8B14N.FD
+
+Changes:
+
+ver 00.0D.00.12:
+================
+Base Bios: WMX8B14N.FD
+
+Changes:
+1. PLAT-31498: Merge the latest 11.0-SSP bootloader changes till CL# 60329
+2. PLAT-38375: S3 resume fails in hash verification of secure OS
+3. PLAT-30882: Merge the latest 10-RV (psp_os, psp_kernel & drv_sys) changes upto CL# till 60312
+4. PLAT-38498: Put the Bixby PSP BL in WFI
+
+ver 00.0D.00.11:
+================
+Base Bios: BQXA008N_0001.FD
+SMU FW Release (MP1 & MP5): v46.0.16
+ABL: 8a072043
+
+Changes:
+1. PLAT-36836: Add support for loading and executing Bixby f/w into Bixby MP0
+
+ver 00.0D.00.10:
+================
+Base Bios: BQB0001N_4_Gen1_AblLog.FD
+SMU FW Release (MP1 & MP5): v46.0.16
+ABL: 8a072043
+
+Changes:
+1. PLAT-29656: Enable the S3 suspend resume power management feature
+Removing the loading of SMU f/w into DRAM in S3 resume path
+2. PLAT-37551: Correct the sequence of programming UMC keys
+3. Add fw_status codes for Bixby Bootloader
+4. Remove GPIO control for Bixby reset from bootloader
+5. Use Dev1Fn2 for sending requests to Bixby to read DevID.
+6. Remove the SPI 4-byte mode programming in the bootloader.
+7. PLAT-36904: Add sequence to unlock Bixby MP1 SRAM
+
+ver 00.0D.00.0F:
+================
+Base Bios: BMXA004N.FD
+SMU FW Release (MP1 & MP5): v46.0.3
+ABL: 8a072043
+
+Changes:
+1. PLAT-36905: Add support for the BXB SOC reset control:
+After checking the schematics it is confirmed that we need to use GPIO136 instead of GPIO137.
+2. PLAT-37533: Remove the PCIE SWRST before bixby detection.
+
+ver 00.0D.00.0E:
+================
+Base Bios: MMTE010J.FD
+SMU FW Release (MP1 & MP5): v36.14.1
+ABL: 87192040
+
+Changes:
+1. PLAT-31498: Merge the latest 11.0-SSP bootloader changes till version 00.0C.00.33
+2. PLAT-36009: Enable a default serial port when none is selected
+3. PLAT-30882: Merge the latest 10-RV (psp_os, psp_kernel & drv_sys) changes upto CL# till 51655
+4. PLAT-34966: Enable loading of encrypted f/w images
+5. PLAT-36023:Establish the communication between MTS and BXB using C2P MSG registers
+6. PLAT-36348: Perform the PCIE soft reset before Bixby detection
+7. PLAT-29656: Enable the S3 suspend resume power management feature
+Fix the hmac key used.
+8. PLAT-36023: Generalize LoadImageToBixbyMP1 routine:
+9. PLAT-37011: Add code to sync between MTS BL and BXB BL
+10. PLAT-36906: Enable the MP1 f/w load into Bixby MP1 SRAM
+11. PLAT-36905: Add support for the BXB SOC reset control
+
+ver 00.0D.00.0D:
+================
+Base Bios: MMTE011G.ROM
+SMU FW Release (MP1 & MP5): v36.14.1
+ABL: 87192040
+
+Changes:
+1. PLAT-31498: Merge latest 11.0-SSP bootloader changes till version 00.0C.00.29
+2. PLAT-32771: Design the Bixby detection and f/w image load sequence:
+Use PSP directory entry "0x2D" for Bixby Image.
+3. PLAT-34960: Correct UMC register accesses
+4. PLAT-34966: Enable the loading of Encrypted f/w images
+Align with 3.0 code and create seperate functions for unwrapping of iKEK and MEK.
+
+
+ver 00.0D.00.0C:
+================
+Base Bios: MMTE011C.ROM
+SMU FW Release (MP1 & MP5): v36.14.1
+ABL: 87192040
+
+Changes:
+1. PLAT-32771: Design the Bixby detection and f/w image load sequence:
+Modularize the Bixby dectection sequence; create functions for each task
+2. PLAT-32771: Design the Bixby detection and f/w image load sequence:
+Add timeout of 5 milliseconds to detect PCIE Link Status
+
+ver 00.0D.00.0B:
+================
+Base Bios: MMTE011C.ROM
+SMU FW Release (MP1 & MP5): v36.14.1
+ABL: 87192040
+
+Changes:
+1. PLAT-32771: Design the Bixby detection and f/w image load sequence:
+Use MapSysHub instead of MapSysHubPcieMmio for C2PMSG_36 and C2PMSG_32(which are used to sync with bootrom)
+2. PLAT-30882: Merge the latest 10-RV (bootloader) changes
+3. PLAT-33727: Correct the thread_config register access for multi-CCDs
+4. PLAT-29656: Enable the S3 suspend resume power management feature
+5. PLAT-31498: Merge latest 11.0-SSP bootloader changes till CL# 50425
+6. PLAT-34317: Enable outgoing probes before x86 release
+7. PLAT-32771: Design the Bixby detection and f/w image load sequence:
+Add the check to see if the PCIE link is trained before starting Bixby detection
+
+ver 00.0D.00.0A:
+================
+Base Bios: AMIROM-bc0b05.FD
+SMU FW Release (MP1 & MP5): v36.12.0
+ABL: MABLMT86182011
+
+Changes:
+1. PLAT-32771: Design the Bixby detection and f/w image load sequence:
+Add sync with bootrom
+2. PLAT-32771: Design the Bixby detection and f/w image load sequence:
+Add support for the device ID 0x148D
+
+ver 00.0D.00.09:
+================
+Base Bios: MMTE010AA.FD
+SMU FW Release (MP1 & MP5): v36.8.0
+ABL: MABLMT86092010
+
+Changes:
+1. PLAT-32771: Design the Bixby detection and f/w image load sequence:
+Use type 0 config request to set bus 1 for BXB
+
+ver 00.0D.00.08:
+================
+Base Bios: MMTE010AA.FD
+SMU FW Release (MP1 & MP5): v36.8.0
+ABL: MABLMT86092010
+
+Changes:
+1. PLAT-30882: Merge the latest 10-RV (psp_os, psp_kernel & drv_sys) changes upto CL# 50519
+2. PLAT-32772: Add support for fTPM. 
+3. PLAT-32771: Design the Bixby detection and f/w image load sequence:
+Set AxUser ReqIO bit to 0 for PCIE_CFG access
+
+
+ver 00.0D.00.07:
+================
+Base Bios: MMTE010AA.FD
+SMU FW Release (MP1 & MP5): v36.8.0
+ABL: MABLMT86092010
+
+Changes:
+1. PLAT-32771: Design the Bixby detection and f/w image load sequence:
+Add additional post codes for debug.
+
+ver 00.0D.00.06:
+================
+Base Bios: MMTE010AA.FD
+SMU FW Release (MP1 & MP5): v36.8.0
+ABL: MABLMT86092010
+
+Changes:
+1. PLAT-32771: Design & Implement the Bixby detection and f/w image load sequence
+
+ver 00.0D.00.05:
+================
+Base Bios: MMTE010A.FD
+SMU FW Release (MP1 & MP5): v36.8.0
+ABL: RABLZP85312010
+
+Changes:
+1. PLAT-32020: Fix MP0 access violations
+
+ver 00.0D.00.04:
+===============
+Base Bios: MMTE010A.FD
+SMU FW Release (MP1 & MP5): v36.8.0
+ABL: RABLZP85312010
+
+Changes:
+1. Disable the unwrapping of iKEK
+
+ver 00.0D.00.03:
+================
+Base Bios: AMIROM.FD
+SMU FW Release (MP1 & MP5): v36.3.8
+ABL FW Release: 85312010
+
+Changes:
+1. PLAT-31394: Code clean-up: remove references to mini-bootloader
+2. PLAT-31498: Merge latest 11.0-SSP bootloader changes till CL# 50255
+3. PLAT-29657: Add support for the loading of Sure Start TA
+4. PLAT-30737: Promontory/Knoll authentication: Unwrap iKEK
+5. PLAT-30882: Merge the latest 10-RV (psp_os, psp_kernel & drv_sys) changes upto CL# 50119
+6. PLAT-31394: Code clean-up: Remove dependency on BUILD_MTS flag
+7. PLAT-30737: Port Promontory/Knoll Chipset key unwrapping from Summit
+
+ver 00.0D.00.02:
+================
+Base Bios: MMTE005A.FD (http://sqa-jenkins:8080/view/Starship/view/Continuous%20Integration/job/RomeEthanolxMasterCi/lastSuccessfulBuild/artifact/REX0030D.FD)
+SMU FW Release (MP1 & MP5): v36.3.1_CL-3278355
+ABL FW Release: RABLSSP84092010
+
+Changes:
+1. PLAT-31494: Code clean-up
+2. PLAT-30882: Merge latest 10-RV changes: Make changes specific to MTS/CP.
+3. PLAT-31498: Merge latest 11.0-SSP bootloader changes till CL# 49932
+
+
+ver 00.0D.00.01:
+================
+Release Specific Files:
+ 1. MP1 FW images              [PSP tracking Ver: 36.3.1_CL-3278355] - MP1 FW1 and FW2 images (compressed, raw)
+ 2. MP5 FW images              [PSP tracking Ver: 36.3.1_CL-3278355] - MP5 FW image (compressed, raw)
+ 3. SimNow scripts             [simnow-scripts/]
+ 4. SimNow execution logs      [SimNow-logs/]
+
+SMU Release Share Point: \\horus\platform_emulation2\bios_images\SSP\FW_Images\CL-3278355
+
+Changes:
+1. PLAT-27881: Create a new build type for Matisse (BUILD_MTS).
+2. PLAT-27873: Removal of APU specific features
+3. PLAT-29622: Correct and fix the setting of the Interrupt Edge register.
+4. PLAT-30902: Add support for new package types
+5. PLAT-30882: Merge the latest 10-RV (psp_os, psp_kernel & drv_sys) changes upto CL# 49502
+6. PLAT-30883: Review the fuse files for Matisse
