@@ -49,7 +49,7 @@ cargo build --release --manifest-path=tools/coreboot-collector/Cargo.toml
 sudo ./tools/coreboot-collector/target/release/coreboot-collector > "${MODEL_DIR}/coreboot-collector.txt"
 
 ${SCRIPT_DIR}/coreboot-gpio.sh "${MODEL_DIR}/coreboot-collector.txt" > "${MODEL_DIR}/gpio.h"
-${SCRIPT_DIR}/coreboot-hda.sh "${MODEL_DIR}/coreboot-collector.txt" > "${MODEL_DIR}/hda.h"
+${SCRIPT_DIR}/coreboot-hda.sh "${MODEL_DIR}/coreboot-collector.txt" > "${MODEL_DIR}/hda_verb.c"
 
 # Get the flash descriptor and Intel ME blobs
 make -C coreboot/util/ifdtool
