@@ -42,8 +42,9 @@ If planning to use System76 EC firmware, perform the following before running:
 ./scripts/generate.sh <model> <firmware.rom> [ec.rom]
 ```
 
-You will additionally need to generate the correct `microcode.rom` for the CPU
-family from the private [intel-microcode] repo.
+If the microcode blobs from coreboot will not be used, then `microcode.rom`
+must be generated for the correct CPU set from the private [intel-microcode]
+repo.
 
 ## Porting coreboot
 
@@ -64,9 +65,6 @@ Once System76 EC is ported, add `ec.config`.
 ```
 echo "BOARD=system76/<model>" > models/<model>/ec.config"
 ```
-
-The model name used for the EC may be different from the name used for
-firmware-open (e.g., `galp3-c` used for `galp4`).
 
 If the proprietary EC was previously used, remove `ec.rom` and regenerate the
 READMEs.
