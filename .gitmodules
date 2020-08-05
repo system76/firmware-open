@@ -98,3 +98,7 @@
 	path = ec
 	url = https://github.com/system76/ec.git
 	branch = master
+[submodule "tools/apobtool"]
+	path = tools/apobtool
+	url = https://github.com/system76/apobtool.git
+	branch = master
