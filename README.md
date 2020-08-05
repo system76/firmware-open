@@ -1,10 +1,32 @@
 # System76 Open Firmware
 
-An open source distribution of firmware utilizing coreboot, EDK2, and System76 firmware applications.
+An open source distribution of firmware utilizing coreboot, EDK2, and System76
+firmware applications.
 
-Please note that only the darp6, galp4, lemp9, oryp6 models are officially supported - if you brick your device it will be up to you to restore the current firmware using an external programmer.
+## Supported models
 
-If you would like to view schematics for any supported System76 model, please send an email to firmware@system76.com with the subject line Schematics for MODEL, where MODEL is the name of a directory in the models directory, such as darp6.
+These models are supported and will receive updates through the firmware
+manager:
+
+- bonw14
+- darp6
+- galp4
+- lemp9
+- oryp6
+
+Other models may be in development or available without support, and can be
+seen in the `models/` directory.
+
+If the device becomes bricked it will require restoring the current firmware
+using an external programmer. See [flashing](./docs/flashing.md) for details.
+
+### Schematics
+
+Board schematics can be provided on request by sending an email to
+firmware@system76.com with the subject line  "Schematics for _model_", where
+_model_ is the name of a directory in the `models/` directory, such as darp6.
+
+You may not share these without explicit permission from System76.
 
 ## Dependencies
 
