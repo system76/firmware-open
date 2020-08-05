@@ -37,7 +37,7 @@ then
     echo "Generating for new model '${MODEL}'"
     mkdir "models/${MODEL}"
     read -rp "Manufacturer: " _mfr
-    read -rp "Produce name: " _name
+    read -rp "Product name: " _name
     read -rp "Product version: " _version
     echo "# ${_mfr} ${_name} (${_version})" > "models/${MODEL}/README.md.in"
 fi

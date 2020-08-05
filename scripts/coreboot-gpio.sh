@@ -8,16 +8,57 @@ then
     exit 1
 fi
 
+if grep ^GPIO0 "$1" &>/dev/null
+then # AMD
+
 cat <<"EOF"
 /* SPDX-License-Identifier: GPL-2.0-only */
 
 #ifndef MAINBOARD_GPIO_H
 #define MAINBOARD_GPIO_H
 
+#ifndef __ACPI__
+
 #include <soc/gpe.h>
 #include <soc/gpio.h>
 
+/* Pad configuration in ramstage. */
+static const struct soc_amd_gpio gpio_table[] = {
+EOF
+
+grep ^GPIO "$1" | \
+cut -d ' ' -f1,2,3 | \
+sort -V | \
+while read line
+do
+    parts=()
+    for part in $line
+    do
+        parts+=("$part")
+    done
+    parts[0]="$(echo "${parts[0]}" | sed 's/GPIO/GPIO_/')"
+    parts[2]="$(printf '0x%08x' "$((${parts[2]} & 0xfffeffff))")"
+
+    if [ "${parts[1]}" == "0x00" -a "${parts[2]}" == "0x00000000" ]
+    then
+        continue
+    fi
+
+    echo -e "\t\tPAD_CFG_STRUCT_FLAGS(${parts[0]}, ${parts[1]}, ${parts[2]}, /* TODO */ 0),"
+done
+
+else # Intel
+
+cat <<"EOF"
+/* SPDX-License-Identifier: GPL-2.0-only */
+
+#ifndef MAINBOARD_GPIO_H
+#define MAINBOARD_GPIO_H
+
 #ifndef __ACPI__
+
+#include <soc/gpe.h>
+#include <soc/gpio.h>
 
 /* Pad configuration in ramstage. */
 static const struct pad_config gpio_table[] = {
@@ -96,6 +137,8 @@ do
             ;;
     esac
 done
+
+fi
 
 cat <<"EOF"
 };

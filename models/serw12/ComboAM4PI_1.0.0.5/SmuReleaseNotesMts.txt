@@ -1,0 +1,1476 @@
++------------------------------------------+
+| SMU Firmware Release Notes - MATISSE AM4 |
++------------------------------------------+
++----------------------------+
+| Version 46.59.0            |
++----------------------------+-------------------------------------------------------------------------------
+|        * Date (yyyy/mm/dd)
+|                2020/02/25
+|
+|        * Changelist (4a48daa5)
+|                - DXIO v46.599
+|                - [PMFW-3817] [UTB] MTS: Remove EDC Improvement from PLAT-56698
+|                - [PMFW-3811] [ETB] MTS: Disable NVMe RAID Trap
+|                - [PMFW-3800] [WKA] MTS: Integrate DXIO FW 46.599
+|                - [PLAT-47495] [WKA] CPK: NVMe Drive (U.2) does not work with hotplug
+|                - [PMFW-3725] [ETB] CPK: NVMe devices missing after hotplug on some ports
+|                - [PLAT-56698] [OPT] CPK: EDC improvement
+|                - CPK SMU FW Release 4.36.21.0
+|                - [PMFW-3667] [WKA] CPK: Set calcode to 0x350 for FCLK > 1600
+|                - [PMFW-3679] [UTB] CPK: MP1 100% busy due to hotplug trap
+|                - CPK SMU FW Release 4.36.20.0
+|                - [PMFW-3617] [WKA] CPK: GMI2 voltage and bandgap override FCLK > 1600
+|                - [PMFW-3605] [UTB] Add and use DpmDelay function
+|                - [PMFW-3589] [ETB] CPK: Fix SOC VID to DF PState mapping
+|
+|        * Files
+|                - /proj/smu_rel/smu11/matisse/matisse.rev46.59.0.zip
+|                - /proj/smu_rel/smu11/matisse/matisse_sources.rev46.59.0.tar.gz
+|
++-----------------------------------------------------------------------------------------------------------
++----------------------------+
+| Version 46.58.0            |
++----------------------------+-------------------------------------------------------------------------------
+|        * Date (yyyy/mm/dd)
+|                2020/01/11
+|
+|        * Changelist (89f2166)
+|                - DXIO v46.598
+|                - [PMFW-3366][WKA][CPK]Setup IOHC trap for NVME RAID workaround - part 2
+|                - CPK SMU FW Release 4.36.18.0
+|                - [PMFW-3366][WKA][CPK]Setup IOHC trap for NVME RAID workaround
+|                - [PMFW-2071] [IVB] Fix of negative offset for percore PSM on secured part
+|                - [PMFW-3421][WKA][MTS] Integrate DXIO FW 46.598
+|                - [PMFW-3343] [WKA] CPK - Override fused minimum SOC VID to 0.8875
+|                - [IMP] Enable TESTSMC_MSG_SetSocVoltageMargin
+|                - [PMFW-3246][IVB] RAPL power correction vs APU socket power
+|
+|        * Files
+|                - /proj/smu_rel/smu11/matisse/matisse.rev46.58.0.zip
+|                - /proj/smu_rel/smu11/matisse/matisse_sources.rev46.58.0.tar.gz
+|
++-----------------------------------------------------------------------------------------------------------
++----------------------------+
+| Version 46.57.0            |
++----------------------------+-------------------------------------------------------------------------------
+|        * Date (yyyy/mm/dd)
+|                2019/11/29
+|
+|        * Changelist (6dd09c2)
+|                - DXIO v46.596
+|                - [PMFW-3077] [NEW] Test message to return CPPC core perf order
+|                - [PLAT-49489] [WKA] Add PPTable Option for higher CC6 Threshold
+|                - [PMFW-2971] [OPT] exp_slow function optimization for possible overflow
+|                - [PMFW-3108] [ETB] Add runtime DPTC support
+|                - [PMFW-3034] [UTB] Add idle freq entries for all CCDs
+|                - [PMFW-3075] [OPT] [CPK-WS] IdleFreq Increase
+|
+|        * Files
+|                - /proj/smu_rel/smu11/matisse/matisse.rev46.57.0.zip
+|                - /proj/smu_rel/smu11/matisse/matisse_sources.rev46.57.0.tar.gz
+|
++-----------------------------------------------------------------------------------------------------------
++----------------------------+
+| Version 46.56.0            |
++----------------------------+-------------------------------------------------------------------------------
+|        * Date (yyyy/mm/dd)
+|                2019/11/12
+|
+|        * Changelist (a2d8f7e)
+|                - DXIO v46.596
+|                - [PMFW-3047] [UTB] Incorrect Cstate residencies reported occasionally with CC6 enabled
+|                - [PMFW-2994] [WKA] Change pmlog's GPIO pin from GPIO_42 to GPIO_91 for AM4
+|                - [PMFW-2894] [IMP] Update external exposure of AGM parameters
+|                - [PMFW-3034] [UTB] Add Idle Freq entries for 6 and 8 CCD for HEDT
+|                - [PMFW-3024] [WKA] Setup IOHC trap for NVME RAID workaround
+|                - [PMFW-2381] [UTB] Fix IOD BG1 value in LN2 mode
+|                - [PLAT-53975] [WKA] Implement WA for PLAT-46596 based on 0.34 SSP USB SW Requirements
+|                - CPK SMU FW Release 4.36.14.0
+|                - [PMFW-2941] [IMP] [CPK] Integrate DXIO FW 36.630
+|                - [PMFW-2917] [IMP] Clean RSMU_HARD_RESETB_COMING array
+|
+|        * Files
+|                - /proj/smu_rel/smu11/matisse/matisse.rev46.56.0.zip
+|                - /proj/smu_rel/smu11/matisse/matisse_sources.rev46.56.0.tar.gz
+|
++-----------------------------------------------------------------------------------------------------------
++----------------------------+
+| Version 46.55.0            |
++----------------------------+-------------------------------------------------------------------------------
+|        * Date (yyyy/mm/dd)
+|                2019/10/18
+|
+|        * Changelist (06ab5c6)
+|                - DXIO v46.596
+|                - [PMFW-2898] [ENH] Expose ability to add or subtract PSMs externally
+|                - [PMFW-2891] [UTB] Fix DBREQ2 handling with SMT disabled
+|                - [PMFW-2873] [ETB] Preserve CCD BIST results across warm resets
+|                - CPK SMU FW Release 4.36.12.0
+|
+|        * Files
+|                - /proj/smu_rel/smu11/matisse/matisse.rev46.55.0.zip
+|                - /proj/smu_rel/smu11/matisse/matisse_sources.rev46.55.0.tar.gz
+|
++-----------------------------------------------------------------------------------------------------------
++----------------------------+
+| Version 46.54.0            |
++----------------------------+-------------------------------------------------------------------------------
+|        * Date (yyyy/mm/dd)
+|                2019/10/11
+|
+|        * Changelist (e059bca)
+|                - DXIO v46.596
+|                - [PMFW-2832] [OPT] MTS: Modify 3950X Fixes
+|                - [PLAT-51875] [ETB] Update Cclk's arbiter for prochot status in InitCclkFrequencyArbiters
+|                - [PMFW-2835] [IVB] Fix SystemScoreboard.L3En[ccx]
+|                - [PMFW-2828] [ETB] Incorrect value programmed for ChL3IntrPie
+|                - [PLAT-50476] [OPT] [MTS] CCD1 1T performance artifically limited
+|                - [PLAT-49015/PLAT-51116] [ETB] System stuck at postcode AC56 on warm reset
+|                - [PMFW-2757] [WKA] Disable MP0 Deep Sleep
+|                - [PMFW-2799] [IMP] Check LclkDpm.Instance[i].CurrLevel before updating PmStatusTable.LclkDpm_Counter
+|
+|        * Files
+|                - /proj/smu_rel/smu11/matisse/matisse.rev46.54.0.zip
+|                - /proj/smu_rel/smu11/matisse/matisse_sources.rev46.54.0.tar.gz
+|
++-----------------------------------------------------------------------------------------------------------
++----------------------------+
+| Version 46.53.0            |
++----------------------------+-------------------------------------------------------------------------------
+|        * Date (yyyy/mm/dd)
+|                2019/09/27
+|
+|        * Changelist (31edbb73)
+|                - DXIO v46.596
+|                - [PMFW-2731] [OPT] MTS: Change tuning parameter for 3950X optimization
+|                - [PMFW-2724] [IMP] MTS: Integrate DXIO FW Lib v46.596
+|                - [PLAT-48244] [NEW] Add message to force LCLK DPM Level to BIOS & HSMP Ports
+|                - [PMFW-2587] [IMP] MTS: Fix USB Camera & Audio Stuttering with CC1Stutter/Hyst Timer Update
+|
+|        * Files
+|                - /proj/smu_rel/smu11/matisse/matisse.rev46.53.0.zip
+|                - /proj/smu_rel/smu11/matisse/matisse_sources.rev46.53.0.tar.gz
+|
++-----------------------------------------------------------------------------------------------------------
++----------------------------+
+| Version 46.52.0            |
++----------------------------+-------------------------------------------------------------------------------
+|        * Date (yyyy/mm/dd)
+|                2019/09/25
+|
+|        * Changelist (d108f4a6)
+|                - DXIO v46.595
+|                - [PMFW-2687] [NEW] Add BIOS msg to reduce low temp latchup voltage limit
+|                - [PMFW-2686] [OPT] MTS: Fixes for 3950X
+|
+|        * Files
+|                - /proj/smu_rel/smu11/matisse/matisse.rev46.52.0.zip
+|                - /proj/smu_rel/smu11/matisse/matisse_sources.rev46.52.0.tar.gz
+|
++-----------------------------------------------------------------------------------------------------------
++----------------------------+
+| Version 46.51.0            |
++----------------------------+-------------------------------------------------------------------------------
+|        * Date (yyyy/mm/dd)
+|                2019/09/23
+|
+|        * Changelist (cd9ef7b)
+|                - DXIO v46.595
+|                - [PMFW-2651] [IMP] Integrate DXIO FW Lib v46.595
+|                - [PMFW-2670/PMFW-2671] [IVB] Correct PICE Link Management and Reset Request interrupt type from EDGE to LEVEL
+|                - [PLAT-50403] [ETB] OC Mode needs to set CKS thresholds to non-zero value
+|                - CPK SMU FW Release 4.36.11.0
+|                - [PMFW-2628] [OPT] Force Core clock to Fmin (400MHz) during DCBTC
+|                - [PMFW-2630] [IMP] Integrate DXIO FW version 36.626
+|                - CPK SMU FW Release 4.36.10.0
+|                - [PMFW-2617] [IMP] Integrate DXIO FW version 36.622
+|
+|        * Files
+|                - /proj/smu_rel/smu11/matisse/matisse.rev46.51.0.zip
+|                - /proj/smu_rel/smu11/matisse/matisse_sources.rev46.51.0.tar.gz
+|
++-----------------------------------------------------------------------------------------------------------
++----------------------------+
+| Version 46.50.0            |
++----------------------------+-------------------------------------------------------------------------------
+|        * Date (yyyy/mm/dd)
+|                2019/09/13
+|
+|        * Changelist (4d06d22)
+|                - DXIO v46.589
+|                - [PMFW-2614] [IMP] Integrate DXIO FW Lib v46.589
+|                - [PMFW-2606] [NEW] [MTS] LCLK FW DS
+|                - [PMFW-2598] [UTB] Fix voltage used in CalculateIO/GmiPhyData
+|                - [PLAT-49438] [WKA] Move GMI source select to VDDCR_SOC in LN2 mode
+|                - [PMFW-2604] [OPT] Updated CAC Scalar and Constants to Improve Accuracy on CPK DVT
+|                - [PMFW-2583] [WKA] MTS LN2 Changes [PMFW-2381] [WKA] CPK LN2 Changes
+|                - [PMFW-2583] [ENH] Remove SOC voltage limit of 1.1V
+|                - [PMFW-2558] [IMP] Code clean-up for Keep float in DLDO bypass [PMFW-2487] [IMP] Code clean-up for removal of LTPSMMargin
+|                - [PLAT-49698] [ETB] Just check PHY FW loading correctly once to write tuning parameter
+|                - CPK SMU FW Release 4.36.9.0
+|                - [PMFW-2083] [NEW] [CPK] Support to get current SOC rail votage in smuMp1_dxio_getInfo and remove 1.1v limit for OC
+|
+|        * Files
+|                - /proj/smu_rel/smu11/matisse/matisse.rev46.50.0.zip
+|                - /proj/smu_rel/smu11/matisse/matisse_sources.rev46.50.0.tar.gz
+|
++-----------------------------------------------------------------------------------------------------------
++----------------------------+
+| Version 46.49.0            |
++----------------------------+-------------------------------------------------------------------------------
+|        * Date (yyyy/mm/dd)
+|                2019/09/06
+|
+|        * Changelist (9322e58)
+|                - DXIO v46.587
+|                - [PMFW-2571] [WKA} [MTS] 6 Core update for 1003 Patch
+|
+|        * Files
+|                - /proj/smu_rel/smu11/matisse/matisse.rev46.49.0.zip
+|                - /proj/smu_rel/smu11/matisse/matisse_sources.rev46.49.0.tar.gz
+|
++-----------------------------------------------------------------------------------------------------------
++----------------------------+
+| Version 46.48.0            |
++----------------------------+-------------------------------------------------------------------------------
+|        * Date (yyyy/mm/dd)
+|                2019/09/05
+|
+|        * Changelist (ad4b366)
+|                - DXIO v46.587
+|                - [PMFW-2471] [IMP] Integrate DXIO FW Lib v46.587
+|                - [PLAT-49597] [ETB] System stuck at PC AC94 when running reboot long run test
+|                - [PMFW-2487] [WKA] LTPSMmargin feature change
+|                - [PMFW-2486] [WKA] MTFMAX feature change
+|                - [PMFW-2558] [WKA] [MTS] Keep PSM as float in DLDO Bypass
+|
+|        * Files
+|                - /proj/smu_rel/smu11/matisse/matisse.rev46.48.0.zip
+|                - /proj/smu_rel/smu11/matisse/matisse_sources.rev46.48.0.tar.gz
+|
++-----------------------------------------------------------------------------------------------------------
++----------------------------+
+| Version 0.46.47.0          |
++----------------------------+-------------------------------------------------------------------------------
+|        * Date (yyyy/mm/dd)
+|                2019/08/23
+|
+|        * Changelist (c63a85b)
+|                - DXIO v46.584
+|                - [PMFW-2071/PMFW-2186] [NEW] Add external SMU Messages for per core PSM Offsets
+|                - [PLAT-49242][IMP]USB3.1 Gen2 complience/JTOR on each port
+|                - [PLAT-50289] [ETB] remove max_args function and its comments from utility.mk
+|                - [PMFW-2404] [WKA] Add 0.5'C/ms RDI temperature reduction slew limiting filter for CCD RDIs
+|
+|        * Files
+|                - /proj/smu_rel/smu11/matisse/matisse.rev0.46.47.0.zip
+|                - /proj/smu_rel/smu11/matisse/matisse_sources.rev0.46.47.0.tar.gz
+|
++-----------------------------------------------------------------------------------------------------------
++----------------------------+
+| Version 0.46.46.0          |
++----------------------------+-------------------------------------------------------------------------------
+|        * Date (yyyy/mm/dd)
+|                2019/08/16
+|
+|        * Changelist (a6066e4)
+|                - DXIO v46.584
+|                - [PLAT-49688] [WKA] SOC rail leakage during S3 entry when CLDOs are sourced from IOMEM
+|                - [PMFW-2375] [OPT] MTS: Update MTFmax to FMax -50 MHz
+|                - [PMFW-2374] [OPT] MTS: Disable LTPsmMargin when new fuse set or PBO
+|                - [PLAT-49190][ETB]Core ranking order is incorrect when OC mode changed from "Default to Auto Overclocking"
+|
+|        * Files
+|                - /proj/smu_rel/smu11/matisse/matisse.rev0.46.46.0.zip
+|                - /proj/smu_rel/smu11/matisse/matisse_sources.rev0.46.46.0.tar.gz
+|
++-----------------------------------------------------------------------------------------------------------
++----------------------------+
+| Version 0.46.45.0          |
++----------------------------+-------------------------------------------------------------------------------
+|        * Date (yyyy/mm/dd)
+|                2019/08/12
+|
+|        * Changelist (51a547b)
+|                - DXIO v46.584
+|                - [PLAT-47271] [NEW] Apply a new FW-defined FP throttle value if fuse is set
+|                - [PLAT-47342] [OPT] Keep PSM as float if fuse is set
+|                - [PMFW-2292] [IMP] Add new fuses for 3950X
+|                - [PMFW-2291] [IMP] Modify fuse header scripts
+|                - [PMFW-2295] [IMP] Reduce depth of package files
+|                - [PLAT-47343] [IMP] CKS droopsyncselect setting is set too conservatively
+|
+|        * Files
+|                - /proj/smu_rel/smu11/matisse/matisse.rev0.46.45.0.zip
+|                - /proj/smu_rel/smu11/matisse/matisse_sources.rev0.46.45.0.tar.gz
+|
++-----------------------------------------------------------------------------------------------------------
++----------------------------+
+| Version 0.46.44.0          |
++----------------------------+-------------------------------------------------------------------------------
+|        * Date (yyyy/mm/dd)
+|                2019/08/02
+|
+|        * Changelist (1f8e7e4)
+|                - DXIO v46.584
+|                - [PMFW-2215] [NEW] Set C0 idle threshold to 15%
+|                - [MFW-1834] [IMP] Make all DRAM address assignments write-once
+|                - [PMFW-2157] [NEW] CP: Enable CPPC Preferred Cores
+|
+|        * Files
+|                - /proj/smu_rel/smu11/matisse/matisse.rev0.46.44.0.zip
+|                - /proj/smu_rel/smu11/matisse/matisse_sources.rev0.46.44.0.tar.gz
+|
++-----------------------------------------------------------------------------------------------------------
++----------------------------+
+| Version 0.46.43.0          |
++----------------------------+-------------------------------------------------------------------------------
+|        * Date (yyyy/mm/dd)
+|                2019/07/26
+|
+|        * Changelist (408277b)
+|                - DXIO v46.584
+|                - [PMFW-1993] [IMP] Integrate DXIO FW Lib v46.584
+|                - [PMFW-2146] [WKA] Add polling mode for VOTFC
+|                - [PMFW-2205] [ETB] Fix CPPC rounding issue
+|                - [PMFW-2220] [IMP] Integrate DXIO FW version 36.615
+|                - [PMFW-1532] [NEW] Support different Vddg for IOD/CCD
+|                - [PMFW-2195] [IMP] Add fw_constants.csv to release binary package
+|
+|        * Files
+|                - /proj/smu_rel/smu11/matisse/matisse.rev0.46.43.0.zip
+|                - /proj/smu_rel/smu11/matisse/matisse_sources.rev0.46.43.0.tar.gz
+|
++-----------------------------------------------------------------------------------------------------------
++----------------------------+
+| Version 0.46.42.0          |
++----------------------------+-------------------------------------------------------------------------------
+|        * Date (yyyy/mm/dd)
+|                2019/07/22
+|
+|        * Changelist (b47f3e1)
+|                - DXIO v46.581
+|                - [PLAT-46803] [ETB] Windows running at 364 Mhz on Matisse
+|                - [PLAT-46887] [ETB] C-State Boost shows enabled while over clocked and downcore (1 + 1) enabled
+|                - [PMFW-2158] [OPT] CP: Update GMI2 bandgap settings for LN2 and OC
+|                - [PMFW-2112] [OPT] MTS: USB3 PHY RX JTOL tuning
+|
+|        * Files
+|                - /proj/smu_rel/smu11/matisse/matisse.rev0.46.42.0.zip
+|                - /proj/smu_rel/smu11/matisse/matisse_sources.rev0.46.42.0.tar.gz
+|
++-----------------------------------------------------------------------------------------------------------
++----------------------------+
+| Version 0.46.41.0          |
++----------------------------+-------------------------------------------------------------------------------
+|        * Date (yyyy/mm/dd)
+|                2019/07/15
+|
+|        * Changelist (113f088)
+|                - DXIO v46.581
+|                - [PLAT-47616] [OPT] MTS: Remove VDDSOC 1.1V Limit for LN2
+|                - [PLAT-48061] [WKA] Override thermtrip VID to 600mV
+|                - [PMFW-1752] [IMP] Add HTFMAX to AGM logging
+|                - [PLAT-45623] [UTB] Prevent indefinite PROCHOT delay due to IOHC trap
+|                - [PMFW-2051] [OPT] CPK CAC Weight Changes
+|                - [PMFW-1832] [IMP] Extrapolation below the FtoP curve for IrmGroup 6
+|
+|        * Files
+|                - /proj/smu_rel/smu11/matisse/matisse.rev0.46.41.0.zip
+|                - /proj/smu_rel/smu11/matisse/matisse_sources.rev0.46.41.0.tar.gz
+|
++-----------------------------------------------------------------------------------------------------------
++----------------------------+
+| Version 46.40.0            |
++----------------------------+-------------------------------------------------------------------------------
+|        * Date (yyyy/mm/dd)
+|                2019/06/28
+|
+|        * Changelist (5303fc2)
+|                - DXIO v46.581
+|                - [PMFW-2007] [UTB] MTS/BXB: Revert DXIO to 46.581
+|
+|        * Files
+|                - /proj/smu_rel/smu11/matisse/matisse.rev46.40.0.zip
+|                - /proj/smu_rel/smu11/matisse/matisse_sources.rev46.40.0.tar.gz
+|
++-----------------------------------------------------------------------------------------------------------
++----------------------------+
+| Version 46.39.0            |
++----------------------------+-------------------------------------------------------------------------------
+|        * Date (yyyy/mm/dd)
+|                2019/06/25
+|
+|        * Changelist (Change: 3916175)
+|                - DXIO v46.583
+|                - [PMFW-2001] [WKA] MTS: MTFMax feature changes - part 2
+|
+|        * Files
+|                - /proj/smu_rel/smu11/matisse/matisse.rev46.39.0.zip
+|                - /proj/smu_rel/smu11/matisse/matisse_sources.rev46.39.0.tar.gz
+|
++-----------------------------------------------------------------------------------------------------------
++----------------------------+
+| Version 46.38.0            |
++----------------------------+-------------------------------------------------------------------------------
+|        * Date (yyyy/mm/dd)
+|                2019/06/25
+|
+|        * Changelist (3916090)
+|                - DXIO v46.583
+|                - [PMFW-1993] [IMP] [MTS] and [BXB] Integrate DXIO FW Lib v46.583
+|                - [PMFW-2004] [IMP] [SSP] Integrate DXIO FW Lib v36.614
+|                - [PMFW-2003] [WKA] MTS: Disable MTFMax when PBO is enabled
+|                - [PMFW-2001] [NEW] adding new message to get PBO EN from BIOS
+|                - [PMFW-2000] [OPT] MTS: Give top 2 preferred cores the same ranking
+|                - [PMFW-2001] [WKA] MTS: MTFMax feature changes
+|                - [PMFW-1998] [OPT] Change AVFS Temp Floor to 40C
+|
+|        * Files
+|                - /proj/smu_rel/smu11/matisse/matisse.rev46.38.0.zip
+|                - /proj/smu_rel/smu11/matisse/matisse_sources.rev46.38.0.tar.gz
+|
++-----------------------------------------------------------------------------------------------------------
++----------------------------+
+| Version 46.37.0            |
++----------------------------+-------------------------------------------------------------------------------
+|        * Date (yyyy/mm/dd)
+|                2019/06/21
+|
+|        * Changelist (3912081)
+|                - DXIO v46.581
+|                - [PMFW-1986] [WKA] MTS Add mid-point temperature Fmax
+|                - [PMFW-1985] [WKA] MTS Adjust latchup voltage range for non 6 Core OPNs
+|                - [PMFW-1718] [IMP] Fix mismatch in calculated rails and socket power in down config CCD
+|                - [PMFW-1979] [IMP] DLDO settings to improve ycruncher margin
+|                - [PMFW-1981] [WKA] MTS: Make LT PSM Margin more gradual
+|                - [PMFW-1799] [WKA] MTS: Modify SATA_ACT_L WKA to be enabled by BIOS message
+|                - [PMFW-1957] [OPT] SSP - DC BTC upper bound update
+|                - [PMFW-1959] [IVB] Fix trap strobes bit shifting
+|                - [PMFW-1802] [ETB] Use LC_RESET instead of LINK_RETRAIN on hot remove
+|                - [PMFW-1810] [ETB] Prevent mutiple PCIE hotplug interrupts being queued with semaphore down
+|
+|        * Files
+|                - /proj/smu_rel/smu11/matisse/matisse.rev46.37.0.zip
+|                - /proj/smu_rel/smu11/matisse/matisse_sources.rev46.37.0.tar.gz
+|
++-----------------------------------------------------------------------------------------------------------
++----------------------------+
+| Version 46.36.0            |
++----------------------------+-------------------------------------------------------------------------------
+|        * Date (dd/mm/yy)
+|                17/06/19
+|
+|        * Changelist (3904231)
+|                - DXIO v46.581
+|                - [PMFW-1793] [ETB] Fix DRAM logging on unlocked parts
+|                - [PLAT-47248] [ETB] MTS: Fix USB S3 Wake
+|                - [PLAT-46584] [ETB] NVSAVE_L assertion slightly late in response to a warmreset event
+|                - [PMFW-1810] [ETB] Customer system hangs when 8 NVMe drives installed
+|                - [PMFW-1783] [IMP] nBIF interrupt change to level trigger, remove remnant dGPU pmi interrupt code
+|
+|        * Files
+|                - /proj/smu_rel/smu11/matisse/matisse.rev46.36.0.zip
+|                - /proj/smu_rel/smu11/matisse/matisse_sources.rev46.36.0.tar.gz
+|
++-----------------------------------------------------------------------------------------------------------
++----------------------------+
+| Version 46.35.0            |
++----------------------------+-------------------------------------------------------------------------------
+|        * Date (dd/mm/yy)
+|                13/06/19
+|
+|        * Changelist (3900429)
+|                - DXIO v46.581
+|                - [PMFW-1795] [WKA] MTS: Low Temperature Workarounds
+|                - [PMFW-1750] [ETB] Set PWR_CFG_Credits_MAX to 85 to account for worst case CAC virus
+|                - [PLAT-46683] [IVB] warmreset waits on MP5 with timeout
+|
+|        * Files
+|                - /proj/smu_rel/smu11/matisse/matisse.rev46.35.0.zip
+|                - /proj/smu_rel/smu11/matisse/matisse_sources.rev46.35.0.tar.gz
+|
++-----------------------------------------------------------------------------------------------------------
++----------------------------+
+| Version 46.34.0            |
++----------------------------+-------------------------------------------------------------------------------
+|        * Date (dd/mm/yy)
+|                07/06/19
+|
+|        * Changelist (3892225)
+|                - DXIO v46.579
+|                - [PMFW-1483] [NEW] MTS: CPPC Preferred Cores
+|                - [PMFW-1768] [WKA] MTS: Production 6-Core OPN workarounds
+|                - [PMFW-1749] [IMP] Fix writeback of Smnif debug in Kernel
+|                - [PLAT-46331] [NEW] Enable MP0 and MP1 DS from CLKIP side
+|                - [PLAT-42388] [ETB] Reserve BIOS MSG 0x32 for BXB
+|
+|        * Files
+|                - /proj/smu_rel/smu11/matisse/matisse.rev46.34.0.zip
+|                - /proj/smu_rel/smu11/matisse/matisse_sources.rev46.34.0.tar.gz
+|
++-----------------------------------------------------------------------------------------------------------
++----------------------------+
+| Version 46.33.0            |
++----------------------------+-------------------------------------------------------------------------------
+|        * Date (dd/mm/yy)
+|                30/05/19
+|
+|        * Changelist (3881865)
+|                - DXIO v46.579
+|                - [PLAT-46546]Added new USB phy register,move thress register from container list to phy list
+|                - [PMFW-1722] [WKA] MTS: Set IOMUX and GPIO to startup value after disabling SataActL WKA
+|                - [PMFW-1715] [ENH] Remove IOD Bandgap [5:3] override for Castlepeak
+|                - [PMFW-1687] [OPT] MTS/CPK: Increase IDLE_FREQ to 3.6GHz
+|                - [PLAT-44945] [ETB] SMU needs to be more robust to APML errors (Improved)
+|                - [PMFW-1701] [ETB] SMU SPI Algorithm limits write size
+|                - [PMFW-1681] [WKA] MTS: Override GMI2 bandgap and Vddg for FCLK greater than 1600 (bug fix)
+|                - [PMFW-1714] [WKA] Add 0.5'C/ms RDI temperature reduction slew limiting filter for CCD RDIs
+|                - [PMFW-1713] [IMP] Add 20MHz/'C slope to HTFMax Temperature<>Frequency response
+|                - [PMFW-1712] [IVB] Round VID pre-checker frequency down to the nearest 25MHz and update scalar to 0.7
+|                - [PLAT-44945] [ETB] SMU needs to be more robust to APML errors
+|                - [PLAT-45204] [IMP] Skip L2/L3 programming if it is not supported by hw
+|                - [PMFW-1551] [IMP] Update CG programming of unused slices, BXB port
+|                - [PMFW-1699] [IMP] [MTS/BXB] Integrate DXIO FW Lib v46.579
+|                - [PMFW-1700] [UTB] Add CcxRegAccess check for DbRdy2 and message response for abort cases
+|
+|        * Files
+|                - /proj/smu_rel/smu11/matisse/matisse.rev46.33.0.zip
+|                - /proj/smu_rel/smu11/matisse/matisse_sources.rev46.33.0.tar.gz
+|
++-----------------------------------------------------------------------------------------------------------
++----------------------------+
+| Version 46.32.0            |
++----------------------------+-------------------------------------------------------------------------------
+|        * Date (dd/mm/yy)
+|                25/05/19
+|
+|        * Changelist (3874489)
+|                - DXIO v46.578
+|                - [PMFW-1681] [WKA] MTS: Override GMI2 bandgap and Vddg for FCLK greater than 1600
+|                - [PMFW-1680] [WKA] MTS: Limit SOC voltage to be lower than 1.1V
+|                - [PMFW-1671] [ETB] Do not enter VDDG CLDO Low Power mode on PC6 entry
+|                - [PLAT-46253] [ETB] Allow PROCHOT to be disabled even when already in OC mode
+|                - [PMFW-1604] [WKA] MTS: Add message to disable SATA_ACT_L WKA
+|                - [PLAT-46446] [ETB] Fix Manual CPU Overclocking BIOS message port conflict
+|                - [PMFW-1613] [ENH] Limit the ODPR calibration temperature to 0C
+|                - [PLAT-46201] [PLAT-46236][IMP] disable USB ASYNC ESS Receive Packet Threshold
+|                - [PMFW-1678] [IVB] Calculate and restore L3CLK CKS settings on PC6 exit
+|                - [PLAT-46011] [ENH] Warm reset loop during ABL initialization caused by syncflood
+|                - [PMFW-990] [ETB] Fix O/S First Hotplug broken with CL# 3857873
+|                - [PLAT-45141] [ETB] APML Mailbox command 0x0D issues
+|                - [PLAT-45939] [IMP] UMC::CH::ThrottleCtl Uniform access
+|
+|        * Files
+|                - /proj/smu_rel/smu11/matisse/matisse.rev46.32.0.zip
+|                - /proj/smu_rel/smu11/matisse/matisse_sources.rev46.32.0.tar.gz
+|
++-----------------------------------------------------------------------------------------------------------
++----------------------------+
+| Version 46.31.0            |
++----------------------------+-------------------------------------------------------------------------------
+|        * Date (dd/mm/yy)
+|                21/05/19
+|
+|        * Changelist (3868649)
+|                - DXIO v46.578
+|                - [PMFW-1672] [WKA] MTS: Update High Temp/Freq PSM Margin
+|
+|        * Files
+|                - /proj/smu_rel/smu11/matisse/matisse.rev46.31.0.zip
+|                - /proj/smu_rel/smu11/matisse/matisse_sources.rev46.31.0.tar.gz
+|
++-----------------------------------------------------------------------------------------------------------
++----------------------------+
+| Version 46.30.0            |
++----------------------------+-------------------------------------------------------------------------------
+|        * Date (dd/mm/yy)
+|                18/05/19
+|
+|        * Changelist (3865483)
+|                - DXIO v46.578
+|                - [PMFW-1642] [WKA] MTS: High Temp PSM Margin
+|                - [PMFW-1642] [WKA] MTS: Fuses for High Temp PSM Margin
+|                - [PMFW-1573] [WKA] Set CCD VDDM to 1.1V in LN2 mode
+|                - [PMFW-1547] [ENH] Tie together LN2 flags in SMU
+|                - [PMFW-1614] [WKA] Set SOC to 1.25V in LN2 mode
+|                - [PMFW-1573] [NEW] Auto LN2 mode
+|                - [PMFW-1615] [WKA] Set Vddg to 1.175V in LN2 mode, if vddg override is not set
+|                - [PLAT-45956] [ETB] EDC limits are not restored on Prochot exit in OC mode
+|                - [PMFW-1612] [WKA] Force GMI2 bandgap settings in LN2 mode
+|                - [PMFW-1613] [NEW] Need GMI2 calibration to continue when < 0C
+|                - [PMFW-1610] [NEW] Add support for overclock postcodes
+|                - [PMFW-1629] [WKA] Workaround to ensure NVSAVE_L is reliably triggered
+|                - [PMFW-1656] [OPT] MTS Specific CAC Tuning
+|                - [PMFW-1544] [OPT] Update DF P-State Thresholds to 0 for Castle Peak
+|                - [PMFW-1643] [OPT] Increase IDLE_FREQ for MTS&CPK to 3.0Ghz
+|                - [PLAT-33658][PMFW-1569] [UTB] Enable UMC Harvest Programming
+|                - [PMFW-1649] [OPT] CAC Weights Update 153
+|                - [PMFW-1588] [IVB] change parameter to 32 bit signed integer
+|        * Files
+|                - /proj/smu_rel/smu11/matisse/matisse.rev46.30.0.zip
+|                - /proj/smu_rel/smu11/matisse/matisse_sources.rev46.30.0.tar.gz
+|
++-----------------------------------------------------------------------------------------------------------
++----------------------------+
+| Version 46.29.0            |
++----------------------------+-------------------------------------------------------------------------------
+|        * Date (dd/mm/yy)
+|                13/05/19
+|
+|        * Changelist (3857909)
+|                - DXIO v46.578
+|                - [PMFW-1580] [IMP]CAC Weights update
+|                - [PMFW-990] [ENH] SMU enhancement for Firmware First Async hotplug (revised)
+|                - [PLAT-45865] [ETB] SMU FW interrupt flood with CPPC+PC6 enabled
+|                - [PLAT-45183] [WKA] Fix USB R/W perf drop after hot plug
+|                - [PMFW-1557] [UTB] Use PGFSM Override Method for harvested tiles
+|                - [PLAT-45847] [ETB] SMU is getting into SMN timeout while accessing SYNCFLOOD_STATUS register
+|                - [PMFW-1563] [OPT] EDC CAC weights update
+|                - [PMFW-1484 ] [IVB] Add more down-core checks
+|                - [PMFW-1558] [UTB] Do not recalibrate GMI2 PHYs for non-Present CCDs
+|                - [PMFW-1274] [NEW] Allow access to lowest DF Pstate (idle/prochot) in Efficiency Mode
+|                - [PMFW-1562] [ETB] CPPC issues with down-cored parts
+|                - [PLAT-45769] [ETB] [CPK] System stuck at postcode 0021 during S3 entry
+|                - [PLAT-45679] [ETB] 1+1 downcore fails with PC6 and cstate boost enabled
+|        * Files
+|                - /proj/smu_rel/smu11/matisse/matisse.rev46.29.0.zip
+|                - /proj/smu_rel/smu11/matisse/matisse_sources.rev46.29.0.tar.gz
+|
++-----------------------------------------------------------------------------------------------------------
+++---------------------------+
+| Version 46.28.0            |
++----------------------------+-------------------------------------------------------------------------------
+|        * Date (dd/mm/yy)
+|                06/05/19
+|
+|        * Changelist (3848360)
+|                - DXIO v46.578
+|                - [PMFW-1560] [OPT] Don't disallow DfCstate on CCLK change if L3CLK isn't changing
+|                - [PMFW-1300] [OPT] Publish BIOS/TEST msg to report OC capability - Expose CPU direct OC and MOC cap 
+|                - [PLAT-44912] [WKA] Warmreset with bad DIMM hang at 0x00A5 postcode 
+|                - [PMFW-1520] [IMP] Remove ODPR offset for SSP (PMFW-1256)
+|                - [PMFW-1556] [IMP] [MTS] and [BXB] Integrate DXIO FW Lib v46.578
+|                - [PMFW-1552] [UTB] Change SPI whitelist structure to avoid rai file generation failure
+|                - [PMFW-1546] [WKA] Update SATA_ACT_L workaround to output status for both SATA controllers
+|                - [PLAT-45458] [IMP] Add SPI whitelist to fix conflict between rom protection and upper SPI protection 
+|                - [PLAT-45204] [IVB] fix direction for SuperVminEn
+|                - [PLAT-45016] [ETB] [CPK] The SOC USB controllers cannot exit D3 even if USB device is connected 
+|                - [PMFW-1337] [IMP] Reject CPPC invalid shared dram address 
+|        * Files
+|                - /proj/smu_rel/smu11/matisse/matisse.rev46.28.0.zip
+|                - /proj/smu_rel/smu11/matisse/matisse_sources.rev46.28.0.tar.gz
+|
++-----------------------------------------------------------------------------------------------------------
+++---------------------------+
+| Version 46.27.0            |
++----------------------------+-------------------------------------------------------------------------------
+|        * Date (dd/mm/yy)
+|                28/04/19
+|
+|        * Changelist (3839544)
+|                - DXIO v46.577
+|                - [PLAT-43055][PLAT-45098] [IVB] RAMP_TO_DID_DIS & RAMP_TO_BYPASS_DIS for CLK1_CLK_FSM_CONTROLs
+|                - [PMFW-1499] [UTB] DLWM performance impact with PC6
+|                - [PMFW-1504] [OPT] Remove LN2 test message and add LN2 flag in EnableOverclocking message argument
+|                - [PMFW-1503] [UTB] SSP 2P system hang with CPPC enabled due to wafl resource deadlock
+|                - [PMFW-1517] [OPT] Allow Fmax Override as PBO feature for secure parts
+|                - [PLAT-45119] [IVB] Fixed hard lock under OS when in idle state with PC6 and CPPC enabled
+|                - [PLAT-45290] [ETB] SyncFlood during reboot test with IOHC traps
+|                - [PLAT-41777] [IMP] Set default EDC limit to 1000A so that the IddMax --> VID calculations work correctly when the EDC controller isn't enabled
+|                - [PLAT-45119] [IVB] Fix bug when PC6 exit occurs before any PM_TIMER runs (frequency <> VID mismatch bug). Also make sure PMC_BCR is updated on PC6 to reflect the bypass case.
+|                - [PMFW-1526] [IMP] Expand 16 bits for sweep and autoDPM test messages
+|                - [PLAT-45031] [ETB] Cstate Boost is not disabled in OC mode
+|                - [PLAT-45111] [NEW] Adjust bandgap slope for LN2
+|                - [PMFW-1377] [WKA] Move GMI2 ODPR initialization after releasing the block from cold reset
+|        * Files
+|                - /proj/smu_rel/smu11/matisse/matisse.rev46.27.0.zip
+|                - /proj/smu_rel/smu11/matisse/matisse_sources.rev46.27.0.tar.gz
+|
++-----------------------------------------------------------------------------------------------------------
+++---------------------------+
+| Version 46.26.0            |
++---------------------------+-------------------------------------------------------------------------------
+|        * Date (dd/mm/yy)
+|                22/04/19
+|
+|        * Changelist (3831538)
+|                - DXIO v46.574
+|                - [PMFW-1496] [ETB] MTS:Program GMI2_PCS_CCD_GMI2_BANDGAP_CAL based on fuse value
+|                - [PMFW-1412] [ENH] BXB Thermal Protect
+|                - [PMFW-1497] [IMP] Add GMI2_BANDGAP_CAL in Matisse CCD fuse file
+|                - [PMFW-1490] [NEW] Publish SetFITLimitScalar to BIOS message port
+|                - [PLAT-45084] [ENH] Extend memory OC frequency to 3000MHz
+|                - [PMFW-1476] [IMP] EDC max threshold values update
+|                - [PMFW-1475] [IMP] Core and Non-Core cac weights update
+|                - [PMFW-1473] [ETB] Fix spi lock remap mask calculation
+|                - [PLAT-44443] [ETB] fix arbiter logics on down cores
+|                - [PMFW-990] [WKA] Fix PCIE interrupt deadlock caused by SLOT_CNTL.HOTPLUG_INTR_EN implementation
+|        * Files
+|                - /proj/smu_rel/smu11/matisse/matisse.rev46.26.0.zip
+|                - /proj/smu_rel/smu11/matisse/matisse_sources.rev46.26.0.tar.gz
+|
++-----------------------------------------------------------------------------------------------------------
+++---------------------------+
+| Version 46.25.0            |
++---------------------------+-------------------------------------------------------------------------------
+|        * Date (dd/mm/yy)
+|                12/04/19
+|
+|        * Changelist (3811534)
+|                - DXIO v46.574
+|                - [PMFW-975] [NEW] Firmware First Async Hotplug support and DL_STATE_CHANGED IOHC trap
+|                - [PLAT-44191] [ETB] Fixed warm reboot hang at post code A599 for 2P system 
+|                - [PLAT-42742] [IMP] APML RMI has access to non-MCA MSRs
+|                - [PMFW-1400] [WKA] Remap SATA_ACT1_L to SATA_ACT_L pin
+|                - [PMFW-1400] [WKA] MTS: Remap SATA_ACT1_L to SATA_ACT_L pin
+|                - [PLAT-44531][ETB] Fix wrong ccx reg access for ccx0
+|                - [PMFW-596] [WKA] Setup LINK_STATUS IOHC trap for DL Active reporting
+|                - [PLAT-44545] [IMP] Add handling to CCA throttler to improve PROCHOT exit latency
+|                - [PMFW-1239] [WKA] Fix core EDC throttler threshold programming for DLDO bypass case
+|                - [PLAT-44629] [ETB] SW.DS PCIe GPP Device ID correction
+|                - [PMFW-1418] [ETB] Create PSPSMC message to block PC6 entry
+|                - [PLAT-44653] [ETB] Force VDCI Programming on PC6 exit
+|                - [PLAT-43926] [ETB] Wait for L3SdpReconBusy to deassert before continuing DF PState change
+|        * Files
+|                - /proj/smu_rel/smu11/matisse/matisse.rev46.25.0.zip
+|                - /proj/smu_rel/smu11/matisse/matisse_sources.rev46.25.0.tar.gz
+|
++-----------------------------------------------------------------------------------------------------------
+++---------------------------+
+| Version 46.24.0            |
++---------------------------+-------------------------------------------------------------------------------
+|        * Date (dd/mm/yy)
+|                08/04/19
+|
+|        * Changelist (3811534)
+|                - DXIO v46.574
+|                - [PMFW-1438] [IVB] Include AllowedCores in InitVoltageChecker FtoV array generation
+|                - [PMFW-1429] [OPT] Remove a roc guardband 
+|                - [PMFW-1353] [IMP] Provide API callable by DXIO to get the reset type
+|                - [PLAT-42742] [IMP] APML RMI has access to non-MCA MSRs
+|                - [PLAT-44153] [UTB] APML Legacy Dram Throttle MSRC001_0079 is not working
+|                - [PMFW-1385][NEW] support DXIO read/write on MP1's 32 bit axi address
+|                - [PLAT-44380] [ETB] Fix PROCHOT + PC6 hang
+|                - [IMP] Update section match for xmm_file with Windows CRLF
+|                - [PMFW-1236] [NEW] MTS: Implement USB PHY SRAM FW loading
+|                - [PMFW-1058] [IMP] use OPN_OPN_SPARE for SSP & CP detection
+|                - [PMFW-1409] [IVB] Fix LPC PCI B8 Iohc Trap number
+|        * Files
+|                - /proj/smu_rel/smu11/matisse/matisse.rev46.24.0.zip
+|                - /proj/smu_rel/smu11/matisse/matisse_sources.rev46.24.0.tar.gz
+|
++-----------------------------------------------------------------------------------------------------------
+++---------------------------+
+| Version 46.23.0            |
++---------------------------+-------------------------------------------------------------------------------
+|        * Date (dd/mm/yy)
+|                01/04/19
+|
+|        * Changelist (3804768)
+|                - DXIO v46.573
+|                - [PMFW-1406] [ETB] Avoid PC6 + CStateBoost Deadlock caused by PMFW-1378
+|                - [PLAT-42253] [ETB] Fix 2P DF PState + PC6 hang
+|                - [PMFW-1373] [IMP] Limit the max PSM margin allowed in the test message (also include SetAllDldoPsmMargin message)
+|                - [PMFW-1335] [IVB] Incorrect ApicId lookup for SetBoostFrequencyLimit messages and CPPC
+|                - [PMFW-1335] [IVB] Set default values for CPPC DesiredPerformance to MAX
+|                - [PMFW-1335] [IVB] SetBoostFrequencyLimit shouldn't be set for disabled cores
+|                - [PMFW-1401] [IMP] Add new parmaeters to AGM logging interface
+|                - [PMFW-1234][WKA] fix wrong ID for L3 Flush Done
+|                - [PMFW-1234][IMP] Clean BroadcastTwixMessagePresentTx
+|                - [PMFW-1395] [IMP] Change xGMI_LANE_COUNT value reported in CAC logging
+|                - [PMFW-1393] [OPT] [MTS] Change DF P-State Thresholds to 0
+|                - [PLAT-43895] [ETB] Save first polupldated UMC settings by checking sdpCtrl
+|                - [PLAT-43057] [ETB] PCIe hotplug test fails with B0 FCH hotplug level interrupt fix
+|                - [PLAT-44117][IVB] Remove EnableVddmCurrentSharing from code
+|                - [PMFW-1380] [IVB] Fix L3 CKS FDD programming sequence when FDD is decreasing
+|                - [PMFW-1371] [OPT] MTS: CLK stretcher threshold update (0.98/0.98)
+|                - [PMFW-1379] [IVB] Prevent DOSL from increase core voltages above the previously calculated max voltage
+|                - [PMFW-1378] [IVB] Fix CstateBoost + PC6 bug on PC6 exit
+|                - [PMFW-647] Prevent CKS from engaging during OC mode
+|        * Files
+|                - /proj/smu_rel/smu11/matisse/matisse.rev46.23.0.zip
+|                - /proj/smu_rel/smu11/matisse/matisse_sources.rev46.23.0.tar.gz
+|
++-----------------------------------------------------------------------------------------------------------
+++---------------------------+
+| Version 46.22.0            |
++---------------------------+-------------------------------------------------------------------------------
+|        * Date (dd/mm/yy)
+|                25/03/19
+|
+|        * Changelist (3794418)
+|                - DXIO v46.573
+|                - [PLAT-38908] [ETB] MCA error seen with garbage data
+|                - [PMFW-1309] [ETB] CPPC bug fixes for Windows 
+|                - [PLAT-43860] [ETB] Hardlock issue during Hotplug testing with DF Cstate enabled
+|                - [PMFW-1350] [IVB] Include the L3IddMax values in the IddMaxTotal calculation when in CstateBoost
+|                - [PMFW-1349] [IVB] Fix VDDG bypass programming on S3 entry
+|                - [PMFW-1348] [OPT] Optimize max FIT PD controller voltage to give faster response
+|                - [PMFW-1345] [IMP] Create new fuse MP1_IrmGroup for CastlePeak
+|        * Files
+|                - /proj/smu_rel/smu11/matisse/matisse.rev46.22.0.zip
+|                - /proj/smu_rel/smu11/matisse/matisse_sources.rev46.22.0.tar.gz
+|
++-----------------------------------------------------------------------------------------------------------
+++---------------------------+
+| Version 46.21.0            |
++---------------------------+-------------------------------------------------------------------------------
+|        * Date (dd/mm/yy)
+|                18/03/19
+|
+|        * Changelist (3785762)
+|                - DXIO v46.572
+|                - [PMFW-1327] [IVB] Program LoadStepHystCtl default values based on PPR
+|                - [PMFW-1318] [UTB] All sockets must finish programming hard_resetb_coming before any socket enters reset
+|                -  [PMFW-1204] [IMP] SSP SPI lock updates for status handling, validation algorithm and enforcement algorithm (part 2)
+|                - [PMFW-1319] [ETB] MessageList_t not 32-bit aligned on MP5
+|                - [PLAT-43157] [WKA] MTS: System halt at PC1130 when resume from S3 with PC6 enabled (temporary fix)
+|                - [PLAT-43229] [WKA] NVME Hotplug: OS Write to SLOT_STATUS.DL_STATE_CHANGED getting dropped intermittently
+|                - [PMFW-1320] [OPT] Update EDC CAC weights, scalars and MAX limits
+|                - [PLAT-43129] [UTB] MCA_IPID_L3[InstanceId] not set when PFEH is disabled
+|                - [PMFW-1317] [IVB] Fix case when PD limit is set to 0
+|                - [PLAT-43742] [ENH] NVDIMM failed to trigger save operation on B0
+|                - [PMFW-1307] [IMP] Increase IDLE_FREQ for MTS & CP to 2.2 GHz
+|                - [PMFW-1316] [IVB] Fix read/write fch function configuration errors
+|                - [PLAT-43612] APML: Block Read Block Write after a Mailbox does not function as intended
+|                - [PMFW-1310] [IMP] -Updates to messages to limit exposure to malicious attacks
+|                - [PLAT-43275] [WKA] Disable USB1 MMIO when it goes into D3
+|                - [PMFW-1266] [NEW] Add 2 new messages to the host message port (HSMP)
+|                - [PMFW-1300] [NEW] Publish BIOS/TEST messages to report overclocking capability
+|                - [PLAT-42841] [UTB] NVDIMM-N loss of persistence during warm reset cyclin
+|        * Files
+|                - /proj/smu_rel/smu11/matisse/matisse.rev46.21.0.zip
+|                - /proj/smu_rel/smu11/matisse/matisse_sources.rev46.21.0.tar.gz
+|
++-----------------------------------------------------------------------------------------------------------
+++---------------------------+
+| Version 46.20.0            |
++---------------------------+-------------------------------------------------------------------------------
+|        * Date (dd/mm/yy)
+|                08/03/19
+|
+|        * Changelist (3775778)
+|                - DXIO v46.571
+|                - [PLAT-43158] [UTB] APML SBRMI Read CPUID commands return incorrect information on threads other than 0
+|                - [PMFW-1262] [ETB] PM log inaccurate C0 residency and per-core data SMU FW 36.56.0
+|                - [PMFW-1256] [WKA] Offset GMI2 ODPR codes for higher FCLK
+|                - [PLAT-43410] [ETB] MTS: check CCD presents for ScfTwixNiuCfg & ScfPcsNiuCfg, add TwixIodClkCtrl
+|                - [PMFW-1204] [IMP] SSP SPI lock updates for status handling, validation algorithm and enforcement algorithm
+|                - [PMFW-1282] [IVB] Bypass DfPstate down hysteresis when DLWM is in test mode
+|                - [PMFW-1281] [IMP] Only allow x8 and x16 xGMI link width for DLWM
+|                - [PMFW-1244] [UTB] Unblock CF9 reset bios trap prior to issuing cold reset
+|                - [PMFW-1271] [WKA] Program ADB_CTRL.sax_request_delay=7 to resolve irregular CCD TMON readings
+|                - [PMFW-1268] [UTB] Fix Apic_Id structure definition to include 3 bits for CCD to support 8 CCDs
+|                - [PMFW-1267] [IMP] Add SetBoostLimitFrequencyAllCores to BIOS port for use with the new CBS option
+|                - [PMFW-1266] [NEW] Add support for new message port for use by data centers
+|                - [PLAT-42791] [IMP] Remove DEDFRTL-4705 workaround for B0
+|                - [PMFW-1149] [IMP] Add new SLT logging parameters to MP1 (SetVoltage, MaxVoltage, IddMax)
+|                - [PMFW-1246] [WKA] MTS: Set CORE/L3 CKS FDD scalars to 1.0
+|        * Files
+|                - /proj/smu_rel/smu11/matisse/matisse.rev46.20.0.zip
+|                - /proj/smu_rel/smu11/matisse/matisse_sources.rev46.20.0.tar.gz
+|
++-----------------------------------------------------------------------------------------------------------
+++---------------------------+
+| Version 46.19.0            |
++---------------------------+-------------------------------------------------------------------------------
+|        * Date (dd/mm/yy)
+|                04/03/19
+|
+|        * Changelist (3768410)
+|                - DXIO v46.571
+|                - [PMFW-596] [UTB] Fix MTS build error caused by PCIE DL_Active interrupt change
+|                - [PMFW-1189] [ETB] Program RSMU GMI2 CAC Control Register and Weights
+|                - [PMFW-1233] [OPT] Cac weights rev43 guard band
+|                - [PMFW-596] [NEW] New PCIE pwrmgmt interrupt for DL_Active and BridgeDis programming
+|                - [PLAT-42117] [WKA] Program SC_PWR_CFG every PM_TIMER period and not just when the target value changes
+|                - [PMFW-1229] [OPT] Cac weights rev43 update
+|                - [PLAT-43085] [UTB] APML: RMI Socket 1 reports incorrect number of cores for Register 41
+|                - [PMFW-1226] [IVB] Include down CCDs in the PM_TIMER, DATA_CALCULATIONS and AGM logging
+|                - [PMFW-1206] [OPT] Update FCLK_DPM_GMI2_THRESHOLD to 30%
+|                - [PMFW-1150] [UTB] BIOS option "Force CPU Voltage" is not working after DC BTC
+|                - [PMFW-1209] [OPT] Update CCA_THROTTLE_SETPOINT to 10
+|                - [PMFW-1210] [IVB] Normalized CAKE busy % based on the current xGMI link width 
+|                - [PLAT-39659] [ETB] Get performance indicator is not working as expected
+|                - [PMFW-1205] [IVB] DLWM fix for incorrect target level reduction logic
+|                - [PMFW-980] [ETB] Enable PSI0/PSI1 on PC6 enablement
+|                - [PLAT-42322] [UTB] APML SBRMI mailbox message 0x11 NBIO Logging, SMU not response on invalid quadrant
+|                - [PLAT-42323] [UTB] APML SBRMI mailbox message 0x12 NBIF Logging, SMU not response on invalid quadrant
+|        * Files
+|                - /proj/smu_rel/smu11/matisse/matisse.rev46.19.0.zip
+|                - /proj/smu_rel/smu11/matisse/matisse_sources.rev46.19.0.tar.gz
+|
++-----------------------------------------------------------------------------------------------------------
+++---------------------------+
+| Version 46.18.0            |
++---------------------------+-------------------------------------------------------------------------------
+|        * Date (dd/mm/yy)
+|                25/02/19
+|
+|        * Changelist (3755746)
+|                - DXIO v46.568
+|                - [PLAT-42480] [WKA] GMI2 Link Errors on B0 eventually causing link failure
+|                - [PMFW-1184] [OPT] SC EDC weights update (SC=15 and SC_weight8=0xC)
+|                - [PMFW-1182] [WKA] Switch to Startup DfPstate on S3 entry
+|                - [PMFW-1181] [UTB] Fix decoding of bindocTjOffset fuse (should be used a positive number)
+|                - [PLAT-42774] [OPT] Update FIT tuning coefficient (time constant = 100ms)
+|                - [PMFW-1176] [OPT] Increase fclk dpm dram threshold to 20.0F
+|                - [PMFW-1122][IVB] Enable Cac temperature sampling on down CCDs 
+|                - [PMFW-1158] [IMP] Update SPI rom lock whitelist structures
+                -  [PLAT-41985] MTS : Revert USB update v0.22 changes
+|                - [PMFW-915] [IMP] MTS: Enable PTDMA CG - part2
+|                - [PMFW-1151] [IVB] Assert cppc min perf less equal than nominal perf 
+|                - [PMFW-1136] [IVB] Fixed cppc bugs for working on Windows
+|        * Files
+|                - /proj/smu_rel/smu11/matisse/matisse.rev46.18.0.zip
+|                - /proj/smu_rel/smu11/matisse/matisse_sources.rev46.18.0.tar.gz
+|
++-----------------------------------------------------------------------------------------------------------
+++---------------------------+
+| Version 46.17.0            |
++---------------------------+-------------------------------------------------------------------------------
+|        * Date (dd/mm/yy)
+|                15/02/19
+|
+|        * Changelist (3743902)
+|                - DXIO v46.566
+|                - [PLAT-42334] [IVB] Fix SPI feature enable causing system hang 
+|                - [PMFW-1129] [OPT] CAC weights rev27 update
+|                - [PMFW-479] [IMP] AGM pm interface update
+|                - [PMFW-215, PMFW-888] [NEW] Bios message to support NBIF/NTB static power gating
+|                - [PMFW-973] [NEW] Ignore limit if OPN Fused 0 as MAX
+|                - [PMFW-1056] [UTB] replace macro with numbers to fix RAI problem 
+|                - [PMFW-1056] [UTB] add missing registers for PC6,PMREG_DBGBUSCTL etc.
+|                - [PMFW-1124] [WKA] Update LCLK DPM policy to have HIGH/LOW states only 
+|                - [PMFW-1123] [OPT] Update CORE_CKS_FDD_SCALAR to 96%
+|                - [PLAT-40326] [NEW] Update syncflood flow for SSP B0
+|                - [PMFW-887] [NEW] Ability to turn off GMI2 odpr calibration
+|                - [PMFW-1067] [OPT] Raise IDLE_FREQ of all SSP Server OPNs to 1.8GHz
+|                - [PLAT-42379] [NEW] SP3 Memory Pstates requires SMU to provide StartupDfPstate before DDR Training
+|                - Revert PMFW-859
+|                - [PMFW-1056] [UTB] add missing registers for PC6,PMREG_MCAMSTR & PMREG_VMG_STS etc.
+|                - [PMFW-947] [NEW] Message to get current CPU FMAX
+|                - [PMFW-1091] [OPT] Update CCA throttler AvgDiv and add runtime MinStretchHold programming
+|                - [PLAT-42239] [UTB] APML RMI responds to invalid threads in a none 8+1 part
+|                - [PMFW-1089] [ETB] Fix resource problem with TWIX messages
+|        * Files
+|                - /proj/smu_rel/smu11/matisse/matisse.rev46.17.0.zip
+|                - /proj/smu_rel/smu11/matisse/matisse_sources.rev46.17.0.tar.gz
+|
++-----------------------------------------------------------------------------------------------------------
+++---------------------------+
+| Version 46.16.0            |
++---------------------------+-------------------------------------------------------------------------------
+|        * Date (dd/mm/yy)
+|                08/02/19
+|
+|        * Changelist (3732352)
+|                - DXIO v46.565
+|                - [PMFW-859][PMFW-1051] Update DLDO ciLUT Coefficients
+|                - [PMFW-1078] Enable WarmResetAck flow for every stepping
+|                - [PMFW-378] [UTB]change mp5's DramLog.AccCnt to 32bit
+|                - [PMFW-1036] [IVB] CPPC desired epp needs to scale from 0 to 255
+|                - [PMFW-217] [IVB] Allocate ccx soft repair fuse for B0 and onwards ASIC only
+|                - [PMFW-1061] [OPT] first tune on PC6
+|                - [PMFW-1068] [ETB] Fix core CAC logging cache invalidate
+|                - [PMFW-824] [IMP] Renable ODPR DPM handler on BXB 
+|                - [PMFW-915] [IMP] Enable PTDMA on MTS
+|                - [PMFW-824] [IMP] Update ODPR for BXB IOD
+|                - [PMFW-987] [OPT] Reliability tracker coefficients update
+|                - [PMFW-1037] [OPT] Skip ChangeCoreLdo function when running in DLDO bypass
+|                - [PMFW-530] [NEW] GMI2 connection in Naples platform override
+|                - [PLAT-42142] [IMP] Update GMI2 firmware for PLL bandgap trim fuse change
+|                - [PLAT-41750] [ETB] CBS option "CLDO_VDDP Control" is not working
+|                - [PMFW-1023] [UTB] Fix ForceCondition updating in MP1 CCLK controller
+|                - [PMFW-1022] [OPT] Make IddMax calculations compatible with DLDO bypass
+|                - [PMFW-1021] [UTB] Add BoostFrequencyLimit message ID for DPTC
+|                - [PLAT-41624] [UTB] APML: SBRMIx[04...4A][Thread Enable Status] values not comply with system setup
+|                - [PLAT-41979] [WKA] APML: Thread enable status not set for thread0
+|                - [PLAT-42027] [UTB] APML: Register 41 does not report the correct number of threads available in the system
+|                - [PMFW-969] [OPT] dLDO Dropout scalar/limiter (DOSL) - initial implementation
+|                - [PMFW-1002] [ETB] DfPstate + PC6 fixes and updates (include fix in slave socket DfPstate change sequence)
+|        * Files
+|                - /proj/smu_rel/smu11/matisse/matisse.rev46.16.0.zip
+|                - /proj/smu_rel/smu11/matisse/matisse_sources.rev46.16.0.tar.gz
+|
++-----------------------------------------------------------------------------------------------------------
+++---------------------------+
+| Version 46.15.0            |
++---------------------------+-------------------------------------------------------------------------------
+|        * Date (dd/mm/yy)
+|                01/02/19
+|
+|        * Changelist (3724351)
+|                - DXIO v46.565
+|                - [PMFW-1013] [OPT] Set minimum CCA EDC throttle threshold to 0
+|                - [PMFW-1010] [ETB] Set default FP EDC throttler threshold to 0xFE (also add disable EDC prioritization test mode)
+|                - [PMFW-929] [IMP] CAC weight rev 17 update
+|                - [PMFW-859] [OPT] CCD B0 needs a different ciLUT from A0
+|                - [PLAT-41213] [UTB] add l3sdpdisconbusy check on PC6 Exit
+|                - [PLAT-41985] [IMP] MTS: USB update v0.22
+|                - [PMFW-1004] [IMP] APML mailbox command not recovering after not setting Reg3F to 80h
+|                - [PMFW-1002] [ETB] DfPstate + PC6 fixes and update
+|                - [PLAT-42023] [UTB] APML RMI: MCA Register access through APML is not defined in SMU
+|                - [PMFW-978] [IMP] Update DLWM DPM threshold
+|                - [PMFW-960] [IMP] Update FCLK_DPM threshold values (revised)
+|                - [PLAT-41970] [ETB] MTS: Do not apply PMFW-483 USB WKA to A1 IOD
+|                - [PLAT-40492] [ETB] Use VdciFreqAdj and VdciFreqAdjAck handshake to hold L3CLK<>FCLK VDCI in async during DfPstate changes
+|                - [PMFW-970] [ETB] Remove DLDO_HEADER_MIN_RESISTANCE from VID calculations
+|                - [PMFW-960] [IMP] Update FCLK_DPM threshold values
+|                - [PLAT-36267] [IMP] Remove SSP A0 Hotplug level triggered interrupt workaround for B0
+|                - [PMFW-915] [NEW] Enable PTDMA CG for SSP
+|                - [PLAT-41595] [UTB] APML: RMI Boost Limit for all cores does not work as intended (Update)
+|                - [PLAT-41595] [UTB] APML: RMI Boost Limit for all cores does not work as intended
+|                - [PLAT-41726] [UTB] APML RMI: Prochot residency status reported is not accurate
+|                - [PMFW-963] [IMP] DXIO Git script should use STEM env variable
+|                - [PMFW-932] [NEW] Propagate CPUID from Fuses
+|                - [PMFW-813] [UTB] fix axi error when change sucess monitor threshold
+|        * Files
+|                - /proj/smu_rel/smu11/matisse/matisse.rev46.15.0.zip
+|                - /proj/smu_rel/smu11/matisse/matisse_sources.rev46.15.0.tar.gz
+|
++-----------------------------------------------------------------------------------------------------------
+++---------------------------+
+| Version 46.14.0            |
++---------------------------+-------------------------------------------------------------------------------
+|        * Date (dd/mm/yy)
+|                25/01/19
+|
+|        * Changelist (3712996)
+|                - DXIO v46.564
+|                - [PMFW-850] [IMP] CAC weights update
+|                - [PMFW-923] [IMP] EDC controller updates
+|                - [PMFW-922] [UTB] Only factor in WcVoltage to FtoV VID chevker when determinsm is enabled
+|                - [PLAT-39709] [ETB] UsbConfigUpdate to same register should RMW previous setting
+|                - [PMFW-874] [ETB] Change prochot interrupt to level triggered
+|                - [PLAT-41498] [ETB] -use MAX of actual and WcVoltage part in Voltage_FtoV array for VID checker
+|                    - only apply 95% of the VID checker frequency reduction (this value is tunable)
+|                    - scale WcVoltage_SetVoltage with BC scalar for VID checker for DET=0
+|                    - scale Tcalc input powers by BC scalar for DET=0
+|                    - scale up EDC current budget by 1/BC scalar for DET=0
+|                    - scale FIT voltage inputs by BC scalar instead of final FIT value when DET=0
+|                - [PMFW-869] [ETB] xGMIPstate index is not set properly to xGMI rate vs FCLK ratio
+|        * Files
+|                - /proj/smu_rel/smu11/matisse/matisse.rev46.14.0.zip
+|                - /proj/smu_rel/smu11/matisse/matisse_sources.rev46.14.0.tar.gz
+|
++-----------------------------------------------------------------------------------------------------------
+++---------------------------+
+| Version 46.13.0            |
++---------------------------+-------------------------------------------------------------------------------
+|        * Date (dd/mm/yy)
+|                21/01/19
+|
+|        * Changelist (3704768)
+|                - DXIO v46.562
+|                - [PMFW-868] [WKA] Limit MAFDD DSM reference to 0x3F9
+|                - [PMFW-772] [IMP] Integrate PMFW Kernel version 12
+|        * Files
+|                - /proj/smu_rel/smu11/matisse/matisse.rev46.13.0.zip
+|                - /proj/smu_rel/smu11/matisse/matisse_sources.rev46.13.0.tar.gz
+|
++-----------------------------------------------------------------------------------------------------------
+++---------------------------+
+| Version 46.12.0            |
++---------------------------+-------------------------------------------------------------------------------
+|        * Date (dd/mm/yy)
+|                17/01/19
+|
+|        * Changelist (3700628)
+|                - DXIO v46.559
+|                - [PLAT-39864] [WKA] SSP: Override latchup voltages to 1.15V on A0
+|                - [PMFW-871] [ETB] MTS: Correct CCM DF instance ID
+|                - [PLAT-41244] [NEW] APML RMI: Mailbox commands are missing in SMU code causing a mismatch with the PPR
+|                - [PLAT-41247] [UTB] APML RMI: Mailbox command 10- Boost Limit does not function as intended
+|                - [PLAT-41248] [NEW] APML RMI: Error handling in PPR different from SMU source code
+|                - [PMFW-864] [IMP] Change BIOS message name for usb s3 entry/exit
+|                - [PLAT-35589] [ENH] Update GMI2 Firmware for PLL Bandgap trim fuse changes
+|                - [PMFW-669] [ETB] Fix hot/FLR resets on MTS for BIF1
+|                - [PMFW-668] [UTB] Fix Link reset and PME_TO on MTS
+|                - [PMFW-814] [ETB] Remove D3 entry from USB S3 entry sequence
+|                - [PMFW-852] [IMP] SSP B0 and MTS A1 fuse update
+|                - [PLAT-40956] [ETB] Report telemetry socket power to AGM in telemetry mode
+|        * Files
+|                - /proj/smu_rel/smu11/matisse/matisse.rev46.12.0.zip
+|                - /proj/smu_rel/smu11/matisse/matisse_sources.rev46.12.0.tar.gz
+|
++-----------------------------------------------------------------------------------------------------------
+++---------------------------+
+| Version 46.11.0            |
++---------------------------+-------------------------------------------------------------------------------
+|        * Date (dd/mm/yy)
+|                14/01/19
+|
+|        * Changelist (3694796)
+|                - DXIO v46.559
+|                - [PMFW-331] [IMP] Update ODPR settings for MTS
+|                - [PMFW-773] [UTB] Update NBIO mapping for MTS
+|                - [PMFW-764] [IMP] MTS: Clean up PMFW-483 USB WKA code
+|                - [PMFW-530] [ENH] GMI2 connection in Naples platform override
+|                - [PLAT-37384] [ENH] FCH MP1 warmreset ack handshake for B0 asic
+|                - [PMFW-776] [ENH] Add MTS/SSP A0 and B0 asic detection support
+|                - [PMFW-495] [IMP] Turn on KERNEL_DEBUG feature - Set kernel debug register to MP1_EXT_SRATCH5
+|                - [PMFW-495] [IMP] Turn on KERNEL_DEBUG feature
+|                - [PMFW-683] [IMP] ABL message to disable CPBCAP
+|                - [PMFW-757] [UTB] Fix down CCX/CCD bootup issue with SMU controlled CG
+|        * Files
+|                - /proj/smu_rel/smu11/matisse/matisse.rev46.11.0.zip
+|                - /proj/smu_rel/smu11/matisse/matisse_sources.rev46.11.0.tar.gz
+|
++-----------------------------------------------------------------------------------------------------------
+++---------------------------+
+| Version 46.10.0            |
++---------------------------+-------------------------------------------------------------------------------
+|        * Date (dd/mm/yy)
+|                07/01/19
+|
+|        * Changelist (3685035)
+|                - DXIO v46.559
+|                - [PMFW-640] [ETB] Prevent MP1 SBRMI isr accessing MP5 before MP5 is registered 
+|                - [PMFW-702] [IVB] Prevent sending twix msg to MP5 before the registration completed
+|                - [PLAT-39660] [ETB] Fix hang with interleaved down-CCDs
+|                - [PMFW-689] [IMP] Set Pc6GmiPwrDnEn = 1 when PC6 is enabled
+|                - [PMFW-333] [IMP] Clockgate WAFLCLK on MTS
+|                - [PMFW-682] [IMP] MTS: Use MATISSE define in structure parser script
+|                - [PMFW-681] [IMP] Port usb structure to rai file
+|                - [PMFW-333] [IMP] Enable CG on unused slices for MTS as well
+|                - [PMFW-603] [IMP] Put DLDOs in bypass when Precise and Direct Overclocking is enabled
+|                - [PMFW-673] [IMP] Clocks_t Structure Alignment for RAI File Generation
+|        * Files
+|                - /proj/smu_rel/smu11/matisse/matisse.rev46.10.0.zip
+|                - /proj/smu_rel/smu11/matisse/matisse_sources.rev46.10.0.tar.gz
+|
++-----------------------------------------------------------------------------------------------------------
+++---------------------------+
+| Version 46.9.0            |
++---------------------------+-------------------------------------------------------------------------------
+|        * Date (dd/mm/yy)
+|                21/12/18
+|
+|        * Changelist (3672635)
+|                - DXIO v46.555
+|                - [PLAT-40396] [NEW] SSP and MTS USB programming updates v0.28
+|                - [PMFW-333] [IMP] Fix boot issue with clock gate on MTS
+|                - [PMFW-207] [NEW] Revert change to Fmax Override
+|                - [PMFW-333] [IMP] Clock gate unused clock slices on SSP and MTS
+|                - [PMFW-656] [OPT] Increase the Cstate Boost Hysteresis Limit to 1
+|                - [PMFW-527] [WKA] New BIOS message indicating group D platform specs are supported is passed to SMU FW
+|                - [PMFW-531] [WKA] GMI2 voltage (VDDG) and TWIX
+|                - fix for ReadCLDOReg to correctly return RdData
+|                - add new fuses for IRM workaround
+|                - [PLAT-36931] [ETB] CC1Dis BIOS Option does not work
+|                - [PMFW-640] [ETB] Prevent MP1 SBRMI isr accessing MP5 before MP5 is registered
+|                - [PMFW-654] [ETB] TDP and PPT fuse override limits are not applied for Rome
+|                - [PMFW-653] [UTB] Only include IOD part of VDDG power in IOD power calculation and include CCD part in CCD power
+|                - [PMFW-651] [OPT] Define per L3 DID CksFreqScalar to calculate core EDC budget
+|                - [PMFW-649] [IMP] Use *_determinism AGM header definitions for 6 and 8 CCD parts that use per part CAC
+|                - [PMFW-538] Publish OC Message to BIOS
+|        * Files
+|                - /proj/smu_rel/smu11/matisse/matisse.rev46.9.0.zip
+|                - /proj/smu_rel/smu11/matisse/matisse_sources.rev46.9.0.tar.gz
+|
++-----------------------------------------------------------------------------------------------------------
+---------------------------+
+| Version 46.8.0            |
++---------------------------+-------------------------------------------------------------------------------
+|        * Date (dd/mm/yy)
+|                17/12/18
+|
+|        * Changelist (3666342)
+|                - DXIO v46.555
+|                - [PMFW-618] [IVB] Redfine logic thread apic id size
+|                - [PMFW-565] [IVB] add settings of CLKDS_CTRL,CLK_XBAR_CG_MISC on MP1 & MP5
+|                - [PMFW-609] [IVB] Check USB power state needs to consider multiple usb instances
+|                - [PMFW-608] [OPT] CPPC needs to handle multiple sockets
+|                - [PMFW-489] [IMP] SMU cppc support
+|                - [PMFW-589] [UTB] Fix AGM logging CCD data cache bug
+|                - [PMFW-587] [UTB] Include IOD WC power in the Tcalc for the CCDs
+|                - [PMFW-588] [OPT] Update core CKS FDD scalar to 98%
+|                - [PMFW-586] [WKA] Fix latchup PWROK ordering in PC6 entry and update PWROK programming for down CCX and warm reset
+|                - [PMFW-585] [UTB] Program ChL3FreqCtl.L3FasterThanDf = 0 when in ASYNC mode
+|        * Files
+|                - /proj/smu_rel/smu11/matisse/matisse.rev46.8.0.zip
+|                - /proj/smu_rel/smu11/matisse/matisse_sources.rev46.8.0.tar.gz
+|
++-----------------------------------------------------------------------------------------------------------
++---------------------------+
+| Version 46.7.0            |
++---------------------------+-------------------------------------------------------------------------------
+|        * Date (dd/mm/yy)
+|                07/12/18
+|
+|        * Changelist (3654841)
+|                - DXIO v46.551
+|                - [PMFW-188] [IMP] Add CCLK average frequency to Starship SLT data logging mechanism
+|                - [PMFW-581] [OPT] Update DLDO settings
+|                - [PMFW-409] [IMP] Optimize code for nBIF hot resets
+|                - [PMFW-208/PMFW-209] [NEW] Add ability to force SVI2 voltages
+|                - [PMFW-571] [WKA] Add new MP1 fuses for IRM violation plan
+|                - [PMFW-548] [OPT] Change dsmRampSlope
+|                - [PMFW-569] [OPT] Update EDC controller coefficients
+|                - [PMFW-568] [UTB] Call InitVidThresholdPsm on CCLK_DPM enablement
+|                - [PMFW-567] [OPT] Program ChL3FreqCtrl.DroopSyncSelect based on the target L3CLK frequency
+|                - [PLAT-34554/PLAT-34574] [NEW] TESTMESSAGE for Ryzen Master
+|                - [PMFW-552] [IMP] SSP: Add APML Read Package Power Limit Command
+|                - [PMFW-188] [IMP] Add new test message for version of SLT data logging 
+|                - [PMFW-550] [UTB] Fix Voltage.CPU_Resistance calculation in InitVoltageController
+|                - [PMFW-547] [UTB] Add BIOSSMC_MSG_TDP_TJMAX message for fan table lookup
+|                - [PLAT-38189] [UTB] SBTSI not reporting maximum temperature
+|                - [PLAT-39931] [UTB] SBTSI not reporting CCD temperatures for CCD 0
+|                - [PMFW-536] [UTB] Fix UMC throtle init and UmcThrottle to SwCmdThrotCyc equation
+|                - [PMFW-535] [UTB] Add CoreEn[core] and L3En[ccx] checks in data calcuations to account for disabled cores/L3
+|                - [PMFW-534] [IMP] Add IddMax clock constant for EDC controller credits calculations
+|                - [PMFW-409] [UTB] Fix hot reset for device 1/2 under nBIF
+| 
+|        * Files
+|                - /proj/smu_rel/smu11/matisse/matisse.rev46.7.0.zip
+|                - /proj/smu_rel/smu11/matisse/matisse_sources.rev46.7.0.tar.gz
+|
++-----------------------------------------------------------------------------------------------------------
++---------------------------+
+| Version 46.6.0            |
++---------------------------+-------------------------------------------------------------------------------
+|        * Date (dd/mm/yy)
+|                30/11/18
+|
+|        * Changelist (3642096)
+|                - DXIO v46.548
+|                - [PMFW-483] [WKA] MTS:Workaround for enumeration issue after safely removed and re-plug usb device
+|                - [PMFW-356] [UTB] set ChL3DsmPortSRStart for restoring
+|                - [PLAT-39706] [ETB] Add OVERCURRENT_MAP_1_CNTR0 to USB Container Regs
+|                - [PMFW-522] [IMP] Update cac weights to rev 7
+|                - [PMFW-523] [IMP] Export cppc structure on publish scoreboard 
+|                - [PMFW-520] [ETB] InitDldo needs to be executed before InitWLBandL2SuperVim in MP5 EnableCclkDpm
+|                - [PMFW-518] [ETB] Clear interrupt mask for PCA9506
+|                - [PMFW-509] [UTB] Invalid FCLK DPM level index used for combinational bypass check
+|                - [PMFW-508] [ETB] Implement DState ACK to nBIF
+|                - [PMFW-207] [NEW] Add SMU message for Fmax Override
+|                - [PMFW-506] [IMP] MTS: Prevent UsbConfigUpdate to USB1
+|                - [PMFW-505] [UTB] Fix MaxCpuCof frequency unit
+|                - [PMFW-501] [UTB] FCLK auto DPM and sweep do not work
+|                - [PMFW-500] [UTB] Handle WC_PART voltage when DC BTC is run (cclk controller part)
+|                - [PMFW-500] [UTB] Handle WC_PART voltage when DC BTC is run
+|                - [PMFW-499] [IMP] Add CCLK controller execution time analysis
+|                - [PLAT-38412] [UTB] add missing DXIO Twix MGCG bits to MP1
+|                - [PMFW-267] [UTB] Fix SSP NBIO D3 instance to source from correct offset
+|                - [PLAT-38551] [UTB] Trigger Prochot if Prochot is active when enabling
+|
+| 
+|        * Files
+|                - /proj/smu_rel/smu11/matisse/matisse.rev46.6.0.zip
+|                - /proj/smu_rel/smu11/matisse/matisse_sources.rev46.6.0.tar.gz
+|
++-----------------------------------------------------------------------------------------------------------
++---------------------------+
+| Version 46.5.0            |
++---------------------------+-------------------------------------------------------------------------------
+|        * Date (dd/mm/yy)
+|                23/11/18
+|
+|        * Changelist (3599404)
+|                - DXIO v46.529
+|                - [PLAT-37970] [ETB] MTS: Implement USB S3 Entry Sequence
+|                - [PLAT-38551] [ETB] Set PROCHOT_L alert will cause system hang up at PC 0xAC94
+|                - [PMFW-484] [ETB] Fix DC BTC message hang caused by VminFreq changes for EDC and L3 voltage calculations
+|                - [PMFW-407] [IMP] add exit value to return check result
+|                - [PLAT-37961] [ETB] Enabling PC6 causes TST/AXI error
+|                - [PMFW-253] [UTB] Enable multiple DMA transfer 
+|                - Fix nBIF & Device instance mapping
+|                - [PMFW-485] [BUG] Fix programming for USB SMU_CTL_POWER_STATE
+|                - [PMFW-419] [NEW] Matisse:Implement cpu stepping and die revision control
+|                - [PMFW-483] [NEW] Matisse:Generate new fuse header
+|                - [PMFW-484] [UTB] Apply VminFreq for EDC calculations and L3 voltage calculations
+|                - [PMFW-484] [UTB] Apply fused VminFrequency for voltage calculations (impacts worst case power calculations)
+|
+|
+| 
+|        * Files
+|                - /proj/smu_rel/smu11/matisse/matisse.rev46.5.0.zip
+|                - /proj/smu_rel/smu11/matisse/matisse_sources.rev46.5.0.tar.gz
+|
++-----------------------------------------------------------------------------------------------------------
++---------------------------+
+| Version 46.4.0            |
++---------------------------+-------------------------------------------------------------------------------
+|        * Date (dd/mm/yy)
+|                19/11/18
+|
+|        * Changelist (3592607)
+|                - DXIO v46.529
+|                - [PMFW-480] [WKA] MTS: Limit VDD_CPU to 1.425 V on pre-Proto parts
+|                - [PLAT-38879] [WKA] Adjust ARLXTAG issue Vmin to 1.0V 
+|                - [PLAT-38879] [WKA] Implement Vmin override for ARLXTAG issue
+|                - [PMFW-467] [UTB] Update memory overclocking config so we training memory at 1:1:1 mode
+|                - [PLAT-37779] [ETB] Eliminate CCX cool reset
+|                - [PMFW-338] [UTB] Fix Link Resets, and ClientIp pointer calls to ClientNotPresentInstances
+|                - [PMFW-441] [UTB] Fix array wrap around index bug in RvddPtoV calculation
+|                - [PLAT-37971] [IVB] not to enable fuse's DS_EN bit for CG
+|
+|
+| 
+|        * Files
+|                - /proj/smu_rel/smu11/matisse/matisse.rev46.4.0.zip
+|                - /proj/smu_rel/smu11/matisse/matisse_sources.rev46.4.0.tar.gz
+|
++-----------------------------------------------------------------------------------------------------------
++---------------------------+
+| Version 46.3.0            |
++---------------------------+-------------------------------------------------------------------------------
+|        * Date (dd/mm/yy)
+|                12/11/18
+|
+|        * Changelist (3583417)
+|                - DXIO v46.529
+|                - [PMFW-438] [WKA] Matisse: Don't divide FSC values that are already in A (improvement to PMFW-354)
+|                - [PMFW-437] [UTB] Fix down-CCX bootup issue due to PLAT-36329
+|                - [PMFW-429] [WKA] Matisse: Fix build with PMFW-419
+|                - [PLAT-36329] [IMP] Program ChL3PllFllCtl2 before frequency changes for A0 part 
+|                - [PMFW-377] [OPT] Update cclk dpm controller efficieny mode tuning
+|                - [PMFW-419] [NEW] Implement cpu stepping and die revision control 
+|                - [PLAT-29033] [IMP] Change PCS interrupt to pre-clear type
+|                - [PMFW-367] [NEW] Update SSP fuse header
+|                - [PMFW-417] [ETB] Make FCLK DPM default to lowest frequency
+|                - [PMFW-293] [WKA] Trim IOD GMI2 bandgap to 3
+|                - [PMFW-375] [ETB] SystemScoreboard.PowerManagementMode is not reflecting CBS override
+|                - [PLAT-37777] [WKA] Program DacOffset register for CCD GRX CLDO instance
+|                - [PMFW-332] [IMP] Update clock slices for LCLK/SHUBCLK/SOCCLK on MTS
+|                - [PMFW-395][IMP] Add PriorityQueue to mp5 publish_scoreboard
+|                - [PLAT-38593] [ETB] System halt with CCLK DPM disabled and Cstate Boost enabled
+|                - [PMFW-382] [UBT] MTS 12C part failed to post when DC BTC is enabled
+|                - [PMFW-] [UTB] Update VDDG power calculations to h andle CLDO config and SMU_PCS
+|                - [PMFW-391] [UTB] Define MEMCLK as the required input for memory overclock
+|                - [PMFW-390] [UTB] Prevent FDD calculation from going negative
+|                - [PMFW-378] [ETB] Add resource around temperature accumulation for core CAC collection
+|
+|
+| 
+|        * Files
+|                - /proj/smu_rel/smu11/matisse/matisse.rev46.3.0.zip
+|                - /proj/smu_rel/smu11/matisse/matisse_sources.rev46.3.0.tar.gz
+|
++-----------------------------------------------------------------------------------------------------------
++---------------------------+
+| Version 46.2.0            |
++---------------------------+-------------------------------------------------------------------------------
+|        * Date (dd/mm/yy)
+|                2/11/18
+|
+|        * Changelist (3570470)
+|                - DXIO v46.528
+|                - [PMFW-385] [UTB] Fix mts fw mp5 issue to build dis file
+|                - [PLAT-29033] [IMP] Change ESM interface argument between DXIO and SMU 
+|                - [PMFW-350] [UTB] Revert InitRsmuHash table sequence
+|                - [PMFW-292] [WKA] Fix CLDO broadcast writes over writing bandgap CLDOs
+|                - [PMFW-317] [IVB] update FUSE_LP_CONTROL according to CG document v1.0, not to change default values of FUSE_LP_CONTROL/FUSE_CCD_LP_CONTROL:DS_MCNT & CLKG_MCNT, thm_pwrmgt.f.clk_gate_max_cnt
+|                - [PMFW-147] [NEW] Add APML Commands to Matisse (Matching Command IDs with Picasso)
+|                - [PLAT-35651] [UTB] SMU does not seem to respond to inbound messages on APML
+|                - [PMFW-317] [IVB] Remove LX3_PDEBUGENABLE from CG sequence
+|                - [PLAT-34707] [UTB] APML: SB-RMI Read CPUID Commands return with status 45 (Unsupported Command)
+|                - [PMFW-356] [UTB] fix incorrect reg mapping & save/retore reg counts
+|
+| 
+|        * Files
+|                - /proj/smu_rel/smu11/matisse/matisse.rev46.2.0.zip
+|                - /proj/smu_rel/smu11/matisse/matisse_sources.rev46.2.0.tar.gz
+|
++-----------------------------------------------------------------------------------------------------------
++---------------------------+
+| Version 46.1.0            |
++---------------------------+-------------------------------------------------------------------------------
+|        * Date (dd/mm/yy)
+|                29/10/18
+|
+|        * Changelist (3561831)
+|                - DXIO v46.527
+|                - [PMFW-358] [UTB] Set DeterminismEn flag when Determinism CBS override
+|                - [PMFW-355] [IMP] Enable DF Xc1PwrDwnEn
+|                - [PLAT-38411] [ETB] Change MP1 EnableSCM message from PSP to BIOS message
+|                - [PLAT-38410] [ENH] MP1 firmware Cold Reset message should cause a cold reset
+|                - [PLAT-36175] [UTB] Acknowledge PCIE hotplug interrupts to avoid missing interrupts after enabling hotplug
+|                - [PMFW-350] [UTB] Program interrupt Type from interrupt job table
+|                - [PMFW-354] [WKA] MTS: Convert Telemetry Slope from mA to A until PLAT-37795 is fixed
+|                - [PMFW-147] [NEW] MTS: Add APML Commands
+|                - [PMFW-353] [IMP] MTS: Remove use of uninitialized variable in EnableRsmuCac()
+|                - [PMFW-351] [ETB] Use Matisse fuse and SOC headers in Matisse MP5 FW
+|                - [PMFW-293] [WKA] MTS: Trim VDDG bandgap slope to 3 for IOD A0a
+|                - [PMFW-253] [UTB] Move MP1 data sync from CclkArbiter to cclkdpm and IODOK messages
+|                - [PMFW-342] [UTB] Fix Voltage.FtoV[x] array calculations
+|                - [PMFW-317] [IVB] SMU MP0&MP1 SMN cg not fully enabled
+|                - [PMFW-193] [UTB] Fix nBIF5,6 handlers, and added in nbif FLR reset mechanism
+|                - add the 6.4Gbps xGMI bitrate to the table
+|                - add DC_BTC_t to the CCD .rai structure generation
+|                - [PMFW-321] [IMP] Add smu message to force GPIO
+|                - [PMFW-337] [UTB] Make MTS compile with the RSMU CAC definition updates
+|                - [PMFW-335] [UTB] Save SOC Tcalc value in SOC_t WcPower_Temperature
+|                - [PMFW-328] [UTB] Fix core CAC data accumulation for disabled cores
+|                - [PMFW-317] [IVB] SMU MP0&MP1 SMN cg not fully enabled
+|                - [PLAT-36175] [ETB] Fix updating hotplug status register on P1 when only one socket is populated
+|                - [PMFW-325] [NEW] MTS: Update USB programming
+|                - [PMFW-319] [IMP] Update LCLK_DPM_BUSY_THRESHOLD
+|                - [PMFW-229] [IVB] Fix cac collection hang with DMA transfer 16 byte alignment
+|                - [PMFW-322] [ETB] ODPR Temperature cap to prevent calibration rollover at LN2
+|                - don't show all the extra data when compiling
+|                - don't show intermediate rai generation when compiling
+|                - calculate the telemetry SLOPE/OFFSET values from the PPTable_t
+|                - calculate and save the DeterminismEn flag in System_t and do it in the default init so that it can be used even when EDC controller isn't enabled
+|                - MTS: update DF RSMU CAC/BW signal mapping
+|                - makefile and utility.mk file refinement
+|                - MTS: USB sequence updates
+|                - [PMFW-218] [ENH] Add Test message to get CPPC dram address
+|                - [PMFW-312] [OPT] Updates to DLDO and CKS settings
+|                - [PMFW-299] [IMP] Decrease the CFoH Timer to 20us
+|                - [PMFW-300] [IMP] Input optimized IRM HW values
+|                - [PMFW-301] [ENH] Update CAC weights to version 5
+|                - [PMFW-193] [UTB] Reset appropriate device in shub link control during bif link reset 
+|                - [PLAT-36175] [ETB] Skip processing hotplug interrupts when hotplug is not enabled
+|                - MTS: Temporarily remove Bypass VDDG call from Sleep Entry handler
+|                - MTS: Set USB_COUNT = 1
+|                - [PMFW-283] [UTB] Fix PCIE and NBIO instance mapping wrong (Part2)
+|                - [PMFW-291] [IVB] Fch hotplug interrupt routine is not defined in pmi table
+|                - initialize VddmVoltage in DATA_t based on default fused VDDM voltage from CCX0
+|                - [PLAT-36254] [UTB] change DF indirect registers update sequence
+|                - [PLAT-36175] [ETB] Fix I2C transaction routines
+|                - MTS: Fix NBIO mapping in data.c
+|                - MTS: Correct UmcActiveVec
+|                - MTS: fix NBIO register address issue in S5 Entry sequence
+|                - MTS: fix an NBIO instance macro
+|                - MTS: do not force ODPR recalibration for non-existent GMI PHYs
+|                - MTS: skip USB1 programming
+|                - MTS: fix SVI mapping
+|                - enable DXIO postcodes for MTS
+|                - MTS: add ifdef for removed UMC instances
+|                - MTS: add ifdef for removed UMC clocks
+|                - MTS: add ifdef for removed NBIO instances
+|                - MTS: add ifdef for removed NBIO RSMU initiator IDs
+|                - MTS: add ifdef for NBIO instance macros
+|                - [PLAT-35845] [ETB] Hang running GCC compile
+|                - [PMFW-283] [UTB] Fix PCIE and NBIO instance mapping wrong
+|                - [PLAT-36175] [UTB] Fix I2C read/write command argument
+|                - [PMFW-278] [UTB] Fix NBIF and NBIO mapping issue
+|                - [PMFW-67] [NEW] CBS Override for HTFmax Frequency and Temperature
+|                - add array range checking for BIOS messages that query EnabledCoresPerCcd and BistPF
+|                - [PMFW-164] [UTB] Fix out of range RSMU register problem in RSMU_HARD_RESETB_COMING
+|                - use PPTable values for VoltageMargin in the CCLK controller to modify fused SocVid table
+|                - [PMFW-239] [OPT] Fix missing SMU clock gater enables
+| 
+|        * Files
+|                - /proj/smu_rel/smu11/matisse/matisse.rev46.1.0.zip
+|                - /proj/smu_rel/smu11/matisse/matisse_sources.rev46.1.0.tar.gz
+|
++-----------------------------------------------------------------------------------------------------------
++---------------------------+
+| Version 46.0.0            |
++---------------------------+-------------------------------------------------------------------------------
+|        * Date (dd/mm/yy)
+|                28/09/18
+|
+|        * Changelist (3516946)
+|                - DXIO v0.507
+|                - Initial release based on SSP SMU FW 36.30.0
+| 
+|        * Files
+|                - /proj/smu_rel/smu11/matisse/matisse.rev46.0.0.zip
+|                - /proj/smu_rel/smu11/matisse/matisse_sources.rev46.0.0.tar.gz
+|
++-----------------------------------------------------------------------------------------------------------
