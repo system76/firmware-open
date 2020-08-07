@@ -2,17 +2,37 @@
 
 **Flashing firmware manually is *not* recommended for the normal user!**
 
+## Boot time
+
+The first boot after flashing will take a long time. This is due to coreboot
+initializing RAM modules for the first time. Once memory training is complete,
+coreboot will cache this information and subsequent boots will take
+significantly less time.
+
+coreboot's `cbmem` tool can be used to verify this. The call to
+`FspMemoryInit()` can report 20+ seconds on the first boot, and a few hundred
+milliseconds on subsequent boots.
+
 ## Internal programmer
 
 Use this method for flashing a system already running System76 Open Firmware.
 
 ```
-./scripts/flash.sh <model>
+./scripts/flash.sh <model> [--without-ec]
 ```
+
+By default the script will attempt to flash the EC. If the EC is flashed, the
+system will immediately power off.
 
 ## External programmer
 
 Use one of these methods for first-time flashing or flashing a bricked system.
+
+### Identifying the BIOS chip
+
+The packaging and protocol can be determined by `board_info.txt` in coreboot.
+Laptops use a SOIC-8 package for the SPI flash ROM. Pin 1 is marked by a small
+dot indent and a white paint mark. The silkscreen may also indicate pin 1.
 
 ### CH341A USB programmer - slower, but easier to set up
 
@@ -72,4 +92,3 @@ cd firmware
 ```
 SPIPI=<user@spipi> ./scripts/spipi-flash.sh <model>
 ```
-
