@@ -5,9 +5,7 @@ https://system76.com/guides/darp5
 ## Contents
 
 - [EC](./ec.rom)
-  - Size: 128 KB
-  - Model: N150ZU
-  - Version: 1.07.04
+  - *Read Error: No such file or directory (os error 2)*
 - [FD](./fd.rom)
   - Size: 4 KB
   - HAP: false

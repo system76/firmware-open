@@ -5,9 +5,7 @@ https://system76.com/guides/galp4
 ## Contents
 
 - [EC](./ec.rom)
-  - Size: 128 KB
-  - Model: N140CU
-  - Version: 1.07.01
+  - *Read Error: No such file or directory (os error 2)*
 - [FD](./fd.rom)
   - Size: 4 KB
   - HAP: false
