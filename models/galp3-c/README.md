@@ -5,9 +5,7 @@ https://system76.com/guides/galp3
 ## Contents
 
 - [EC](./ec.rom)
-  - Size: 128 KB
-  - Model: N130ZU
-  - Version: 1.07.02
+  - *Read Error: No such file or directory (os error 2)*
 - [FD](./fd.rom)
   - Size: 4 KB
   - HAP: false
