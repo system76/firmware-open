@@ -37,7 +37,14 @@ then
     if [ -e "build/${MODEL}/ec.rom" ]
     then
         cargo build --release --manifest-path ec/tool/Cargo.toml
-        sudo ec/tool/target/release/system76_ectool flash "build/${MODEL}/ec.rom"
+        ECTOOL=ec/tool/target/release/system76_ectool
+
+        if sudo $ECTOOL info &> /dev/null
+        then
+            sudo $ECTOOL flash "build/${MODEL}/ec.rom"
+        else
+            echo "WARNING: Skipping EC flash: Could not get System76 EC info"
+        fi
     fi
 else
     echo "Skipping EC flash"
