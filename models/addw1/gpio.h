@@ -1,17 +1,4 @@
-/*
- * This file is part of the coreboot project.
- *
- * Copyright (C) 2019 System76
- *
- * This program is free software; you can redistribute it and/or modify
- * it under the terms of the GNU General Public License as published by
- * the Free Software Foundation; version 2 of the License.
- *
- * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.See the
- * GNU General Public License for more details.
- */
+/* SPDX-License-Identifier: GPL-2.0-only */
 
 #ifndef MAINBOARD_GPIO_H
 #define MAINBOARD_GPIO_H
@@ -35,7 +22,7 @@ static const struct pad_config gpio_table[] = {
 		PAD_CFG_NF(GPD9, NONE, PWROK, NF1),
 		_PAD_CFG_STRUCT(GPD10, 0x04000601, 0x0000),
 		PAD_CFG_NF(GPD11, NONE, DEEP, NF1),
-		PAD_CFG_TERM_GPO(GPP_A0, 1, NONE, DEEP),
+		PAD_CFG_TERM_GPO(GPP_A0, 0, NONE, DEEP),
 		PAD_CFG_NF(GPP_A1, NATIVE, DEEP, NF1),
 		PAD_CFG_NF(GPP_A2, NATIVE, DEEP, NF1),
 		PAD_CFG_NF(GPP_A3, NATIVE, DEEP, NF1),
@@ -167,7 +154,7 @@ static const struct pad_config gpio_table[] = {
 		PAD_CFG_NF(GPP_F20, NONE, DEEP, NF1),
 		PAD_CFG_NF(GPP_F21, NONE, DEEP, NF1),
 		PAD_CFG_TERM_GPO(GPP_F22, 0, NONE, DEEP),
-		PAD_CFG_TERM_GPO(GPP_F23, 0, NONE, DEEP),
+		PAD_CFG_TERM_GPO(GPP_F23, 1, NONE, DEEP),
 		PAD_CFG_GPI(GPP_G0, NONE, DEEP),
 		PAD_CFG_GPI(GPP_G1, NONE, DEEP),
 		PAD_CFG_GPI(GPP_G2, NONE, DEEP),
@@ -180,7 +167,7 @@ static const struct pad_config gpio_table[] = {
 		PAD_CFG_NF(GPP_H1, NONE, DEEP, NF1),
 		PAD_CFG_NF(GPP_H2, NONE, DEEP, NF1),
 		PAD_CFG_NF(GPP_H3, NONE, DEEP, NF1),
-		PAD_CFG_GPI(GPP_H4, NONE, DEEP),
+		PAD_CFG_NF(GPP_H4, NONE, DEEP, NF1),
 		PAD_CFG_GPI(GPP_H5, NONE, DEEP),
 		PAD_CFG_TERM_GPO(GPP_H6, 1, NONE, DEEP),
 		PAD_CFG_TERM_GPO(GPP_H7, 1, NONE, DEEP),
