@@ -7,6 +7,8 @@ https://system76.com/guides/addw1
 - [EC](./ec.rom)
   - *Read Error: No such file or directory (os error 2)*
 - [FD](./fd.rom)
-  - *Read Error: No such file or directory (os error 2)*
+  - Size: 4 KB
+  - HAP: false
 - [ME](./me.rom)
-  - *Read Error: No such file or directory (os error 2)*
+  - Size: 6140 KB
+  - Version: 12.0.49.1536
