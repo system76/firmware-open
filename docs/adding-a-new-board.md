@@ -65,6 +65,8 @@ repo.
 
 To port coreboot to a new board, see the coreboot documentation.
 
+- [TAS5825M] smart amp
+
 Once coreboot is ported, add its configuration.
 
 ```
@@ -87,3 +89,4 @@ READMEs.
 [external-programmer]: ./flashing.md#external-programmer
 [intel-microcode]: https://github.com/system76/intel-microcode
 [mega2560]: https://github.com/system76/ec/blob/master/doc/mega2560.md
+[TAS5825M]: https://github.com/system76/smart-amp
