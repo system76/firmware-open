@@ -18,6 +18,7 @@
 - [gaze14_1660ti_17](./gaze14_1660ti_17) - System76 Gazelle (gaze14)
 - [gaze15](./gaze15) - System76 Gazelle (gaze15)
 - [lemp9](./lemp9) - System76 Lemur Pro (lemp9)
+- [oryp5](./oryp5) - System76 Oryx Pro (oryp5)
 - [oryp6](./oryp6) - System76 Oryx Pro (oryp6)
 - [qemu](./qemu) - QEMU (Virtualization)
 - [thelio-b1](./thelio-b1) - System76 Thelio (thelio-b1)
