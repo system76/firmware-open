@@ -36,6 +36,10 @@ EDK2_ARGS=(
     -D SOURCE_DEBUG_ENABLE=FALSE
 )
 
+# Set edk2 PCIE_BASE to coreboot MMCONF_BASE_ADDRESS
+PCIE_BASE="$(grep '^CONFIG_MMCONF_BASE_ADDRESS=' "${MODEL_DIR}/coreboot.config" | cut -d '=' -f 2)"
+EDK2_ARGS+=(-D PCIE_BASE="${PCIE_BASE}")
+
 # Rebuild firmware-setup (used by edk2)
 touch apps/firmware-setup/Cargo.toml
 make -C apps/firmware-setup

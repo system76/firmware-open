@@ -12,6 +12,7 @@
 - [galp3-b](./galp3-b) - System76 Galago Pro (galp3-b)
 - [galp3-c](./galp3-c) - System76 Galago Pro (galp3-c)
 - [galp4](./galp4) - System76 Galago Pro (galp4)
+- [galp5](./galp5) - System76 Galago Pro (galp5)
 - [gaze14_1650_15](./gaze14_1650_15) - System76 Gazelle (gaze14)
 - [gaze14_1650_17](./gaze14_1650_17) - System76 Gazelle (gaze14)
 - [gaze14_1660ti_15](./gaze14_1660ti_15) - System76 Gazelle (gaze14)
