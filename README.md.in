@@ -8,9 +8,11 @@ firmware applications.
 These models are supported and will receive updates through the firmware
 manager:
 
+- addw2
 - bonw14
 - darp6
 - galp4
+- gaze15
 - lemp9
 - oryp6
 
