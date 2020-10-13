@@ -12,7 +12,6 @@ manager:
 - bonw14
 - darp6
 - galp4
-- gaze15
 - lemp9
 - oryp6
 
