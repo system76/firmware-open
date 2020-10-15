@@ -25,6 +25,7 @@ then
     git-lfs \
     gnat \
     libncurses-dev \
+    libudev-dev \
     mtools \
     nasm \
     parted \
