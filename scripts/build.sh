@@ -93,9 +93,9 @@ then
     # Rebuild firmware-update
     export BASEDIR="system76_${MODEL}_${VERSION}"
     pushd apps/firmware-update >/dev/null
-      rm -rf "build/x86_64-efi-pe"
-      make "build/x86_64-efi-pe/boot.img"
-      cp -v "build/x86_64-efi-pe/boot.img" "${USB}.partial"
+      rm -rf "build/x86_64-unknown-uefi"
+      make "build/x86_64-unknown-uefi/boot.img"
+      cp -v "build/x86_64-unknown-uefi/boot.img" "${USB}.partial"
     popd >/dev/null
 
     # Copy firmware to USB image
