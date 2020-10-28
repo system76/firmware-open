@@ -9,7 +9,6 @@ then
 fi
 UEFIPAYLOAD="$(realpath "$1")"
 
-#PACKAGE=CorebootPayloadPkg
 PACKAGE=UefiPayloadPkg
 BUILD_TYPE=RELEASE
 #BUILD_TYPE=DEBUG
