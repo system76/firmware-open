@@ -46,7 +46,7 @@ F3: data 1 mirror 1 pot 0 control 44
 F4: data 1 mirror 1 pot 0 control 04
 F5: data 1 mirror 1 pot 0 control 04
 F6: data 1 mirror 1 pot 0 control 00
-F7: data 1 mirror 1 pot 0 control 40
+F7: data 1 mirror 1 pot 0 control 82
 G0: data 1 mirror 1 pot 0 control 80
 G1: data 1 mirror 1 pot 0 control 44
 G2: data 0 mirror 0 pot 0 control 40
@@ -79,3 +79,11 @@ J4: data 1 mirror 1 pot 0 control 40
 J5: data 1 mirror 1 pot 0 control 80
 J6: data 1 mirror 1 pot 0 control 44
 J7: data 1 mirror 1 pot 0 control 80
+M0: data 0 mirror 0 control 00
+M1: data 0 mirror 0 control 00
+M2: data 1 mirror 1 control 00
+M3: data 1 mirror 1 control 00
+M4: data 0 mirror 0 control 06
+M5: data 0 mirror 0 control 00
+M6: data 0 mirror 0 control 86
+M7: data 0 mirror 0 control 86
