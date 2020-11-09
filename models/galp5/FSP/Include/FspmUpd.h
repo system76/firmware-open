@@ -2949,68 +2949,80 @@ typedef struct {
   UINT8                       PreBootDmaMask;
 
 /** Offset 0x06D1 - Enable/Disable DMI GEN3 Hardware Eq
-  (DEPRECATED)
+  Enable/Disable DMI GEN3 Hardware Eq. Disabled(0x0): Disable Hardware Eq, Enabled(0x1)(Default):
+  Enable  EQ Phase1 Static Presets Programming
   $EN_DIS
 **/
   UINT8                       DmiHweq;
 
 /** Offset 0x06D2 - Enable/Disable CPU DMI GEN3 Phase 23 Bypass
-  (DEPRECATED)
+  CPU DMI GEN3 Phase 23 Bypass. Disabled(0x0): Disable Phase 23 Bypass, Enabled(0x1)(Default):
+  Enable  Phase 23 Bypass
   $EN_DIS
 **/
   UINT8                       Gen3EqPhase23Bypass;
 
 /** Offset 0x06D3 - Enable/Disable CPU DMI GEN3 Phase 3 Bypass
-  (DEPRECATED)
+  CPU DMI GEN3 Phase 3 Bypass. Disabled(0x0): Disable Phase 3 Bypass, Enabled(0x1)(Default):
+  Enable  Phase 3 Bypass
   $EN_DIS
 **/
   UINT8                       Gen3EqPhase3Bypass;
 
 /** Offset 0x06D4 - Enable/Disable CPU DMI Gen3 EQ Local Transmitter Coefficient Override Enable
-  (DEPRECATED)
+  Program Gen3 EQ Local Transmitter Coefficient Override. Disabled(0x0): Disable Local
+  Transmitter Coefficient Override, Enabled(0x1)(Default): Enable  Local Transmitter
+  Coefficient Override
   $EN_DIS
 **/
   UINT8                       Gen3LtcoEnable;
 
 /** Offset 0x06D5 - Enable/Disable CPU DMI Gen3 EQ Remote Transmitter Coefficient/Preset Override Enable
-  (DEPRECATED)
+  Program Remote Transmitter Coefficient/Preset Override. Disabled(0x0): Disable Remote
+  Transmitter Coefficient/Preset Override, Enabled(0x1)(Default): Enable  Remote
+  Transmitter Coefficient/Preset Override
   $EN_DIS
 **/
   UINT8                       Gen3RtcoRtpoEnable;
 
 /** Offset 0x06D6 - DMI Gen3 Transmitter Pre-Cursor Coefficient
-  (DEPRECATED)
+  Used for programming DMI Gen3 Transmitter Pre-Cursor Coefficient . Range: 0-10,
+  2 is default for each lane
 **/
   UINT8                       DmiGen3Ltcpre[8];
 
 /** Offset 0x06DE - DMI Gen3 Transmitter Post-Cursor Coefficient
-  (DEPRECATED)
+  Used for programming Transmitter Post-Cursor Coefficient. Range: 0-9, 2 is default
+  for each lane
 **/
   UINT8                       DmiGen3Ltcpo[8];
 
 /** Offset 0x06E6 - PCIE Hw Eq Gen3 CoeffList Cm
-  (DEPRECATED)
+  CPU_PCIE_EQ_PARAM. Coefficient C-1.
 **/
   UINT8                       CpuDmiHwEqGen3CoeffListCm[8];
 
 /** Offset 0x06EE - PCIE Hw Eq Gen3 CoeffList Cp
-  (DEPRECATED)
+  CPU_PCIE_EQ_PARAM. Coefficient C+1.
 **/
   UINT8                       CpuDmiHwEqGen3CoeffListCp[8];
 
 /** Offset 0x06F6 - Enable/Disable DMI GEN3 DmiGen3DsPresetEnable
-  (DEPRECATED)
+  Enable/Disable DMI GEN3 DmiGen3DsPreset. Auto(0x0)(Default): DmiGen3DsPresetEnable,
+  Manual(0x1): Enable DmiGen3DsPresetEnable
   $EN_DIS
 **/
   UINT8                       DmiGen3DsPresetEnable;
 
 /** Offset 0x06F7 - DMI Gen3 Root port preset Rx values per lane
-  (DEPRECATED)
+  Used for programming DMI Gen3 preset values per lane. Range: 0-10, 1 is default
+  for each lane
 **/
   UINT8                       DmiGen3DsPortRxPreset[8];
 
 /** Offset 0x06FF - DMI Gen3 Root port preset Tx values per lane
-  (DEPRECATED)
+  Used for programming DMI Gen3 preset values per lane. Range: 0-10, 7 is default
+  for each lane
 **/
   UINT8                       DmiGen3DsPortTxPreset[8];
 
@@ -3049,11 +3061,30 @@ typedef struct {
 **/
   UINT8                       DmiMaxPayload;
 
-/** Offset 0x070D - SaPreMemTestRsvd
+/** Offset 0x070D - DPin Dynamic Switch Policy
+  Dynamic one-time switch from iGFx to dGFx after boot to OS
+  0: Disble, 1: Enable
+**/
+  UINT8                       DPinDynamicSwitch;
+
+/** Offset 0x070E - Delay before sending commn
+  Delay before sending dynamic one-time switch cmd to IOM, ACPI BIOS consumes this
+  value and proceed delay when _DSM is invoked: 0=Minimal, 5000=Maximum, default
+  is 0 second
+**/
+  UINT16                      DPinDynamicSwitchDelay0;
+
+/** Offset 0x0710 - Delay before IOM de-assert HPD
+  Delay before IOM de-assert HPD, ACPI BIOS passes this value to IOM when sending
+  dynamic one-time switch command: 1000=Minimal, 5000=Maximum, default is 1000 = 1 second
+**/
+  UINT16                      DPinDynamicSwitchDelay1;
+
+/** Offset 0x0712 - SaPreMemTestRsvd
   Reserved for SA Pre-Mem Test
   $EN_DIS
 **/
-  UINT8                       SaPreMemTestRsvd[33];
+  UINT8                       SaPreMemTestRsvd[28];
 
 /** Offset 0x072E - TotalFlashSize
   Enable/Disable. 0: Disable, define default value of TotalFlashSize , 1: enable
@@ -3449,11 +3480,66 @@ typedef struct {
 **/
   UINT8                       IbeccErrorInj;
 
-/** Offset 0x0926
+/** Offset 0x0926 - Enable/Disable DMI GEN3 DmiGen3UsPresetEnable
+  Enable/Disable DMI GEN3 DmiGen3UsPreset. Auto(0x0)(Default): DmiGen3UsPresetEnable,
+  Manual(0x1): Enable DmiGen3UsPresetEnable
+  $EN_DIS
 **/
-  UINT8                       UnusedUpdSpace26[1];
+  UINT8                       DmiGen3UsPresetEnable;
 
-/** Offset 0x0927
+/** Offset 0x0927 - DMI Gen3 Root port preset Rx values per lane
+  Used for programming DMI Gen3 preset values per lane. Range: 0-10, 7 is default
+  for each lane
+**/
+  UINT8                       DmiGen3UsPortRxPreset[8];
+
+/** Offset 0x092F - DMI Gen3 Root port preset Tx values per lane
+  Used for programming DMI Gen3 preset values per lane. Range: 0-10, 1 is default
+  for each lane
+**/
+  UINT8                       DmiGen3UsPortTxPreset[8];
+
+/** Offset 0x0937 - BCLK Frequency Source
+  Clock source of BCLK OC frequency, <b>0:CPU BCLK</b>, 1:PCH BCLK, 2:External CLK
+  0:CPU BCLK, 1:PCH BCLK, 2:External CLK
+**/
+  UINT8                       BclkSource;
+
+/** Offset 0x0938 - CPU BCLK OC Frequency
+  CPU BCLK OC Frequency in 10KHz units increasing. Value 9800 (10KHz) = 98MHz <b>0
+  - Auto</b>. Range is 8000-50000 (10KHz).
+**/
+  UINT32                      CpuBclkOcFrequency;
+
+/** Offset 0x093C - Ring CCF Auto Gv Disable Down
+  Ring CCF Auto Gv Disable Down, 0: Disabled, <b>1:Fused default</b>
+  0:Disabled, 1:Fused default
+**/
+  UINT8                       RingCcfAutoGvDisable;
+
+/** Offset 0x093D - SA/Uncore voltage mode
+  SA/Uncore voltage mode; <b>0: Adaptive</b>; 1: Override.
+  $EN_DIS
+**/
+  UINT8                       SaVoltageMode;
+
+/** Offset 0x093E - SA/Uncore Voltage Override
+  The SA/Uncore voltage override applicable when SA/Uncore voltage mode is in Override
+  mode. Valid Range 0 to 2000
+**/
+  UINT16                      SaVoltageOverride;
+
+/** Offset 0x0940 - SA/Uncore Extra Turbo voltage
+  Extra Turbo voltage applicable when SA/Uncore voltage mode is in Adaptive mode.
+  Valid Range 0 to 2000
+**/
+  UINT16                      SaExtraTurboVoltage;
+
+/** Offset 0x0942
+**/
+  UINT8                       UnusedUpdSpace26[5];
+
+/** Offset 0x0947
 **/
   UINT8                       ReservedFspmUpd2[1];
 } FSP_M_CONFIG;
@@ -3474,11 +3560,11 @@ typedef struct {
 **/
   FSP_M_CONFIG                FspmConfig;
 
-/** Offset 0x0928
+/** Offset 0x0948
 **/
   UINT8                       UnusedUpdSpace27[6];
 
-/** Offset 0x092E
+/** Offset 0x094E
 **/
   UINT16                      UpdTerminator;
 } FSPM_UPD;
