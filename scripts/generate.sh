@@ -66,10 +66,24 @@ then
     rm -f flashregion_*.bin
 fi
 
-# Get the Video BIOS Table for Intel systems
+# Get the Video BIOS Table and GOP driver for Intel systems
 if sudo [ -e /sys/kernel/debug/dri/0/i915_vbt ]
 then
     sudo cat /sys/kernel/debug/dri/0/i915_vbt > "${MODEL_DIR}/vbt.rom"
+
+    INTEL_GOP_DRIVER_GUID="7755CA7B-CA8F-43C5-889B-E1F59A93D575"
+    EXTRACT_DIR="extract"
+
+    if [ -n "${BIOS_IMAGE}" ]
+    then
+        if "${SCRIPT_DIR}/extract.sh" "${BIOS_IMAGE}" "${INTEL_GOP_DRIVER_GUID}" -o "${EXTRACT_DIR}" > /dev/null
+        then
+            cp -v "$(find "${EXTRACT_DIR}" | grep IntelGopDriver | grep PE32 | grep body.bin)" "${MODEL_DIR}/IntelGopDriver.efi"
+            rm -rf "${EXTRACT_DIR}"
+        else
+            echo "IntelGopDriver not present in firmware image"
+        fi
+    fi
 fi
 
 # XXX: More reliable way to determine if system has an EC?

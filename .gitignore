@@ -1,2 +1,3 @@
-build
 backup.rom
+build/
+extract/
