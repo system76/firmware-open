@@ -14,9 +14,10 @@ then
   sudo apt-get install \
     avr-libc \
     avrdude \
-    build-essential \
     bison \
+    build-essential \
     ccache \
+    cmake \
     curl \
     dosfstools \
     flashrom \
@@ -31,6 +32,7 @@ then
     parted \
     python \
     python3-distutils \
+    qt5-default \
     sdcc \
     uuid-dev \
     zlib1g-dev
@@ -42,6 +44,7 @@ then
     avr-gcc \
     avr-libc \
     avrdude \
+    cmake \
     curl \
     dosfstools \
     flashrom \
@@ -53,6 +56,7 @@ then
     ncurses-devel \
     parted \
     patch \
+    qt5-qtbase-devel \
     sdcc \
     systemd-devel \
     zlib-devel
