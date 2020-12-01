@@ -12,7 +12,7 @@ fn main() {
     println!("Device: {:X?}", dev.smbus_read_block_data(1));
 
     for offset in 0..=8 {
-        dev.smbus_write_block_data(IECS_DATA, &[offset]).unwrap();
+        dev.smbus_write_block_data(IECS_DATA, &[offset, 0, 0, 0]).unwrap();
         dev.smbus_write_block_data(IECS_CMD, CMD_AFRR).unwrap();
 
         loop {
