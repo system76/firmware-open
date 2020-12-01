@@ -49,12 +49,12 @@ fn main() {
     //TODO: force power and sleep 40ms
 
     let mut dev = LinuxI2CDevice::new("/dev/i2c-11", 0x40).unwrap();
-    println!("Vendor: {:X}", read(&mut dev, 0).unwrap());
-    println!("Device: {:X}", read(&mut dev, 1).unwrap());
+    eprintln!("Vendor: {:X}", read(&mut dev, 0).unwrap());
+    eprintln!("Device: {:X}", read(&mut dev, 1).unwrap());
 
     let image = fs::read("../models/galp5/usb4-retimer.rom").unwrap();
 
-    println!("Set offset to 0");
+    eprintln!("Set offset to 0");
     write(&mut dev, IECS_DATA, 0).unwrap();
     let status = command(&mut dev, CMD_BOPS).unwrap();
     if status != 0 {
@@ -63,7 +63,8 @@ fn main() {
 
     let mut i = 0;
     while i < image.len() {
-        // Write 64 byte block
+        eprint!("\rWrite {}/{}", i, image.len());
+
         let start = i;
         let mut j = 0;
         while i < image.len() && j < 64 {
@@ -78,24 +79,24 @@ fn main() {
             j += 4;
         }
 
-        println!("Write {}/{}", i, image.len());
         let status = command(&mut dev, CMD_BLKW).unwrap();
         if status != 0 {
             panic!("Failed to write block at {:X}:{:X}: {:X}", start, i, status);
         }
     }
+    eprintln!("\rWrite {}/{}", i, image.len());
 
-    println!("Authenticate");
+    eprintln!("Authenticate");
     let status = command(&mut dev, CMD_AUTH).unwrap();
     if status != 0 {
         panic!("Failed to authenticate: {:X}", status);
     }
 
-    println!("Power cycle");
+    eprintln!("Power cycle");
     let status = command(&mut dev, CMD_PCYC).unwrap();
     if status != 0 {
         panic!("Failed to power cycle: {:X}", status);
     }
 
-    println!("Successfully flashed retimer");
+    eprintln!("Successfully flashed retimer");
 }
