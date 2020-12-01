@@ -17,7 +17,8 @@ make -C eeprog-0.7.6-tear12
 sudo ./eeprog-0.7.6-tear12/eeprog \
     "${I2C_DEV}" \
     0x50 \
-    -r 0x0:0x40000 \
+    -16 \
+    -r 0:32768 \
     -o eeprom.rom
 
 xxd eeprom.rom | less
