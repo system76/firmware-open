@@ -1,3 +1,4 @@
 eeprom.rom
 eeprog-*/*.o
 eeprog-*/eeprog
+target/
