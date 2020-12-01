@@ -1,0 +1,230 @@
+#!/bin/bash
+#
+# eeprog-spd-flash-g34 0.11, SPD flash utility for 4p G34 boards
+#
+# Copyright (c) 2010-2014 by Kris Rusocki <kszysiu@gmail.com>
+# Licensed under GPLv2
+#
+# Boards supported: Tyan S8812, Supermicro H8QGi/H8QG6/H8QGL series
+#
+
+SMBUS=/proc/bus/pci/00/14.0
+
+read_smbus()
+{
+	local out
+	[ -z $1 ] && return 1
+	[ -z $SMBUS ] && return 1
+	[ $(($1 % 4)) -ne 0 ] && return 1
+	out=0x$(dd bs=4 if=$SMBUS skip=$(($1/4)) count=1 status=noxfer 2> /dev/null | od -tx1 -An | tr -d ' ')
+	[ $? -ne 0 ] && return 1
+	echo $out
+	return 0
+}
+
+write_smbus()
+{
+	[ -z $1 ] && return 1
+	[ -z $2 ] && return 1
+	[ -z $SMBUS ] && return 1
+	[ $(($1 % 4)) -ne 0 ] && return 1
+	echo -en $(printf '%08x' $2 | sed -e s/../\\\\x\&/g) | dd bs=4 of=$SMBUS conv=notrunc seek=$(($1/4)) status=noxfer 2> /dev/null
+	return $?
+}
+
+dimm_bank()
+{
+	[ -z $1 ] && return 1
+	[ -z "$BOARD" ] && return 1
+	[ -z "$I2CSET" ] && return 1
+	if [ "$BOARD" = "S8812" ]; then
+		$I2CSET -y 0 0x71 $(($1+4))
+		return $?
+	fi
+	if [ "$BOARD" = "H8QG6" -o "$BOARD" = "H8QGL" ]; then
+		local GPIO
+		GPIO=$(read_smbus 0x50)
+		[ $? -ne 0 ] && return 1
+		GPIO=$((($GPIO & 0xFFFFFCFF) | ($1 << 8)))
+		write_smbus 0x50 $GPIO
+		[ $? -ne 0 ] && return 1
+		return 0
+	fi
+	return 1
+}
+
+check_for()
+{
+	[ -z $1 ] && return 1
+	which $1 > /dev/null 2>&1 || return 1
+	return 0
+}
+
+missing_tool()
+{
+	echo
+	echo ERROR: \'$1\' is not available on your system. Please install package providing \'$1\'.
+}
+
+usage()
+{
+	echo Usage:
+	echo -e \\t"$0" all \<file\>
+	echo -e \\t\\tflashes SPDs of all DIMM modules with given file
+	echo
+	echo -e \\t"$0" \<cpu\> \<file\>
+	echo -e \\t\\tflashes SPDs of all DIMM modules of given CPU with given file
+	echo
+	echo -e \\t"$0" all
+	echo -e \\t\\tflashes SPDs with files, names of which follow the scheme:
+	echo -e \\t\\t\ \ spd-\<board model\>-CPU-\<cpu\>-0x\<I2C address in hex\>.bin
+	echo -e \\t\\tin other words, it does reverse of eeprog-spd-dump-g34
+	echo
+	echo -e \\t"$0" \<cpu\>
+	echo -e \\t\\tsame as above but only flashes SPDs of DIMM modules of given CPU
+	echo
+	exit 1
+}
+
+[ -z "$1" ] && usage
+
+CPU=$1
+FILE=$2
+
+CPUMASK=0
+if [ "$CPU" = "all" ]; then
+	CPUMASK=15
+else
+	[ "$CPU" != "$(echo $CPU | tr -cd 0-9)" ] && CPU=x
+	if [ "$CPU" != $(($CPU)) -o $(($CPU)) -lt 0 -o $(($CPU)) -gt 3 ]; then
+		echo \<cpu\> must be a number \(0-3\) or \"all\"
+		exit 1
+	fi
+	CPU=$(($CPU))
+	CPUMASK=$((1 << $CPU))
+fi
+
+DMIDECODE=dmidecode
+MODPROBE=modprobe
+I2CSET=i2cset
+EEPROG=eeprog-tear
+
+PREREQUISITES="id head sed od tr seq dd find awk lspci $DMIDECODE $MODPROBE $I2CSET $EEPROG"
+
+ERRORS=0
+MISSING=1
+for i in $PREREQUISITES ; do
+	[ $MISSING -ne 0 ] && echo -n Checking for
+	echo -n \ $i
+	MISSING=0
+	if ! check_for $i ; then
+		MISSING=1
+		missing_tool $i
+		ERRORS=1
+	fi
+done
+echo \ ...done.
+if [ $ERRORS -ne 0 ]; then
+	exit 1
+fi
+
+if [ "$(id -ru)" != "0" ]; then
+	echo ERROR: need root privileges.
+	exit 1
+fi
+
+BOARD=$($DMIDECODE -s baseboard-product-name | head -1)
+
+if [ "$BOARD" != "S8812" -a "$BOARD" != "H8QG6" -a "$BOARD" != "H8QGL" ]; then
+	echo ERROR: unsupported board: \""$BOARD"\"
+fi
+
+if [ "$BOARD" = "H8QG6" -o "$BOARD" = "H8QGL" ]; then
+	$MODPROBE ipmi_si
+	if ls -d /sys/devices/platform/ipmi_bmc* > /dev/null 2>&1 ; then
+		echo ERROR: BMC\(s\) found. Please disable IPMI and try again.
+		exit 1
+	fi
+fi
+
+echo
+echo Requested flashing of
+echo -en \\t
+[ "$CPU" = "all" ] && echo -n all DIMMs || echo -n CPU$CPU\'s DIMMs
+echo
+echo with
+echo -en \\t
+[ -z "$FILE" ] && echo -n spd-$BOARD-CPU-\<cpu\>-\<I2C address in hex\>.bin files || echo -n "$FILE"
+echo 
+echo
+echo OK to proceed? Press ENTER to continue or Ctrl+C to exit.
+read CONFIRM
+
+INCREMENT=1
+if [ "$BOARD" = "H8QGL" ]; then
+	INCREMENT=2
+fi
+
+$MODPROBE -r eeprom 2> /dev/null
+$MODPROBE i2c_dev
+
+if [ -z "$EEPROG_DEV" ]; then
+	echo Discovering i2c bus ...
+	# EEPROG_DEV=$(ls /sys/bus/pci/devices/0000:00:14.0/i2c-*/i2c-dev 2> /dev/null)
+	# EEPROG_DEV=$(ls /sys/bus/pci/devices/0000:$(lspci -nm | awk '/ "1002" "4385" / { print $1 }')/i2c-*/i2c-dev 2> /dev/null)
+	EEPROG_DEV=$(find /sys/bus/pci/devices/0000:$(lspci -nm | awk '/ "1002" "4385" / { print $1 }')/i2c-*/i2c-dev -mindepth 1 -maxdepth 1 -printf '%f ' | (read -a A ; if [ ${#A[*]} -gt 1 ]; then echo WARNING: multiple matching I2C interfaces found: ${A[*]}. Using ${A[0]}. Override with EEPROG_DEV if necessary. >&2 ; fi ; echo ${A[0]}))
+fi
+if [ -z "$EEPROG_DEV" ]; then
+	echo WARNING: PCI device 1002:4385 not found or has no I2C busses! Using i2c-0. >&2
+	EEPROG_DEV=i2c-0
+fi
+
+EEPROG_DEV=/dev/$EEPROG_DEV
+
+echo Using i2c bus at $EEPROG_DEV
+
+if [ "$BOARD" = "S8812" ]; then
+	# pre-set the Tyan
+	$I2CSET -y 0 0x72 0
+fi
+
+bit=1
+cpu=0
+flashed=0
+while [ $cpu -lt 4 ]; do
+	if [ $(($bit & $CPUMASK)) -ne 0 ]; then
+		echo Processing CPU $cpu ...
+		dimm_bank $cpu
+		if [ $? -ne 0 ]; then
+			echo ERROR: dimm_bank $cpu failed
+			exit 1
+		fi
+		for i in $(seq $((0x50)) $INCREMENT $((0x57))) ; do
+			IHEX=0x$(printf '%x' $i)
+			[ -z "$FILE" ] && IN=spd-$BOARD-CPU-$cpu-$IHEX.bin || IN=$FILE
+			if [ ! -r "$IN" ]; then
+				echo "$IN" does not exist or is not readable. Skipping DIMM at address $IHEX.
+				continue
+			fi
+			echo -n Writing "$IN" to DIMM at address $IHEX ...
+			$EEPROG -8 -f -w 0 -t 15 $EEPROG_DEV $i < "$IN" 2> /dev/null
+			RET=$?
+			if [ $RET -eq 2 ]; then
+				echo
+				echo ERROR: cannot access $EEPROG_DEV
+				exit 1
+			fi
+			if [ $RET -ne 0 ]; then
+				echo
+				echo DIMM at address $IHEX not populated \(or encountered I2C error\)
+			else
+				flashed=$(($flashed+1))
+				echo done.
+			fi
+		done
+	fi
+	cpu=$(($cpu+1))
+	bit=$(($bit << 1))
+done
+echo
+echo Flashed $flashed DIMM\(s\).

@@ -1,0 +1,21 @@
+29.02.2004, 0.7.6
+	- better error handling
+	- read_from_eeprom bug fixed, thanks to Marek Michalkiewicz 
+02.12.2003, 0.7.5
+	- help switch (-h) added
+	- 8bit addressing is now the default (safest)
+	- 16bit mode switch added (-16)
+	- quiet mode has been added (-q)
+28.11.2003, 0.7.4
+	- force switch added (-f)
+	- big warning will be displayed before reading/writing, user must
+	  confirm 
+	- i2c-dev.h has been (re)included into the distribution package because 
+	  user space functions have been removed from the original i2c-dev.h
+	  by the dev team.
+21.11.2003, 0.7.3
+	- ChangeLog added
+	- WARNING file added
+	- support for 8bit addressing EEPROMs (-8 command line switch)
+	- better code documentation
+	- i2c-dev.h is no more included into the dist package.

@@ -1,0 +1,143 @@
+#!/bin/bash
+#
+# eeprog-spd-flash 0.11, SPD flash utility
+#
+# Copyright (c) 2010-2014 by Kris Rusocki <kszysiu@gmail.com>
+# Licensed under GPLv2
+#
+# Boards supported: generic utility, YMMV
+#
+
+check_for()
+{
+	[ -z $1 ] && return 1
+	which $1 > /dev/null 2>&1 || return 1
+	return 0
+}
+
+missing_tool()
+{
+	echo
+	echo ERROR: \'$1\' is not available on your system. Please install package providing \'$1\'.
+}
+
+usage()
+{
+	echo Usage:
+	echo -e \\t"$0" all \<file\>
+	echo -e \\t\\tflashes all SPDs \(I2C addresses 0x50 through 0x57\) with given file
+	echo
+	echo -e \\t"$0" \<index\> \<file\>
+	echo -e \\t\\tflashes SPD at address 0x50 + \<index\> with given file
+	echo
+	echo -e \\t"$0" all
+	echo -e \\t\\tflashes SPDs with files, names of which follow the scheme:
+	echo -e \\t\\t\ \ spd-\<board model\>-0x\<I2C address in hex\>.bin
+	echo -e \\t\\tin other words, it does reverse of eeprog-spd-dump
+	echo
+	exit 1
+}
+
+[ -z "$1" ] && usage
+
+INDEX=$1
+FILE=$2
+
+if [ "$INDEX" = "all" ]; then
+	START=0
+	END=7
+else
+	[ -z "$FILE" ] && usage
+	[ "$INDEX" != "$(echo $INDEX | tr -cd 0-9)" ] && INDEX=x
+	if [ "$INDEX" != $(($INDEX)) -o $(($INDEX)) -lt 0 -o $(($INDEX)) -gt 7 ]; then
+		echo \<index\> must be a number \(0-7\) or \"all\"
+		exit 1
+	fi
+	INDEX=$(($INDEX))
+	START=$INDEX
+	END=$INDEX
+fi
+
+DMIDECODE=dmidecode
+MODPROBE=modprobe
+EEPROG=eeprog-tear
+
+PREREQUISITES="id head $DMIDECODE $MODPROBE $EEPROG"
+
+ERRORS=0
+MISSING=1
+for i in $PREREQUISITES ; do
+	[ $MISSING -ne 0 ] && echo -n Checking for
+	echo -n \ $i
+	MISSING=0
+	if ! check_for $i ; then
+		MISSING=1
+		missing_tool $i
+		ERRORS=1
+	fi
+done
+echo \ ...done.
+if [ $ERRORS -ne 0 ]; then
+	exit 1
+fi
+
+if [ "$(id -ru)" != "0" ]; then
+	echo ERROR: need root privileges.
+	exit 1
+fi
+
+BOARD=$($DMIDECODE -s baseboard-product-name | head -1)
+
+if [ "$BOARD" = "H8QG6" -o "$BOARD" = "H8QGL" ]; then
+	$MODPROBE ipmi_si
+	if ls -d /sys/devices/platform/ipmi_bmc* > /dev/null 2>&1 ; then
+		echo ERROR: BMC\(s\) found. Please disable IPMI and try again.
+		exit 1
+	fi
+fi
+
+echo
+echo Requested flashing of
+echo -en \\t
+[ "$INDEX" = "all" ] && echo -n all DIMMs || echo -n DIMM at index $INDEX
+echo
+echo with
+echo -en \\t
+[ -z "$FILE" ] && echo -n spd-$BOARD-\<I2C address in hex\>.bin files || echo -n "$FILE"
+echo 
+echo
+echo OK to proceed? Press ENTER to continue or Ctrl+C to exit.
+read CONFIRM
+
+$MODPROBE -r eeprom 2> /dev/null
+$MODPROBE i2c_dev
+
+[ -z "$EEPROG_DEV" ] && EEPROG_DEV=/dev/i2c-0
+
+flashed=0
+echo Processing ...
+for i in $(seq $((0x50+$START)) $((0x50+$END))) ; do
+	IHEX=0x$(printf '%x' $i)
+	[ -z "$FILE" ] && IN=spd-$BOARD-$IHEX.bin || IN=$FILE
+	if [ ! -r "$IN" ]; then
+		echo "$IN" does not exist or is not readable. Skipping DIMM at address $IHEX.
+		continue
+	fi
+	echo -n Writing "$IN" to DIMM at address $IHEX ...
+	$EEPROG -8 -f -w 0 -t 15 $EEPROG_DEV $i < "$IN" 2> /dev/null
+	RET=$?
+	if [ $RET -eq 2 ]; then
+		echo
+		echo ERROR: cannot access $EEPROG_DEV
+		exit 1
+	fi
+	if [ $RET -ne 0 ]; then
+		echo
+		echo DIMM at address $IHEX not populated \(or encountered I2C error\)
+	else
+		flashed=$(($flashed+1))
+		echo done.
+	fi
+done
+echo
+echo Flashed $flashed DIMM\(s\).

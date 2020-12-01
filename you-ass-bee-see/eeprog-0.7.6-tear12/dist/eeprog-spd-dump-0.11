@@ -1,0 +1,115 @@
+#!/bin/bash
+#
+# eeprog-spd-dump 0.11, SPD dump utility
+#
+# Copyright (c) 2010-2014 by Kris Rusocki <kszysiu@gmail.com>
+# Licensed under GPLv2
+#
+# Boards supported: generic utility, YMMV
+#
+
+check_for()
+{
+	[ -z $1 ] && return 1
+	which $1 > /dev/null 2>&1 || return 1
+	return 0
+}
+
+missing_tool()
+{
+	echo
+	echo ERROR: \'$1\' is not available on your system. Please install package providing \'$1\'.
+}
+
+usage()
+{
+	echo Usage:
+	echo -e \\t"$0" \<index\>
+	echo -e \\t\\tdumps SPD at I2C address 0x50 + \<index\>
+	echo
+	echo -e \\t"$0" all
+	echo -e \\t\\tdumps all SPDs \(I2C addresses 0x50 through 0x57\)
+	exit 1
+}
+
+[ -z "$1" ] && usage
+
+INDEX=$1
+
+if [ "$INDEX" = "all" ]; then
+	START=0
+	END=7
+else
+	[ "$INDEX" != "$(echo $INDEX | tr -cd 0-9)" ] && INDEX=x
+	if [ "$INDEX" != $(($INDEX)) -o $(($INDEX)) -lt 0 -o $(($INDEX)) -gt 7 ]; then
+		echo \<index\> must be a number \(0-7\) or \"all\"
+		exit 1
+	fi
+	INDEX=$(($INDEX))
+	START=$INDEX
+	END=$INDEX
+fi
+
+DMIDECODE=dmidecode
+MODPROBE=modprobe
+EEPROG=eeprog-tear
+
+PREREQUISITES="id head $DMIDECODE $MODPROBE $EEPROG"
+
+ERRORS=0
+MISSING=1
+for i in $PREREQUISITES ; do
+	[ $MISSING -ne 0 ] && echo -n Checking for
+	echo -n \ $i
+	MISSING=0
+	if ! check_for $i ; then
+		MISSING=1
+		missing_tool $i
+		ERRORS=1
+	fi
+done
+echo \ ...done.
+if [ $ERRORS -ne 0 ]; then
+	exit 1
+fi
+
+if [ "$(id -ru)" != "0" ]; then
+	echo ERROR: need root privileges.
+	exit 1
+fi
+
+BOARD=$($DMIDECODE -s baseboard-product-name | head -1)
+
+if [ "$BOARD" = "H8QG6" -o "$BOARD" = "H8QGL" ]; then
+	$MODPROBE ipmi_si
+	if ls -d /sys/devices/platform/ipmi_bmc* > /dev/null 2>&1 ; then
+		echo ERROR: BMC\(s\) found. Please disable IPMI and try again.
+		exit 1
+	fi
+fi
+
+$MODPROBE -r eeprom 2> /dev/null
+$MODPROBE i2c_dev
+
+[ -z "$EEPROG_DEV" ] && EEPROG_DEV=/dev/i2c-0
+
+echo Processing ...
+for i in $(seq $((0x50+$START)) $((0x50+$END))) ; do
+	IHEX=0x$(printf '%x' $i)
+	OUT=spd-$BOARD-$IHEX.bin
+	echo -n Reading DIMM at address $IHEX ...
+	$EEPROG -8 -f -r 0:256  $EEPROG_DEV $i > "$OUT" 2> /dev/null
+	RET=$?
+	if [ $RET -eq 2 ]; then
+		echo
+		echo ERROR: cannot access $EEPROG_DEV
+		exit 1
+	fi
+	if [ $RET -ne 0 ]; then
+		echo
+		echo DIMM at address $IHEX not populated \(or encountered I2C error\)
+		rm "$OUT"
+	else
+		echo done.
+	fi
+done
