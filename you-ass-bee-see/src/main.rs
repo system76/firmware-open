@@ -1,5 +1,6 @@
 use i2cdev::core::I2CDevice;
 use i2cdev::linux::LinuxI2CDevice;
+use std::fs;
 
 const IECS_CMD: u8 = 8;
 const IECS_DATA: u8 = 9;
@@ -50,14 +51,49 @@ fn main() {
     println!("Vendor: {:X}", read(&mut dev, 0).unwrap());
     println!("Device: {:X}", read(&mut dev, 1).unwrap());
 
-    for offset in 0..=8 {
-        write(&mut dev, IECS_DATA, offset).unwrap();
-        let status = command(&mut dev, CMD_AFRR).unwrap();
-        if status == 0 {
-            let data = read(&mut dev, MSG_OUT_RDATA).unwrap();
-            println!("{:X}: {:X}", offset, data);
-        } else {
-            println!("{:X}: Error {:X}", offset, status);
+    let image = fs::read("../models/galp5/usb4-retimer.rom").unwrap();
+
+    // Set offset to 0
+    write(&mut dev, IECS_DATA, 0).unwrap();
+    let status = command(&mut dev, CMD_BOPS).unwrap();
+    if status != 0 {
+        panic!("Failed to set offset: {:X}", status);
+    }
+
+    // Write data
+    let mut i = 0;
+    while i < image.len() {
+        // Write 64 byte block
+        let start = i;
+        let mut j = 0;
+        while i < image.len() && j < 64 {
+            let data = {
+                image[i] as u32 |
+                (image[i + 1] as u32) << 8 |
+                (image[i + 2] as u32) << 16 |
+                (image[i + 3] as u32) << 24
+            };
+            write(&mut dev, MSG_OUT_RDATA, data).unwrap();
+            i += 4;
+            j += 4;
+        }
+        let status = command(&mut dev, CMD_BLKW).unwrap();
+        if status != 0 {
+            panic!("Failed to write block at {:X}:{:X}: {:X}", start, i, status);
         }
     }
+
+    // Authenticate written data
+    let status = command(&mut dev, CMD_AUTH).unwrap();
+    if status != 0 {
+        panic!("Failed to authenticate: {:X}", status);
+    }
+
+    // Power cycle
+    let status = command(&mut dev, CMD_PCYC).unwrap();
+    if status != 0 {
+        panic!("Failed to power cycle: {:X}", status);
+    }
+
+    println!("Successfully flashed retimer");
 }
