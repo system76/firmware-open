@@ -38,7 +38,6 @@ fn command<I: I2CDevice>(dev: &mut I, cmd: u32) -> Result<u32, I::Error> {
     write(dev, IECS_CMD, cmd)?;
     loop {
         let status = read(dev, IECS_CMD)?;
-        println!("Status: {:X}", status);
         if status != cmd {
             //TODO: perform error checking here
             return Ok(status);
@@ -47,20 +46,21 @@ fn command<I: I2CDevice>(dev: &mut I, cmd: u32) -> Result<u32, I::Error> {
 }
 
 fn main() {
+    //TODO: force power and sleep 40ms
+
     let mut dev = LinuxI2CDevice::new("/dev/i2c-11", 0x40).unwrap();
     println!("Vendor: {:X}", read(&mut dev, 0).unwrap());
     println!("Device: {:X}", read(&mut dev, 1).unwrap());
 
     let image = fs::read("../models/galp5/usb4-retimer.rom").unwrap();
 
-    // Set offset to 0
+    println!("Set offset to 0");
     write(&mut dev, IECS_DATA, 0).unwrap();
     let status = command(&mut dev, CMD_BOPS).unwrap();
     if status != 0 {
         panic!("Failed to set offset: {:X}", status);
     }
 
-    // Write data
     let mut i = 0;
     while i < image.len() {
         // Write 64 byte block
@@ -77,19 +77,21 @@ fn main() {
             i += 4;
             j += 4;
         }
+
+        println!("Write {}/{}", i, image.len());
         let status = command(&mut dev, CMD_BLKW).unwrap();
         if status != 0 {
             panic!("Failed to write block at {:X}:{:X}: {:X}", start, i, status);
         }
     }
 
-    // Authenticate written data
+    println!("Authenticate");
     let status = command(&mut dev, CMD_AUTH).unwrap();
     if status != 0 {
         panic!("Failed to authenticate: {:X}", status);
     }
 
-    // Power cycle
+    println!("Power cycle");
     let status = command(&mut dev, CMD_PCYC).unwrap();
     if status != 0 {
         panic!("Failed to power cycle: {:X}", status);
