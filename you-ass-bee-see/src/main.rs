@@ -11,16 +11,18 @@ fn main() {
     println!("Vendor: {:X?}", dev.smbus_read_block_data(0));
     println!("Device: {:X?}", dev.smbus_read_block_data(1));
 
-    dev.smbus_write_block_data(IECS_DATA, &[8]).unwrap();
-    dev.smbus_write_block_data(IECS_CMD, CMD_AFRR).unwrap();
+    for offset in 0..=8 {
+        dev.smbus_write_block_data(IECS_DATA, &[offset]).unwrap();
+        dev.smbus_write_block_data(IECS_CMD, CMD_AFRR).unwrap();
 
-    loop {
-        let data = dev.smbus_read_block_data(IECS_CMD).unwrap();
-        println!("{:?}", data);
-        if data.as_slice() != CMD_AFRR {
-            break;
+        loop {
+            let data = dev.smbus_read_block_data(IECS_CMD).unwrap();
+            println!("{:?}", data);
+            if data.as_slice() != CMD_AFRR {
+                break;
+            }
         }
-    }
 
-    println!("Version: {:X?}", dev.smbus_read_block_data(MSG_OUT_RDATA));
+        println!("{:X}: {:X?}", offset, dev.smbus_read_block_data(MSG_OUT_RDATA));
+    }
 }
