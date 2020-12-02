@@ -4,6 +4,7 @@ use std::{
     io,
     rc::Rc,
     process,
+    ptr,
     thread,
     time
 };
@@ -19,7 +20,7 @@ const CMD_BOPS: u32 = 0x53504f42;
 const CMD_PCYC: u32 = 0x43594350;
 
 
-#[repr(u64)]
+#[repr(u32)]
 pub enum GpioPadMode {
     Gpio = 0 << 10,
     Nf1 = 1 << 10,
@@ -34,34 +35,37 @@ pub enum GpioPadMode {
 pub struct Gpio {
     //TODO: this should probably be locked
     sideband: Rc<Sideband>,
-    port: u8,
-    pad: u8,
+    ptr: *mut u32,
 }
 
 impl Gpio {
-    const PAD_MODE: u64 = 0b111 << 10;
-    const RX_DIS: u64 = 1 << 9;
-    const TX_DIS: u64 = 1 << 8;
-    const RX: u64 = 1 << 1;
-    const TX: u64 = 1 << 0;
+    const PAD_MODE: u32 = 0b111 << 10;
+    const RX_DIS: u32 = 1 << 9;
+    const TX_DIS: u32 = 1 << 8;
+    const RX: u32 = 1 << 1;
+    const TX: u32 = 1 << 0;
 
-    pub fn new(sideband: Rc<Sideband>, port: u8, pad: u8) -> Self {
-        Self { sideband, port, pad }
+    pub unsafe fn new(sideband: Rc<Sideband>, port: u8, pad: u8) -> Result<Self, String> {
+        if let Some(ptr) = sideband.gpio_ptr(port, pad) {
+            Ok(Self { sideband, ptr })
+        } else {
+            Err(format!("GPIO {:X}, {:X} not found", port, pad))
+        }
     }
 
-    unsafe fn get_config(&self) -> u64 {
-        self.sideband.gpio(self.port, self.pad)
+    unsafe fn get_config(&self) -> u32 {
+        ptr::read_volatile(self.ptr)
     }
 
-    unsafe fn set_config(&mut self, config: u64) {
-        self.sideband.set_gpio(self.port, self.pad, config);
+    unsafe fn set_config(&mut self, config: u32) {
+        ptr::write_volatile(self.ptr, config);
     }
 
-    unsafe fn get_mask(&self, mask: u64) -> bool {
+    unsafe fn get_mask(&self, mask: u32) -> bool {
         self.get_config() & mask == mask
     }
 
-    unsafe fn set_mask(&mut self, mask: u64, value: bool) {
+    unsafe fn set_mask(&mut self, mask: u32, value: bool) {
         let mut config = self.get_config();
         if value {
             config |= mask;
@@ -74,7 +78,7 @@ impl Gpio {
     pub unsafe fn set_pad_mode(&mut self, mode: GpioPadMode) {
         let mut config = self.get_config();
         config &= !Self::PAD_MODE;
-        config |= mode as u64;
+        config |= mode as u32;
         self.set_config(config);
 
     }
@@ -102,9 +106,9 @@ impl Gpio {
 
 pub struct I2CBitbang {
     scl: Gpio,
-    scl_config: u64,
+    scl_config: u32,
     sda: Gpio,
-    sda_config: u64,
+    sda_config: u32,
 }
 
 impl I2CBitbang {
@@ -202,7 +206,7 @@ impl I2CBitbang {
     // Start condition is optionally sent
     // 8 bits are written
     // 1 bit is read, low if ack, high if nack
-    unsafe fn write_byte(&mut self, byte: u8, start: bool) -> bool {
+    pub unsafe fn write_byte(&mut self, byte: u8, start: bool) -> bool {
         if start {
             self.start();
         }
@@ -214,7 +218,7 @@ impl I2CBitbang {
 
     // 8 bits are read
     // 1 bit is written, low if ack, high if nack
-    unsafe fn read_byte(&mut self, ack: bool) -> u8 {
+    pub unsafe fn read_byte(&mut self, ack: bool) -> u8 {
         let mut byte = 0;
         for i in (0..8).rev() {
             if self.read_bit() {
@@ -353,6 +357,35 @@ impl Retimer {
     }
 }
 
+pub struct Rom {
+    i2c: I2CBitbang,
+    address: u8,
+}
+
+impl Rom {
+    pub fn new(i2c: I2CBitbang, address: u8) -> Self {
+        Self { i2c, address }
+    }
+
+    pub unsafe fn read(&mut self, offset: u16, length: u16) -> Vec<u8> {
+        let mut bytes = Vec::with_capacity(length as usize);
+        if self.i2c.write_byte(self.address << 1, true) {
+            if self.i2c.write_byte((offset >> 8) as u8, false) {
+                if self.i2c.write_byte(offset as u8, false) {
+                    if self.i2c.write_byte(self.address << 1 | 1, true) {
+                        for i in 0..length {
+                            let ack = i + 1 != length;
+                            bytes.push(self.i2c.read_byte(ack));
+                        }
+                    }
+                }
+            }
+        }
+        self.i2c.stop();
+        bytes
+    }
+}
+
 unsafe fn flash_retimer(retimer: &mut Retimer) -> Result<(), String> {
     eprintln!("Vendor: {:X}", retimer.read(0)?);
     eprintln!("Device: {:X}", retimer.read(1)?);
@@ -421,22 +454,57 @@ unsafe fn retimer_access(i2c: I2CBitbang, address: u8) -> i32 {
     }
 }
 
+unsafe fn flash_rom(rom: &mut Rom) -> Result<(), String> {
+    let data = rom.read(0, 32768);
+    fs::write("usb4-pd.rom", &data).map_err(|err| {
+        format!("failed to write usb4-pd.rom: {}", err)
+    })?;
+    Ok(())
+}
+
+unsafe fn rom_access(i2c: I2CBitbang, address: u8) -> i32 {
+    let mut rom = Rom::new(i2c, address);
+    match flash_rom(&mut rom) {
+        Ok(()) => 0,
+        Err(err) => {
+            eprintln!("Failed to flash rom: {}", err);
+            1
+        }
+    }
+}
+
 unsafe fn i2c_access(sideband: Rc<Sideband>) -> i32 {
-    let smlink = false;
-    let (i2c, address) = if smlink {
-        let sml0clk = Gpio::new(sideband.clone(), 0x6A, 0x06); // GPP_C3
-        let sml0data = Gpio::new(sideband.clone(), 0x6A, 0x08); // GPP_C4
-        (I2CBitbang::new(sml0clk, sml0data), 0x40)
-    } else {
-        let i2c1_scl = Gpio::new(sideband.clone(), 0x6A, 0x26); // GPP_C19
-        let i2c1_sda = Gpio::new(sideband.clone(), 0x6A, 0x24); // GPP_C18
-        (I2CBitbang::new(i2c1_scl, i2c1_sda), 0x40)
+    enum I2CBus {
+        I2C1,
+        SMLink0,
+        SMLink1,
+    }
+
+    let bus = I2CBus::I2C1;
+    let i2c = match bus {
+        I2CBus::I2C1 => {
+            let scl = Gpio::new(sideband.clone(), 0x6A, 0x26).unwrap(); // GPP_C19
+            let sda = Gpio::new(sideband.clone(), 0x6A, 0x24).unwrap(); // GPP_C18
+            I2CBitbang::new(scl, sda)
+        },
+        I2CBus::SMLink0 => {
+            let scl = Gpio::new(sideband.clone(), 0x6A, 0x06).unwrap(); // GPP_C3
+            let sda = Gpio::new(sideband.clone(), 0x6A, 0x08).unwrap(); // GPP_C4
+            I2CBitbang::new(scl, sda)
+        },
+        I2CBus::SMLink1 => {
+            let scl = Gpio::new(sideband.clone(), 0x6A, 0x0C).unwrap(); // GPP_C6
+            let sda = Gpio::new(sideband.clone(), 0x6A, 0x0E).unwrap(); // GPP_C7
+            I2CBitbang::new(scl, sda)
+        },
     };
-    retimer_access(i2c, address)
+
+    retimer_access(i2c, 0x40)
+    //rom_access(i2c, 0x50)
 }
 
 unsafe fn i2c_enable(sideband: Rc<Sideband>) -> i32 {
-    let mut rom_i2c_en = Gpio::new(sideband.clone(), 0x6A, 0x70); // GPP_E1
+    let mut rom_i2c_en = Gpio::new(sideband.clone(), 0x6A, 0x70).unwrap(); // GPP_E1
 
     println!("Set ROM_I2C_EN high");
     rom_i2c_en.set_tx(true);
@@ -453,7 +521,7 @@ unsafe fn i2c_enable(sideband: Rc<Sideband>) -> i32 {
 }
 
 unsafe fn force_power(sideband: Rc<Sideband>) -> i32 {
-    let mut force_power = Gpio::new(sideband.clone(), 0x6E, 0x82); // GPP_A23
+    let mut force_power = Gpio::new(sideband.clone(), 0x6E, 0x82).unwrap(); // GPP_A23
 
     println!("Set FORCE_POWER high");
     force_power.set_tx(true);
