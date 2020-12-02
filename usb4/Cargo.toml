@@ -1,5 +1,5 @@
 [package]
-name = "you-ass-bee-see"
+name = "usb4"
 version = "0.1.0"
 authors = ["Jeremy Soller <jeremy@system76.com>"]
 edition = "2018"
@@ -8,4 +8,3 @@ edition = "2018"
 
 [dependencies]
 coreboot-collector = { path = "../tools/coreboot-collector" }
-i2cdev = "0.4.4"
