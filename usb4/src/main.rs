@@ -115,12 +115,14 @@ impl I2CBitbang {
         scl.enable_tx(false);
         scl.set_tx(false);
         scl.set_pad_mode(GpioPadMode::Gpio);
+        println!("SCL config set to 0x{:X}, was 0x{:X}", scl.get_config(), scl_config);
 
         let sda_config = sda.get_config();
         sda.enable_rx(true);
         sda.enable_tx(false);
         sda.set_tx(false);
         sda.set_pad_mode(GpioPadMode::Gpio);
+        println!("SDA config set to 0x{:X}, was 0x{:X}", sda.get_config(), sda_config);
 
         Self { scl, scl_config, sda, sda_config, }
     }
@@ -259,7 +261,11 @@ impl Drop for I2CBitbang {
     fn drop(&mut self) {
         unsafe {
             //TODO: will this transmit something invalid?
+
+            println!("SCL config set to 0x{:X}, was 0x{:X}", self.scl_config, self.scl.get_config());
             self.scl.set_config(self.scl_config);
+
+            println!("SDA config set to 0x{:X}, was 0x{:X}", self.sda_config, self.sda.get_config());
             self.sda.set_config(self.sda_config);
         }
     }
@@ -392,10 +398,27 @@ unsafe fn retimer_access(i2c: I2CBitbang) -> i32 {
 }
 
 unsafe fn i2c_access(sideband: Rc<Sideband>) -> i32 {
-    let scl = Gpio::new(sideband.clone(), 0x6A, 0x06); // GPP_C3
-    let sda = Gpio::new(sideband.clone(), 0x6A, 0x08); // GPP_C4
+    let scl = Gpio::new(sideband.clone(), 0x6A, 0x26); // GPP_C19
+    let sda = Gpio::new(sideband.clone(), 0x6A, 0x24); // GPP_C18
     let i2c = I2CBitbang::new(scl, sda);
     retimer_access(i2c)
+}
+
+unsafe fn i2c_enable(sideband: Rc<Sideband>) -> i32 {
+    let mut rom_i2c_en = Gpio::new(sideband.clone(), 0x6A, 0x70); // GPP_E1
+
+    println!("Set ROM_I2C_EN high");
+    rom_i2c_en.set_tx(true);
+
+    println!("Sleep 40 ms");
+    thread::sleep(time::Duration::from_millis(40));
+
+    let exit_status = i2c_access(sideband);
+
+    eprintln!("Set ROM_I2C_EN low");
+    rom_i2c_en.set_tx(false);
+
+    exit_status
 }
 
 unsafe fn force_power(sideband: Rc<Sideband>) -> i32 {
@@ -407,7 +430,7 @@ unsafe fn force_power(sideband: Rc<Sideband>) -> i32 {
     println!("Sleep 40 ms");
     thread::sleep(time::Duration::from_millis(40));
 
-    let exit_status = i2c_access(sideband);
+    let exit_status = i2c_enable(sideband);
 
     eprintln!("Set FORCE_POWER low");
     force_power.set_tx(false);
