@@ -54,6 +54,11 @@ fn main() {
 
     let image = fs::read("../models/galp5/usb4-retimer.rom").unwrap();
 
+    for i in 2..=32 {
+        println!("{}: {:X}", i, read(&mut dev, i).unwrap());
+    }
+
+    /*
     eprintln!("Set offset to 0");
     write(&mut dev, IECS_DATA, 0).unwrap();
     let status = command(&mut dev, CMD_BOPS).unwrap();
@@ -99,4 +104,5 @@ fn main() {
     }
 
     eprintln!("Successfully flashed retimer");
+    */
 }
