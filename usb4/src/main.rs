@@ -422,9 +422,16 @@ unsafe fn retimer_access(i2c: I2CBitbang) -> i32 {
 }
 
 unsafe fn i2c_access(sideband: Rc<Sideband>) -> i32 {
-    let scl = Gpio::new(sideband.clone(), 0x6A, 0x26); // GPP_C19
-    let sda = Gpio::new(sideband.clone(), 0x6A, 0x24); // GPP_C18
-    let i2c = I2CBitbang::new(scl, sda);
+    let smlink = false;
+    let i2c = if smlink {
+        let sml0clk = Gpio::new(sideband.clone(), 0x6A, 0x06); // GPP_C3
+        let sml0data = Gpio::new(sideband.clone(), 0x6A, 0x08); // GPP_C4
+        I2CBitbang::new(sml0clk, sml0data)
+    } else {
+        let i2c1_scl = Gpio::new(sideband.clone(), 0x6A, 0x26); // GPP_C19
+        let i2c1_sda = Gpio::new(sideband.clone(), 0x6A, 0x24); // GPP_C18
+        I2CBitbang::new(i2c1_scl, i2c1_sda)
+    };
     retimer_access(i2c)
 }
 
