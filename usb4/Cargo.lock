@@ -125,6 +125,7 @@ name = "usb4"
 version = "0.1.0"
 dependencies = [
  "coreboot-collector",
+ "libc",
 ]
 
 [[package]]

@@ -8,3 +8,4 @@ edition = "2018"
 
 [dependencies]
 coreboot-collector = { path = "../tools/coreboot-collector" }
+libc = "0.2"

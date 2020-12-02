@@ -1,6 +1,7 @@
 use coreboot_collector::sideband::Sideband;
 use std::{
     fs,
+    io,
     rc::Rc,
     process,
     thread,
@@ -153,9 +154,10 @@ impl I2CBitbang {
         self.sda.enable_tx(false);
     }
 
+    // SDA goes high to low while SCL is high
     unsafe fn start(&mut self) {
-        self.set_scl();
         self.set_sda();
+        self.set_scl();
         self.delay();
         self.clr_sda();
         self.delay();
@@ -163,6 +165,7 @@ impl I2CBitbang {
         self.delay();
     }
 
+    // SDA goes low to high while SCL is high
     unsafe fn stop(&mut self) {
         self.clr_sda();
         self.delay();
@@ -172,6 +175,7 @@ impl I2CBitbang {
         self.delay();
     }
 
+    // SDA is set while SCL is pulsed
     unsafe fn write_bit(&mut self, bit: bool) {
         if bit {
             self.set_sda();
@@ -184,6 +188,7 @@ impl I2CBitbang {
         self.clr_scl();
     }
 
+    // SDA is read while SCL is pulsed
     unsafe fn read_bit(&mut self) -> bool {
         self.set_sda();
         self.delay();
@@ -194,6 +199,9 @@ impl I2CBitbang {
         bit
     }
 
+    // Start condition is optionally sent
+    // 8 bits are written
+    // 1 bit is read, low if ack, high if nack
     unsafe fn write_byte(&mut self, byte: u8, start: bool) -> bool {
         if start {
             self.start();
@@ -201,9 +209,11 @@ impl I2CBitbang {
         for i in (0..8).rev() {
             self.write_bit(byte & (1 << i) != 0);
         }
-        self.read_bit()
+        !self.read_bit()
     }
 
+    // 8 bits are read
+    // 1 bit is written, low if ack, high if nack
     unsafe fn read_byte(&mut self, ack: bool) -> u8 {
         let mut byte = 0;
         for i in (0..8).rev() {
@@ -215,6 +225,12 @@ impl I2CBitbang {
         byte
     }
 
+    // Start condition
+    // Address is written with read bit low
+    // Command is written
+    // Byte count is written
+    // Bytes are written
+    // Stop condition
     pub unsafe fn smbus_block_write(&mut self, address: u8, command: u8, bytes: &[u8]) -> usize {
         // Only 32 bytes can be processed at a time
         if bytes.len() > 32 {
@@ -239,6 +255,13 @@ impl I2CBitbang {
         count
     }
 
+    // Start condition
+    // Address is written with read bit low
+    // Command is written
+    // Address is written with read bit high
+    // Byte count is read
+    // Bytes are read
+    // Stop condition
     pub unsafe fn smbus_block_read(&mut self, address: u8, command: u8) -> Vec<u8> {
         //TODO: use static buffer?
         let mut bytes = Vec::new();
@@ -246,8 +269,9 @@ impl I2CBitbang {
             if self.write_byte(command, false) {
                 if self.write_byte(address << 1 | 1, true) {
                     let count = self.read_byte(true);
-                    for _i in 0..count {
-                        bytes.push(self.read_byte(true));
+                    for i in 0..count {
+                        let ack = i + 1 != count;
+                        bytes.push(self.read_byte(ack));
                     }
                 }
             }
@@ -442,6 +466,17 @@ fn main() {
     //TODO: check model
 
     unsafe {
+        if libc::sched_setscheduler(
+            libc::getpid(),
+            libc::SCHED_FIFO,
+            &libc::sched_param {
+                sched_priority: 99,
+            }
+        ) != 0 {
+            eprintln!("Failed to set scheduler priority: {}", io::Error::last_os_error());
+            process::exit(1);
+        }
+
         let sideband = match Sideband::new(0xFD00_0000) {
             Ok(ok) => Rc::new(ok),
             Err(err) => {
