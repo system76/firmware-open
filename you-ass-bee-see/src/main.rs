@@ -1,6 +1,7 @@
+use coreboot_collector::sideband::Sideband;
 use i2cdev::core::I2CDevice;
 use i2cdev::linux::LinuxI2CDevice;
-use std::fs;
+use std::{fs, thread, time};
 
 const IECS_CMD: u8 = 8;
 const IECS_DATA: u8 = 9;
@@ -11,6 +12,8 @@ const CMD_AUTH: u32 = 0x48545541;
 const CMD_BLKW: u32 = 0x574b4c42;
 const CMD_BOPS: u32 = 0x53504f42;
 const CMD_PCYC: u32 = 0x43594350;
+
+const GPIO_FORCE_POWER: (u8, u8) = (0x6E, 0x82); // GPP_A23
 
 fn read<I: I2CDevice>(dev: &mut I, reg: u8) -> Result<u32, I::Error> {
     let bytes = dev.smbus_read_block_data(reg)?;
@@ -46,7 +49,20 @@ fn command<I: I2CDevice>(dev: &mut I, cmd: u32) -> Result<u32, I::Error> {
 }
 
 fn main() {
-    //TODO: force power and sleep 40ms
+    //TODO: check model
+
+    let sideband = unsafe { Sideband::new(0xFD00_0000).unwrap() };
+
+    // Set FORCE_POWER high
+    unsafe {
+        let (port, pad) = GPIO_FORCE_POWER;
+        let mut value = sideband.gpio(port, pad);
+        value |= 1;
+        sideband.set_gpio(port, pad, value);
+    }
+
+    // Sleep 40ms
+    thread::sleep(time::Duration::from_millis(40));
 
     let mut dev = LinuxI2CDevice::new("/dev/i2c-11", 0x40).unwrap();
     eprintln!("Vendor: {:X}", read(&mut dev, 0).unwrap());
@@ -57,6 +73,9 @@ fn main() {
     for i in 2..=32 {
         println!("{}: {:X}", i, read(&mut dev, i).unwrap());
     }
+
+    write(&mut dev, IECS_DATA, 0).unwrap();
+    println!("IECS_DATA: {:X}", read(&mut dev, IECS_DATA).unwrap());
 
     /*
     eprintln!("Set offset to 0");
@@ -105,4 +124,12 @@ fn main() {
 
     eprintln!("Successfully flashed retimer");
     */
+
+    // Set FORCE_POWER low
+    unsafe {
+        let (port, pad) = GPIO_FORCE_POWER;
+        let mut value = sideband.gpio(port, pad);
+        value &= !1;
+        sideband.set_gpio(port, pad, value);
+    }
 }

@@ -7,4 +7,5 @@ edition = "2018"
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
 [dependencies]
+coreboot-collector = { path = "../tools/coreboot-collector" }
 i2cdev = "0.4.4"
