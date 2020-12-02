@@ -410,8 +410,8 @@ unsafe fn flash_retimer(retimer: &mut Retimer) -> Result<(), String> {
     Ok(())
 }
 
-unsafe fn retimer_access(i2c: I2CBitbang) -> i32 {
-    let mut retimer = Retimer::new(i2c, 0x40);
+unsafe fn retimer_access(i2c: I2CBitbang, address: u8) -> i32 {
+    let mut retimer = Retimer::new(i2c, address);
     match flash_retimer(&mut retimer) {
         Ok(()) => 0,
         Err(err) => {
@@ -423,16 +423,16 @@ unsafe fn retimer_access(i2c: I2CBitbang) -> i32 {
 
 unsafe fn i2c_access(sideband: Rc<Sideband>) -> i32 {
     let smlink = false;
-    let i2c = if smlink {
+    let (i2c, address) = if smlink {
         let sml0clk = Gpio::new(sideband.clone(), 0x6A, 0x06); // GPP_C3
         let sml0data = Gpio::new(sideband.clone(), 0x6A, 0x08); // GPP_C4
-        I2CBitbang::new(sml0clk, sml0data)
+        (I2CBitbang::new(sml0clk, sml0data), 0x40)
     } else {
         let i2c1_scl = Gpio::new(sideband.clone(), 0x6A, 0x26); // GPP_C19
         let i2c1_sda = Gpio::new(sideband.clone(), 0x6A, 0x24); // GPP_C18
-        I2CBitbang::new(i2c1_scl, i2c1_sda)
+        (I2CBitbang::new(i2c1_scl, i2c1_sda), 0x40)
     };
-    retimer_access(i2c)
+    retimer_access(i2c, address)
 }
 
 unsafe fn i2c_enable(sideband: Rc<Sideband>) -> i32 {
