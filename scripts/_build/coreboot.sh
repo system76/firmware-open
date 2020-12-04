@@ -16,7 +16,7 @@ pushd coreboot >/dev/null
     make CPUS="$(nproc)" crossgcc-i386
   fi
   make distclean
-  cp -v "${CONFIG}" .config
+  make defconfig KBUILD_DEFCONFIG="${CONFIG}"
   make --jobs="$(nproc)"
   cp -v "build/coreboot.rom" "${COREBOOT}"
 popd >/dev/null
