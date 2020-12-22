@@ -65,3 +65,4 @@ source ~/.cargo/env
 - [models](./models) - Models
 - [scripts](./scripts)
 - [tools](./tools) - Tools
+- [usb4](./usb4)
