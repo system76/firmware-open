@@ -34,7 +34,7 @@ do
         parts+=("$part")
     done
     parts[1]="$(printf '0x%08x' "$((${parts[1]} & 0xfffffffd))")"
-    parts[2]="$(printf '0x%04x' "$((${parts[2]} & 0xffffff00))")"
+    parts[2]="$(printf '0x%04x' "$((${parts[2]} & 0x00003c00))")"
 
     case "${parts[1]}" in
         0x0???????)
@@ -70,25 +70,25 @@ do
     esac
 
     case "${parts[1]}" in
-        0x?4000000 | 0x?4000200)
+        0x??000000 | 0x??000200)
             echo -e "\t\tPAD_CFG_TERM_GPO(${parts[0]}, 0, ${term}, ${reset}),"
             ;;
-        0x?4000001 | 0x?4000201)
+        0x??000001 | 0x??000201)
             echo -e "\t\tPAD_CFG_TERM_GPO(${parts[0]}, 1, ${term}, ${reset}),"
             ;;
-        0x?4000100)
+        0x??000100)
             echo -e "\t\tPAD_CFG_GPI(${parts[0]}, ${term}, ${reset}),"
             ;;
-        0x44000300)
+        0x4?000300)
             echo -e "\t\tPAD_NC(${parts[0]}, ${term}),"
             ;;
-        0x?4000400 | 0x?4000500 | 0x?4000600 | 0x?4000700)
+        0x??000400 | 0x??000500 | 0x??000600 | 0x??000700)
             echo -e "\t\tPAD_CFG_NF(${parts[0]}, ${term}, ${reset}, NF1),"
             ;;
-        0x?4000800 | 0x?4000900 | 0x?4000a00 | 0x?4000b00)
+        0x??000800 | 0x??000900 | 0x??000a00 | 0x??000b00)
             echo -e "\t\tPAD_CFG_NF(${parts[0]}, ${term}, ${reset}, NF2),"
             ;;
-        0x?4000c00 | 0x?4000d00 | 0x?4000e00 | 0x?4000f00)
+        0x??000c00 | 0x??000d00 | 0x??000e00 | 0x??000f00)
             echo -e "\t\tPAD_CFG_NF(${parts[0]}, ${term}, ${reset}, NF3),"
             ;;
         *)
