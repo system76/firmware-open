@@ -31,7 +31,6 @@ UEFIPAYLOAD="${BUILD}/UEFIPAYLOAD.fd"
 COREBOOT="${BUILD}/firmware.rom"
 USB="${BUILD}/usb.img"
 EDK2_ARGS=(
-    -D USE_HPET_TIMER=FALSE
     -D SHELL_TYPE=NONE
     -D SOURCE_DEBUG_ENABLE=FALSE
 )
@@ -63,6 +62,18 @@ then
         -D FIRMWARE_OPEN_GOP_POLICY="gop-policy/gop-policy.inf"
         -D FIRMWARE_OPEN_GOP="IntelGopDriver.inf"
     )
+fi
+
+# Add any arguments in edk2.config
+if [ -e "${MODEL_DIR}/edk2.config" ]
+then
+    while read line
+    do
+        if [[ "$line" != "#"* ]]
+        then
+            EDK2_ARGS+=(-D "$line")
+        fi
+    done < "${MODEL_DIR}/edk2.config"
 fi
 
 # Rebuild CorebootPayloadPkg using edk2
