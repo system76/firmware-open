@@ -6,19 +6,23 @@ set -e
 
 SCRIPT_DIR=$(dirname "$0")
 
-if [ -z "$1" ] || [ -z "$2" ]
+if [ -z "$1" ]
 then
-    echo "$0 <model> <firmware.rom> [ec.rom]" >&2
+    echo "$0 <model> [firmware.rom] [ec.rom]" >&2
     exit 1
 fi
 MODEL="$1"
 
-if [ ! -f "$2" ]
+BIOS_IMAGE=
+if [ -n "$2" ]
 then
-    echo "Could not find BIOS image '$2'" >&2
-    exit 1
+    if [ ! -f "$2" ]
+    then
+        echo "Could not find BIOS image '$2'" >&2
+        exit 1
+    fi
+    BIOS_IMAGE=$(realpath "$2")
 fi
-BIOS_IMAGE=$(realpath "$2")
 
 EC_ROM=
 if [ -n "$3" ]
@@ -51,13 +55,16 @@ sudo ./tools/coreboot-collector/target/release/coreboot-collector > "${MODEL_DIR
 ${SCRIPT_DIR}/coreboot-gpio.sh "${MODEL_DIR}/coreboot-collector.txt" > "${MODEL_DIR}/gpio.h"
 ${SCRIPT_DIR}/coreboot-hda.sh "${MODEL_DIR}/coreboot-collector.txt" > "${MODEL_DIR}/hda_verb.c"
 
-# Get the flash descriptor and Intel ME blobs
-make -C coreboot/util/ifdtool
-coreboot/util/ifdtool/ifdtool -x "${BIOS_IMAGE}"
-# TODO: Don't hardcode flash region index
-mv flashregion_0_flashdescriptor.bin "${MODEL_DIR}/fd.rom"
-mv flashregion_2_intel_me.bin "${MODEL_DIR}/me.rom"
-rm -f flashregion_*.bin
+if [ -n "${BIOS_IMAGE}" ]
+then
+    # Get the flash descriptor and Intel ME blobs
+    make -C coreboot/util/ifdtool
+    coreboot/util/ifdtool/ifdtool -x "${BIOS_IMAGE}"
+    # TODO: Don't hardcode flash region index
+    mv flashregion_0_flashdescriptor.bin "${MODEL_DIR}/fd.rom"
+    mv flashregion_2_intel_me.bin "${MODEL_DIR}/me.rom"
+    rm -f flashregion_*.bin
+fi
 
 # Get the Video BIOS Table for Intel systems
 if sudo [ -e /sys/kernel/debug/dri/0/i915_vbt ]
