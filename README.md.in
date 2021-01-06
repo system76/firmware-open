@@ -23,9 +23,10 @@ using an external programmer. See [flashing](./docs/flashing.md) for details.
 
 ### Schematics
 
-Board schematics can be provided on request by sending an email to
+System76 customers may request board schematics by sending an email to
 firmware@system76.com with the subject line  "Schematics for _model_", where
 _model_ is the name of a directory in the `models/` directory, such as darp6.
+Please include the serial number of your system for verification.
 
 You may not share these without explicit permission from System76.
 
