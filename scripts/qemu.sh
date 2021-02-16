@@ -17,7 +17,11 @@ then
 fi
 MODEL_DIR="$(realpath "models/${MODEL}")"
 
-kvm -M q35 -m 4096 -vga std \
+kvm \
+    -M q35 \
+    -m 4096 \
+    -cpu Skylake-Client \
+    -vga std \
     -bios "build/${MODEL}/firmware.rom" \
     -chardev stdio,mux=on,id=debug \
     -device isa-serial,index=2,chardev=debug \
