@@ -23,5 +23,6 @@
 - [lemp9](./lemp9) - System76 Lemur Pro (lemp9)
 - [oryp5](./oryp5) - System76 Oryx Pro (oryp5)
 - [oryp6](./oryp6) - System76 Oryx Pro (oryp6)
+- [oryp7](./oryp7) - System76 Oryx Pro (oryp7)
 - [qemu](./qemu) - QEMU (Virtualization)
 - [thelio-b1](./thelio-b1) - System76 Thelio (thelio-b1)
