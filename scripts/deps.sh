@@ -11,8 +11,8 @@ trap 'msg "\x1B[31mFailed to install dependencies!"' ERR
 source /etc/os-release
 
 
+msg "Installing system build dependencies"
 if [[ "${ID}" =~ "debian" ]] || [[ "${ID_LIKE}" =~ "debian" ]]; then
-  msg "Installing system build dependencies"
   sudo apt-get install \
     avr-libc \
     avrdude \
@@ -39,8 +39,6 @@ if [[ "${ID}" =~ "debian" ]] || [[ "${ID_LIKE}" =~ "debian" ]]; then
     uuid-dev \
     zlib1g-dev
 elif [[ "${ID}" =~ "fedora" ]] || [[ "${ID_LIKE}" =~ "fedora" ]]; then
-then
-  msg "Installing system build dependencies"
   sudo dnf group install c-development
   sudo dnf install \
     avr-gcc \
@@ -63,8 +61,8 @@ then
     systemd-devel \
     zlib-devel
 else
-  msg "Please add support for your distribution to:"
-  msg "scripts/deps.sh"
+  msg "Unknown system ID: ${ID}"
+  msg "Please add support for your distribution to: $0"
   exit 1
 fi
 
@@ -75,7 +73,7 @@ msg "Downloading GIT LFS artifacts"
 git lfs pull
 
 msg "Initializing submodules"
-git submodule update --init --recursive
+git submodule update --init --recursive --progress
 
 msg "Installing coreboot commit hook"
 curl -sSf https://review.coreboot.org/tools/hooks/commit-msg \
