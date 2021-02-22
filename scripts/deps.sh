@@ -8,8 +8,10 @@ function msg {
 
 trap 'msg "\x1B[31mFailed to install dependencies!"' ERR
 
-if which apt-get > /dev/null
-then
+source /etc/os-release
+
+
+if [[ "${ID}" =~ "debian" ]] || [[ "${ID_LIKE}" =~ "debian" ]]; then
   msg "Installing system build dependencies"
   sudo apt-get install \
     avr-libc \
@@ -36,7 +38,7 @@ then
     sdcc \
     uuid-dev \
     zlib1g-dev
-elif which dnf > /dev/null
+elif [[ "${ID}" =~ "fedora" ]] || [[ "${ID_LIKE}" =~ "fedora" ]]; then
 then
   msg "Installing system build dependencies"
   sudo dnf group install c-development
