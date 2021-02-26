@@ -17,6 +17,19 @@ pushd coreboot >/dev/null
   fi
   make distclean
   make defconfig KBUILD_DEFCONFIG="${CONFIG}"
+
+  # Ensure config is correct
+  while read line; do
+      if [[ "${line}" =~ "^#" ]] || [[ -z "${line}" ]]; then
+          continue
+      fi
+
+      if ! grep -q "${line}" ".config"; then
+          echo "expected config not found: ${line}" >&2
+          exit 1
+      fi
+  done < "${CONFIG}"
+
   make --jobs="$(nproc)"
   cp -v "build/coreboot.rom" "${COREBOOT}"
 popd >/dev/null
