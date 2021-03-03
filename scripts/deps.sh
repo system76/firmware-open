@@ -21,6 +21,7 @@ if [[ "${ID}" =~ "debian" ]] || [[ "${ID_LIKE}" =~ "debian" ]]; then
     ccache \
     cmake \
     curl \
+    devmem2 \
     dosfstools \
     flashrom \
     flex \
@@ -29,6 +30,7 @@ if [[ "${ID}" =~ "debian" ]] || [[ "${ID_LIKE}" =~ "debian" ]]; then
     gnat \
     libncurses-dev \
     libudev-dev \
+    msr-tools \
     mtools \
     nasm \
     parted \
@@ -51,6 +53,7 @@ elif [[ "${ID}" =~ "fedora" ]] || [[ "${ID_LIKE}" =~ "fedora" ]]; then
     gcc-gnat \
     git-lfs \
     libuuid-devel \
+    msr-tools \
     mtools \
     nasm \
     ncurses-devel \
