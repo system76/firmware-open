@@ -75,41 +75,8 @@ cp coreboot/.config models/<model>/coreboot.config
 
 ### devicetree
 
-Some values to set in `devicetree.cb` that are not collected by `generate.sh`.
-
-- Power limits
-```
-sudo cat /sys/class/powercap/intel-rapl:0/constraint_0_power_limit_uw
-sudo cat /sys/class/powercap/intel-rapl:0/constraint_1_power_limit_uw
-```
-
-- Power
-```
-# pmc_bar + GEN_PMCON_A
-sudo devmem2 0xfe001020
-# PchPmSlpS3MinAssert = bits 11:10
-# PchPmSlpS4MinAssert = bits 5:4
-
-# pmc_bar + PM_CFG
-sudo devmem2 0xfe001818
-# PchPmSlpSusMinAssert = bits 19:18
-# PchPmSlpAMinAssert = bits 17:16
-```
-
-- Thermal
-```
-sudo modprobe msr
-sudo rdmsr --bitfield 31:24 --decimal 0x1A2
-```
-
-- LPC
-```
-sudo lspci -s 1f.0 -xxx
-# gen1_dec: 0x84-0x87
-# gen2_dec: 0x88-0x8B
-# gen3_dec: 0x8C-0c8F
-# gen4_dec: 0x90-0x93
-```
+`generate.sh` does not create `devicetree.cb`. Some values for this file can be
+produced using the `devicetree.py` script.
 
 ## Porting System76 EC
 
