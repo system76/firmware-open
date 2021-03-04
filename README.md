@@ -11,9 +11,13 @@ manager:
 - addw2
 - bonw14
 - darp6
+- darp7
 - galp4
+- galp5
 - lemp9
+- lemp10
 - oryp6
+- oryp7
 
 Other models may be in development or available without support, and can be
 seen in the `models/` directory.
