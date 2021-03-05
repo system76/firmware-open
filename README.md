@@ -29,7 +29,7 @@ using an external programmer. See [flashing](./docs/flashing.md) for details.
 
 For a list of important changes please see the [changelog](./CHANGELOG.md).
 
-### Schematics
+## Schematics
 
 System76 customers may request board schematics by sending an email to
 firmware@system76.com with the subject line  "Schematics for _model_", where
