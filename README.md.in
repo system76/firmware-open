@@ -21,6 +21,10 @@ seen in the `models/` directory.
 If the device becomes bricked it will require restoring the current firmware
 using an external programmer. See [flashing](./docs/flashing.md) for details.
 
+## Changelog
+
+For a list of important changes please see the [changelog](./CHANGELOG.md).
+
 ### Schematics
 
 System76 customers may request board schematics by sending an email to
