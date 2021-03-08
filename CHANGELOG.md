@@ -4,6 +4,10 @@ Changes are identified by the date of the released firmware including them. If
 you are running System76 Open Firmware, opening the boot menu will show this
 date followed by an underscore and a short git revision.
 
+## 2021-03-08
+
+- oryp6, oryp7: Improved fan curve
+
 ## 2021-03-03
 
 - oryp7: Release of open firmware with System76 EC
