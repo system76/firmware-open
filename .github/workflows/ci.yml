@@ -24,7 +24,7 @@ jobs:
         uses: actions/cache@v2
         with:
             path: coreboot/util/crossgcc/tarballs coreboot/util/crossgcc/xgcc
-            key: ${{ runner.os }}-${{ hashFiles('coreboot/util/crossgcc/**', '!coreboot/util/crossgcc/tarballs/**', '!coreboot/util/crossgcc/xgcc/**') }}
+            key: cross-v1-${{ runner.os }}-${{ hashFiles('coreboot/util/crossgcc/**', '!coreboot/util/crossgcc/tarballs/**', '!coreboot/util/crossgcc/xgcc/**') }}
 
       - name: Build cross compiler
         run: make -C coreboot crossgcc-i386 CPUS=$(nproc)
