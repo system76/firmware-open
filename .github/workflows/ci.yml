@@ -1,0 +1,76 @@
+name: CI
+on:
+  push:
+    branches: [master]
+  pull_request:
+
+jobs:
+  cross:
+    runs-on: ubuntu-20.04
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
+          lfs: true
+          submodules: recursive
+
+      - name: Install dependencies
+        run: ./scripts/deps.sh
+
+      - name: Make cross compiler directories
+        run: mkdir -p coreboot/util/crossgcc/tarballs coreboot/util/crossgcc/xgcc
+
+      - name: Cache cross compiler
+        uses: actions/cache@v2
+        with:
+            path: coreboot/util/crossgcc/tarballs coreboot/util/crossgcc/xgcc
+            key: ${{ runner.os }}-${{ hashFiles('coreboot/util/crossgcc/**', '!coreboot/util/crossgcc/tarballs/**', '!coreboot/util/crossgcc/xgcc/**') }}
+
+      - name: Build cross compiler
+        run: make -C coreboot crossgcc-i386 CPUS=$(nproc)
+
+  build:
+    needs: cross
+    runs-on: ubuntu-20.04
+    strategy:
+      matrix:
+        # TODO: Generate matrix from directory?
+        # TODO: Conditionally build based on files changed?
+        include:
+          - model: addw1
+          - model: addw2
+          - model: bonw14
+          - model: darp5
+          - model: darp6
+          - model: darp7
+          - model: galp3-c
+          - model: galp4
+          - model: galp5
+          - model: gaze15
+          - model: lemp9
+          - model: lemp10
+          - model: oryp5
+          - model: oryp6
+          - model: oryp7
+          - model: qemu
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
+          lfs: true
+          submodules: recursive
+
+      - name: Install dependencies
+        run: ./scripts/deps.sh
+
+      - name: Cache cross compiler
+        uses: actions/cache@v2
+        with:
+            path: coreboot/util/crossgcc/tarballs coreboot/util/crossgcc/xgcc
+            key: ${{ runner.os }}-${{ hashFiles('coreboot/util/crossgcc/**', '!coreboot/util/crossgcc/tarballs/**', '!coreboot/util/crossgcc/xgcc/**') }}
+
+      - name: Check cross compiler
+        run: coreboot/util/crossgcc/xgcc/bin/i386-elf-gcc --version
+
+      - name: Build firmware
+        run: ./scripts/build.sh ${{ matrix.model }}
