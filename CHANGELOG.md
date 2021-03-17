@@ -4,6 +4,10 @@ Changes are identified by the date of the released firmware including them. If
 you are running System76 Open Firmware, opening the boot menu will show this
 date followed by an underscore and a short git revision.
 
+## 2021-03-16
+
+- oryp6, oryp7: Fix buzzing at lowest fan speed
+
 ## 2021-03-11
 
 - lemp9: Fix backlight ACPI issues and TPM interrupt
