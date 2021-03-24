@@ -11,6 +11,7 @@ date followed by an underscore and a short git revision.
 
 ## 2021-03-19
 
+- darp5, galp3-c, gaze15: Release of open firmware with System76 EC
 - gaze15: Add ELAN touchpad settings
 
 ## 2021-03-16

@@ -10,10 +10,13 @@ manager:
 
 - addw2
 - bonw14
+- darp5
 - darp6
 - darp7
+- galp3-c
 - galp4
 - galp5
+- gaze15
 - lemp9
 - lemp10
 - oryp6
