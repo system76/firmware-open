@@ -4,6 +4,10 @@ Changes are identified by the date of the released firmware including them. If
 you are running System76 Open Firmware, opening the boot menu will show this
 date followed by an underscore and a short git revision.
 
+## 2021-04-07
+
+- darp7, galp5, lemp10: Update microcode
+
 ## 2021-04-02
 
 - Fix fan max keeping fan on when in S0iX
