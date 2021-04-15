@@ -71,10 +71,18 @@ do
 
     case "${parts[1]}" in
         0x??000000 | 0x??000200)
-            echo -e "\tPAD_CFG_TERM_GPO(${parts[0]}, 0, ${term}, ${reset}),"
+            if [ "${term}" = "NONE" ]; then
+                echo -e "\tPAD_CFG_GPO(${parts[0]}, 0, ${reset}),"
+            else
+                echo -e "\tPAD_CFG_TERM_GPO(${parts[0]}, 0, ${term}, ${reset}),"
+            fi
             ;;
         0x??000001 | 0x??000201)
-            echo -e "\tPAD_CFG_TERM_GPO(${parts[0]}, 1, ${term}, ${reset}),"
+            if [ "${term}" = "NONE" ]; then
+                echo -e "\tPAD_CFG_GPO(${parts[0]}, 1, ${reset}),"
+            else
+                echo -e "\tPAD_CFG_TERM_GPO(${parts[0]}, 1, ${term}, ${reset}),"
+            fi
             ;;
         0x??000100)
             echo -e "\tPAD_CFG_GPI(${parts[0]}, ${term}, ${reset}),"
