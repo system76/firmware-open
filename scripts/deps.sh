@@ -36,7 +36,6 @@ if [[ "${ID}" =~ "debian" ]] || [[ "${ID_LIKE}" =~ "debian" ]]; then
     parted \
     python \
     python3-distutils \
-    qt5-default \
     sdcc \
     uuid-dev \
     zlib1g-dev
@@ -59,7 +58,6 @@ elif [[ "${ID}" =~ "fedora" ]] || [[ "${ID_LIKE}" =~ "fedora" ]]; then
     ncurses-devel \
     parted \
     patch \
-    qt5-qtbase-devel \
     sdcc \
     systemd-devel \
     zlib-devel
