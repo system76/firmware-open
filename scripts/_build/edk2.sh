@@ -15,6 +15,9 @@ BUILD_TYPE=RELEASE
 #BUILD_TYPE=DEBUG
 TOOLCHAIN=GCC5
 
+# Force use of python3
+export PYTHON_COMMAND=python3
+
 pushd edk2 >/dev/null
   make -C BaseTools --jobs="$(nproc)"
   source edksetup.sh --reconfig
