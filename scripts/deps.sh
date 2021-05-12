@@ -62,32 +62,28 @@ elif [[ "${ID}" =~ "fedora" ]] || [[ "${ID_LIKE}" =~ "fedora" ]]; then
     systemd-devel \
     zlib-devel
 elif [[ "${ID}" =~ "arch" ]] || [[ "${ID_LIKE}" =~ "arch" ]]; then
-    sudo pacman -S \
+  sudo pacman -S \
+    avr-gcc \
+    avr-libc \
+    avrdude \
     bison \
     cmake \
     curl \
     dosfstools \
-    flex \
-    mtools \
-    parted \
-    python \
-    gcc-ada \
-    avr-gcc \
-    ncurses \
-    libgudev \
-    python-distutils-extra \
-    avr-libc \
-    avrdude \
-    curl \
-    dosfstools \
     flashrom \
+    flex \
+    gcc-ada \
     git-lfs \
     msr-tools \
     mtools \
     nasm \
+    ncurses \
     parted \
     patch \
-    sdcc
+    python \
+    python-distutils-extra \
+    sdcc \
+    systemd-libs
 else
   msg "Unknown system ID: ${ID}"
   msg "Please add support for your distribution to: $0"
