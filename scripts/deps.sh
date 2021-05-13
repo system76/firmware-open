@@ -38,6 +38,7 @@ if [[ "${ID}" =~ "debian" ]] || [[ "${ID_LIKE}" =~ "debian" ]]; then
     python3-distutils \
     sdcc \
     uuid-dev \
+    xxd \
     zlib1g-dev
 elif [[ "${ID}" =~ "fedora" ]] || [[ "${ID_LIKE}" =~ "fedora" ]]; then
   sudo dnf group install c-development
@@ -45,6 +46,7 @@ elif [[ "${ID}" =~ "fedora" ]] || [[ "${ID_LIKE}" =~ "fedora" ]]; then
     avr-gcc \
     avr-libc \
     avrdude \
+    ccache \
     cmake \
     curl \
     dosfstools \
@@ -60,6 +62,7 @@ elif [[ "${ID}" =~ "fedora" ]] || [[ "${ID_LIKE}" =~ "fedora" ]]; then
     patch \
     sdcc \
     systemd-devel \
+    vim-common \
     zlib-devel
 elif [[ "${ID}" =~ "arch" ]] || [[ "${ID_LIKE}" =~ "arch" ]]; then
   sudo pacman -S \
@@ -67,6 +70,7 @@ elif [[ "${ID}" =~ "arch" ]] || [[ "${ID_LIKE}" =~ "arch" ]]; then
     avr-libc \
     avrdude \
     bison \
+    ccache \
     cmake \
     curl \
     dosfstools \
@@ -83,7 +87,8 @@ elif [[ "${ID}" =~ "arch" ]] || [[ "${ID_LIKE}" =~ "arch" ]]; then
     python \
     python-distutils-extra \
     sdcc \
-    systemd-libs
+    systemd-libs \
+    vim
 else
   msg "Unknown system ID: ${ID}"
   msg "Please add support for your distribution to: $0"
