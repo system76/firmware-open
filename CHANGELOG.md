@@ -4,6 +4,11 @@ Changes are identified by the date of the released firmware including them. If
 you are running System76 Open Firmware, opening the boot menu will show this
 date followed by an underscore and a short git revision.
 
+## unreleased
+
+- Improve thermals by syncing CPU and GPU fans
+- Fix keyboard responsiveness when touchpad uses wrong protocol
+
 ## 2021-04-07
 
 - darp7, galp5, lemp10: Update microcode
