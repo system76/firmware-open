@@ -4,6 +4,16 @@ Changes are identified by the date of the released firmware including them. If
 you are running System76 Open Firmware, opening the boot menu will show this
 date followed by an underscore and a short git revision.
 
+## 2021-07-20
+
+- gaze16: Release of open firmware with System76 EC
+- Improved thermals by syncing CPU and GPU fans
+- Enabled fan speed interpolation
+- Fixed ACPI timeout on S3 resume if a key is held
+- Fixed keyboard responsiveness when touchpad uses wrong protocol
+- Fixed entering firmware-setup due to missed keystrokes on boot
+- Added scroll lock to default keyboard layouts
+
 ## 2021-04-07
 
 - darp7, galp5, lemp10: Update microcode
