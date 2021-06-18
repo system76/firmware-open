@@ -36,9 +36,9 @@ if [[ "${ID}" =~ "debian" ]] || [[ "${ID_LIKE}" =~ "debian" ]]; then
     parted \
     python \
     python3-distutils \
-    qt5-default \
     sdcc \
     uuid-dev \
+    xxd \
     zlib1g-dev
 elif [[ "${ID}" =~ "fedora" ]] || [[ "${ID_LIKE}" =~ "fedora" ]]; then
   sudo dnf group install c-development
@@ -46,6 +46,7 @@ elif [[ "${ID}" =~ "fedora" ]] || [[ "${ID_LIKE}" =~ "fedora" ]]; then
     avr-gcc \
     avr-libc \
     avrdude \
+    ccache \
     cmake \
     curl \
     dosfstools \
@@ -59,37 +60,35 @@ elif [[ "${ID}" =~ "fedora" ]] || [[ "${ID_LIKE}" =~ "fedora" ]]; then
     ncurses-devel \
     parted \
     patch \
-    qt5-qtbase-devel \
     sdcc \
     systemd-devel \
+    vim-common \
     zlib-devel
 elif [[ "${ID}" =~ "arch" ]] || [[ "${ID_LIKE}" =~ "arch" ]]; then
-    sudo pacman -S \
+  sudo pacman -S \
+    avr-gcc \
+    avr-libc \
+    avrdude \
     bison \
+    ccache \
     cmake \
     curl \
     dosfstools \
-    flex \
-    mtools \
-    parted \
-    python \
-    gcc-ada \
-    avr-gcc \
-    ncurses \
-    libgudev \
-    python-distutils-extra \
-    avr-libc \
-    avrdude \
-    curl \
-    dosfstools \
     flashrom \
+    flex \
+    gcc-ada \
     git-lfs \
     msr-tools \
     mtools \
     nasm \
+    ncurses \
     parted \
     patch \
-    sdcc
+    python \
+    python-distutils-extra \
+    sdcc \
+    systemd-libs \
+    vim
 else
   msg "Unknown system ID: ${ID}"
   msg "Please add support for your distribution to: $0"
