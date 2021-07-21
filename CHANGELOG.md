@@ -4,7 +4,7 @@ Changes are identified by the date of the released firmware including them. If
 you are running System76 Open Firmware, opening the boot menu will show this
 date followed by an underscore and a short git revision.
 
-## 2021-07-20
+## 2021-07-21
 
 - gaze16: Release of open firmware with System76 EC
 - Improved thermals by syncing CPU and GPU fans
