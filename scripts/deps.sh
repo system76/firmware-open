@@ -34,7 +34,7 @@ if [[ "${ID}" =~ "debian" ]] || [[ "${ID_LIKE}" =~ "debian" ]]; then
     mtools \
     nasm \
     parted \
-    python \
+    python-is-python3 \
     python3-distutils \
     sdcc \
     uuid-dev \
