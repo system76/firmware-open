@@ -17,10 +17,13 @@ manager:
 - galp4
 - galp5
 - gaze15
+- gaze16-3050
+- gaze16-3060
 - lemp9
 - lemp10
 - oryp6
 - oryp7
+- oryp8
 
 Other models may be in development or available without support, and can be
 seen in the `models/` directory.
