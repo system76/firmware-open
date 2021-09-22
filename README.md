@@ -10,8 +10,10 @@ manager:
 
 - addw2
 - bonw14
+- darp5*
 - darp6
 - darp7
+- galp3-c*
 - galp4
 - galp5
 - gaze15
@@ -22,6 +24,8 @@ manager:
 - oryp6
 - oryp7
 - oryp8
+
+* Not officially release and not completed code
 
 Other models may be in development or available without support, and can be
 seen in the `models/` directory.
