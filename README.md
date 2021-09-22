@@ -25,7 +25,7 @@ manager:
 - oryp7
 - oryp8
 
-* Not completed or officially released
+\* Not completed or officially released 
 
 Other models may be in development or available without support, and can be
 seen in the `models/` directory.
