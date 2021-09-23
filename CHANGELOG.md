@@ -4,12 +4,13 @@ Changes are identified by the date of the released firmware including them. If
 you are running System76 Open Firmware, opening the boot menu will show this
 date followed by an underscore and a short git revision.
 
-## 2021-09-20
+## 2021-09-23
 
 - oryp8: Release of open firmware with System76 EC
 - gaze16: Fix input current on 3050 variant
 - gaze16: Fix power limit when booting on battery
 - gaze16: Fix touchpad on newer Linux kernel and Windows
+- Fix brightness controls on TGL platforms
 - Fix PCIe subsystem IDs on TGL platforms
 - Fix spurious clearing of boot options on Windows
 - Provide battery cycle count
