@@ -35,6 +35,7 @@ if [[ "${ID}" =~ "debian" ]] || [[ "${ID_LIKE}" =~ "debian" ]]; then
     nasm \
     parted \
     python-is-python3 \
+    python2 \
     python3-distutils \
     sdcc \
     uuid-dev \
@@ -60,6 +61,9 @@ elif [[ "${ID}" =~ "fedora" ]] || [[ "${ID_LIKE}" =~ "fedora" ]]; then
     ncurses-devel \
     parted \
     patch \
+    python-unversioned-command \
+    python2 \
+    python3 \
     sdcc \
     systemd-devel \
     vim-common \
@@ -86,6 +90,7 @@ elif [[ "${ID}" =~ "arch" ]] || [[ "${ID_LIKE}" =~ "arch" ]]; then
     patch \
     python \
     python-distutils-extra \
+    python2 \
     sdcc \
     systemd-libs \
     vim
