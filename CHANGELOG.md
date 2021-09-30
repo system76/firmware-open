@@ -4,6 +4,10 @@ Changes are identified by the date of the released firmware including them. If
 you are running System76 Open Firmware, opening the boot menu will show this
 date followed by an underscore and a short git revision.
 
+## 2021-09-30
+
+- gaze16: Do not require unplugging the AC adapter after flashing
+
 ## 2021-09-29
 
 - gaze16: Fix using USB 2.0 devices in Type-C port
