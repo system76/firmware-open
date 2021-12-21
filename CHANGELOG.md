@@ -7,6 +7,7 @@ date followed by an underscore and a short git revision.
 ## unreleased
 
 - Added support to enable/disable Intel ME via the CMOS option `me_state`
+- Enabled coreboot measured boot
 - Updated Rust toolchain to nightly-2021-06-15
 - Updated coreboot to 4.15
 - Updated EDK2 to edk2-stabke202108
