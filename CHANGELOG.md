@@ -4,12 +4,21 @@ Changes are identified by the date of the released firmware including them. If
 you are running System76 Open Firmware, opening the boot menu will show this
 date followed by an underscore and a short git revision.
 
+## unreleased
+
+- Added support to enable/disable Intel ME via the CMOS option `me_state`
+- Updated Rust toolchain to nightly-2021-06-15
+- Updated coreboot to 4.15
+- Updated EDK2 to edk2-stabke202108
+- Updated TGL-U microcode blobs to revision 0x9a
+- Updated TGL-H microcode blobs to revision 0x3c
+- Updated all other boards to use microcode blobs from Intel's public repo
+- Updated TGL FSP to A.0.51.31 from Intel's public repo
+- Removed behavior of erasing NVRAM on CMOS reset
+
 ## 2021-09-30
 
 - gaze16: Do not require unplugging the AC adapter after flashing
-
-## 2021-09-29
-
 - gaze16: Fix using USB 2.0 devices in Type-C port
 
 ## 2021-09-23
