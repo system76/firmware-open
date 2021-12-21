@@ -8,5 +8,5 @@ sudo ./libs/intel-spi/target/release/examples/read
 make -C coreboot/util/cbfstool -j "$(nproc)"
 ./coreboot/util/cbfstool/cbfstool read.rom read -r SMMSTORE -f smmstore.rom 
 
-cargo build --manifest-path libs/smmstore/Cargo.toml --release
-./libs/smmstore/target/release/smmstore smmstore.rom
+cargo build --manifest-path apps/firmware-smmstore/Cargo.toml --example read --release
+./apps/firmware-smmstore/target/release/examples/read
