@@ -5,5 +5,5 @@ authors = ["Jeremy Soller <jeremy@system76.com>"]
 edition = "2018"
 
 [dependencies]
-redox_intelflash = "0.1.0"
-system76_ecflash = "0.1.0"
+redox_intelflash = "0.1.3"
+system76_ecflash = { git = "https://github.com/system76/ecflash", rev = "b08db293" }
