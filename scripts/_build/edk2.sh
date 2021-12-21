@@ -27,7 +27,7 @@ pushd edk2 >/dev/null
     -a X64 \
     -b "${BUILD_TYPE}" \
     -t "${TOOLCHAIN}" \
-    -p "${PACKAGE}/${PACKAGE}Ia32X64.dsc" \
+    -p "${PACKAGE}/${PACKAGE}.dsc" \
     "${@:2}"
 
   cp -v \
