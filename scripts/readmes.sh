@@ -5,7 +5,6 @@ README_DIRS=(
     libs
     models
     tools
-    .
 )
 
 set -e
@@ -20,9 +19,7 @@ function readme_model {
     pushd "$1" > /dev/null
         cp README.md.in README.md
 
-        echo >> README.md
-        echo "## Contents" >> README.md
-        echo >> README.md
+        echo -e "\n## Contents\n" >> README.md
         "$MODELTOOL" . >> README.md
     popd > /dev/null
 }
@@ -63,9 +60,7 @@ function readme_dir {
     pushd "$1" > /dev/null
         cp README.md.in README.md
 
-        echo >> README.md
-        echo "## Contents" >> README.md
-        echo >> README.md
+        echo -e "\n## Contents\n" >> README.md
         for dir in */
         do
             if ! git check-ignore --quiet "${dir}"

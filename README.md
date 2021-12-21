@@ -10,15 +10,14 @@ manager:
 
 - addw2
 - bonw14
-- darp5
 - darp6
 - darp7
-- galp3-c
 - galp4
 - galp5
 - gaze15
 - gaze16-3050
 - gaze16-3060
+- gaze16-3060-b
 - lemp9
 - lemp10
 - oryp6
@@ -31,18 +30,18 @@ seen in the `models/` directory.
 If the device becomes bricked it will require restoring the current firmware
 using an external programmer. See [flashing](./docs/flashing.md) for details.
 
+### Schematics
+
+System76 customers may request board schematics for their system by sending an
+email to firmware@system76.com with the subject line  "Schematics for _model_",
+where _model_ is one of the supported models listed above. Please include the
+serial number of your system for verification.
+
+You may not share these without explicit permission from System76.
+
 ## Changelog
 
 For a list of important changes please see the [changelog](./CHANGELOG.md).
-
-## Schematics
-
-System76 customers may request board schematics by sending an email to
-firmware@system76.com with the subject line  "Schematics for _model_", where
-_model_ is the name of a directory in the `models/` directory, such as darp6.
-Please include the serial number of your system for verification.
-
-You may not share these without explicit permission from System76.
 
 ## Dependencies
 
@@ -65,18 +64,3 @@ source ~/.cargo/env
 ```
 ./scripts/qemu.sh
 ```
-
-## Contents
-
-- [apps](./apps) - Applications
-- [coreboot](https://github.com/system76/coreboot.git) - coreboot README
-- [docs](./docs) - System76 Open Firmware Documentation
-- [ec](https://github.com/system76/ec.git) - System76 EC
-- [edk2](https://github.com/system76/edk2.git) - EDK II Project
-- [edk2-non-osi](https://github.com/tianocore/edk2-non-osi.git)
-- [edk2-platforms](https://github.com/system76/edk2-platforms.git) - This branch holds all platforms actively maintained against the
-- [FSP](https://github.com/IntelFsp/FSP.git) - Intel® Firmware Support Package (Intel® FSP) Binaries
-- [libs](./libs) - Libraries
-- [models](./models) - Models
-- [scripts](./scripts)
-- [tools](./tools) - Tools
