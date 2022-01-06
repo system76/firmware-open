@@ -4,7 +4,7 @@ Changes are identified by the date of the released firmware including them. If
 you are running System76 Open Firmware, opening the boot menu will show this
 date followed by an underscore and a short git revision.
 
-## 2021-12-21
+## 2022-01-06
 
 - Added support to enable/disable Intel ME via the CMOS option `me_state`
 - Enabled coreboot measured boot
