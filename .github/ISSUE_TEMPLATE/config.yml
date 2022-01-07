@@ -1,0 +1,8 @@
+blank_issues_enabled: true
+contact_links:
+  - name: Open a Support Ticket
+    url: https://system76.com/my-account/support-tickets/new
+    about: Get support for your System76 hardware
+  - name: Pop!_OS chat
+    url: https://chat.pop-os.org/
+    about: Pop!_OS Mattermost
