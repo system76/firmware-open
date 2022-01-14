@@ -43,24 +43,34 @@ You may not share these without explicit permission from System76.
 
 For a list of important changes please see the [changelog](./CHANGELOG.md).
 
-## Dependencies
+## Building
 
-### Install toolchain
+Dependencies can be installed with the provided script.
+
 ```
 ./scripts/deps.sh
 ```
 
-### Load Rust environment (or optionally reboot)
+If rustup was installed for the first time, it will be required to source the
+environment file it installed to use the correct Rust toolchain.
+
 ```
 source ~/.cargo/env
 ```
 
-### Build firmware, replace qemu with your model (look in the models directory for examples)
+A script is provided to build the firmware. The available targets for building
+are the model folders in `models/`. For example, to build for QEMU:
+
 ```
 ./scripts/build.sh qemu
 ```
 
-### Emulate firmware, only available after building the qemu model
-```
-./scripts/qemu.sh
-```
+Once built, the firmware must be flashed to use. Several scripts are available
+to flash the new firmware, depending on how it is going to be written.
+
+- `scripts/qemu.sh`: Run the firmware in QEMU (specific to the QEMU model)
+- `scripts/flash.sh`: Flash using the internal flasher
+- `scripts/ch341a-flash.sh`: Flash using a CH341A programmer
+- `scripts/spipi-flash.sh`: Flash using a Raspberry Pi
+
+See [Flashing firmware](./docs/flashing.md) for more details.
