@@ -11,4 +11,4 @@ https://system76.com/guides/darp6
   - HAP: false
 - [ME](./me.rom)
   - Size: 4092 KB
-  - Version: 14.0.10.1204
+  - Version: 14.0.60.1807
