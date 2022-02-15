@@ -4,6 +4,11 @@ Changes are identified by the date of the released firmware including them. If
 you are running System76 Open Firmware, opening the boot menu will show this
 date followed by an underscore and a short git revision.
 
+## 2022-02-15
+
+- Update ME for all supported systems
+- Ensure that system powers off S5 plane if it fails to reach S0
+
 ## 2022-01-06
 
 - Added support to enable/disable Intel ME via the CMOS option `me_state`
