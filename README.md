@@ -68,7 +68,7 @@ are the model folders in `models/`. For example, to build for QEMU:
 Once built, the firmware must be flashed to use. Several scripts are available
 to flash the new firmware, depending on how it is going to be written.
 
-- `scripts/qemu.sh`: Run the firmware in QEMU (specific to the QEMU model)
+- `scripts/qemu.sh`: [Run the firmware in QEMU](./docs/debugging.md#using-qemu) (specific to the QEMU model)
 - `scripts/flash.sh`: Flash using the internal flasher
 - `scripts/ch341a-flash.sh`: Flash using a CH341A programmer
 - `scripts/spipi-flash.sh`: Flash using a Raspberry Pi
