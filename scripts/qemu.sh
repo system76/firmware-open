@@ -17,7 +17,9 @@ then
 fi
 MODEL_DIR="$(realpath "models/${MODEL}")"
 
-qemu-system-x86_64 -M q35 -m 4096 -vga std \
+qemu-system-x86_64 \
+    -enable-kvm \
+    -M q35 -m 4096 -vga std \
     -bios "build/${MODEL}/firmware.rom" \
     -chardev stdio,mux=on,id=debug \
     -device isa-serial,index=2,chardev=debug \
