@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<component type="firmware">
+  <id>${LVFS_DEVICE_ID}</id>
+  <name>${LVFS_DEVICE_NAME}</name>
+  <summary>${LVFS_VENDOR_NAME} ${LVFS_DEVICE_NAME} System Firmware</summary>
+  <description>
+    <p>System firmware for the ${LVFS_DEVICE_NAME}.</p>
+  </description>
+  <developer_name>${LVFS_VENDOR_NAME}</developer_name>
+  <provides>
+    <firmware type="flashed">${LVFS_DEVICE_UUID}</firmware>
+  </provides>
+  <url type="homepage">${LVFS_VENDOR_HOMEPAGE}</url>
+  <metadata_license>CC0-1.0</metadata_license>
+  <project_license>LicenseRef-proprietary</project_license>
+
+  <releases>
+    <release version="${LVFS_RELEASE_VERSION}" date="${LVFS_RELEASE_DATE}">
+      <checksum filename="firmware.bin" target="content" />
+      ${LVFS_RELEASE_SOURCE_TAG}
+      <description>
+        ${LVFS_RELEASE_DESCRIPTION}
+      </description>
+    </release>
+  </releases>
+
+  <requires>
+    <id compare="ge" version="1.6.2">org.freedesktop.fwupd</id>
+  </requires>
+  <categories>
+    <category>X-System</category>
+  </categories>
+  <custom>
+    <value key="LVFS::UpdateProtocol">org.flashrom</value>
+    <value key="LVFS::VersionFormat">plain</value>
+  </custom>
+</component>

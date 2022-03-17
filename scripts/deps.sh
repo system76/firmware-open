@@ -25,6 +25,7 @@ if [[ "${ID}" =~ "debian" ]] || [[ "${ID_LIKE}" =~ "debian" ]]; then
     dosfstools \
     flashrom \
     flex \
+    gcab \
     gcc-avr \
     git-lfs \
     gnat \
@@ -52,6 +53,7 @@ elif [[ "${ID}" =~ "fedora" ]] || [[ "${ID_LIKE}" =~ "fedora" ]]; then
     curl \
     dosfstools \
     flashrom \
+    gcab \
     gcc-gnat \
     git-lfs \
     libuuid-devel \
@@ -80,6 +82,7 @@ elif [[ "${ID}" =~ "arch" ]] || [[ "${ID_LIKE}" =~ "arch" ]]; then
     dosfstools \
     flashrom \
     flex \
+    gcab \
     gcc-ada \
     git-lfs \
     msr-tools \
