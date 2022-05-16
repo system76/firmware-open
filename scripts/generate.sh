@@ -49,8 +49,10 @@ MODEL_DIR=$(realpath "models/${MODEL}")
 
 echo "Generating data for coreboot..."
 
-cargo build --release --manifest-path=tools/coreboot-collector/Cargo.toml
-sudo ./tools/coreboot-collector/target/release/coreboot-collector > "${MODEL_DIR}/coreboot-collector.txt"
+pushd tools/coreboot-collector
+cargo build --release
+sudo target/release/coreboot-collector > "${MODEL_DIR}/coreboot-collector.txt"
+popd
 
 ${SCRIPT_DIR}/coreboot-gpio.sh "${MODEL_DIR}/coreboot-collector.txt" > "${MODEL_DIR}/gpio.h"
 ${SCRIPT_DIR}/coreboot-hda.sh "${MODEL_DIR}/coreboot-collector.txt" > "${MODEL_DIR}/hda_verb.c"
@@ -96,11 +98,13 @@ then
         cp "${EC_ROM}" "${MODEL_DIR}/ec.rom"
     else
         echo "Generating output for System76 EC firmware"
-        cargo build --release --manifest-path=ec/ecspy/Cargo.toml
+        pushd ec/ecspy
+        cargo build --release
         # TODO: Set backlights and fans to max and restore after
-        sudo ./ec/ecspy/target/release/ecspy > "${MODEL_DIR}/ecspy.txt"
+        sudo target/release/ecspy > "${MODEL_DIR}/ecspy.txt"
         # Strip EC RAM entries from output
         sed -i '/^0x/d' "${MODEL_DIR}/ecspy.txt"
+        popd
     fi
 fi
 
