@@ -4,6 +4,13 @@ Changes are identified by the date of the released firmware including them. If
 you are running System76 Open Firmware, opening the boot menu will show this
 date followed by an underscore and a short git revision.
 
+## UNRELEASED
+
+- Fixed building for QEMU
+- Updated coreboot to upstream commit 670572ff6a
+- Improved NVIDIA Optimus support
+- gaze17-3060-b: Release of open firmware with System76 EC
+
 ## 2022-02-15
 
 - Update ME for all supported systems
