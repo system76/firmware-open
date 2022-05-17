@@ -116,8 +116,13 @@ curl -sSf https://review.coreboot.org/tools/hooks/commit-msg \
 
 RUSTUP_NEW_INSTALL=0
 if which rustup &> /dev/null; then
-  msg "Updating rustup"
-  rustup self update
+  if [[ "${ID}" =~ "arch" ]] || [[ "${ID_LIKE}" =~ "arch" ]]; then
+    msg "Updating rustup (pacman)"
+    pacman -S rustup
+  else 
+    msg "Updating rustup (self update)"
+    rustup self update
+  fi
 else
   RUSTUP_NEW_INSTALL=1
   msg "Installing Rust"
