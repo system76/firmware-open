@@ -27,7 +27,7 @@ StructDef
     Find "ADLUPD_T"
         $gPlatformFspPkgTokenSpaceGuid_Revision                        1 bytes    $_DEFAULT_ = 0x02
         Skip 87 bytes
-        $gPlatformFspPkgTokenSpaceGuid_PcdSerialIoUartDebugEnable      1 bytes    $_DEFAULT_ = 0x00
+        $gPlatformFspPkgTokenSpaceGuid_PcdSerialIoUartDebugEnable      1 bytes    $_DEFAULT_ = 0x01
         $gPlatformFspPkgTokenSpaceGuid_PcdSerialIoUartNumber           1 bytes    $_DEFAULT_ = 0x00
         $gPlatformFspPkgTokenSpaceGuid_PcdSerialIoUartMode             1 bytes    $_DEFAULT_ = 0x02
         Skip 1 bytes
@@ -43,7 +43,7 @@ StructDef
         $gPlatformFspPkgTokenSpaceGuid_PcdSerialIoUartRtsPinMux        4 bytes    $_DEFAULT_ = 0x0
         $gPlatformFspPkgTokenSpaceGuid_PcdSerialIoUartCtsPinMux        4 bytes    $_DEFAULT_ = 0x0
         $gPlatformFspPkgTokenSpaceGuid_PcdSerialIoUartDebugMmioBase    4 bytes    $_DEFAULT_ = 0xFE036000
-        $gPlatformFspPkgTokenSpaceGuid_PcdLpcUartDebugEnable           1 bytes    $_DEFAULT_ = 0x00
+        $gPlatformFspPkgTokenSpaceGuid_PcdLpcUartDebugEnable           1 bytes    $_DEFAULT_ = 0x01
         $gPlatformFspPkgTokenSpaceGuid_PcdDebugInterfaceFlags          1 bytes    $_DEFAULT_ = 0x012
         $gPlatformFspPkgTokenSpaceGuid_PcdSerialDebugLevel             1 bytes    $_DEFAULT_ = 0x03
         $gPlatformFspPkgTokenSpaceGuid_PcdIsaSerialUartBase            1 bytes    $_DEFAULT_ = 0x00
@@ -125,7 +125,7 @@ StructDef
         $gPlatformFspPkgTokenSpaceGuid_RmtPerTask                      1 bytes    $_DEFAULT_ = 0x0
         $gPlatformFspPkgTokenSpaceGuid_TrainTrace                      1 bytes    $_DEFAULT_ = 0x0
         Skip 1 bytes
-        $gPlatformFspPkgTokenSpaceGuid_TsegSize                        4 bytes    $_DEFAULT_ = 0x0400000
+        $gPlatformFspPkgTokenSpaceGuid_TsegSize                        4 bytes    $_DEFAULT_ = 0x01000000
         $gPlatformFspPkgTokenSpaceGuid_MmioSize                        2 bytes    $_DEFAULT_ = 0x0
         $gPlatformFspPkgTokenSpaceGuid_ProbelessTrace                  1 bytes    $_DEFAULT_ = 0x00
         $gPlatformFspPkgTokenSpaceGuid_SmbusEnable                     1 bytes    $_DEFAULT_ = 0x01
