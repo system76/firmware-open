@@ -14,8 +14,6 @@ source /etc/os-release
 msg "Installing system build dependencies"
 if [[ "${ID}" =~ "debian" ]] || [[ "${ID_LIKE}" =~ "debian" ]]; then
   sudo apt-get install \
-    avr-libc \
-    avrdude \
     bison \
     build-essential \
     ccache \
@@ -25,7 +23,6 @@ if [[ "${ID}" =~ "debian" ]] || [[ "${ID_LIKE}" =~ "debian" ]]; then
     dosfstools \
     flashrom \
     flex \
-    gcc-avr \
     git-lfs \
     gnat \
     libncurses-dev \
@@ -37,16 +34,11 @@ if [[ "${ID}" =~ "debian" ]] || [[ "${ID_LIKE}" =~ "debian" ]]; then
     python-is-python3 \
     python2 \
     python3-distutils \
-    sdcc \
     uuid-dev \
-    xxd \
     zlib1g-dev
 elif [[ "${ID}" =~ "fedora" ]] || [[ "${ID_LIKE}" =~ "fedora" ]]; then
   sudo dnf group install c-development
   sudo dnf install \
-    avr-gcc \
-    avr-libc \
-    avrdude \
     ccache \
     cmake \
     curl \
@@ -64,15 +56,10 @@ elif [[ "${ID}" =~ "fedora" ]] || [[ "${ID_LIKE}" =~ "fedora" ]]; then
     python-unversioned-command \
     python2 \
     python3 \
-    sdcc \
     systemd-devel \
-    vim-common \
     zlib-devel
 elif [[ "${ID}" =~ "arch" ]] || [[ "${ID_LIKE}" =~ "arch" ]]; then
   sudo pacman -S \
-    avr-gcc \
-    avr-libc \
-    avrdude \
     bison \
     ccache \
     cmake \
@@ -91,9 +78,7 @@ elif [[ "${ID}" =~ "arch" ]] || [[ "${ID_LIKE}" =~ "arch" ]]; then
     python \
     python-distutils-extra \
     python2 \
-    sdcc \
-    systemd-libs \
-    vim
+    systemd-libs
 else
   msg "Unknown system ID: ${ID}"
   msg "Please add support for your distribution to: $0"
@@ -130,6 +115,11 @@ fi
 
 msg "Installing pinned Rust toolchain and components"
 rustup show
+
+msg "Installing EC dependencies"
+pushd ec
+./scripts/deps.sh
+popd
 
 if [[ $RUSTUP_NEW_INSTALL = 1 ]]; then
     msg "\x1B[33m>> rustup was just installed. Ensure cargo is on the PATH with:"
