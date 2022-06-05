@@ -102,7 +102,7 @@ curl -sSf https://review.coreboot.org/tools/hooks/commit-msg \
 RUSTUP_NEW_INSTALL=0
 if which rustup &> /dev/null; then
   msg "Updating rustup"
-  rustup self update
+  rustup self update || true
 else
   RUSTUP_NEW_INSTALL=1
   msg "Installing Rust"
