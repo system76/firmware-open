@@ -78,6 +78,12 @@ cp coreboot/.config models/<model>/coreboot.config
 `generate.sh` does not create `devicetree.cb`. Some values for this file can be
 produced using the `devicetree.py` script.
 
+## Configuring Intel CSME
+
+The CSME image may need to be regenerated. Common changes that may be required
+are disabling Platform Trust Technology (PTT) so the discrete TPM device will
+work, and changing the Boot Guard profile to disable verified boot.
+
 ## Porting System76 EC
 
 To port System76 EC firmware to a new board, see the EC documentation.
