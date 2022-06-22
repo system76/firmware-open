@@ -8,6 +8,7 @@
 - [darp5](./darp5) - System76 Darter Pro (darp5)
 - [darp6](./darp6) - System76 Darter Pro (darp6)
 - [darp7](./darp7) - System76 Darter Pro (darp7)
+- [darp8](./darp8) - System76 Darter Pro (darp8)
 - [galp2](./galp2) - System76 Galago Pro (galp2)
 - [galp3](./galp3) - System76 Galago Pro (galp3)
 - [galp3-b](./galp3-b) - System76 Galago Pro (galp3-b)
