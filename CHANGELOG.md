@@ -4,7 +4,11 @@ Changes are identified by the date of the released firmware including them. If
 you are running System76 Open Firmware, opening the boot menu will show this
 date followed by an underscore and a short git revision.
 
-## UNRELEASED
+## 2022-06-23
+
+- darp8: Release of open firmware with System76 EC
+
+## 2022-06-07
 
 - Fixed building for QEMU
 - Updated coreboot to upstream commit 670572ff6a
