@@ -4,6 +4,10 @@ Changes are identified by the date of the released firmware including them. If
 you are running System76 Open Firmware, opening the boot menu will show this
 date followed by an underscore and a short git revision.
 
+## UNRELEASED
+
+- lemp11: Release of open firmare with System76 EC
+
 ## 2022-06-23
 
 - darp8: Release of open firmware with System76 EC
