@@ -4,6 +4,10 @@ Changes are identified by the date of the released firmware including them. If
 you are running System76 Open Firmware, opening the boot menu will show this
 date followed by an underscore and a short git revision.
 
+## 2022-07-05
+
+- lemp11: Fix power off under load while on battery power
+
 ## 2022-06-29
 
 - lemp11: Release of open firmare with System76 EC
