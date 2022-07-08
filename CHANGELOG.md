@@ -4,6 +4,10 @@ Changes are identified by the date of the released firmware including them. If
 you are running System76 Open Firmware, opening the boot menu will show this
 date followed by an underscore and a short git revision.
 
+## UNRELEASED
+
+- Updated EDK2 to edk2-stable202205
+
 ## 2022-07-05
 
 - lemp11: Fix power off under load while on battery power
@@ -34,7 +38,7 @@ date followed by an underscore and a short git revision.
 - Enabled coreboot measured boot
 - Updated Rust toolchain to nightly-2021-06-15
 - Updated coreboot to 4.15
-- Updated EDK2 to edk2-stabke202108
+- Updated EDK2 to edk2-stable202108
 - Updated TGL-U microcode blobs to revision 0x9a
 - Updated TGL-H microcode blobs to revision 0x3c
 - Updated all other boards to use microcode blobs from Intel's public repo
