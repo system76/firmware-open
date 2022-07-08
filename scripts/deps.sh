@@ -126,5 +126,10 @@ if [[ $RUSTUP_NEW_INSTALL = 1 ]]; then
     echo -e "    source ~/.cargo/env\n"
 fi
 
+msg "Building coreboot toolchain"
+pushd coreboot
+make crossgcc-i386
+popd
+
 msg "\x1B[32mSuccessfully installed dependencies"
 echo "Ready to run ./scripts/build.sh [model]" >&2
