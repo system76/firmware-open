@@ -29,7 +29,6 @@ if [[ "${ID}" =~ "debian" ]] || [[ "${ID_LIKE}" =~ "debian" ]]; then
     libudev-dev \
     msr-tools \
     mtools \
-    nasm \
     parted \
     python-is-python3 \
     python2 \
@@ -49,7 +48,6 @@ elif [[ "${ID}" =~ "fedora" ]] || [[ "${ID_LIKE}" =~ "fedora" ]]; then
     libuuid-devel \
     msr-tools \
     mtools \
-    nasm \
     ncurses-devel \
     parted \
     patch \
@@ -71,7 +69,6 @@ elif [[ "${ID}" =~ "arch" ]] || [[ "${ID_LIKE}" =~ "arch" ]]; then
     git-lfs \
     msr-tools \
     mtools \
-    nasm \
     ncurses \
     parted \
     patch \

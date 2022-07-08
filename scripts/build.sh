@@ -2,6 +2,7 @@
 
 set -e
 
+PATH="$PWD/coreboot/util/crossgcc/xgcc/bin:$PATH"
 # TODO: Move this to build scripts that require it on Debian
 PATH="$PATH:/usr/sbin"
 
