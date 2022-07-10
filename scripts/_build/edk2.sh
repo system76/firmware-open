@@ -22,6 +22,21 @@ pushd edk2 >/dev/null
   make -C BaseTools --jobs="$(nproc)"
   source edksetup.sh --reconfig
 
+  if [[ "$@" =~ "SECURE_BOOT_ENABLE=TRUE" ]]; then
+    # Build the Secure Boot FV
+    build \
+      -a IA32 \
+      -a X64 \
+      -b "${BUILD_TYPE}" \
+      -t "${TOOLCHAIN}" \
+      -p "UefiVariableBinary/UefiVariableBinary.dsc"
+
+    # TODO: Fix where the FV is stored.
+    cp -v \
+      "Build/UefiVariableBinary/${BUILD_TYPE}_${TOOLCHAIN}/FV/SECUREBOOT.Fv" \
+      "UefiVariableBinary/"
+  fi
+
   build \
     -a IA32 \
     -a X64 \
