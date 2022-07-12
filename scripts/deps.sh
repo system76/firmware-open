@@ -121,6 +121,12 @@ pushd ec
 ./scripts/deps.sh
 popd
 
+msg "Building coreboot toolchains"
+pushd coreboot
+make crossgcc-i386
+make crossgcc-x64
+popd
+
 if [[ $RUSTUP_NEW_INSTALL = 1 ]]; then
     msg "\x1B[33m>> rustup was just installed. Ensure cargo is on the PATH with:"
     echo -e "    source ~/.cargo/env\n"
