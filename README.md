@@ -12,17 +12,21 @@ manager:
 - bonw14
 - darp6
 - darp7
+- darp8
 - galp4
 - galp5
 - gaze15
 - gaze16-3050
 - gaze16-3060
 - gaze16-3060-b
+- gaze17-3060-b
 - lemp9
 - lemp10
+- lemp11
 - oryp6
 - oryp7
 - oryp8
+- oryp9
 
 Other models may be in development or available without support, and can be
 seen in the `models/` directory.
