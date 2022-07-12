@@ -29,10 +29,8 @@ if [[ "${ID}" =~ "debian" ]] || [[ "${ID_LIKE}" =~ "debian" ]]; then
     libudev-dev \
     msr-tools \
     mtools \
-    nasm \
     parted \
     python-is-python3 \
-    python2 \
     python3-distutils \
     uuid-dev \
     zlib1g-dev
@@ -49,12 +47,10 @@ elif [[ "${ID}" =~ "fedora" ]] || [[ "${ID_LIKE}" =~ "fedora" ]]; then
     libuuid-devel \
     msr-tools \
     mtools \
-    nasm \
     ncurses-devel \
     parted \
     patch \
     python-unversioned-command \
-    python2 \
     python3 \
     systemd-devel \
     zlib-devel
@@ -71,13 +67,11 @@ elif [[ "${ID}" =~ "arch" ]] || [[ "${ID_LIKE}" =~ "arch" ]]; then
     git-lfs \
     msr-tools \
     mtools \
-    nasm \
     ncurses \
     parted \
     patch \
     python \
     python-distutils-extra \
-    python2 \
     systemd-libs
 else
   msg "Unknown system ID: ${ID}"
