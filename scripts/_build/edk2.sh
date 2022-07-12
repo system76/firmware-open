@@ -9,11 +9,17 @@ then
 fi
 UEFIPAYLOAD="$(realpath "$1")"
 
-#PACKAGE=CorebootPayloadPkg
 PACKAGE=UefiPayloadPkg
 BUILD_TYPE=RELEASE
 #BUILD_TYPE=DEBUG
-TOOLCHAIN=GCC5
+TOOLCHAIN=COREBOOT
+
+COREBOOT_TOOLS_DEF="${PWD}/coreboot/payloads/external/tianocore/tools_def.txt"
+export GCC_CC_x86_32="${PWD}/coreboot/util/crossgcc/xgcc/bin/i386-elf-gcc"
+export GCC_CC_x86_64="${PWD}/coreboot/util/crossgcc/xgcc/bin/x86_64-elf-gcc"
+export OBJCOPY_x86_32="${PWD}/coreboot/util/crossgcc/xgcc/bin/i386-elf-objcopy"
+export OBJCOPY_x86_64="${PWD}/coreboot/util/crossgcc/xgcc/bin/x86_64-elf-objcopy"
+export NASM_PREFIX="${PWD}/coreboot/util/crossgcc/xgcc/bin/"
 
 # Force use of python3
 export PYTHON_COMMAND=python3
@@ -21,6 +27,7 @@ export PYTHON_COMMAND=python3
 pushd edk2 >/dev/null
   make -C BaseTools --jobs="$(nproc)"
   source edksetup.sh --reconfig
+  cat "${COREBOOT_TOOLS_DEF}" >> Conf/tools_def.txt
 
   build \
     -a IA32 \
