@@ -4,9 +4,12 @@ Changes are identified by the date of the released firmware including them. If
 you are running System76 Open Firmware, opening the boot menu will show this
 date followed by an underscore and a short git revision.
 
-## 2022-07-13
+## 2022-07-20
 
 - oryp9: Release of open firmware with System76 EC
+
+## 2022-07-13
+
 - darp8: Fixed power off under load while on battery power
 
 ## 2022-07-05
