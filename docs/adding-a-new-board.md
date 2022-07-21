@@ -61,6 +61,12 @@ If the microcode blobs from coreboot will not be used, then `microcode.rom`
 must be generated for the correct CPU set from the private [intel-microcode]
 repo.
 
+Other things that should be dumped before porting/flashing are:
+
+- The kernel log (`dmesg`)
+- DMI info (`dmidecode`)
+- ACPI tables (`acpidump -b`)
+
 ## Porting coreboot
 
 To port coreboot to a new board, see the coreboot documentation.
