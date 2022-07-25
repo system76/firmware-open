@@ -4,6 +4,15 @@ Changes are identified by the date of the released firmware including them. If
 you are running System76 Open Firmware, opening the boot menu will show this
 date followed by an underscore and a short git revision.
 
+## unreleased
+
+- Updated coreboot to upstream commit 37bf8c6dd590
+- Updated TGL-U microcode to revision 0xa4 from Intel's public repo
+- Updated TGL-H microcode to revision 0x3e from Intel's public repo
+- Updated ADL microcode to revision 0x41c from Intel's public repo
+- Updated ADL FSP to C.0.69.74 from Intel's public repo
+- Fixed uncommon I2C HID initialization failure on boot
+
 ## 2022-07-27
 
 - gaze17-3050: Release of open firmware with System76 EC
