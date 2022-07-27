@@ -4,6 +4,11 @@ Changes are identified by the date of the released firmware including them. If
 you are running System76 Open Firmware, opening the boot menu will show this
 date followed by an underscore and a short git revision.
 
+## 2022-07-27
+
+- gaze17-3050: Release of open firmware with System76 EC
+- gaze17-3060: Fixed suspend with WD drives
+
 ## 2022-07-20
 
 - oryp9: Release of open firmware with System76 EC
