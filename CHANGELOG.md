@@ -38,7 +38,11 @@ date followed by an underscore and a short git revision.
 
 - Fixed building for QEMU
 - Updated coreboot to upstream commit 670572ff6a
+- Fixed NVIDIA subsystem ID being lost on suspend
+- TGL: Fixed Device Manager warning about missing drivers for Tiger Lake IPC
+  Controller and System76 EC ACPI devices
 - Improved NVIDIA Optimus support
+- darp7, galp5, lemp10: Fixed suspend with certain drives
 - gaze17-3060-b: Release of open firmware with System76 EC
 
 ## 2022-02-15
@@ -52,7 +56,7 @@ date followed by an underscore and a short git revision.
 - Enabled coreboot measured boot
 - Updated Rust toolchain to nightly-2021-06-15
 - Updated coreboot to 4.15
-- Updated EDK2 to edk2-stabke202108
+- Updated EDK2 to edk2-stable202108
 - Updated TGL-U microcode blobs to revision 0x9a
 - Updated TGL-H microcode blobs to revision 0x3c
 - Updated all other boards to use microcode blobs from Intel's public repo
