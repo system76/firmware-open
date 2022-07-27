@@ -11,6 +11,9 @@ date followed by an underscore and a short git revision.
 - Updated TGL-H microcode to revision 0x3e from Intel's public repo
 - Updated ADL microcode to revision 0x41c from Intel's public repo
 - Updated ADL FSP to C.0.69.74 from Intel's public repo
+- Updated CSME for ADL-P to 16.0.15.1810v8 (16.0.15.1829)
+- Updated CSME for TGL-H to 15.0.41.2158
+- Updated CSME for TGL-U to 15.0.41.2158
 - Fixed uncommon I2C HID initialization failure on boot
 
 ## 2022-07-27
