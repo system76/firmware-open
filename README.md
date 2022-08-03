@@ -15,6 +15,7 @@ manager:
 - darp8
 - galp4
 - galp5
+- galp6
 - gaze15
 - gaze16-3050
 - gaze16-3060
