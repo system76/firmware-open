@@ -4,6 +4,11 @@ Changes are identified by the date of the released firmware including them. If
 you are running System76 Open Firmware, opening the boot menu will show this
 date followed by an underscore and a short git revision.
 
+## unreleased
+
+- Updated CSME for TGL-H to 15.0.41.2158
+- Updated CSME for TGL-U to 15.0.41.2158
+
 ## 2022-08-03
 
 - Updated coreboot to upstream commit 37bf8c6dd590
