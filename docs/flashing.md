@@ -31,8 +31,8 @@ Use one of these methods for first-time flashing or flashing a bricked system.
 ### Identifying the BIOS chip
 
 The packaging and protocol can be determined by `board_info.txt` in coreboot.
-Laptops use a SOIC-8 package for the SPI flash ROM. Pin 1 is marked by a small
-dot indent and a white paint mark. The silkscreen may also indicate pin 1.
+Pin 1 is marked by a small dot indent and a white paint mark. The silkscreen
+may also indicate pin 1.
 
 ### CH341A USB programmer - slower, but easier to set up
 
