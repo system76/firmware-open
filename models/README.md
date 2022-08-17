@@ -34,4 +34,3 @@
 - [oryp8](./oryp8) - System76 Oryx Pro (oryp8)
 - [oryp9](./oryp9) - System76 Oryx Pro (oryp9)
 - [qemu](./qemu) - QEMU (Virtualization)
-- [thelio-b1](./thelio-b1) - System76 Thelio (thelio-b1)
