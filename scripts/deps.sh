@@ -92,7 +92,9 @@ msg "Downloading GIT LFS artifacts"
 git lfs pull
 
 if [ "$(git remote get-url origin)" == "http://192.168.50.76:3000/system76/firmware-open.git" ]; then
+  used_cache_server=true
   msg "Cloned from local repo. Modifying submodule locations"
+  cp .gitmodules .gitmodules-bkup
   sed -i "s/https:\/\/github.com/http:\/\/192.168.50.76:3000/g" .gitmodules
   sed -i "s/https:\/\/gitlab.redox-os.org/http:\/\/192.168.50.76:3000/g" .gitmodules
   git submodule sync
@@ -100,6 +102,11 @@ fi
 
 msg "Initializing submodules"
 git submodule update --init --recursive --progress
+
+if [ used_cache_server ]; then
+  msg "Cloned from local repo. Restoring .gitmodules file"
+  mv .gitmodules-bkup .gitmodules
+fi
 
 msg "Installing coreboot commit hook"
 curl -sSf https://review.coreboot.org/tools/hooks/commit-msg \
