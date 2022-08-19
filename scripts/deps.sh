@@ -11,7 +11,7 @@ function submodule_update_with_cache {
   sed -i "s/https:\/\/gitlab.redox-os.org/http:\/\/192.168.50.76:3000/g" .gitmodules
   sed -i "s/https:\/\/review.coreboot.org/http:\/\/192.168.50.76:3000\/coreboot/g" .gitmodules
   git submodule sync --recursive
-  git submodule update --init --progress --force --remote --jobs 5
+  git submodule update --init --progress --force --remote --jobs 5 --depth 1
   for path in $(find $1 -mindepth 2 -name ".gitmodules"); do
     submodule_update_with_cache "${path//.gitmodules}"
   done
@@ -108,7 +108,7 @@ if [ "${git_origin_url//.git}" == "http://192.168.50.76:3000/system76/firmware-o
   submodule_update_with_cache .
 else
   msg "Initializing submodules"
-  git submodule update --init --recursive --progress
+  git submodule update --init --recursive --progress --jobs 5
 fi
 
 msg "Installing coreboot commit hook"
