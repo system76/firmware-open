@@ -7,11 +7,18 @@ function msg {
 }
 
 function submodule_update_with_cache {
+  echo "$1/.gitmodules"
+  if [[ -f "$1/.gitmodules" ]]; then
+    cd $1
+  else
+    return
+  fi
   sed -i "s/https:\/\/github.com/http:\/\/192.168.50.76:3000/g" .gitmodules
   sed -i "s/https:\/\/gitlab.redox-os.org/http:\/\/192.168.50.76:3000/g" .gitmodules
   sed -i "s/https:\/\/review.coreboot.org/http:\/\/192.168.50.76:3000\/coreboot/g" .gitmodules
   git submodule sync --recursive
-  git submodule update --init --progress --force --remote --jobs 5 --depth 1
+  git submodule update --init --progress --remote --jobs 5
+  echo "find $1 in $(pwd)"
   for path in $(find $1 -mindepth 2 -name ".gitmodules"); do
     submodule_update_with_cache "${path//.gitmodules}"
   done
@@ -105,7 +112,9 @@ git lfs pull
 git_origin_url="$(git remote get-url origin)"
 if [ "${git_origin_url//.git}" == "http://192.168.50.76:3000/system76/firmware-open" ]; then
   msg "Cloned from local repo. Modifying submodule locations"
-  submodule_update_with_cache .
+  wd=$(pwd)
+  submodule_update_with_cache $(pwd)
+  cd $wd
 else
   msg "Initializing submodules"
   git submodule update --init --recursive --progress --jobs 5
