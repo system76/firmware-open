@@ -6,6 +6,17 @@ function msg {
   echo -e "\x1B[1m$*\x1B[0m" >&2
 }
 
+function submodule_update_with_cache {
+  sed -i "s/https:\/\/github.com/http:\/\/192.168.50.76:3000/g" .gitmodules
+  sed -i "s/https:\/\/gitlab.redox-os.org/http:\/\/192.168.50.76:3000/g" .gitmodules
+  sed -i "s/https:\/\/review.coreboot.org/http:\/\/192.168.50.76:3000\/coreboot/g" .gitmodules
+  git submodule sync --recursive
+  git submodule update --init --progress --force --remote --jobs 5
+  for path in $(find $1 -mindepth 2 -name ".gitmodules"); do
+    submodule_update_with_cache "${path//.gitmodules}"
+  done
+}
+
 trap 'msg "\x1B[31mFailed to install dependencies!"' ERR
 
 source /etc/os-release
@@ -91,21 +102,13 @@ git lfs install
 msg "Downloading GIT LFS artifacts"
 git lfs pull
 
-if [ "$(git remote get-url origin)" == "http://192.168.50.76:3000/system76/firmware-open.git" ]; then
-  used_cache_server=true
+git_origin_url="$(git remote get-url origin)"
+if [ "${git_origin_url//.git}" == "http://192.168.50.76:3000/system76/firmware-open" ]; then
   msg "Cloned from local repo. Modifying submodule locations"
-  cp .gitmodules .gitmodules-bkup
-  sed -i "s/https:\/\/github.com/http:\/\/192.168.50.76:3000/g" .gitmodules
-  sed -i "s/https:\/\/gitlab.redox-os.org/http:\/\/192.168.50.76:3000/g" .gitmodules
-  git submodule sync
-fi
-
-msg "Initializing submodules"
-git submodule update --init --recursive --progress
-
-if [ used_cache_server ]; then
-  msg "Cloned from local repo. Restoring .gitmodules file"
-  mv .gitmodules-bkup .gitmodules
+  submodule_update_with_cache .
+else
+  msg "Initializing submodules"
+  git submodule update --init --recursive --progress
 fi
 
 msg "Installing coreboot commit hook"
