@@ -101,7 +101,7 @@ else
   RUSTUP_NEW_INSTALL=1
   msg "Installing Rust"
   curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs \
-    | sh -s -- -y --default-toolchain none
+    | sh -s -- -y --default-toolchain stable
 
   msg "Loading Rust environment"
   source "${HOME}/.cargo/env"
