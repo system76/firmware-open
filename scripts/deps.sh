@@ -13,7 +13,10 @@ source /etc/os-release
 
 msg "Installing system build dependencies"
 if [[ "${ID}" =~ "debian" ]] || [[ "${ID_LIKE}" =~ "debian" ]]; then
-  sudo apt-get install \
+  sudo apt-get --quiet update
+  sudo apt-get --quiet install \
+    --no-install-recommends \
+    --assume-yes \
     bison \
     build-essential \
     ccache \
@@ -37,6 +40,7 @@ if [[ "${ID}" =~ "debian" ]] || [[ "${ID_LIKE}" =~ "debian" ]]; then
 elif [[ "${ID}" =~ "fedora" ]] || [[ "${ID_LIKE}" =~ "fedora" ]]; then
   sudo dnf group install c-development
   sudo dnf install \
+    --assumeyes \
     ccache \
     cmake \
     curl \
@@ -56,6 +60,7 @@ elif [[ "${ID}" =~ "fedora" ]] || [[ "${ID_LIKE}" =~ "fedora" ]]; then
     zlib-devel
 elif [[ "${ID}" =~ "arch" ]] || [[ "${ID_LIKE}" =~ "arch" ]]; then
   sudo pacman -S \
+    --no-confirm \
     bison \
     ccache \
     cmake \
