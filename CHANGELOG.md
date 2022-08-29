@@ -8,6 +8,7 @@ date followed by an underscore and a short git revision.
 
 - Updated CSME for TGL-H to 15.0.41.2158
 - Updated CSME for TGL-U to 15.0.41.2158
+- Changed build to use coreboot toolchain for edk2
 
 ## 2022-08-03
 
