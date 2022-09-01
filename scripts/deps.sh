@@ -122,8 +122,8 @@ popd
 
 msg "Building coreboot toolchains"
 pushd coreboot
-make crossgcc-i386
-make crossgcc-x64
+make CPUS="$(nproc)" crossgcc-i386
+make CPUS="$(nproc)" crossgcc-x64
 popd
 
 if [[ $RUSTUP_NEW_INSTALL = 1 ]]; then
