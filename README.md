@@ -29,6 +29,7 @@ manager:
 - oryp7
 - oryp8
 - oryp9
+- oryp10
 
 Other models may be in development or available without support, and can be
 seen in the `models/` directory.
