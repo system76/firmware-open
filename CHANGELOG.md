@@ -4,6 +4,10 @@ Changes are identified by the date of the released firmware including them. If
 you are running System76 Open Firmware, opening the boot menu will show this
 date followed by an underscore and a short git revision.
 
+## unreleased
+
+- oryp8: Fixed brightness controls on Windows
+
 ## 2022-09-07
 
 - Updated CSME for TGL-H to 15.0.41.2158
