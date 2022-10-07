@@ -7,6 +7,7 @@ date followed by an underscore and a short git revision.
 ## unreleased
 
 - oryp8: Fixed brightness controls on Windows
+- Fixed smart charger values for all boards
 
 ## 2022-09-07
 
