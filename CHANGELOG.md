@@ -4,10 +4,15 @@ Changes are identified by the date of the released firmware including them. If
 you are running System76 Open Firmware, opening the boot menu will show this
 date followed by an underscore and a short git revision.
 
-## unreleased
+## 2022-10-11
+
+- Fixed smart charger values for all boards
+- lemp11: Removed RTD3 config for card reader to fix suspend
+
+## 2022-09-26
 
 - oryp8: Fixed brightness controls on Windows
-- Fixed smart charger values for all boards
+- oryp10: Release of open firmware with System76 EC
 
 ## 2022-09-07
 
@@ -16,7 +21,6 @@ date followed by an underscore and a short git revision.
 - Changed build to use coreboot toolchain for edk2
 - Fixed signal used to detect S0ix
 - Fixed off-by-one for battery charging start/stop thresholds
-- oryp10: Release of open firmware with System76 EC
 
 ## 2022-08-03
 
