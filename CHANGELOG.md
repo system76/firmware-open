@@ -4,9 +4,10 @@ Changes are identified by the date of the released firmware including them. If
 you are running System76 Open Firmware, opening the boot menu will show this
 date followed by an underscore and a short git revision.
 
-## 2022-10-11
+## 2022-10-14
 
 - Fixed smart charger values for all boards
+- Fixed keyboard backlight color with custom values
 - lemp11: Removed RTD3 config for card reader to fix suspend
 
 ## 2022-09-26
