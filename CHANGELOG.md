@@ -4,9 +4,11 @@ Changes are identified by the date of the released firmware including them. If
 you are running System76 Open Firmware, opening the boot menu will show this
 date followed by an underscore and a short git revision.
 
-## 2022-10-17
+## 2022-11-02
 
 - lemp11: Added workaround to force S0ix entry on suspend
+- tgl-u: Removed CPU PCIe RP RTD3 config to fix suspend with certain drives
+- adl-p: Removed CPU PCIe RP RTD3 config to fix suspend with certain drives
 
 ## 2022-10-14
 
