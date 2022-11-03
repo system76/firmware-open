@@ -19,7 +19,7 @@ date followed by an underscore and a short git revision.
 ## 2022-09-26
 
 - oryp8: Fixed brightness controls on Windows
-- oryp10: Release of open firmware with System76 EC
+- oryp10: Added initial release of open firmware with System76 EC
 
 ## 2022-09-07
 
@@ -39,16 +39,16 @@ date followed by an underscore and a short git revision.
 - Updated CSME for ADL-P to 16.0.15.1810v8 (16.0.15.1829)
 - Fixed uncommon I2C HID initialization failure on boot
 - Fixed smart charger values for all boards
-- galp6: Release of open firmware with System76 EC
+- galp6: Added initial release of open firmware with System76 EC
 
 ## 2022-07-27
 
-- gaze17-3050: Release of open firmware with System76 EC
+- gaze17-3050: Added initial release of open firmware with System76 EC
 - gaze17-3060: Fixed suspend with WD drives
 
 ## 2022-07-20
 
-- oryp9: Release of open firmware with System76 EC
+- oryp9: Added initial release of open firmware with System76 EC
 
 ## 2022-07-13
 
@@ -56,11 +56,11 @@ date followed by an underscore and a short git revision.
 
 ## 2022-07-05
 
-- lemp11: Release of open firmare with System76 EC
+- lemp11: Added initial release of open firmare with System76 EC
 
 ## 2022-06-23
 
-- darp8: Release of open firmware with System76 EC
+- darp8: Added initial release of open firmware with System76 EC
 
 ## 2022-06-07
 
@@ -70,13 +70,13 @@ date followed by an underscore and a short git revision.
 - TGL: Fixed Device Manager warning about missing drivers for Tiger Lake IPC
   Controller and System76 EC ACPI devices
 - Improved NVIDIA Optimus support
-- darp7, galp5, lemp10: Fixed suspend with certain drives
-- gaze17-3060-b: Release of open firmware with System76 EC
+- tgl-u: Fixed suspend with certain drives
+- gaze17-3060-b: Added initial release of open firmware with System76 EC
 
 ## 2022-02-15
 
-- Update ME for all supported systems
-- Ensure that system powers off S5 plane if it fails to reach S0
+- Updated ME for all supported systems
+- Ensured that system powers off S5 plane if it fails to reach S0
 
 ## 2022-01-06
 
@@ -93,23 +93,23 @@ date followed by an underscore and a short git revision.
 
 ## 2021-09-30
 
-- gaze16: Do not require unplugging the AC adapter after flashing
-- gaze16: Fix using USB 2.0 devices in Type-C port
+- gaze16: Removed need to unplug the AC adapter after flashing
+- gaze16: Fixed using USB 2.0 devices in Type-C port
 
 ## 2021-09-23
 
-- oryp8: Release of open firmware with System76 EC
-- gaze16: Fix input current on 3050 variant
-- gaze16: Fix power limit when booting on battery
-- gaze16: Fix touchpad on newer Linux kernel and Windows
-- Fix brightness controls on TGL platforms
-- Fix PCIe subsystem IDs on TGL platforms
-- Fix spurious clearing of boot options on Windows
-- Provide battery cycle count
+- oryp8: Added initial release of open firmware with System76 EC
+- gaze16: Fixed input current on 3050 variant
+- gaze16: Fixed power limit when booting on battery
+- gaze16: Fixed touchpad on newer Linux kernel and Windows
+- Fixed brightness controls on TGL platforms
+- Fixed PCIe subsystem IDs on TGL platforms
+- Fixed spurious clearing of boot options on Windows
+- Added battery cycle count
 
 ## 2021-07-20
 
-- gaze16: Release of open firmware with System76 EC
+- gaze16: Added initial release of open firmware with System76 EC
 - Improved thermals by syncing CPU and GPU fans
 - Enabled fan speed interpolation
 - Fixed ACPI timeout on S3 resume if a key is held
@@ -119,142 +119,148 @@ date followed by an underscore and a short git revision.
 
 ## 2021-04-07
 
-- darp7, galp5, lemp10: Update microcode
+- tgl-u: Updated microcode
 
 ## 2021-04-02
 
-- Fix fan max keeping fan on when in S0iX
-- Report all keys as released when lid is closed
+- Fixed fan max keeping fan on when in S0iX
+- Changed keyboard behavior to report all keys as released when lid is closed
 
 ## 2021-03-19
 
-- gaze15: Release of open firmware with System76 EC
-- gaze15: Add ELAN touchpad settings
+- gaze15: Added initial release of open firmware with System76 EC
+- gaze15: Added ELAN touchpad settings
 
 ## 2021-03-16
 
-- oryp6, oryp7: Fix buzzing at lowest fan speed
+- oryp6: Fixed buzzing at lowest fan speed
+- oryp7: Fixed buzzing at lowest fan speed
 
 ## 2021-03-11
 
-- lemp9: Fix backlight ACPI issues and TPM interrupt
+- lemp9: Fixed backlight ACPI issues and TPM interrupt
 
 ## 2021-03-08
 
-- oryp6, oryp7: Improved fan curve
+- oryp6: Improved fan curve
+- oryp7: Improved fan curve
 
 ## 2021-03-03
 
-- oryp7: Release of open firmware with System76 EC
+- oryp7: Added initial release of open firmware with System76 EC
 
 ## 2021-02-15
 
-- darp7, galp5: Raise HDMI data rate to support 4K@60Hz
+- darp7: Increased HDMI data rate to support 4K@60Hz
+- galp5: Increased HDMI data rate to support 4K@60Hz
 
 ## 2021-02-09
 
-- galp5: Fix GPU driver crash in compute graphics mode
+- galp5: Fixed GPU driver crash in compute graphics mode
 
 ## 2021-02-05
 
-- darp7: Fix keyboard scanning glitches
+- darp7: Fixed keyboard scanning glitches
 
 ## 2021-01-21
 
-- darp7: Release of open firmware with System76 EC
+- darp7: Added initial release of open firmware with System76 EC
 
 ## 2021-01-19
 
-- Update boot options on device hotplug
-- Add fan toggle key (Fn+1)
-- Clear NVRAM when CMOS battery is removed
-- galp5, lemp10: Fix NVRAM compacting
+- Added behavior to update boot options on device hotplug
+- Added fan toggle key (Fn+1)
+- Added behavior to clear NVRAM when CMOS battery is removed
+- galp5: Fixed NVRAM compacting
+- lemp10: Fixed NVRAM compacting
 
 ## 2021-12-15
 
-- galp5: Support variant with NVIDIA GPU
+- galp5: Added support for variant with NVIDIA GPU
 
 ## 2020-12-04
 
-- galp5, lemp10: Release of open firmware with System76 EC
+- galp5: Added initial release of open firmware with System76 EC
+- lemp10: Added initial release of open firmware with System76 EC
 
 ## 2020-10-19
 
-- Support customizing keyboard at runtime
-- Add battery charging thresholds
-- oryp6: Fix smart charger values
-- Prevent wake when lid is closed
+- Added support for customizing keyboard at runtime
+- Added battery charging thresholds
+- oryp6: Fixed smart charger values
+- Prevented wake when lid is closed
 
 ## 2020-09-22
 
-- darp6: Release of open firmware with System76 EC
-- darp6: Fix allocation of memory type range registers
+- darp6: Added initial release of open firmware with System76 EC
+- darp6: Fixed allocation of memory type range registers
 
 ## 2020-09-17
 
-- Enable Wake-on-Lan (on supported models)
-- Add ACPI thermal interface
-- Fix ESXi keyboard issue
+- Enabled Wake-on-Lan (on supported models)
+- Added ACPI thermal interface
+- Fixed ESXi keyboard issue
 
 ## 2020-09-03
 
-- addw2: Release of open firmware with System76 EC
+- addw2: Added initial release of open firmware with System76 EC
 
 ## 2020-08-24
 
-- bonw14: Release of open firmware with System76 EC
+- bonw14: Added initial release of open firmware with System76 EC
 
 ## 2020-08-13
 
-- Add UEFI TPM2 support
+- Added UEFI TPM2 support
 
 ## 2020-08-06
 
-- Enable ACPI backlight
-- Add firmware configuration information
+- Enabled ACPI backlight
+- Added firmware configuration information
 
 ## 2020-07-06
 
-- oryp6: Release of open firmware with System76 EC
+- oryp6: Added initial release of open firmware with System76 EC
 
 ## 2020-05-20
 
-- Warn if no bootable media is found
+- Added warning if no bootable media is found
 
 ## 2020-05-15
 
-- Enable i2c-hid touchpad interface
+- Enabled i2c-hid touchpad interface
 
 ## 2020-05-07
 
-- Fix ghost key debouncing
+- Fixed ghost key debouncing
 
 ## 2020-05-04
 
-- Improve ghost key handling and reduce key debounce
+- Improved ghost key handling and reduce key debounce
 
 ## 2020-04-23
 
-- Fix duplicate release of key after release of function key
+- Fixed duplicate release of key after release of function key
 
 ## 2020-04-18
 
-- lemp9: Update fan curve
+- lemp9: Updated fan curve
 
 ## 2020-04-09
 
-- lemp9: Release of open firmware with System76 EC
+- lemp9: Added initial release of open firmware with System76 EC
 
 ## 2020-02-05
 
-- Use descriptive device names
-- Only show bootable devices
+- Changed boot manager to use descriptive device names
+- Changed boot manager to only show bootable devices
 
 ## 2020-01-13
 
-- Fix NVIDIA eGPU issues
-- Iimprove boot order editing
+- Fixed NVIDIA eGPU issues
+- Improved boot order editing
 
 ## 2019-10-31
 
-- darp6, galp4: Release of open firmware with proprietary EC
+- darp6: Added intial release of open firmware with proprietary EC
+- galp4: Added intial release of open firmware with proprietary EC
