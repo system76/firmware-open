@@ -4,6 +4,10 @@ Changes are identified by the date of the released firmware including them. If
 you are running System76 Open Firmware, opening the boot menu will show this
 date followed by an underscore and a short git revision.
 
+## unreleased
+
+- Updated Rust toolchain to nightly-2022-03-18
+
 ## 2022-11-14
 
 - lemp11: Added workaround to force S0ix entry on suspend
