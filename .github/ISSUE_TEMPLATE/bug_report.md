@@ -10,6 +10,7 @@ assignees: []
 - BIOS version: <!-- `cat /sys/class/dmi/id/bios_version` (e.g.: 2021-09-30_14b8a6e)-->
 - EC version: <!-- This will match the BIOS version unless you flashed it separately. -->
 - OS: <!-- e.g.: Pop!_OS 21.10, Fedora 35, Windows 11 -->
+- Kernel: <!-- `uname -r` (e.g.: 6.0.6-76060006-generic) -->
 
 <!-- Briefly describe the problem. -->
 
