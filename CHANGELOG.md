@@ -4,15 +4,7 @@ Changes are identified by the date of the released firmware including them. If
 you are running System76 Open Firmware, opening the boot menu will show this
 date followed by an underscore and a short git revision.
 
-## 2022-11-18
-
-- Updated Rust toolchain to nightly-2022-03-18
-- adl-p: Added workaround to force S0ix entry on suspend
-- adl-p: Fixed case where system gets stuck in S5 due to power loss
-- tgl-u: Fixed case where system gets stuck in S5 due to power loss
-- galp5: Fixed power off failing due to WLAN GPIO
-
-## 2022-11-14
+## 2022-11-21
 
 - lemp11: Added workaround to force S0ix entry on suspend
 - tgl-u: Removed CPU PCIe RP RTD3 config to fix suspend with certain drives
@@ -20,6 +12,11 @@ date followed by an underscore and a short git revision.
 - adl-p: Fixed ACPI brightness controls on Windows 10 and Linux 6.1
 - adl-p: Disabled SATA DevSlp to fix S0ix entry
 - tgl-u: Disabled SATA DevSlp to fix S0ix entry
+- Updated Rust toolchain to nightly-2022-03-18
+- adl-p: Added workaround to force S0ix entry on suspend
+- adl-p: Fixed case where system gets stuck in S5 due to power loss
+- tgl-u: Fixed case where system gets stuck in S5 due to power loss
+- galp5: Fixed power off failing due to WLAN GPIO
 
 ## 2022-10-14
 
