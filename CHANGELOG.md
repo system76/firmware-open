@@ -8,6 +8,7 @@ date followed by an underscore and a short git revision.
 
 - Updated coreboot to upstream commit decbf7b4d975
 - Enabled support for Secure Boot
+- Enabled minimal UI for enforcing Secure Boot and resetting keys
 
 ## 2022-11-21
 
