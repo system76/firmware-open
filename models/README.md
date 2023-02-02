@@ -25,6 +25,7 @@
 - [gaze17-3050](./gaze17-3050) - System76 Gazelle (gaze17)
 - [gaze17-3060-b](./gaze17-3060-b) - System76 Gazelle (gaze17-3060-b)
 - [gaze18-3050](./gaze18-3050) - System76 Gazelle (gaze18-3050)
+- [gaze18-40x0](./gaze18-40x0) - System76 Gazelle (gaze18-40x0)
 - [lemp10](./lemp10) - System76 Lemur Pro (lemp10)
 - [lemp11](./lemp11) - System76 Lemur Pro (lemp11)
 - [lemp9](./lemp9) - System76 Lemur Pro (lemp9)
