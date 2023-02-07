@@ -14,7 +14,7 @@ BUILD_TYPE=RELEASE
 #BUILD_TYPE=DEBUG
 TOOLCHAIN=COREBOOT
 
-COREBOOT_TOOLS_DEF="${PWD}/coreboot/payloads/external/tianocore/tools_def.txt"
+COREBOOT_TOOLS_DEF="${PWD}/coreboot/payloads/external/edk2/tools_def.txt"
 export GCC_CC_x86_32="${PWD}/coreboot/util/crossgcc/xgcc/bin/i386-elf-gcc"
 export GCC_CC_x86_64="${PWD}/coreboot/util/crossgcc/xgcc/bin/x86_64-elf-gcc"
 export OBJCOPY_x86_32="${PWD}/coreboot/util/crossgcc/xgcc/bin/i386-elf-objcopy"
