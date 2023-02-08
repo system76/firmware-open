@@ -71,8 +71,6 @@ Other things that should be dumped before porting/flashing are:
 
 To port coreboot to a new board, see the coreboot documentation.
 
-- [TAS5825M] smart amp
-
 Once coreboot is ported, add its configuration.
 
 ```
@@ -83,6 +81,19 @@ cp coreboot/.config models/<model>/coreboot.config
 
 `generate.sh` does not create `devicetree.cb`. Some values for this file can be
 produced using the `devicetree.py` script.
+
+### Smart amp
+
+Boards may have a smart amp, which must be configured for speaker output to
+work.
+
+The initialization data for Realtek smart amps can be dumped from the module
+that does the codec init in proprietary firmware. The correct module can be
+found using UEFITool by searching for the vendor/device ID of the codec, such
+as "10ec1220" for the ALC1220. This is the start of the `cim_verb_data` array
+in coreboot.
+
+For info on the TI TAS5825M smart amp, see the [smart-amp] repo.
 
 ## Configuring Intel CSME
 
@@ -106,4 +117,4 @@ READMEs.
 [external-programmer]: ./flashing.md#external-programmer
 [intel-microcode]: https://github.com/system76/intel-microcode
 [mega2560]: https://github.com/system76/ec/blob/master/doc/mega2560.md
-[TAS5825M]: https://github.com/system76/smart-amp
+[smart-amp]: https://github.com/system76/smart-amp
