@@ -2,6 +2,7 @@
 
 ## Contents
 
+- [addp3](./addp3) - System76 Adder Pro (addp3)
 - [addw1](./addw1) - System76 Adder Workstation (addw1)
 - [addw2](./addw2) - System76 Adder WS (addw2)
 - [bonw14](./bonw14) - System76 Bonobo WS (bonw14)
