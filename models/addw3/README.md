@@ -1,4 +1,4 @@
-# System76 Gazelle (gaze18-40x0)
+# System76 Adder WS (addw3)
 
 ## Contents
 
