@@ -1,4 +1,4 @@
-# System76 Oryx Pro (oryp11)
+# System76 Serval WS (serw13)
 
 ## Contents
 

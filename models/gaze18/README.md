@@ -1,4 +1,4 @@
-# System76 Gazelle (gaze18-3050)
+# System76 Gazelle (gaze18)
 
 ## Contents
 
