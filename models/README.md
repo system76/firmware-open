@@ -2,9 +2,9 @@
 
 ## Contents
 
-- [addp3](./addp3) - System76 Adder Pro (addp3)
 - [addw1](./addw1) - System76 Adder Workstation (addw1)
 - [addw2](./addw2) - System76 Adder WS (addw2)
+- [addw3](./addw3) - System76 Adder WS (addw3)
 - [bonw14](./bonw14) - System76 Bonobo WS (bonw14)
 - [darp5](./darp5) - System76 Darter Pro (darp5)
 - [darp6](./darp6) - System76 Darter Pro (darp6)
@@ -25,8 +25,7 @@
 - [gaze16-3060-b](./gaze16-3060-b) - System76 Gazelle (gaze16)
 - [gaze17-3050](./gaze17-3050) - System76 Gazelle (gaze17)
 - [gaze17-3060-b](./gaze17-3060-b) - System76 Gazelle (gaze17-3060-b)
-- [gaze18-3050](./gaze18-3050) - System76 Gazelle (gaze18-3050)
-- [gaze18-40x0](./gaze18-40x0) - System76 Gazelle (gaze18-40x0)
+- [gaze18](./gaze18) - System76 Gazelle (gaze18)
 - [lemp10](./lemp10) - System76 Lemur Pro (lemp10)
 - [lemp11](./lemp11) - System76 Lemur Pro (lemp11)
 - [lemp9](./lemp9) - System76 Lemur Pro (lemp9)
@@ -38,3 +37,4 @@
 - [oryp8](./oryp8) - System76 Oryx Pro (oryp8)
 - [oryp9](./oryp9) - System76 Oryx Pro (oryp9)
 - [qemu](./qemu) - QEMU (Virtualization)
+- [serw13](./serw13) - System76 Serval WS (serw13)

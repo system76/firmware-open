@@ -1,4 +1,4 @@
-# System76 Adder Pro (addp3)
+# System76 Oryx Pro (oryp11)
 
 ## Contents
 
@@ -9,4 +9,4 @@
   - HAP: false
 - [ME](./me.rom)
   - Size: 4824 KB
-  - Version: 16.1.25.2053
+  - Version: 16.1.25.2073
