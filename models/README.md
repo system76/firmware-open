@@ -6,6 +6,7 @@
 - [addw2](./addw2) - System76 Adder WS (addw2)
 - [addw3](./addw3) - System76 Adder WS (addw3)
 - [bonw14](./bonw14) - System76 Bonobo WS (bonw14)
+- [bonw15](./bonw15) - System76 Bonobo WS (bonw15)
 - [darp5](./darp5) - System76 Darter Pro (darp5)
 - [darp6](./darp6) - System76 Darter Pro (darp6)
 - [darp7](./darp7) - System76 Darter Pro (darp7)
