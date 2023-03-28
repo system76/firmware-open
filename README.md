@@ -52,6 +52,14 @@ For a list of important changes please see the [changelog](./CHANGELOG.md).
 
 ## Building
 
+WARNING: 
+As of the Coreboot 4.19 rebase, attempting to build and flash firmware from
+this repository on Intel 10th generation and earlier hardware will render
+the unit unrecoverable without the use of an external flashing tool such as a
+CH341A programmer. 
+
+
+
 Dependencies can be installed with the provided script.
 
 ```
