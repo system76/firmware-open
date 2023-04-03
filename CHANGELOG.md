@@ -4,11 +4,20 @@ Changes are identified by the date of the released firmware including them. If
 you are running System76 Open Firmware, opening the boot menu will show this
 date followed by an underscore and a short git revision.
 
-## unreleased
+## 2023-04-03
 
 - Updated coreboot to upstream commit decbf7b4d975
 - Enabled support for Secure Boot
 - Enabled minimal UI for enforcing Secure Boot and resetting keys
+- Add firmware locking support
+- Enable S3 suspend on everything but TGL-U
+- Disable ME by default on everything but TGL-U
+- Support for NVIDIA Dynamic Boost
+- addw3: Added initial release of open firmware with System76 EC
+- bonw15: Added initial release of open firmware with System76 EC
+- gaze18: Added initial release of open firmware with System76 EC
+- oryp10: Added initial release of open firmware with System76 EC
+- serw13: Added initial release of open firmware with System76 EC
 
 ## 2022-11-21
 
