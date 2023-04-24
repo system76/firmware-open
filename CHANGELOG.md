@@ -7,6 +7,7 @@ date followed by an underscore and a short git revision.
 ## unreleased
 
 - galp7: Added initial release of open firmware with System76 EC
+- lemp12: Added initial release of open firmware with System76 EC
 
 ## 2023-04-03
 
