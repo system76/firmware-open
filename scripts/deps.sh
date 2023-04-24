@@ -60,7 +60,7 @@ elif [[ "${ID}" =~ "fedora" ]] || [[ "${ID_LIKE}" =~ "fedora" ]]; then
     zlib-devel
 elif [[ "${ID}" =~ "arch" ]] || [[ "${ID_LIKE}" =~ "arch" ]]; then
   sudo pacman -S \
-    --no-confirm \
+    --noconfirm \
     bison \
     ccache \
     cmake \
