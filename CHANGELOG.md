@@ -4,6 +4,10 @@ Changes are identified by the date of the released firmware including them. If
 you are running System76 Open Firmware, opening the boot menu will show this
 date followed by an underscore and a short git revision.
 
+## unreleased
+
+- galp7: Added initial release of open firmware with System76 EC
+
 ## 2023-04-03
 
 - Updated coreboot to upstream commit decbf7b4d975
