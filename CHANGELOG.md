@@ -4,6 +4,10 @@ Changes are identified by the date of the released firmware including them. If
 you are running System76 Open Firmware, opening the boot menu will show this
 date followed by an underscore and a short git revision.
 
+## 2023-05-17
+
+- serw13: Fix speaker smart amplifier initialization
+
 ## 2023-05-16
 
 - galp7: Added initial release of open firmware with System76 EC
