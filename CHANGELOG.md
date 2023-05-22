@@ -4,6 +4,13 @@ Changes are identified by the date of the released firmware including them. If
 you are running System76 Open Firmware, opening the boot menu will show this
 date followed by an underscore and a short git revision.
 
+## unreleased
+
+- Set PL4 based on AC state for all boards
+- Increased PL4 on battery to 45W for dGPU boards
+- galp6: Enabled firmware security
+- galp7: Added initial release of open firmware with System76 EC
+
 ## 2023-05-17
 
 - serw13: Fix speaker smart amplifier initialization
@@ -11,7 +18,6 @@ date followed by an underscore and a short git revision.
 
 ## 2023-05-16
 
-- galp7: Added initial release of open firmware with System76 EC
 - lemp12: Added initial release of open firmware with System76 EC
 
 ## 2023-04-03
