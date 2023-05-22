@@ -1,8 +1,10 @@
-# Changelog
+# System76 Open Firmware Changelog
 
 Changes are identified by the date of the released firmware including them. If
 you are running System76 Open Firmware, opening the boot menu will show this
-date followed by an underscore and a short git revision.
+date followed by an underscore and a short git revision. To see if specific
+features apply to your model and firmware version, see the
+[feature matrix](./FEATURES.md).
 
 ## 2023-05-17
 

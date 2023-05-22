@@ -3,33 +3,11 @@
 An open source distribution of firmware utilizing coreboot, EDK2, and System76
 firmware applications.
 
-## Supported models
+## Supported models and features
 
-These models are supported and will receive updates through the firmware
-manager:
-
-- addw2
-- bonw14
-- darp6
-- darp7
-- darp8
-- galp4
-- galp5
-- galp6
-- gaze15
-- gaze16-3050
-- gaze16-3060
-- gaze16-3060-b
-- gaze17-3050
-- gaze17-3060-b
-- lemp9
-- lemp10
-- lemp11
-- oryp6
-- oryp7
-- oryp8
-- oryp9
-- oryp10
+To view models that are supported and will receive updates through the firmware
+manager, as well as available features for those models, please see the
+[feature matrix](./FEATURES.md).
 
 Other models may be in development or available without support, and can be
 seen in the `models/` directory.
