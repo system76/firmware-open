@@ -8,72 +8,10 @@ To see the changes in specific firmware versions, see the
 
 ## Platforms
 
-- [Intel 10th Gen (Comet Lake)](#intel-10th-gen-comet-lake)
-- [Intel 11th Gen (Tiger Lake)](#intel-11th-gen-tiger-lake)
-- [Intel 12th Gen (Alder Lake)](#intel-12th-gen-alder-lake)
 - [Intel 13th Gen (Raptor Lake)](#intel-13th-gen-raptor-lake)
-
-### Intel 10th Gen (Comet Lake)
-
-This generation universally supports these features with up-to-date firmware:
-
-- [Intel VT-x](#intel-vt-x)
-- [Intel VT-d](#intel-vt-d)
-- [Disabled Management Engine](#disabled-management-engine)
-- [TPM 2.0 Support](#tpm-20-support)
-- [Battery Charging Thresholds](#battery-charging-thresholds)
-- [Keyboard Customization](#keyboard-customization)
-
-| System76 Model (Version) | Firmware Version    | SoC    | [Measured Boot](#measured-boot) |
-|--------------------------|---------------------|--------|----|
-| Adder WS (addw2)         | 2022-11-21\_b337ac6 | CML-H  | ✔️  |
-| Bonobo WS (bonw14)       | 2021-07-20\_93c2809 | CML-S  | ❌ |
-| Darter Pro (darp6)       | 2021-07-20\_93c2809 | CML-U  | ❌ |
-| Gazelle (gaze15)         | 2022-11-21\_b337ac6 | CML-H  | ✔️  |
-| Lemur Pro (lemp9)        | 2021-07-20\_93c2809 | CML-U  | ❌ |
-| Oryx Pro (oryp6)         | 2021-07-20\_93c2809 | CML-H  | ❌ |
-| Oryx Pro (oryp7)         | 2022-11-21\_b337ac6 | CML-H  | ✔️  |
-
-### Intel 11th Gen (Tiger Lake)
-
-This generation universally supports these features with up-to-date firmware:
-
-- [Intel VT-x](#intel-vt-x)
-- [Intel VT-d](#intel-vt-d)
-- [TPM 2.0 Support](#tpm-20-support)
-- [Battery Charging Thresholds](#battery-charging-thresholds)
-- [Keyboard Customization](#keyboard-customization)
-
-| System76 Model (Version) | Firmware Version    | SoC    | [Measured Boot](#measured-boot) |
-|--------------------------|---------------------|--------|----|
-| Darter Pro (darp7)       | 2022-11-21\_b337ac6 | TGL-U  | ✔️  |
-| Galago Pro (galp5)       | 2022-11-21\_b337ac6 | TGL-U  | ✔️  |
-| Gazelle (gaze16-3050)    | 2022-11-21\_b337ac6 | TGL-H  | ✔️  |
-| Gazelle (gaze16-3060)    | 2021-09-30\_14b8a6e | TGL-H  | ❌ |
-| Gazelle (gaze16-3060-b)  | 2021-11-01\_fb9d759 | TGL-H  | ❌ |
-| Lemur Pro (lemp10)       | 2022-11-21\_b337ac6 | TGL-U  | ✔️  |
-| Oryx Pro (oryp8)         | 2022-10-14\_4136ef8 | TGL-H  | ✔️  |
-
-### Intel 12th Gen (Alder Lake)
-
-This generation universally supports these features with up-to-date firmware:
-
-- [Intel VT-x](#intel-vt-x)
-- [Intel VT-d](#intel-vt-d)
-- [TPM 2.0 Support](#tpm-20-support)
-- [Battery Charging Thresholds](#battery-charging-thresholds)
-- [Keyboard Customization](#keyboard-customization)
-- [Measured Boot](#measured-boot)
-
-| System76 Model (Version) | Firmware Version    | SoC    |
-|--------------------------|---------------------|--------|
-| Darter Pro (darp8)       | 2022-11-21\_b337ac6 | ADL-P  |
-| Galago Pro (galp6)       | 2022-11-21\_b337ac6 | ADL-P  |
-| Gazelle (gaze17-3050)    | 2022-11-21\_b337ac6 | ADL-H  |
-| Gazelle (gaze17-3060-b)  | 2022-06-07\_090f9e0 | ADL-H  |
-| Lemur Pro (lemp11)       | 2022-11-21\_b337ac6 | ADL-U  |
-| Oryx Pro (oryp9)         | 2022-07-20\_ae6aa72 | ADL-H  |
-| Oryx Pro (oryp10)        | 2022-09-26\_aa797d2 | ADL-H  |
+- [Intel 12th Gen (Alder Lake)](#intel-12th-gen-alder-lake)
+- [Intel 11th Gen (Tiger Lake)](#intel-11th-gen-tiger-lake)
+- [Intel 10th Gen (Comet Lake)](#intel-10th-gen-comet-lake)
 
 ### Intel 13th Gen (Raptor Lake)
 
@@ -100,6 +38,67 @@ This generation universally supports these features with up-to-date firmware:
 | Oryx Pro (oryp11)        | Unreleased          | RPL-H  | ✔   | ✔   |
 | Serval WS (serw13)       | Unreleased          | RPL-HX | ✔   | ✔   |
 
+### Intel 12th Gen (Alder Lake)
+
+This generation universally supports these features with up-to-date firmware:
+
+- [Intel VT-x](#intel-vt-x)
+- [Intel VT-d](#intel-vt-d)
+- [TPM 2.0 Support](#tpm-20-support)
+- [Battery Charging Thresholds](#battery-charging-thresholds)
+- [Keyboard Customization](#keyboard-customization)
+- [Measured Boot](#measured-boot)
+
+| System76 Model (Version) | Firmware Version    | SoC    |
+|--------------------------|---------------------|--------|
+| Darter Pro (darp8)       | 2022-11-21\_b337ac6 | ADL-P  |
+| Galago Pro (galp6)       | 2022-11-21\_b337ac6 | ADL-P  |
+| Gazelle (gaze17-3050)    | 2022-11-21\_b337ac6 | ADL-H  |
+| Gazelle (gaze17-3060-b)  | 2022-06-07\_090f9e0 | ADL-H  |
+| Lemur Pro (lemp11)       | 2022-11-21\_b337ac6 | ADL-U  |
+| Oryx Pro (oryp9)         | 2022-07-20\_ae6aa72 | ADL-H  |
+| Oryx Pro (oryp10)        | 2022-09-26\_aa797d2 | ADL-H  |
+
+### Intel 11th Gen (Tiger Lake)
+
+This generation universally supports these features with up-to-date firmware:
+
+- [Intel VT-x](#intel-vt-x)
+- [Intel VT-d](#intel-vt-d)
+- [TPM 2.0 Support](#tpm-20-support)
+- [Battery Charging Thresholds](#battery-charging-thresholds)
+- [Keyboard Customization](#keyboard-customization)
+
+| System76 Model (Version) | Firmware Version    | SoC    | [Measured Boot](#measured-boot) |
+|--------------------------|---------------------|--------|----|
+| Darter Pro (darp7)       | 2022-11-21\_b337ac6 | TGL-U  | ✔️  |
+| Galago Pro (galp5)       | 2022-11-21\_b337ac6 | TGL-U  | ✔️  |
+| Gazelle (gaze16-3050)    | 2022-11-21\_b337ac6 | TGL-H  | ✔️  |
+| Gazelle (gaze16-3060)    | 2021-09-30\_14b8a6e | TGL-H  | ❌ |
+| Gazelle (gaze16-3060-b)  | 2021-11-01\_fb9d759 | TGL-H  | ❌ |
+| Lemur Pro (lemp10)       | 2022-11-21\_b337ac6 | TGL-U  | ✔️  |
+| Oryx Pro (oryp8)         | 2022-10-14\_4136ef8 | TGL-H  | ✔️  |
+
+### Intel 10th Gen (Comet Lake)
+
+This generation universally supports these features with up-to-date firmware:
+
+- [Intel VT-x](#intel-vt-x)
+- [Intel VT-d](#intel-vt-d)
+- [Disabled Management Engine](#disabled-management-engine)
+- [TPM 2.0 Support](#tpm-20-support)
+- [Battery Charging Thresholds](#battery-charging-thresholds)
+- [Keyboard Customization](#keyboard-customization)
+
+| System76 Model (Version) | Firmware Version    | SoC    | [Measured Boot](#measured-boot) |
+|--------------------------|---------------------|--------|----|
+| Adder WS (addw2)         | 2022-11-21\_b337ac6 | CML-H  | ✔️  |
+| Bonobo WS (bonw14)       | 2021-07-20\_93c2809 | CML-S  | ❌ |
+| Darter Pro (darp6)       | 2021-07-20\_93c2809 | CML-U  | ❌ |
+| Gazelle (gaze15)         | 2022-11-21\_b337ac6 | CML-H  | ✔️  |
+| Lemur Pro (lemp9)        | 2021-07-20\_93c2809 | CML-U  | ❌ |
+| Oryx Pro (oryp6)         | 2021-07-20\_93c2809 | CML-H  | ❌ |
+| Oryx Pro (oryp7)         | 2022-11-21\_b337ac6 | CML-H  | ✔️  |
 
 ## Features
 
@@ -176,7 +175,7 @@ https://github.com/system76/edk2/pull/38
 **Introduced in firmware version 2023-04-03.**
 
 Windows 11 requires [TPM 2.0 Support](#tpm-20-support) and
-[Secure Boot Support](#secure-boot-support). The use of Windows 11 is
+[Secure Boot Support](#secure-boot-support). For users wanting to use Windows, the use of Windows 11 is
 recommended for Intel 12th Generation (Alder Lake) and newer systems, as it
 includes a new scheduler that supports the efficiency cores.
 
