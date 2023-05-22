@@ -175,7 +175,7 @@ https://github.com/system76/edk2/pull/38
 **Introduced in firmware version 2023-04-03.**
 
 Windows 11 requires [TPM 2.0 Support](#tpm-20-support) and
-[Secure Boot Support](#secure-boot-support). The use of Windows 11 is
+[Secure Boot Support](#secure-boot-support). For users wanting to use Windows, the use of Windows 11 is
 recommended for Intel 12th Generation (Alder Lake) and newer systems, as it
 includes a new scheduler that supports the efficiency cores.
 
