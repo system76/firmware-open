@@ -8,7 +8,14 @@ then
     exit 1
 fi
 
+EC_ARGS=()
+while read line; do
+    if [[ "$line" != "#"* ]]; then
+        EC_ARGS+=("$line")
+    fi
+done < "$1"
+
 source "$1"
-make -C ec BOARD=${BOARD} VERSION=${VERSION} clean
-make -C ec BOARD=${BOARD} VERSION=${VERSION} -j $(nproc)
+make -C ec VERSION="${VERSION}" "${EC_ARGS[@]}" clean
+make -C ec VERSION="${VERSION}" "${EC_ARGS[@]}" -j "$(nproc)"
 cp "ec/build/${BOARD}/${VERSION}/ec.rom" "$2"
