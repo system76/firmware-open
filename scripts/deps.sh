@@ -91,7 +91,7 @@ msg "Downloading GIT LFS artifacts"
 git lfs pull
 
 msg "Initializing submodules"
-git submodule update --init --recursive --progress
+git submodule update --init --recursive --checkout --progress
 
 msg "Installing coreboot commit hook"
 curl -sSf https://review.coreboot.org/tools/hooks/commit-msg \
