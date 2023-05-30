@@ -19,7 +19,7 @@ then
 fi
 MODEL_DIR="$(realpath "models/${MODEL}")"
 
-DATE="$(git show --format="%cd" --date="format:%Y-%m-%d" --no-patch)"
+DATE="$(git show --format="%cd" --date="format:%Y-%m-%d" --no-patch --no-show-signature)"
 REV="$(git describe --always --dirty --abbrev=7)"
 VERSION="${DATE}_${REV}"
 echo "Building '${VERSION}' for '${MODEL}'"
