@@ -8,6 +8,11 @@ features apply to your model and firmware version, see the
 
 ## unreleased
 
+- darp9: Added initial release of open firmware with System76 EC
+- Added detection of RGB keyboards at runtime
+
+## 2023-05-25
+
 - Set PL4 based on AC state for all boards
 - Increased PL4 on battery to 45W for dGPU boards
 - galp6: Enabled firmware security

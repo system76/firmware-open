@@ -32,7 +32,7 @@ This generation universally supports these features with up-to-date firmware:
 | Adder WS (addw3)         | 2023-04-28\_a220704 | RPL-HX | ❌  | ✔   |
 | Bonobo WS (bonw15)       | Unreleased          | RPL-HX | ✔   | ✔   |
 | Darter Pro (darp9)       | Unreleased          | RPL-P  | ✔   | N/A |
-| Galago Pro (galp7)       | Unreleased          | RPL-H  | ✔   | N/A |
+| Galago Pro (galp7)       | 2023-05-25\_5608a8d | RPL-H  | ✔   | N/A |
 | Gazelle (gaze18)         | 2023-03-22\_799ed79 | RPL-H  | ✔   | ✔   |
 | Lemur Pro (lemp12)       | 2023-05-16\_e9b9ea8 | RPL-U  | ✔   | N/A |
 | Oryx Pro (oryp11)        | Unreleased          | RPL-H  | ✔   | ✔   |
