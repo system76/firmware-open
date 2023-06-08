@@ -10,6 +10,11 @@ features apply to your model and firmware version, see the
 
 - darp9: Added initial release of open firmware with System76 EC
 - Added detection of RGB keyboards at runtime
+- oryp9: Enable firmware security
+- oryp9: Enable NVIDIA Dynamic Boost
+- oryp10: Enable firmware security
+- oryp10: Enable NVIDIA Dynamic Boost
+- Invalidate CMOS checksum after flashing to ensure default options are used
 
 ## 2023-05-25
 
