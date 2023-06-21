@@ -8,13 +8,22 @@ features apply to your model and firmware version, see the
 
 ## unreleased
 
+- oryp9: Enabled firmware security
+- oryp9: Enabled NVIDIA Dynamic Boost
+- addw3: Enabled support for 5200 MT/s memory
+- bonw15: Enabled support for 5200 MT/s memory
+- serw13: Enabled support for 5200 MT/s memory
+- oryp11: Added initial release of open firmware with System76 EC
+- rpl: Enabled TPM read delay to fix occasional failures with Infineon chips
+- Changed TPM behavior to perform TPM Restart if TPM Resume fails
+
+## 2023-06-08
+
 - darp9: Added initial release of open firmware with System76 EC
 - Added detection of RGB keyboards at runtime
-- oryp9: Enable firmware security
-- oryp9: Enable NVIDIA Dynamic Boost
-- oryp10: Enable firmware security
-- oryp10: Enable NVIDIA Dynamic Boost
-- Invalidate CMOS checksum after flashing to ensure default options are used
+- oryp10: Enabled firmware security
+- oryp10: Enabled NVIDIA Dynamic Boost
+- Invalidated CMOS checksum after flashing to ensure default options are used
 
 ## 2023-05-25
 
