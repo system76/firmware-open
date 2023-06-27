@@ -16,6 +16,7 @@ features apply to your model and firmware version, see the
 - oryp11: Added initial release of open firmware with System76 EC
 - rpl: Enabled TPM read delay to fix occasional failures with Infineon chips
 - Changed TPM behavior to perform TPM Restart if TPM Resume fails
+- Updated Secure Boot DBX to version 371 (2023-05-09)
 
 ## 2023-06-08
 
