@@ -8,20 +8,27 @@ features apply to your model and firmware version, see the
 
 ## unreleased
 
-- oryp9: Enabled firmware security
-- oryp9: Enabled NVIDIA Dynamic Boost
+- Updated Secure Boot DBX to version 371 (2023-05-09)
+- bonw15: fix SSD2 and DGPU PCIe definitions
+- bonw15: Set battery Rsense to 5 milliohms
+- oryp11: Set adapter Rsense to 10 milliohms
+- serw13: Set adapter Rsense to 10 milliohms
+
+## 2023-06-22
+
 - addw3: Enabled support for 5200 MT/s memory
 - bonw15: Enabled support for 5200 MT/s memory
 - serw13: Enabled support for 5200 MT/s memory
 - oryp11: Added initial release of open firmware with System76 EC
 - rpl: Enabled TPM read delay to fix occasional failures with Infineon chips
 - Changed TPM behavior to perform TPM Restart if TPM Resume fails
-- Updated Secure Boot DBX to version 371 (2023-05-09)
 
 ## 2023-06-08
 
 - darp9: Added initial release of open firmware with System76 EC
 - Added detection of RGB keyboards at runtime
+- oryp9: Enabled firmware security
+- oryp9: Enabled NVIDIA Dynamic Boost
 - oryp10: Enabled firmware security
 - oryp10: Enabled NVIDIA Dynamic Boost
 - Invalidated CMOS checksum after flashing to ensure default options are used
