@@ -6,7 +6,7 @@ date followed by an underscore and a short git revision. To see if specific
 features apply to your model and firmware version, see the
 [feature matrix](./FEATURES.md).
 
-## unreleased
+## 2023-07-10
 
 - Updated Secure Boot DBX to version 371 (2023-05-09)
 - bonw15: fix SSD2 and DGPU PCIe definitions
