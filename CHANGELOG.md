@@ -6,6 +6,11 @@ date followed by an underscore and a short git revision. To see if specific
 features apply to your model and firmware version, see the
 [feature matrix](./FEATURES.md).
 
+## unreleased
+
+- bonw14: Updated microcode to revision 0xf4
+- rpl-hx: Fixed setting PL1 and PL2 power limits
+
 ## 2023-07-10
 
 - Updated Secure Boot DBX to version 371 (2023-05-09)
