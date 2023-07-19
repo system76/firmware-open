@@ -8,21 +8,19 @@ features apply to your model and firmware version, see the
 
 ## unreleased
 
-- bonw14: Updated microcode to revision 0xf4
+- bonw14: Fixed loading CPU microcode
 - rpl-hx: Fixed setting PL1 and PL2 power limits
 
 ## 2023-07-10
 
 - Updated Secure Boot DBX to version 371 (2023-05-09)
-- bonw15: fix SSD2 and DGPU PCIe definitions
-- bonw15: Set battery Rsense to 5 milliohms
-- oryp11: Set adapter Rsense to 10 milliohms
-- serw13: Set adapter Rsense to 10 milliohms
+- bonw15: Added initial release of open firmware with System76 EC
+- oryp11: Changed adapter Rsense to 10 milliohms
+- serw13: Changed adapter Rsense to 10 milliohms
 
 ## 2023-06-22
 
 - addw3: Enabled support for 5200 MT/s memory
-- bonw15: Enabled support for 5200 MT/s memory
 - serw13: Enabled support for 5200 MT/s memory
 - oryp11: Added initial release of open firmware with System76 EC
 - rpl: Enabled TPM read delay to fix occasional failures with Infineon chips
@@ -47,27 +45,27 @@ features apply to your model and firmware version, see the
 
 ## 2023-05-17
 
-- serw13: Fix speaker smart amplifier initialization
-- Fix Windows BSoD on RPL-HX
+- serw13: Added initial release of open firmware with System76 EC
+- Fixed Windows BSoD on RPL-HX
 
 ## 2023-05-16
 
 - lemp12: Added initial release of open firmware with System76 EC
 
-## 2023-04-03
+## 2023-04-28
+
+- addw3: Added initial release of open firmware with System76 EC
+
+## 2023-03-22
 
 - Updated coreboot to upstream commit decbf7b4d975
 - Enabled support for Secure Boot
 - Enabled minimal UI for enforcing Secure Boot and resetting keys
-- Add firmware locking support
-- Enable S3 suspend on everything but TGL-U
-- Disable ME by default on everything but TGL-U
-- Support for NVIDIA Dynamic Boost
-- addw3: Added initial release of open firmware with System76 EC
-- bonw15: Added initial release of open firmware with System76 EC
+- Added firmware locking support
+- Enabled S3 suspend on everything but TGL-U
+- Disabled ME by default on everything but TGL-U
+- Added support for NVIDIA Dynamic Boost
 - gaze18: Added initial release of open firmware with System76 EC
-- oryp10: Added initial release of open firmware with System76 EC
-- serw13: Added initial release of open firmware with System76 EC
 
 ## 2022-11-21
 
