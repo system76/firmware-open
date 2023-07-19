@@ -15,6 +15,11 @@ features apply to your model and firmware version, see the
 - oryp10: Removed invalid RTD3 configs
 - galp8: Removed SATA RTD3 to fix drives being lost on suspend
 - lemp11: Removed SATA RTD3 to fix drives being lost on suspend
+- Reduced key debounce from 15ms to 5ms
+- galp6: Fixed fan tachometer GPIOs
+- lemp9: Fixed fan tachometer GPIOs
+- lemp10: Fixed fan tachometer GPIOs
+- lemp11: Fixed fan tachometer GPIOs
 
 ## 2023-07-10
 
