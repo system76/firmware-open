@@ -10,6 +10,11 @@ features apply to your model and firmware version, see the
 
 - bonw14: Fixed loading CPU microcode
 - rpl-hx: Fixed setting PL1 and PL2 power limits
+- rpl-hx: Fixed LPM substates
+- gaze17: Removed invalid RTD3 configs
+- oryp10: Removed invalid RTD3 configs
+- galp8: Removed SATA RTD3 to fix drives being lost on suspend
+- lemp11: Removed SATA RTD3 to fix drives being lost on suspend
 
 ## 2023-07-10
 
