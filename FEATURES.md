@@ -29,14 +29,14 @@ This generation universally supports these features with up-to-date firmware:
 
 | System76 Model (Version) | Firmware Version    | SoC    | [Windows 11 Support](#windows-11-support) | [NVIDIA Dynamic Boost](#nvidia-dynamic-boost) |
 |--------------------------|---------------------|--------|-----|-----|
-| Adder WS (addw3)         | 2023-04-28\_a220704 | RPL-HX | ❌  | ✔   |
-| Bonobo WS (bonw15)       | Unreleased          | RPL-HX | ✔   | ✔   |
-| Darter Pro (darp9)       | Unreleased          | RPL-P  | ✔   | N/A |
+| Adder WS (addw3)         | 2023-05-17\_9560b2e | RPL-HX | ✔   | ✔   |
+| Bonobo WS (bonw15)       | 2023-07-10\_0e4a64a | RPL-HX | ✔   | ✔   |
+| Darter Pro (darp9)       | 2023-06-08\_a8590a5 | RPL-P  | ✔   | N/A |
 | Galago Pro (galp7)       | 2023-05-25\_5608a8d | RPL-H  | ✔   | N/A |
 | Gazelle (gaze18)         | 2023-03-22\_799ed79 | RPL-H  | ✔   | ✔   |
 | Lemur Pro (lemp12)       | 2023-05-16\_e9b9ea8 | RPL-U  | ✔   | N/A |
-| Oryx Pro (oryp11)        | Unreleased          | RPL-H  | ✔   | ✔   |
-| Serval WS (serw13)       | Unreleased          | RPL-HX | ✔   | ✔   |
+| Oryx Pro (oryp11)        | 2023-06-22\_e5c3632 | RPL-H  | ✔   | ✔   |
+| Serval WS (serw13)       | 2023-05-17\_9560b2e | RPL-HX | ✔   | ✔   |
 
 ### Intel 12th Gen (Alder Lake)
 
