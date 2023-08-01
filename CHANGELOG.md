@@ -20,6 +20,7 @@ features apply to your model and firmware version, see the
 - lemp9: Fixed fan tachometer GPIOs
 - lemp10: Fixed fan tachometer GPIOs
 - lemp11: Fixed fan tachometer GPIOs
+- cml-u: Fixed boot failing at FSP-S
 
 ## 2023-07-10
 
