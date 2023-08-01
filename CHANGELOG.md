@@ -21,6 +21,10 @@ features apply to your model and firmware version, see the
 - lemp10: Fixed fan tachometer GPIOs
 - lemp11: Fixed fan tachometer GPIOs
 - cml-u: Fixed boot failing at FSP-S
+- Added KBC reset on CPU reset to prevent keyboard from being locked
+- Enabled power switch Watch Dog Timer with a timeout of 10 seconds
+- Fixed detecting if PECI is available on eSPI systems using S0ix
+- Added support for a FnLock key
 
 ## 2023-07-10
 
