@@ -10,22 +10,6 @@
 	path = tools/UEFITool
 	url = https://github.com/LongSoft/UEFITool.git
 	branch = new_engine
-[submodule "libs/intelflash"]
-	path = libs/intelflash
-	url = https://gitlab.redox-os.org/redox-os/intelflash.git
-	branch = master
-[submodule "libs/uefi"]
-	path = libs/uefi
-	url = https://gitlab.redox-os.org/redox-os/uefi.git
-	branch = master
-[submodule "libs/coreboot-table"]
-	path = libs/coreboot-table
-	url = https://gitlab.redox-os.org/redox-os/coreboot-table.git
-	branch = master
-[submodule "libs/intel-spi"]
-	path = libs/intel-spi
-	url = https://github.com/system76/intel-spi.git
-	branch = master
 [submodule "tools/coreboot-collector"]
 	path = tools/coreboot-collector
 	url = https://github.com/system76/coreboot-collector.git
@@ -41,10 +25,6 @@
 [submodule "tools/MEAnalyzer"]
 	path = tools/MEAnalyzer
 	url = https://github.com/platomav/MEAnalyzer.git
-	branch = master
-[submodule "libs/coreboot-fs"]
-	path = libs/coreboot-fs
-	url = https://gitlab.redox-os.org/redox-os/coreboot-fs.git
 	branch = master
 [submodule "apps/gop-policy"]
 	path = apps/gop-policy
