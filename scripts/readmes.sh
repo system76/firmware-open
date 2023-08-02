@@ -2,7 +2,6 @@
 
 README_DIRS=(
     apps
-    libs
     models
     tools
 )
