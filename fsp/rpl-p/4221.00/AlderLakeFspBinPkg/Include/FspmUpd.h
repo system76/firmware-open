@@ -1611,9 +1611,11 @@ typedef struct {
 **/
   UINT8                       TjMaxOffset;
 
-/** Offset 0x03D1
+/** Offset 0x03D1 - FastThrottleThreshold
+  FastThrottleThreshold. Specified value for max allowed temperature when cores throttle.
+  Support FastThrottleThreshold in the range of 63 to 115 deg Celsius.
 **/
-  UINT8                       Rsvd09;
+  UINT8                       FastThrottleThreshold;
 
 /** Offset 0x03D2 - Ring voltage override
   The ring voltage override which is applied to the entire range of cpu ring frequencies.
@@ -3549,9 +3551,15 @@ typedef struct {
 **/
   UINT8                       BdatTestType;
 
-/** Offset 0x08F1
+/** Offset 0x08F1 - DRAMEMPHASIS Training
+  Enable/Disable DRAMEMPHASIS Training
+  $EN_DIS
 **/
-  UINT8                       Rsvd23[3];
+  UINT8                       DRAMEMPHASIS;
+
+/** Offset 0x08F2
+**/
+  UINT8                       Rsvd23[2];
 
 /** Offset 0x08F4 - PMR Size
   Size of PMR memory buffer. 0x400000 for normal boot and 0x200000 for S3 boot
@@ -3781,9 +3789,14 @@ typedef struct {
 **/
   UINT8                       IbeccErrInjControl;
 
-/** Offset 0x0AB2
+/** Offset 0x0AB2 - CPU PCIe root port connection type
+  0: built-in device, 1:slot
 **/
-  UINT8                       Rsvd28[6];
+  UINT8                       CpuPcieRpSlotImplemented[4];
+
+/** Offset 0x0AB6
+**/
+  UINT8                       Rsvd28[2];
 
 /** Offset 0x0AB8 - IbeccErrInjAddress
   Address to match against for ECC error injection
@@ -4033,9 +4046,29 @@ typedef struct {
 **/
   UINT8                       CsPiStartHighinEct;
 
-/** Offset 0x0B30
+/** Offset 0x0B30 - Use user provided power weights, and channel power floor values
+  Enables/Disable Use user provided power weights and channel power floor values
+  $EN_DIS
 **/
-  UINT8                       Rsvd32[4];
+  UINT8                       UserPowerWeightsEn;
+
+/** Offset 0x0B31 - DisableFGRAndPBRWA
+  Disable FGR And PBR WA: 0(Default)=Disable, 1=Enable
+  $EN_DIS
+**/
+  UINT8                       DisableFGRAndPBRWA;
+
+/** Offset 0x0B32 - LowerBasicMemTestSize
+  Reduce BasicMemoryTest size WA: 0(Default)=Disable, 1=Enable
+  $EN_DIS
+**/
+  UINT8                       LowerBasicMemTestSize;
+
+/** Offset 0x0B33 - DisableSagvReorder
+  Disable Sagv reorder on warm boot: 0(Default)=Disable, 1=Enable
+  $EN_DIS
+**/
+  UINT8                       DisableSagvReorder;
 
 /** Offset 0x0B34
 **/

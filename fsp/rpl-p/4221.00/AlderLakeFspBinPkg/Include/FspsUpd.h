@@ -2375,7 +2375,8 @@ typedef struct {
   UINT8                       SataRstPcieDeviceResetDelay[3];
 
 /** Offset 0x0A42 - UFS enable/disable
-  PCIe Storage Device Reset Delay in milliseconds. Default value is 100ms
+  Enable/Disable UFS controller, One byte for each Controller - (1,0) to enable controller
+  0 and (0,1) to enable controller 1
   $EN_DIS
 **/
   UINT8                       UfsEnable[2];
@@ -3033,7 +3034,7 @@ typedef struct {
   UINT8                       CpuPcieRpDpcExtensionsEnabled[4];
 
 /** Offset 0x0C18 - CPU PCIe root port connection type
-  0: built-in device, 1:slot
+  DEPRECATED
 **/
   UINT8                       CpuPcieRpSlotImplemented[4];
 
@@ -3894,11 +3895,23 @@ typedef struct {
 **/
   UINT8                       ProcHotDemotion;
 
-/** Offset 0x0D87 - ReservedCpuPostMemTest
+/** Offset 0x0D87 - Turbo Configuration
+  To change the PL2 and Tau. <b>0: Max Transient Turbo;</b> 1: 1.2 X TDP
+  0: Max Transient Turbo, 1: 1.2 X TDP
+**/
+  UINT8                       TurboConfiguration;
+
+/** Offset 0x0D88 - Enable or Disable HwP Scalability Tracking
+  Enable or Disable HwP Scalability Tracking. 0: Disable; <b>1: Enable</b>
+  $EN_DIS
+**/
+  UINT8                       EnableHwpScalabilityTracking;
+
+/** Offset 0x0D89 - ReservedCpuPostMemTest
   Reserved for CPU Post-Mem Test
   $EN_DIS
 **/
-  UINT8                       ReservedCpuPostMemTest[13];
+  UINT8                       ReservedCpuPostMemTest[11];
 
 /** Offset 0x0D94
 **/
