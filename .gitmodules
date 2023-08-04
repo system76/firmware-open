@@ -6,10 +6,6 @@
 	path = coreboot
 	url = https://github.com/system76/coreboot.git
 	branch = system76
-[submodule "edk2-platforms"]
-	path = edk2-platforms
-	url = https://github.com/system76/edk2-platforms.git
-	branch = system76
 [submodule "tools/UEFITool"]
 	path = tools/UEFITool
 	url = https://github.com/LongSoft/UEFITool.git
@@ -53,14 +49,6 @@
 [submodule "apps/gop-policy"]
 	path = apps/gop-policy
 	url = https://github.com/system76/gop-policy.git
-	branch = master
-[submodule "edk2-non-osi"]
-	path = edk2-non-osi
-	url = https://github.com/tianocore/edk2-non-osi.git
-	branch = devel-MinPlatform
-[submodule "FSP"]
-	path = FSP
-	url = https://github.com/IntelFsp/FSP.git
 	branch = master
 [submodule "tools/ipxe"]
 	path = tools/ipxe
