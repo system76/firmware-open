@@ -69,8 +69,8 @@ then
     done < "${MODEL_DIR}/edk2.config"
 fi
 
-# Rebuild CorebootPayloadPkg using edk2
-PACKAGES_PATH="${MODEL_DIR}:$(realpath edk2-platforms):$(realpath apps)" \
+# Rebuild UefiPayloadPkg using edk2
+PACKAGES_PATH="${MODEL_DIR}:$(realpath apps)" \
     ./scripts/_build/edk2.sh \
         "${UEFIPAYLOAD}" \
         "${EDK2_ARGS[@]}"
