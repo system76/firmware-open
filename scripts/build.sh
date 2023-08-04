@@ -76,7 +76,8 @@ PACKAGES_PATH="${MODEL_DIR}:$(realpath apps)" \
         "${EDK2_ARGS[@]}"
 
 # Rebuild coreboot
-FIRMWARE_OPEN_MODEL_DIR="${MODEL_DIR}" \
+# NOTE: coreboot expects paths to be relative to it
+FIRMWARE_OPEN_MODEL_DIR="../models/${MODEL}" \
 FIRMWARE_OPEN_UEFIPAYLOAD="${UEFIPAYLOAD}" \
 KERNELVERSION="${VERSION}" \
     ./scripts/_build/coreboot.sh \
