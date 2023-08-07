@@ -52,8 +52,8 @@ A couple of methods can be used to get debug logging.
 
 This method requires no soldering of board components.
 
-See [Debugging the EC firmware](./ec/doc/debugging.md) for details on setting
-up EC debugging over the parallel port.
+See [Debugging the EC firmware](https://github.com/system76/ec/blob/master/docs/debugging.md)
+for details on setting up EC debugging over the parallel port.
 
 cbmem output can be passed through the EC by enabling the driver in coreboot.
 Uncomment the config in `models/<model>/coreboot.config` to enable logging the
