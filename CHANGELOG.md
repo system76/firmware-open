@@ -13,6 +13,7 @@ features apply to your model and firmware version, see the
 - Enabled power switch Watch Dog Timer with a timeout of 10 seconds
 - Fixed detecting if PECI is available on eSPI systems using S0ix
 - Added support for a FnLock key
+- tgl: Fixed Bluetooth performance by enabling audio offload
 
 ## 2023-07-19
 
