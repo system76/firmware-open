@@ -2,9 +2,9 @@
 
 // Required plugins:
 // - Jenkins Core
-// - Pipeline (https://plugins.jenkins.io/workflow-aggregator/)
-// - Git (https://plugins.jenkins.io/git/)
 // - AnsiColor (https://plugins.jenkins.io/ansicolor/)
+// - Git (https://plugins.jenkins.io/git/)
+// - Pipeline (https://plugins.jenkins.io/workflow-aggregator/)
 // - Slack Notification (https://plugins.jenkins.io/slack/)
 
 def all_models = 'addw2 addw3 bonw14 bonw15 darp5 darp6 darp7 darp8 darp9 galp3-c galp4 galp5 galp6 galp7 gaze15 gaze16-3050 gaze16-3060 gaze16-3060-b gaze16-3050 gaze16-3060-b gaze17-3050 gaze17-3060-b gaze18 lemp9 lemp10 lemp11 lemp12 oryp5 oryp6 oryp7 oryp8 oryp9 oryp10 oryp11 serw13'
@@ -17,11 +17,13 @@ def getCommitSha() {
 void setBuildStatus(String state, String message) {
     commit = getCommitSha()
 
+    // FIXME: https://www.jenkins.io/doc/book/pipeline/jenkinsfile/#string-interpolation
     sh """
     curl \
       -X POST \
       -H \'Accept: application/vnd.github+json\' \
-      -H \'Authorization: token ${GITHUB_TOKEN}\' \
+      -H \'Authorization: Bearer ${GITHUB_TOKEN}\' \
+      -H \'X-GitHub-Api-Version: 2022-11-28\' \
       https://api.github.com/repos/system76/firmware-open/statuses/${commit} \
       -d \'{\"state\": \"${state}\", \"target_url\": \"${BUILD_URL}\", \"description\": \"${message}\"}\'
     """
@@ -46,12 +48,11 @@ pipeline {
 
     parameters {
         string(name: 'MODELS', defaultValue: "$all_models", description: 'Space separated list of models to build', trim: true)
-        string(name: 'GIT_BRANCH', defaultValue: '', description: 'Git branch or revision to build (master, for example)', trim: true)
+        string(name: 'GIT_BRANCH', defaultValue: 'master', description: 'Git branch or revision to build', trim: true)
     }
 
-    // TODO: Set up webhook so trigger isn't needed.
     triggers {
-        pollSCM('H/5 * * * *')
+        pollSCM('')
     }
 
     stages {
