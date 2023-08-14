@@ -84,11 +84,14 @@ else
   exit 1
 fi
 
-msg "Installing GIT LFS hooks"
-git lfs install
+# Don't run on Jenkins
+if [ -z "${CI}" ]; then
+    msg "Installing GIT LFS hooks"
+    git lfs install
 
-msg "Downloading GIT LFS artifacts"
-git lfs pull
+    msg "Downloading GIT LFS artifacts"
+    git lfs pull
+fi
 
 msg "Initializing submodules"
 git submodule update --init --recursive --checkout --progress
