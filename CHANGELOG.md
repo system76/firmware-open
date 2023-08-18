@@ -14,6 +14,9 @@ features apply to your model and firmware version, see the
 - Fixed detecting if PECI is available on eSPI systems using S0ix
 - Added support for a FnLock key
 - tgl: Fixed Bluetooth performance by enabling audio offload
+- gaze16: Fixed CPU not going lower than C2 due to card reader LTR
+- adl: Fixed CPU not going lower than C2 due to card reader LTR
+- rpl: Fixed CPU not going lower than C2 due to card reader LTR
 
 ## 2023-07-19
 
