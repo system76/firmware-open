@@ -17,6 +17,8 @@ features apply to your model and firmware version, see the
 - gaze16: Fixed CPU not going lower than C2 due to card reader LTR
 - adl: Fixed CPU not going lower than C2 due to card reader LTR
 - rpl: Fixed CPU not going lower than C2 due to card reader LTR
+- Changed battery charge start threshold to 90%
+- Changed charger to disable when battery is full
 
 ## 2023-07-19
 
