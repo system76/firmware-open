@@ -19,6 +19,7 @@ features apply to your model and firmware version, see the
 - rpl: Fixed CPU not going lower than C2 due to card reader LTR
 - Changed battery charge start threshold to 90%
 - Changed charger to disable when battery is full
+- rpl: Fix RPL-S GPIO driver on Windows
 
 ## 2023-07-19
 
