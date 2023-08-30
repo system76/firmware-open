@@ -81,7 +81,7 @@ pipeline {
 
                 sh """#!/bin/bash
                     # Install dependencies
-                    #./scripts/deps.sh
+                    #./scripts/install-deps.sh
                     . "${HOME}/.cargo/env"
 
                     # Reset

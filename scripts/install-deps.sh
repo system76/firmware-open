@@ -1,4 +1,5 @@
 #!/usr/bin/env bash
+# SPDX-License-Identifier: GPL-3.0-only
 
 set -eE
 
@@ -101,22 +102,8 @@ curl -sSf https://review.coreboot.org/tools/hooks/commit-msg \
   -o .git/modules/coreboot/hooks/commit-msg && \
   chmod +x .git/modules/coreboot/hooks/commit-msg
 
-RUSTUP_NEW_INSTALL=0
-if which rustup &> /dev/null; then
-  msg "Updating rustup"
-  rustup self update
-else
-  RUSTUP_NEW_INSTALL=1
-  msg "Installing Rust"
-  curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs \
-    | sh -s -- -y --default-toolchain stable
-
-  msg "Loading Rust environment"
-  source "${HOME}/.cargo/env"
-fi
-
-msg "Installing pinned Rust toolchain and components"
-rustup show
+msg "Installing Rust toolchain and components"
+./scripts/install-rust.sh
 
 msg "Installing EC dependencies"
 pushd ec
@@ -128,11 +115,6 @@ pushd coreboot
 make CPUS="$(nproc)" crossgcc-i386
 make CPUS="$(nproc)" crossgcc-x64
 popd
-
-if [[ $RUSTUP_NEW_INSTALL = 1 ]]; then
-    msg "\x1B[33m>> rustup was just installed. Ensure cargo is on the PATH with:"
-    echo -e "    source ~/.cargo/env\n"
-fi
 
 msg "\x1B[32mSuccessfully installed dependencies"
 echo "Ready to run ./scripts/build.sh [model]" >&2

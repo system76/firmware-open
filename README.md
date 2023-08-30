@@ -32,8 +32,8 @@ For a list of important changes please see the [changelog](./CHANGELOG.md).
 
 Dependencies can be installed with the provided script.
 
-```
-./scripts/deps.sh
+```sh
+./scripts/install-deps.sh
 ```
 
 If rustup was installed for the first time, it will be required to source the
