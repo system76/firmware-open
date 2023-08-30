@@ -58,6 +58,9 @@ pipeline {
     stages {
         stage('Prepare') {
             steps {
+                setBuildStatus("pending", "Pending")
+                slackSend(color: "good", message: "${env.JOB_NAME} - #${env.BUILD_ID} started (<${env.BUILD_URL}|Open>)")
+
                 checkout([
                     $class: 'GitSCM',
                     branches: [[name: "${GIT_BRANCH}"]],
@@ -75,9 +78,6 @@ pipeline {
                     ],
                     userRemoteConfigs: [[url: 'https://github.com/system76/firmware-open']]
                 ])
-
-                setBuildStatus("pending", "Pending")
-                slackSend(color: "good", message: "${JOB_NAME} - #${BUILD_ID} started (<${BUILD_URL}|Open>)")
 
                 sh """#!/bin/bash
                     # Install dependencies
@@ -124,15 +124,15 @@ pipeline {
         }
         success {
             setBuildStatus("success", "Successful")
-            slackSend(color: "good", message: "${JOB_NAME} - #${BUILD_ID} successful (<${BUILD_URL}|Open>)")
+            slackSend(color: "good", message: "${env.JOB_NAME} - #${env.BUILD_ID} successful after ${currentBuild.durationString} (<${env.BUILD_URL}|Open>)")
         }
         failure {
             setBuildStatus("failure", "Failed")
-            slackSend(color: "danger", message: "${JOB_NAME} - #${BUILD_ID} failed (<${BUILD_URL}|Open>)")
+            slackSend(color: "danger", message: "${env.JOB_NAME} - #${env.BUILD_ID} failed after ${currentBuild.durationString} (<${env.BUILD_URL}|Open>)")
         }
         aborted {
             setBuildStatus("failure", "Failed")
-            slackSend(color: "warning", message: "${JOB_NAME} - #${BUILD_ID} aborted (<${BUILD_URL}|Open>)")
+            slackSend(color: "warning", message: "${env.JOB_NAME} - #${env.BUILD_ID} aborted after ${currentBuild.durationString} (<${env.BUILD_URL}|Open>)")
         }
     }
 }
