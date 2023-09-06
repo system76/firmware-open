@@ -8,6 +8,11 @@ features apply to your model and firmware version, see the
 
 ## unreleased
 
+- rpl: Fixed RPL-S GPIO driver on Windows
+- adl: Updated CSME to 16.1.25.2124
+
+## 2023-08-18
+
 - cml-u: Fixed boot failing at FSP-S
 - Added KBC reset on CPU reset to prevent keyboard from being locked
 - Enabled power switch Watch Dog Timer with a timeout of 10 seconds
@@ -19,7 +24,6 @@ features apply to your model and firmware version, see the
 - rpl: Fixed CPU not going lower than C2 due to card reader LTR
 - Changed battery charge start threshold to 90%
 - Changed charger to disable when battery is full
-- rpl: Fix RPL-S GPIO driver on Windows
 
 ## 2023-07-19
 
