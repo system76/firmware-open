@@ -27,6 +27,34 @@ A restart is required for the change to take effect. On the boot after changing
 the value, the system will perform a global reset (power off again) to complete
 the change and ensure the IME is operating in a valid state.
 
+### Checking the state
+
+coreboot will log some IME data to cbmem during startup. This can be used to
+check if it is in the correct state.
+
+```
+make -C coreboot/util/cbmem
+sudo ./coreboot/util/cbmem/cbmem -c
+```
+
+When disabled it will report:
+
+```
+ME: Current Working State       : 4
+ME: Current Operation State     : 1
+ME: Current Operation Mode      : 3
+ME: Error Code                  : 2
+```
+
+When enabled it will report:
+
+```
+ME: Current Working State       : 5
+ME: Current Operation State     : 1
+ME: Current Operation Mode      : 0
+ME: Error Code                  : 0
+```
+
 ## Tiger Lake-U
 
 Models using TGL-U processors default to having the IME enabled. TGL-U removes
