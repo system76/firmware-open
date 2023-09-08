@@ -8,8 +8,13 @@ features apply to your model and firmware version, see the
 
 ## unreleased
 
-- rpl: Fixed RPL-S GPIO driver on Windows
 - adl: Updated CSME to 16.1.25.2124
+- adl,rpl: Fixed SMMSTORE init sometimes failing
+- Increased key debounce from 5ms to 10ms
+
+## 2023-08-23
+
+- rpl: Fixed RPL-S GPIO driver on Windows
 
 ## 2023-08-18
 
