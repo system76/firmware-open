@@ -8,6 +8,10 @@ features apply to your model and firmware version, see the
 
 ## unreleased
 
+- rpl-hx: Added support for 5600 MHz RAM
+
+## 2023-09-08
+
 - adl: Updated CSME to 16.1.25.2124
 - adl,rpl: Fixed SMMSTORE init sometimes failing
 - Increased key debounce from 5ms to 10ms
