@@ -9,14 +9,7 @@
 
 def all_models = 'addw2 addw3 bonw14 bonw15 darp5 darp6 darp7 darp8 darp9 galp3-c galp4 galp5 galp6 galp7 gaze15 gaze16-3050 gaze16-3060 gaze16-3060-b gaze16-3050 gaze16-3060-b gaze17-3050 gaze17-3060-b gaze18 lemp9 lemp10 lemp11 lemp12 oryp5 oryp6 oryp7 oryp8 oryp9 oryp10 oryp11 serw13'
 
-def getCommitSha() {
-  sh "git rev-parse HEAD > .git/current-commit"
-  return readFile(".git/current-commit").trim()
-}
-
 void setBuildStatus(String state, String message) {
-    commit = getCommitSha()
-
     // FIXME: https://www.jenkins.io/doc/book/pipeline/jenkinsfile/#string-interpolation
     sh """
     curl \
@@ -24,7 +17,7 @@ void setBuildStatus(String state, String message) {
       -H \'Accept: application/vnd.github+json\' \
       -H \'Authorization: Bearer ${GITHUB_TOKEN}\' \
       -H \'X-GitHub-Api-Version: 2022-11-28\' \
-      https://api.github.com/repos/system76/firmware-open/statuses/${commit} \
+      https://api.github.com/repos/system76/firmware-open/statuses/${GIT_COMMIT} \
       -d \'{\"state\": \"${state}\", \"target_url\": \"${BUILD_URL}\", \"description\": \"${message}\"}\'
     """
 }
@@ -48,7 +41,7 @@ pipeline {
 
     parameters {
         string(name: 'MODELS', defaultValue: "$all_models", description: 'Space separated list of models to build', trim: true)
-        string(name: 'GIT_BRANCH', defaultValue: 'master', description: 'Git branch or revision to build', trim: true)
+        string(name: 'SOURCE_BRANCH', defaultValue: 'master', description: 'Git branch or revision to build', trim: true)
     }
 
     triggers {
@@ -61,23 +54,21 @@ pipeline {
                 setBuildStatus("pending", "Pending")
                 slackSend(color: "good", message: "${env.JOB_NAME} - #${env.BUILD_ID} started (<${env.BUILD_URL}|Open>)")
 
-                checkout([
-                    $class: 'GitSCM',
-                    branches: [[name: "${GIT_BRANCH}"]],
+                // https://www.jenkins.io/doc/pipeline/steps/params/scmgit/
+                checkout scmGit(
+                    branches: [[name: '${SOURCE_BRANCH}']],
                     extensions: [
-                        [
-                            $class: 'SubmoduleOption',
-                            disableSubmodules: false,
+                        lfs(),
+                        pruneStaleBranch(),
+                        pruneTags(true),
+                        submodule(
                             parentCredentials: true,
                             recursiveSubmodules: true,
-                            reference: '',
-                            trackingSubmodules: false
-                        ],
-                        [ $class: 'GitLFSPull' ],
-                        [ $class: 'PruneStaleBranch' ],
+                            reference: ''
+                        ),
                     ],
-                    userRemoteConfigs: [[url: 'https://github.com/system76/firmware-open']]
-                ])
+                    userRemoteConfigs: [[url: 'https://github.com/system76/firmware-open.git']]
+                )
 
                 sh """#!/bin/bash
                     # Install dependencies
