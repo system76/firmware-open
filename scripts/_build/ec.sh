@@ -15,6 +15,8 @@ while read line; do
     fi
 done < "$1"
 
-make -C ec clean
-make -C ec VERSION="${VERSION}" "${EC_ARGS[@]}" BUILD=build -j "$(nproc)"
-cp "ec/build/ec.rom" "$2"
+BUILD_DIR="build"
+
+make -C ec BUILD="$BUILD_DIR" clean
+make -C ec VERSION="${VERSION}" "${EC_ARGS[@]}" BUILD="$BUILD_DIR" -j "$(nproc)"
+cp "ec/$BUILD_DIR/ec.rom" "$2"
