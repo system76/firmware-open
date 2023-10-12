@@ -8,6 +8,10 @@ features apply to your model and firmware version, see the
 
 ## unreleased
 
+- tgl-u: Fixed potential EC lock up during opportunistic suspend
+
+## 2023-09-19
+
 - rpl-hx: Added support for 5600 MHz RAM
 
 ## 2023-09-08
