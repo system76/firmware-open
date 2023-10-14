@@ -14,12 +14,7 @@ BUILD_TYPE=RELEASE
 #BUILD_TYPE=DEBUG
 TOOLCHAIN=COREBOOT
 
-COREBOOT_TOOLS_DEF="${PWD}/coreboot/payloads/external/edk2/tools_def.txt"
-export GCC_CC_x86_32="${PWD}/coreboot/util/crossgcc/xgcc/bin/i386-elf-gcc"
-export GCC_CC_x86_64="${PWD}/coreboot/util/crossgcc/xgcc/bin/x86_64-elf-gcc"
-export OBJCOPY_x86_32="${PWD}/coreboot/util/crossgcc/xgcc/bin/i386-elf-objcopy"
-export OBJCOPY_x86_64="${PWD}/coreboot/util/crossgcc/xgcc/bin/x86_64-elf-objcopy"
-export NASM_PREFIX="${PWD}/coreboot/util/crossgcc/xgcc/bin/"
+COREBOOT_TOOLS_DEF="$XGCCPATH/../share/edk2config/tools_def.txt"
 
 # Force use of python3
 export PYTHON_COMMAND=python3
