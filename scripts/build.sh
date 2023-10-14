@@ -2,8 +2,8 @@
 
 set -e
 
-# TODO: Move this to build scripts that require it on Debian
-PATH="$PATH:/usr/sbin"
+export XGCCPATH="${XGCCPATH:-$PWD/coreboot/util/crossgcc/xgcc/bin}"
+export PATH="$XGCCPATH:$PATH:/usr/sbin"
 
 if [ -z "$1" ]
 then
