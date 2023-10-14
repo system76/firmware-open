@@ -2,20 +2,7 @@
 
 set -e
 
-# if [ -z "$1" ]
-# then
-#   echo "$0 [model]" >&2
-#   exit 1
-# fi
-# MODEL="$1"
 MODEL="qemu"
-
-if [ ! -d "models/${MODEL}" ]
-then
-  echo "model '${MODEL}' not found" >&2
-  exit 1
-fi
-MODEL_DIR="$(realpath "models/${MODEL}")"
 
 qemu-system-x86_64 \
     -enable-kvm \

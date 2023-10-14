@@ -1,15 +1,17 @@
 #!/usr/bin/env bash
 # SPDX-License-Identifier: GPL-3.0-only
 
+# shellcheck disable=SC1091
+
 set -eE
 
-function msg {
+msg() {
   echo -e "\x1B[1m$*\x1B[0m" >&2
 }
 
 trap 'msg "\x1B[31mFailed to install dependencies!"' ERR
 
-source /etc/os-release
+. /etc/os-release
 
 msg "Installing system build dependencies"
 if [[ "${ID}" =~ "debian" ]] || [[ "${ID_LIKE}" =~ "debian" ]]; then

@@ -28,9 +28,9 @@ do
         count="$(echo "$line" | cut -d '[' -f2 | cut -d ']' -f1)"
         for i in $(seq 0 "$count")
         do
-            if [[ "$i" != "$count" ]]
+            if [ "$i" != "$count" ]
             then
-                echo "DISPLAY_UPD($var[$i]);"
+                echo "DISPLAY_UPD(${var[$i]});"
             fi
         done
     else

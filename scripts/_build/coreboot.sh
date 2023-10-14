@@ -2,7 +2,7 @@
 
 set -e
 
-if [ -z "$1" -o ! -e "$1" -o -z "$2" ]
+if [ -z "$1" ] || [ ! -e "$1" ] || [ -z "$2" ]
 then
   echo "$0 [coreboot.config] [coreboot.rom]" >&2
   exit 1
@@ -10,7 +10,7 @@ fi
 CONFIG="$(realpath "$1")"
 COREBOOT="$(realpath "$2")"
 
-function check_configs() {
+check_configs() {
   local defconfig="$1"
 
   while read -r line; do

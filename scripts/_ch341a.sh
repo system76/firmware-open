@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 
+# shellcheck disable=SC2034
+
 if [ ! -d "models/${MODEL}" ]
 then
   echo "model '${MODEL}' not found" >&2

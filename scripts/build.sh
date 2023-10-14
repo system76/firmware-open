@@ -46,7 +46,7 @@ EDK2_ARGS+=(
 )
 
 # Rebuild gop-policy (used by edk2)
-if [ -e "${MODEL_DIR}/IntelGopDriver.inf" -a -e "${MODEL_DIR}/vbt.rom" ]
+if [ -e "${MODEL_DIR}/IntelGopDriver.inf" ] && [ -e "${MODEL_DIR}/vbt.rom" ]
 then
     touch apps/gop-policy/Cargo.toml
     FIRMWARE_OPEN_VBT="${MODEL_DIR}/vbt.rom" \
@@ -84,7 +84,7 @@ KERNELVERSION="${VERSION}" \
         "${COREBOOT}"
 
 # Rebuild EC firmware for System76 EC models
-if [ ! -e  "${MODEL_DIR}/ec.rom" -a -e "${MODEL_DIR}/ec.config" ]
+if [ ! -e  "${MODEL_DIR}/ec.rom" ] && [ -e "${MODEL_DIR}/ec.config" ]
 then
     env VERSION="${VERSION}" \
         ./scripts/_build/ec.sh \

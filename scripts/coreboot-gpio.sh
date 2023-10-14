@@ -33,8 +33,8 @@ do
     do
         parts+=("$part")
     done
-    parts[1]="$(printf '0x%08x' "$((${parts[1]} & 0xfffffffd))")"
-    parts[2]="$(printf '0x%04x' "$((${parts[2]} & 0x00003c00))")"
+    parts[1]="$(printf '0x%08x' "$((parts[1] & 0xfffffffd))")"
+    parts[2]="$(printf '0x%04x' "$((parts[2] & 0x00003c00))")"
 
     case "${parts[1]}" in
         0x0???????)

@@ -8,7 +8,7 @@ REMOTES=(
 
 set -e
 
-function git_remote {
+git_remote() {
     echo -e "\x1B[1m$1\x1B[0m"
     pushd "$1" > /dev/null
     if git remote | grep "^$2\$"
@@ -23,5 +23,5 @@ function git_remote {
 
 for remote in "${REMOTES[@]}"
 do
-    git_remote $remote
+    git_remote "$remote"
 done

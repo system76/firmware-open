@@ -2,6 +2,8 @@
 #
 # Copyright 2020 System76
 
+# shellcheck disable=SC2024
+
 set -e
 
 SCRIPT_DIR=$(dirname "$0")
@@ -54,8 +56,8 @@ cargo build --release
 sudo target/release/coreboot-collector > "${MODEL_DIR}/coreboot-collector.txt"
 popd
 
-${SCRIPT_DIR}/coreboot-gpio.sh "${MODEL_DIR}/coreboot-collector.txt" > "${MODEL_DIR}/gpio.h"
-${SCRIPT_DIR}/coreboot-hda.sh "${MODEL_DIR}/coreboot-collector.txt" > "${MODEL_DIR}/hda_verb.c"
+"${SCRIPT_DIR}/coreboot-gpio.sh" "${MODEL_DIR}/coreboot-collector.txt" > "${MODEL_DIR}/gpio.h"
+"${SCRIPT_DIR}/coreboot-hda.sh" "${MODEL_DIR}/coreboot-collector.txt" > "${MODEL_DIR}/hda_verb.c"
 
 if [ -n "${BIOS_IMAGE}" ]
 then
@@ -108,4 +110,4 @@ then
     fi
 fi
 
-${SCRIPT_DIR}/readmes.sh
+"${SCRIPT_DIR}/readmes.sh"
