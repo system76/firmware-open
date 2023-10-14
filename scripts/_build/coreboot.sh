@@ -32,10 +32,6 @@ function check_configs() {
 }
 
 pushd coreboot >/dev/null
-  if [ ! -d util/crossgcc/xgcc ]
-  then
-    make CPUS="$(nproc)" crossgcc-i386
-  fi
   make distclean
   make defconfig KBUILD_DEFCONFIG="${CONFIG}"
   check_configs "${CONFIG}"

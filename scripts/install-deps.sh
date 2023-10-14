@@ -11,14 +11,12 @@ trap 'msg "\x1B[31mFailed to install dependencies!"' ERR
 
 source /etc/os-release
 
-
 msg "Installing system build dependencies"
 if [[ "${ID}" =~ "debian" ]] || [[ "${ID_LIKE}" =~ "debian" ]]; then
   sudo apt-get --quiet update
   sudo apt-get --quiet install \
     --no-install-recommends \
     --assume-yes \
-    bison \
     build-essential \
     ccache \
     cmake \
@@ -26,9 +24,7 @@ if [[ "${ID}" =~ "debian" ]] || [[ "${ID_LIKE}" =~ "debian" ]]; then
     devmem2 \
     dosfstools \
     flashrom \
-    flex \
     git-lfs \
-    gnat \
     libncurses-dev \
     libudev-dev \
     msr-tools \
@@ -47,7 +43,6 @@ elif [[ "${ID}" =~ "fedora" ]] || [[ "${ID_LIKE}" =~ "fedora" ]]; then
     curl \
     dosfstools \
     flashrom \
-    gcc-gnat \
     git-lfs \
     libuuid-devel \
     msr-tools \
@@ -62,14 +57,11 @@ elif [[ "${ID}" =~ "fedora" ]] || [[ "${ID_LIKE}" =~ "fedora" ]]; then
 elif [[ "${ID}" =~ "arch" ]] || [[ "${ID_LIKE}" =~ "arch" ]]; then
   sudo pacman -S \
     --noconfirm \
-    bison \
     ccache \
     cmake \
     curl \
     dosfstools \
     flashrom \
-    flex \
-    gcc-ada \
     git-lfs \
     msr-tools \
     mtools \
@@ -97,10 +89,8 @@ fi
 msg "Initializing submodules"
 git submodule update --init --recursive --checkout --progress
 
-msg "Installing coreboot commit hook"
-curl -sSf https://review.coreboot.org/tools/hooks/commit-msg \
-  -o .git/modules/coreboot/hooks/commit-msg && \
-  chmod +x .git/modules/coreboot/hooks/commit-msg
+msg "Building coreboot toolchains"
+./scripts/coreboot-sdk.sh
 
 msg "Installing Rust toolchain and components"
 ./scripts/install-rust.sh
@@ -108,12 +98,6 @@ msg "Installing Rust toolchain and components"
 msg "Installing EC dependencies"
 pushd ec
 ./scripts/deps.sh
-popd
-
-msg "Building coreboot toolchains"
-pushd coreboot
-make CPUS="$(nproc)" crossgcc-i386
-make CPUS="$(nproc)" crossgcc-x64
 popd
 
 msg "\x1B[32mSuccessfully installed dependencies"
