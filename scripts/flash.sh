@@ -14,7 +14,6 @@ then
   echo "model '${MODEL}' not found" >&2
   exit 1
 fi
-MODEL_DIR="$(realpath "models/${MODEL}")"
 
 DMI_MODEL="$(cat /sys/class/dmi/id/product_version)"
 if [ "${DMI_MODEL}" != "${MODEL}" ]
@@ -29,7 +28,7 @@ export BASEDIR="system76-firmware-update"
 # Clean build directory
 mkdir -p build
 BUILD="$(realpath "build/${MODEL}")"
-rm -rf "${BUILD}/${BASEDIR}"
+rm -rf "${BUILD:?}/${BASEDIR}"
 mkdir -p "${BUILD}/${BASEDIR}"
 
 # Rebuild and copy firmware-update
@@ -50,7 +49,7 @@ fi
 
 # Locate EFI partition mount path
 EFI_PATH="$(bootctl --print-esp-path)"
-if [ -z "${EFI_PATH}" -o ! -d "${EFI_PATH}" ]
+if [ -z "${EFI_PATH}" ] || [ ! -d "${EFI_PATH}" ]
 then
     echo "EFI system partition '${EFI_PATH}' not found" >&2
     exit 1
@@ -63,7 +62,7 @@ then
     echo "EFI system partition name not found" >&2
     exit 1
 fi
-EFI_PART="$(cat /sys/class/block/${EFI_PART_NAME}/partition)"
+EFI_PART="$(cat "/sys/class/block/${EFI_PART_NAME}/partition")"
 
 # Locate EFI disk
 EFI_DISK=""

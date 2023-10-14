@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 
+# shellcheck disable=SC2034
+
 SPIPI=${SPIPI:-"system76@spipi.local"}
 
 if [ ! -d "models/${MODEL}" ]

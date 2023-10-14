@@ -13,7 +13,7 @@ do
 	codec_sys="/sys/class/sound/${codec_id}"
 	vendor="$(cat "${codec_sys}/vendor_name")"
 	chip="$(cat "${codec_sys}/chip_name")"
-	if [ "${vendor}" == "Realtek" ]
+	if [ "${vendor}" = "Realtek" ]
 	then
 		echo "# ${codec_id}: ${vendor} ${chip}"
 
@@ -27,7 +27,7 @@ do
 		do
 			# Set coefficient index
 			index_hex="$(printf "0x%02x\n" "${index}")"
-			hda-verb "${codec}" "${nid}" SET_COEF_INDEX "${index_hex}" &>/dev/null
+			hda-verb "${codec}" "${nid}" SET_COEF_INDEX "${index_hex}" >/dev/null 2>&1
 
 			# Get processing coefficient
 			value="$(hda-verb "${codec}" "${nid}" GET_PROC_COEF 0 2>/dev/null | cut -d " " -f 3)"

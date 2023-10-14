@@ -1,8 +1,10 @@
 #!/usr/bin/env bash
 
+# shellcheck disable=SC1090
+
 set -e
 
-if [ -z "$1" -o ! -e "$1" -o -z "$2" ]
+if [ -z "$1" ] || [ ! -e "$1" ] || [ -z "$2" ]
 then
     echo "$0 <config> <output>" >&2
     exit 1

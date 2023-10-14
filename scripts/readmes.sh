@@ -12,7 +12,7 @@ cargo build --manifest-path "scripts/modeltool/Cargo.toml" --release
 
 MODELTOOL="$(realpath "scripts/modeltool/target/release/modeltool")"
 
-function readme_model {
+readme_model() {
     echo -e "\x1B[1m$1\x1B[0m" >&2
 
     pushd "$1" > /dev/null
@@ -28,7 +28,7 @@ do
     readme_model "${dir%/}"
 done
 
-function readme_line {
+readme_line() {
     echo -e "  \x1B[1m$1\x1B[0m" >&2
 
     name="$(basename "$1")"
@@ -42,7 +42,7 @@ function readme_line {
     fi
 
     submodule="$(git submodule status "$1" 2> /dev/null | cut -d ' ' -f 3 || true)"
-    if [ "$submodule" == "$1" ]
+    if [ "$submodule" = "$1" ]
     then
         # Link to submodule URL
         origin="$(git -C "$1" remote get-url origin)"
@@ -53,7 +53,7 @@ function readme_line {
     fi
 }
 
-function readme_dir {
+readme_dir() {
     echo -e "\x1B[1m$1\x1B[0m" >&2
 
     pushd "$1" > /dev/null

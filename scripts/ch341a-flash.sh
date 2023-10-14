@@ -9,6 +9,6 @@ then
 fi
 MODEL="$1"
 
-source scripts/_ch341a.sh
+. scripts/_ch341a.sh
 
 flashrom -p ch341a_spi -c "${CHIP}" -w "build/${MODEL}/firmware.rom"
