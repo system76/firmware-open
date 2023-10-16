@@ -8,6 +8,10 @@ features apply to your model and firmware version, see the
 
 ## unreleased
 
+- tgl-u: Fixed CPU not going lower than C2 due to card reader LTR
+
+## 2023-10-13
+
 - tgl-u: Fixed potential EC lock up during opportunistic suspend
 - galp5: Fixed CPU not going lower than C2 due to card reader LTR
 
