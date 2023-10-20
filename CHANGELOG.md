@@ -9,6 +9,8 @@ features apply to your model and firmware version, see the
 ## unreleased
 
 - tgl-u: Fixed CPU not going lower than C2 due to card reader LTR
+- bonw15: Fixed speaker audio cutting in/out
+- oryp11: Fixed speaker audio cutting in/out
 
 ## 2023-10-13
 
