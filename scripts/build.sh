@@ -62,7 +62,7 @@ if [ -e "${MODEL_DIR}/edk2.config" ]
 then
     while read line
     do
-        if [[ "$line" != "#"* ]]
+        if [ -n "$line" ] && [[ "$line" != "#"* ]]
         then
             EDK2_ARGS+=(-D "$line")
         fi
