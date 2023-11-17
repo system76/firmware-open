@@ -6,6 +6,17 @@ date followed by an underscore and a short git revision. To see if specific
 features apply to your model and firmware version, see the
 [feature matrix](./FEATURES.md).
 
+## unreleased
+
+- Updated coreboot to 4.22
+- adl: Updated FSP to C.1.75.10
+- adl: Updated microcode to revision 0x42c
+- rpl: Updated FSP to C.1.BD.40
+- rpl: Updated microcode to revision 0x4119
+- tgl: Updated FSP to A.0.7E.70
+- tgl-u: Update microcode to revision 0xac
+- tgl-h: Update microcode to revision 0x46
+
 ## 2024-01-18
 
 - darp9: Added SSD RTD3 configs to fix suspend with some drives
