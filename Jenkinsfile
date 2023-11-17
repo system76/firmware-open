@@ -54,6 +54,11 @@ pipeline {
                 setBuildStatus("pending", "Pending")
                 slackSend(color: "good", message: "${env.JOB_NAME} - #${env.BUILD_ID} started (<${env.BUILD_URL}|Open>)")
 
+                sh """#!/bin/bash
+                    # Update submodule URLs because of coreboot
+                    git submodule sync --recursive
+                """
+
                 // https://www.jenkins.io/doc/pipeline/steps/params/scmgit/
                 checkout scmGit(
                     branches: [[name: '${SOURCE_BRANCH}']],
