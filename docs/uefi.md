@@ -14,12 +14,15 @@ Network functionality is disabled. Native PXE booting is not supported.
 
 ### Secure Boot
 
-Secure Boot support is currently disabled.
+Secure Boot support is enabled since system76/firmware-open@105e74b14613
+(2023-04-03).
 
-The implementation from 9elements is in development. If building a custom
-image, the edk2 config `SECURE_BOOT_ENABLE` can be set to enable support.
+A minimal firmware UI is available to delete all keys and enroll the default
+keys. It is intended that most management is done from the OS.
 
-There is currently no firmware UI to view or configure Secure Boot.
+Note that the Secure Boot support present is only intended for allowing
+Microsoft Windows installation checks to pass. It should not be relied on for
+system security due to limitations of the implementation.
 
 ## Shell
 
