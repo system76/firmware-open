@@ -6,7 +6,12 @@ date followed by an underscore and a short git revision. To see if specific
 features apply to your model and firmware version, see the
 [feature matrix](./FEATURES.md).
 
-## unreleased
+## 2024-01-10
+
+- darp8: Fixed suspend issue on new boards by switching to S0ix by default
+- darp9: Fixed suspend issue on new boards by switching to S0ix by default
+
+## 2023-10-20
 
 - tgl-u: Fixed CPU not going lower than C2 due to card reader LTR
 - bonw15: Fixed speaker audio cutting in/out
