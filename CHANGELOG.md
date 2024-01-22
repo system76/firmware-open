@@ -6,6 +6,10 @@ date followed by an underscore and a short git revision. To see if specific
 features apply to your model and firmware version, see the
 [feature matrix](./FEATURES.md).
 
+## unreleased
+
+- rpl: Updated FSP to 4221.00
+
 ## 2024-01-18
 
 - darp9: Added SSD RTD3 configs to fix suspend with some drives
