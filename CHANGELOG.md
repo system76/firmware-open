@@ -25,6 +25,7 @@ features apply to your model and firmware version, see the
 - rpl: Fixed `SLP_S0#` counter frequency
 - tgl: Fixed TBT ACPI
 - Fixed RTC being reset on boot during February 29th
+- addw4: Added initial release of open firmware with System76 EC
 
 ## 2024-01-18
 
