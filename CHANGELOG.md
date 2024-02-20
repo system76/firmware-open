@@ -6,7 +6,12 @@ date followed by an underscore and a short git revision. To see if specific
 features apply to your model and firmware version, see the
 [feature matrix](./FEATURES.md).
 
-## unreleased
+## 2024-02-20
+
+- lemp12: Fixed PCIe 4.0 drives in PCIe 3.0 slot failing to reinitialize on
+  resume
+
+## 2023-09-08
 
 - adl: Updated CSME to 16.1.25.2124
 - adl,rpl: Fixed SMMSTORE init sometimes failing
