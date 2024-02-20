@@ -89,6 +89,9 @@ pipeline {
                     git clean -dffx
                     git submodule foreach --recursive git clean -dff
 
+                    # FIXME: Rebuild the coreboot toolchain
+                    make -C coreboot CPUS="\$(nproc)" crossgcc-i386 crossgcc-x64
+
                     # EDK2 builds fail if file paths in INFs change from what's in the build cache
                     pushd edk2; git clean -dffx; popd
                 """
