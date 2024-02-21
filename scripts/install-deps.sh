@@ -23,13 +23,11 @@ if [[ "${ID}" =~ "debian" ]] || [[ "${ID_LIKE}" =~ "debian" ]]; then
     ccache \
     cmake \
     curl \
-    devmem2 \
     dosfstools \
     flashrom \
     git-lfs \
     libncurses-dev \
     libudev-dev \
-    msr-tools \
     mtools \
     parted \
     python-is-python3 \
@@ -47,7 +45,6 @@ elif [[ "${ID}" =~ "fedora" ]] || [[ "${ID_LIKE}" =~ "fedora" ]]; then
     flashrom \
     git-lfs \
     libuuid-devel \
-    msr-tools \
     mtools \
     ncurses-devel \
     parted \
@@ -65,7 +62,6 @@ elif [[ "${ID}" =~ "arch" ]] || [[ "${ID_LIKE}" =~ "arch" ]]; then
     dosfstools \
     flashrom \
     git-lfs \
-    msr-tools \
     mtools \
     ncurses \
     parted \
