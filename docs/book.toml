@@ -1,0 +1,18 @@
+[book]
+title = "System76 Open Firmware"
+description = "System76 Open Firmware documentation"
+language = "en"
+src = "."
+
+[build]
+build-dir = "../build/docs"
+create-missing = false
+
+[output.html]
+default-theme = "rust"
+preferred-dark-theme = "coal"
+no-section-label = true
+git-repository-url = "https://github.com/system76/firmware-open"
+
+[output.html.print]
+enable = false
