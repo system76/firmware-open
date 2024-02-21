@@ -77,11 +77,6 @@ Once coreboot is ported, add its configuration.
 cp coreboot/.config models/<model>/coreboot.config
 ```
 
-### devicetree
-
-`generate.sh` does not create `devicetree.cb`. Some values for this file can be
-produced using the `devicetree.py` script.
-
 ### Smart amp
 
 Boards may have a smart amp, which must be configured for speaker output to
