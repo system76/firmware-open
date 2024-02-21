@@ -71,11 +71,10 @@ Other things that should be dumped before porting/flashing are:
 
 To port coreboot to a new board, see the coreboot documentation.
 
-Once coreboot is ported, add its configuration.
-
-```
-cp coreboot/.config models/<model>/coreboot.config
-```
+Add a `coreboot.config` file to the model directory. This can be copied from
+another similar board as a reference, just updating the name. Typically, the
+only special cases that need to be handled are when an FSP or microcode is
+used that are not part of coreboot.
 
 ### Smart amp
 
