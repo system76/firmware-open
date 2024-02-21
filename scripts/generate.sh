@@ -56,7 +56,7 @@ cargo build --release
 sudo target/release/coreboot-collector > "${MODEL_DIR}/coreboot-collector.txt"
 popd
 
-"${SCRIPT_DIR}/coreboot-gpio.sh" "${MODEL_DIR}/coreboot-collector.txt" > "${MODEL_DIR}/gpio.h"
+"${SCRIPT_DIR}/coreboot-gpio.sh" "${MODEL_DIR}/coreboot-collector.txt" > "${MODEL_DIR}/gpio.c"
 "${SCRIPT_DIR}/coreboot-hda.sh" "${MODEL_DIR}/coreboot-collector.txt" > "${MODEL_DIR}/hda_verb.c"
 
 if [ -n "${BIOS_IMAGE}" ]
