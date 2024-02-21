@@ -4,7 +4,7 @@ This lists important features provided by System76 Open Firmware. Your system
 must be updated to at least the firmware version specified in the following
 [platform tables](#platforms) to include all specified [features](#features).
 To see the changes in specific firmware versions, see the
-[changelog](./CHANGELOG.md).
+[changelog](./../CHANGELOG.md).
 
 ## Platforms
 

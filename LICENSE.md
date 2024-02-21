@@ -33,7 +33,7 @@ The license for the embedded controller firmware depends on the binary used.
 
 #### Intel binaries
 
-Intel provides biniaries under a redistributable license, which may be
+Intel provides binaries under a redistributable license, which may be
 different per binary.
 
 - `me.rom`: Intel CSME
