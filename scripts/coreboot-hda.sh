@@ -31,9 +31,10 @@ do
     echo -e "\t/* $vendor_name, $chip_name */"
     echo -e "\t$vendor_id, /* Vendor ID */"
     echo -e "\t$subsystem_id, /* Subsystem ID */"
-    echo -e "\t$(($(wc -l <<<"$widgets") + 1)), /* Number of entries */"
+    echo -e "\t$(($(wc -l <<<"$widgets") + 2)), /* Number of entries */"
 
     echo -e "\tAZALIA_SUBVENDOR($index, $subsystem_id),"
+    echo -e "\tAZALIA_RESET(1),"
 
     cat <<< "$widgets" | \
     while read line
