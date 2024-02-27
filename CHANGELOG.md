@@ -8,14 +8,19 @@ features apply to your model and firmware version, see the
 
 ## unreleased
 
-- Updated coreboot to 4.22
-- adl: Updated FSP to C.1.75.10
-- adl: Updated microcode to revision 0x42c
-- rpl: Updated FSP to C.1.BD.40
-- rpl: Updated microcode to revision 0x4119
+- Updated coreboot to 24.02
+- adl-p: Updated FSP to C.1.75.10
+- adl-s: Updated FSP to C.0.75.10
+- adl: Updated microcode to revision 0x430
+- rpl-p: Updated FSP to C.1.BD.40
+- rpl-s: Updated FSP to C.0.BD.40
+- rpl: Updated microcode to revision 0x411c
 - tgl: Updated FSP to A.0.7E.70
-- tgl-u: Update microcode to revision 0xac
-- tgl-h: Update microcode to revision 0x46
+- tgl-u: Updated microcode to revision 0xb4
+- tgl-h: Updated microcode to revision 0x4e
+- adl: Fixed PCIe 4.0 drives in PCIe 3.0 slot failing to initialize on resume
+- rpl: Fixed PCIe 4.0 drives in PCIe 3.0 slot failing to initialize on resume
+- rpl: Fixed TCSS ACPI access
 
 ## 2024-01-18
 
