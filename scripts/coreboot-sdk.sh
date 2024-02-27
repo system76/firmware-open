@@ -18,6 +18,7 @@ if [ "$ID" = "arch" ] || [[ "$ID_LIKE" =~ "arch" ]]; then
         gcc \
         gcc-ada \
         make \
+        nss \
         patch \
         tar \
         xz \
@@ -33,6 +34,7 @@ elif [ "$ID" = "fedora" ] || [[ "$ID_LIKE" =~ "fedora" ]]; then
         gcc-c++ \
         gcc-gnat \
         make \
+        nss-devel \
         patch \
         tar \
         xz \
@@ -48,6 +50,7 @@ elif [ "$ID" = "ubuntu" ] || [[ "$ID_LIKE" =~ "debian" ]]; then
         g++ \
         gcc \
         gnat \
+        libnss3-dev \
         make \
         patch \
         tar \
