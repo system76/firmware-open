@@ -73,7 +73,7 @@ fi
 # Get the Video BIOS Table and GOP driver for Intel systems
 if sudo [ -e /sys/kernel/debug/dri/0/i915_vbt ]
 then
-    sudo cat /sys/kernel/debug/dri/0/i915_vbt > "${MODEL_DIR}/vbt.rom"
+    sudo cat /sys/kernel/debug/dri/0/i915_vbt > "${MODEL_DIR}/data.vbt"
 
     INTEL_GOP_DRIVER_GUID="7755CA7B-CA8F-43C5-889B-E1F59A93D575"
     EXTRACT_DIR="extract"
