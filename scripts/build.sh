@@ -87,8 +87,7 @@ KERNELVERSION="${VERSION}" \
 # Rebuild EC firmware for System76 EC models
 if [ ! -e  "${MODEL_DIR}/ec.rom" ] && [ -e "${MODEL_DIR}/ec.config" ]
 then
-    env VERSION="${VERSION}" \
-        ./scripts/_build/ec.sh \
+    ./scripts/_build/ec.sh \
         "${MODEL_DIR}/ec.config" \
         "${BUILD}/ec.rom"
 fi

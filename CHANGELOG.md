@@ -21,6 +21,7 @@ features apply to your model and firmware version, see the
 - adl: Fixed PCIe 4.0 drives in PCIe 3.0 slot failing to initialize on resume
 - rpl: Fixed PCIe 4.0 drives in PCIe 3.0 slot failing to initialize on resume
 - rpl: Fixed TCSS ACPI access
+- Changed the EC version to be distinct from the SBIOS version
 
 ## 2024-01-18
 
