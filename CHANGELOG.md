@@ -21,6 +21,10 @@ features apply to your model and firmware version, see the
 - adl: Fixed PCIe 4.0 drives in PCIe 3.0 slot failing to initialize on resume
 - rpl: Fixed PCIe 4.0 drives in PCIe 3.0 slot failing to initialize on resume
 - rpl: Fixed TCSS ACPI access
+- adl: Fixed `SLP_S0#` counter frequency
+- rpl: Fixed `SLP_S0#` counter frequency
+- tgl: Fixed TBT ACPI
+- Fixed RTC being reset on boot during February 29th
 
 ## 2024-01-18
 
