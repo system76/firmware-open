@@ -55,15 +55,18 @@ ME: Current Operation Mode      : 0
 ME: Error Code                  : 0
 ```
 
-## Tiger Lake-U
+## S0ix
 
-Models using TGL-U processors default to having the IME enabled. TGL-U removes
-support for S3 and requires S0ix. This requires all CPU, PCH, and PCIe devices
-to have ACPI defined low power states. With S0ix, the CPU has numerous states
-for low power, with the lowest being C10. In order to reach this C10 state, the
-IME must report that it is in a low power state. Disabling the ME with the HAP
-bit keeps the CPU in the C8 state. This nearly triples the power usage in S0ix
-suspend, from around 1 watt to around 3 watts.
+S0ix (Modern Standby, s2idle) requires all CPU, PCH, and PCIe devices to have
+ACPI defined low power states. The CPU has numerous states for low power, with
+the lowest being C10. In order to reach this C10 state, the CSME must report
+that it is in a low power state.
+
+Disabling the CSME with the HAP bit or HECI command keeps the CPU in the C8
+state. This nearly triples the power usage in S0ix suspend, from around 1 watt
+to around 3 watts.
+
+TGL-U removed support for S3 and requires S0ix.
 
 
 [wiki]: https://en.wikipedia.org/wiki/Intel_Management_Engine
