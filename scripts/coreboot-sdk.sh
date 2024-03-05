@@ -39,6 +39,20 @@ elif [ "$ID" = "fedora" ] || [[ "$ID_LIKE" =~ "fedora" ]]; then
         tar \
         xz \
         zlib-devel
+elif [[ "$ID" =~ "opensuse" ]] || [[ "ID_LIKE" =~ "opensuse" ]]; then
+  sudo zypper in -y \
+    bzip2 \
+    ca-certificates \
+    flex \
+    gcc \
+    gcc-c++ \
+    gcc-ada \
+    make \
+    mozilla-nss-devel \
+    patch \
+    tar \
+    xz \
+    zlib-devel
 elif [ "$ID" = "ubuntu" ] || [[ "$ID_LIKE" =~ "debian" ]]; then
     sudo apt-get --quiet update
     sudo apt-get --quiet install --no-install-recommends --assume-yes \
