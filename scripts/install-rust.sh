@@ -8,17 +8,11 @@
 
 set -Ee
 
-. /etc/os-release
-
 RUSTUP_NEW_INSTALL=0
 
 # NOTE: rustup is used to allow multiple toolchain installations.
 if command -v rustup >/dev/null 2>&1; then
-    if [[ "$ID" =~ "opensuse" ]] || [[ "$ID_LIKE" =~ "opensuse" ]]; then
-      sudo zypper up rustup
-    else
-      rustup self update
-    fi
+  rustup self update
 else
     RUSTUP_NEW_INSTALL=1
     curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs \
