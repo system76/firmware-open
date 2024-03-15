@@ -53,6 +53,27 @@ elif [[ "${ID}" =~ "fedora" ]] || [[ "${ID_LIKE}" =~ "fedora" ]]; then
     python3 \
     systemd-devel \
     zlib-devel
+elif [[ "${ID}" =~ "opensuse" ]] || [[ "${ID_LIKE}" =~ "opensuse" ]]; then
+  sudo zypper in -t pattern devel_C_C++
+  sudo zypper in \
+    -y \
+    ccache \
+    cmake \
+    curl \
+    dosfstools \
+    flashrom \
+    git-lfs \
+    libopenssl-devel \
+    libuuid-devel \
+    mtools \
+    ncurses-devel \
+    parted \
+    patch \
+    python3 \
+    systemd-devel \
+    zlib-devel
+  # There is no python-unversioned package for openSUSE, so we have to do this
+  update-alternatives --install /usr/bin/python python /usr/bin/python3 1
 elif [[ "${ID}" =~ "arch" ]] || [[ "${ID_LIKE}" =~ "arch" ]]; then
   sudo pacman -S \
     --noconfirm \

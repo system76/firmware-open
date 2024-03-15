@@ -12,7 +12,7 @@ RUSTUP_NEW_INSTALL=0
 
 # NOTE: rustup is used to allow multiple toolchain installations.
 if command -v rustup >/dev/null 2>&1; then
-    rustup self update
+  rustup self update
 else
     RUSTUP_NEW_INSTALL=1
     curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs \
