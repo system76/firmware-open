@@ -42,3 +42,7 @@
 	path = tools/apobtool
 	url = https://github.com/system76/apobtool.git
 	branch = master
+[submodule "tools/intel-spi"]
+	path = tools/intel-spi
+	url = https://github.com/system76/intel-spi.git
+	branch = master
