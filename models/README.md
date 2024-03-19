@@ -33,6 +33,7 @@
 - [lemp10](./lemp10) - System76 Lemur Pro (lemp10)
 - [lemp11](./lemp11) - System76 Lemur Pro (lemp11)
 - [lemp12](./lemp12) - System76 Lemur Pro (lemp12)
+- [lemp13](./lemp13) - System76 Lemur Pro (lemp13)
 - [lemp9](./lemp9) - System76 Lemur Pro (lemp9)
 - [oryp10](./oryp10) - System76 Oryx Pro (oryp10)
 - [oryp11](./oryp11) - System76 Oryx Pro (oryp11)

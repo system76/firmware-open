@@ -1,12 +1,12 @@
-# System76 Lemur Pro (lemp12)
+# System76 Lemur Pro (lemp13)
 
 ## Contents
 
 - [EC](./ec.rom)
   - *Read Error: No such file or directory (os error 2)*
 - [FD](./fd.rom)
-  - Size: 4 KB
-  - HAP: false
+  - Size: 16 KB
+  - HAP: true
 - [ME](./me.rom)
-  - Size: 4824 KB
-  - Version: 16.1.25.2166
+  - Size: 10128 KB
+  - Version: 18.0.5.2066
