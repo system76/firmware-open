@@ -7,7 +7,7 @@
 // - Pipeline (https://plugins.jenkins.io/workflow-aggregator/)
 // - Slack Notification (https://plugins.jenkins.io/slack/)
 
-def all_models = 'addw2 addw3 bonw14 bonw15 darp5 darp6 darp7 darp8 darp9 galp3-c galp4 galp5 galp6 galp7 gaze15 gaze16-3050 gaze16-3060 gaze16-3060-b gaze16-3050 gaze16-3060-b gaze17-3050 gaze17-3060-b gaze18 lemp9 lemp10 lemp11 lemp12 oryp5 oryp6 oryp7 oryp8 oryp9 oryp10 oryp11 serw13'
+def all_models = 'addw2 addw3 addw4 bonw14 bonw15 darp5 darp6 darp7 darp8 darp9 galp3-c galp4 galp5 galp6 galp7 gaze15 gaze16-3050 gaze16-3060 gaze16-3060-b gaze16-3050 gaze16-3060-b gaze17-3050 gaze17-3060-b gaze18 lemp9 lemp10 lemp11 lemp12 lemp13 oryp5 oryp6 oryp7 oryp8 oryp9 oryp10 oryp11 oryp12 serw13'
 
 void setBuildStatus(String state, String message) {
     // FIXME: https://www.jenkins.io/doc/book/pipeline/jenkinsfile/#string-interpolation
