@@ -13,10 +13,7 @@ MODEL="$1"
 
 . scripts/_spipi.sh
 
-sftp "${SPIPI}" <<EOF
-cd firmware
-put "build/${MODEL}/firmware.rom" "${MODEL}.rom"
-EOF
+rsync -v "build/${MODEL}/firmware.rom" "${SPIPI}:firmware/${MODEL}.rom"
 
 ssh -T "${SPIPI}" <<EOF
 cd firmware
