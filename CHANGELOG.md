@@ -26,6 +26,7 @@ features apply to your model and firmware version, see the
 - tgl: Fixed TBT ACPI
 - Fixed RTC being reset on boot during February 29th
 - addw4: Added initial release of open firmware with System76 EC
+- lemp13: Added initial release of open firmware with System76 EC
 
 ## 2024-01-18
 
