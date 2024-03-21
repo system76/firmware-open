@@ -24,6 +24,9 @@ REV="$(git describe --always --dirty --abbrev=7)"
 VERSION="${DATE}_${REV}"
 echo "Building '${VERSION}' for '${MODEL}'"
 
+# Path to edk2's Python script to generate UEFI capsules
+GENERATE_CAPSULE="./edk2/BaseTools/BinWrappers/PosixLike/GenerateCapsule"
+
 # Clean build directory
 mkdir -p build
 BUILD="$(realpath "build/${MODEL}")"
@@ -62,12 +65,15 @@ if [ -e "${MODEL_DIR}/edk2.config" ]
 then
     while read line
     do
-        if [[ "$line" != "#"* ]]
+        if [ -n "$line" ] && [[ "$line" != "#"* ]]
         then
             EDK2_ARGS+=(-D "$line")
         fi
     done < "${MODEL_DIR}/edk2.config"
 fi
+
+# Source edk2 config for FMP values
+. "$MODEL_DIR/edk2.config"
 
 # Rebuild UefiPayloadPkg using edk2
 PACKAGES_PATH="${MODEL_DIR}:$(realpath apps)" \
@@ -84,6 +90,17 @@ KERNELVERSION="${VERSION}" \
         "${MODEL_DIR}/coreboot.config" \
         "${COREBOOT}"
 
+if [ "$MODEL" != "qemu" ]; then
+    # Generate system firmware capsule
+    SYSTEM_FMP_VERSION=1
+    $GENERATE_CAPSULE -e \
+        --guid "$SYSTEM_FMP_UUID" \
+        --fw-version "$SYSTEM_FMP_VERSION" \
+        --lsv 0 \
+        -o "$BUILD/firmware.cap" \
+        "$BUILD/firmware.rom"
+fi
+
 # Rebuild EC firmware for System76 EC models
 if [ ! -e  "${MODEL_DIR}/ec.rom" ] && [ -e "${MODEL_DIR}/ec.config" ]
 then
@@ -91,6 +108,15 @@ then
         ./scripts/_build/ec.sh \
         "${MODEL_DIR}/ec.config" \
         "${BUILD}/ec.rom"
+
+    # Generate EC firmware capsule
+    EC_FMP_VERSION=1
+    $GENERATE_CAPSULE -e \
+        --guid "$EC_FMP_UUID" \
+        --fw-version "$EC_FMP_VERSION" \
+        --lsv 0 \
+        -o "$BUILD/ec.cap" \
+        "$BUILD/ec.rom"
 fi
 
 if [ "${MODEL}" != "qemu" ]
