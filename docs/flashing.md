@@ -31,7 +31,7 @@ If the EC is flashed, the system will immediately power off.
 
 ### Availability
 
-This method is only possible when firmware is unlock. Firmware is unlocked by
+This method is only possible when firmware is unlocked. Firmware is unlocked by
 one of two methods:
 
 - The EC feature `CONFIG_SECURITY` is unset/disabled

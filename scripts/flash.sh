@@ -41,7 +41,10 @@ popd >/dev/null
 
 # Copy firmware
 mkdir -p "${BUILD}/${BASEDIR}/firmware"
-cp -v "${BUILD}/firmware.rom" "${BUILD}/${BASEDIR}/firmware"
+if [ -f "${BUILD}/firmware.rom" ]
+then
+    cp -v "${BUILD}/firmware.rom" "${BUILD}/${BASEDIR}/firmware"
+fi
 if [ -f "${BUILD}/ec.rom" ]
 then
     cp -v "${BUILD}/ec.rom" "${BUILD}/${BASEDIR}/firmware"
