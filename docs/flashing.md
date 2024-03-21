@@ -13,16 +13,44 @@ coreboot's `cbmem` tool can be used to verify this. The call to
 `FspMemoryInit()` can report 20+ seconds on the first boot, and a few hundred
 milliseconds on subsequent boots.
 
+## UEFI application
+
+This is the default method for flashing firmware (using firmware-update). When
+used from this repo, it only works with systems running System76 open firmware.
+
+```
+./scripts/flash.sh <model>
+```
+
+By default the script will attempt to flash both the BIOS and the EC. Their
+respective file can be deleted to skip flashing them.
+
+If the EC is flashed, the system will immediately power off.
+
 ## Internal programmer
 
-Use this method for flashing a system already running System76 Open Firmware.
+### Availability
+
+This method is only possible when firmware is unlock. Firmware is unlocked by
+one of two methods:
+
+- The EC feature `CONFIG_SECURITY` is unset/disabled
+- The EC is unlock for a single boot (via firmware-update or ectool)
+
+The current state can be determined using ectool:
 
 ```
-./scripts/flash.sh <model> [--without-ec]
+./ec/scripts/ectool.sh security
 ```
 
-By default the script will attempt to flash the EC. If the EC is flashed, the
-system will immediately power off.
+- `Lock`: This method can't be used
+- `Unlock`: This method can be used
+
+### flashrom
+
+```
+sudo flashrom -p internal -w build/<model>/firmware.rom
+```
 
 ## External programmer
 
@@ -31,13 +59,14 @@ Use one of these methods for first-time flashing or flashing a bricked system.
 ### Identifying the BIOS chip
 
 The packaging and protocol can be determined by `board_info.txt` in coreboot.
-Pin 1 is marked by a small dot indent and a white paint mark. The silkscreen
-may also indicate pin 1.
+Pin 1 is sometimes marked by a small dot indent and a white paint mark. The
+silkscreen may also indicate pin 1.
 
 ### CH341A USB programmer - slower, but easier to set up
 
 These can be purchased from many places for around 15 USD. Make sure that the
 one you get has a ROM clip. Here are some examples:
+
 - [Amazon.com, Organizer.](https://www.amazon.com/Organizer-Socket-Adpter-Programmer-CH341A/dp/B07R5LPTYM)
 - [Amazon.com, KeeYees.](https://www.amazon.com/KeeYees-SOIC8-EEPROM-CH341A-Programmer/dp/B07SHSL9X9) 
 - [AliExpress.com, TZT.](https://aliexpress.com/item/32725360255.html)
