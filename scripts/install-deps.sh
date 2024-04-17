@@ -31,7 +31,7 @@ if [[ "${ID}" =~ "debian" ]] || [[ "${ID_LIKE}" =~ "debian" ]]; then
     libudev-dev \
     mtools \
     parted \
-    pkg-config \
+    pkgconf \
     python-is-python3 \
     python3-distutils \
     uuid-dev \
