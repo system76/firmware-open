@@ -28,8 +28,10 @@ if [[ "${ID}" =~ "debian" ]] || [[ "${ID_LIKE}" =~ "debian" ]]; then
     git-lfs \
     libncurses-dev \
     libudev-dev \
+    libssl-dev \
     mtools \
     parted \
+    pkg-config \
     python-is-python3 \
     python3-distutils \
     uuid-dev \
@@ -47,6 +49,7 @@ elif [[ "${ID}" =~ "fedora" ]] || [[ "${ID_LIKE}" =~ "fedora" ]]; then
     libuuid-devel \
     mtools \
     ncurses-devel \
+    openssl-devel \
     parted \
     patch \
     python-unversioned-command \
