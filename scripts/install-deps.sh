@@ -27,8 +27,8 @@ if [[ "${ID}" =~ "debian" ]] || [[ "${ID_LIKE}" =~ "debian" ]]; then
     flashrom \
     git-lfs \
     libncurses-dev \
-    libudev-dev \
     libssl-dev \
+    libudev-dev \
     mtools \
     parted \
     pkg-config \
