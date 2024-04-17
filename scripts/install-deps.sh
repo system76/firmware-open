@@ -27,9 +27,11 @@ if [[ "${ID}" =~ "debian" ]] || [[ "${ID_LIKE}" =~ "debian" ]]; then
     flashrom \
     git-lfs \
     libncurses-dev \
+    libssl-dev \
     libudev-dev \
     mtools \
     parted \
+    pkgconf \
     python-is-python3 \
     python3-distutils \
     uuid-dev \
@@ -47,6 +49,7 @@ elif [[ "${ID}" =~ "fedora" ]] || [[ "${ID_LIKE}" =~ "fedora" ]]; then
     libuuid-devel \
     mtools \
     ncurses-devel \
+    openssl-devel \
     parted \
     patch \
     python-unversioned-command \
