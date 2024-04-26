@@ -15,8 +15,8 @@ then
 	popd >/dev/null
 fi
 
-# Make sure UEFIExtract is built
-if [ ! -f "$UEFIEXTRACT_DIR/UEFIExtract" ]
+# Make sure uefiextract is built
+if [ ! -f "$UEFIEXTRACT_DIR/uefiextract" ]
 then
     pushd "$UEFIEXTRACT_DIR" > /dev/null
     cmake -B . -G "Unix Makefiles" -DCMAKE_CXX_FLAGS="-Os" -DCMAKE_C_FLAGS="-Os"
@@ -24,4 +24,4 @@ then
     popd > /dev/null
 fi
 
-"$UEFIEXTRACT_DIR/UEFIExtract" "$@"
+"$UEFIEXTRACT_DIR/uefiextract" "$@"
