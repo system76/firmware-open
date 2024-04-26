@@ -9,6 +9,7 @@
 - [bonw14](./bonw14) - System76 Bonobo WS (bonw14)
 - [bonw15](./bonw15) - System76 Bonobo WS (bonw15)
 - [darp10](./darp10) - System76 Darter Pro (darp10)
+- [darp10-b](./darp10-b) - System76 Darter Pro (darp10-b)
 - [darp5](./darp5) - System76 Darter Pro (darp5)
 - [darp6](./darp6) - System76 Darter Pro (darp6)
 - [darp7](./darp7) - System76 Darter Pro (darp7)
