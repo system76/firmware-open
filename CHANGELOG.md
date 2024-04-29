@@ -8,7 +8,14 @@ features apply to your model and firmware version, see the
 
 ## unreleased
 
+- Fixed CMOS options not working due to invalid checksum
+
+## 2024-03-25
+
 - lemp13: Added initial release of open firmware with System76 EC
+
+## 2024-03-21
+
 - oryp12: Added initial release of open firmware with System76 EC
 
 ## 2024-03-11
