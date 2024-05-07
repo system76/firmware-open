@@ -8,6 +8,11 @@ features apply to your model and firmware version, see the
 
 ## unreleased
 
+- darp10: Added initial release of open firmware with System76 EC
+- darp10-b: Added initial release of open firmware with System76 EC
+
+## 2024-04-29
+
 - Fixed CMOS options not working due to invalid checksum
 
 ## 2024-03-25
