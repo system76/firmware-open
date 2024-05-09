@@ -11,4 +11,4 @@ https://system76.com/guides/galp4
   - HAP: false
 - [ME](./me.rom)
   - Size: 4092 KB
-  - Version: 14.0.60.1807
+  - Version: 14.1.74.2373
