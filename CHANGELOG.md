@@ -12,6 +12,7 @@ features apply to your model and firmware version, see the
 - cml-u: Updated CSME to 14.1.74.2355v6 (14.1.74.2373)
 - Reverted unlock prompt change to restore intended behavior
 - darp10: Fixed reporting of the second fan
+- whl-u: Updated CSME to 12.0.95.2489v2 (12.0.94.2428)
 
 ## 2024-07-01
 
