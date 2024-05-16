@@ -10,6 +10,7 @@ features apply to your model and firmware version, see the
 
 - darp10: Added initial release of open firmware with System76 EC
 - darp10-b: Added initial release of open firmware with System76 EC
+- lemp13-b: Added initial release of open firmware with System76 EC
 
 ## 2024-04-29
 
