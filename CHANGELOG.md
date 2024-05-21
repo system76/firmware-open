@@ -8,9 +8,16 @@ features apply to your model and firmware version, see the
 
 ## unreleased
 
+- tgl: Updated Intel GOP driver to 17.0.1077
+
+## 2024-05-17
+
+- lemp13-b: Added initial release of open firmware with System76 EC
+
+## 2024-05-07
+
 - darp10: Added initial release of open firmware with System76 EC
 - darp10-b: Added initial release of open firmware with System76 EC
-- lemp13-b: Added initial release of open firmware with System76 EC
 
 ## 2024-04-29
 
