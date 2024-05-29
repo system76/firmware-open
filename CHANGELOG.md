@@ -15,6 +15,7 @@ features apply to your model and firmware version, see the
 - adl: Fixed USB 3.0 hubs in Type-C ports
 - rpl: Fixed USB 3.0 hubs in Type-C ports
 - Fixed touchpad in PS/2 mode
+- tgl: Updated CSME to 15.0.49.2573
 
 ## 2024-05-17
 
