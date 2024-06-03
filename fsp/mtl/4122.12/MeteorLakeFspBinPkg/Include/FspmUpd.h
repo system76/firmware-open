@@ -67,7 +67,7 @@ typedef struct {
   UINT16                      MemorySpdDataLen;
 
 /** Offset 0x004A - Enable above 4GB MMIO resource support
-  Enable/disable above 4GB MMIO resource support
+  DEPRECATED. Enable/disable above 4GB MMIO resource support
   $EN_DIS
 **/
   UINT8                       EnableAbove4GBMmio;
@@ -283,9 +283,16 @@ typedef struct {
 **/
   UINT8                       RxVrefTempCoeff;
 
-/** Offset 0x012E
+/** Offset 0x012E - CaParityPatternRotation
+  Default = 0 (Auto). 1 for High stress pattern rotation, 2 for no rotation.
 **/
-  UINT8                       Rsvd020[2];
+  UINT8                       CaParityPatternRotation;
+
+/** Offset 0x012F - WCK Offset
+  This option enables the WCK Offset WA for Hynix32 with freq >= 5600.
+  $EN_DIS
+**/
+  UINT8                       WckOffsetWa;
 
 /** Offset 0x0130 - Tseg Size
   Size of SMRAM memory reserved. 0x400000 for Release build and 0x1000000 for Debug build
@@ -760,7 +767,17 @@ typedef struct {
 
 /** Offset 0x01AF
 **/
-  UINT8                       Rsvd031[81];
+  UINT8                       Rsvd031[1];
+
+/** Offset 0x01B0 - tREFI32
+  Refresh Interval, 0: AUTO, max: 131071. Only used if FspmUpd->FspmConfig.SpdProfileSelected
+  == 1 (Custom Profile).
+**/
+  UINT32                      tREFI32;
+
+/** Offset 0x01B4
+**/
+  UINT8                       Rsvd036[76];
 
 /** Offset 0x0200 - Vdd2Mv
   VDD2 in MilliVolts. <b>0=Platform Default (no override), 1200=1.2V, 1350=1.35V etc.
@@ -875,8 +892,8 @@ typedef struct {
   UINT8                       Rsvd040[1];
 
 /** Offset 0x021C - tREFI
-  Refresh Interval, 0: AUTO, max: 65535. Only used if FspmUpd->FspmConfig.SpdProfileSelected
-  == 1 (Custom Profile).
+  Obsolete, use tREFI32 instead. Refresh Interval, 0: AUTO, max: 65535. Only used
+  if FspmUpd->FspmConfig.SpdProfileSelected == 1 (Custom Profile).
 **/
   UINT16                      tREFI;
 
@@ -2503,9 +2520,8 @@ typedef struct {
   UINT8                       TdcEnable[6];
 
 /** Offset 0x069C - Thermal Design Current time window
-  TDC Time Window, value of IA either in milliseconds or seconds, value of GT/SA is
-  in milliseconds. 1ms is default. Range of IA from 1ms to 448s, Range of GT/SA is
-  1ms to 10ms, except for 9ms. 9ms has no valid encoding in the MSR definition.
+  TDC Time Window, value in seconds. Range from 1s to 448s, 0 = Auto/HW default. <b>0:
+  Auto</b>. [0] for IA, [1] for GT, [2] for SA, [3] through [5] are Reserved.
 **/
   UINT32                      TdcTimeWindow[6];
 
@@ -4710,8 +4726,8 @@ typedef struct {
   UINT8                       PprRunAtFastboot;
 
 /** Offset 0x0CF5 - PPR Repair Type
-  PPR Repair Type: 0:Do not Repair, 1:Soft Repair, 2:Hard Repair (Default)
-  0:Do not Repair, 1:Soft Repair, 2:Hard Repair (Default)
+  PPR Repair Type: 0:Do not Repair (Default), 1:Soft Repair, 2:Hard Repair
+  0:Do not Repair (Default), 1:Soft Repair, 2:Hard Repair
 **/
   UINT8                       PprRepairType;
 
@@ -4727,9 +4743,72 @@ typedef struct {
 **/
   UINT8                       PprForceRepair;
 
-/** Offset 0x0CF8
+/** Offset 0x0CF8 - PPR Repair Controller
+  PPR repair controller: User chooses to force repair specifc address
 **/
-  UINT8                       SaFspmUpdRsvd[44];
+  UINT8                       PprRepairController;
+
+/** Offset 0x0CF9 - PPR Repair Channel
+  PPR repair Channel: User chooses to force repair specifc address
+**/
+  UINT8                       PprRepairChannel;
+
+/** Offset 0x0CFA - PPR Repair Dimm
+  PPR repair Dimm: User chooses to force repair specifc address
+**/
+  UINT8                       PprRepairDimm;
+
+/** Offset 0x0CFB - PPR Repair Rank
+  PPR repair Rank: User chooses to force repair specifc address
+**/
+  UINT8                       PprRepairRank;
+
+/** Offset 0x0CFC - PPR Repair Row
+  PPR repair Row: User chooses to force repair specifc address
+**/
+  UINT32                      PprRepairRow;
+
+/** Offset 0x0D00 - PPR Repair Physical Address Low
+  PPR repair Physical Address Low: User chooses to force repair specifc address
+**/
+  UINT32                      PprRepairPhysicalAddrLow;
+
+/** Offset 0x0D04 - PPR Repair Physical Address High
+  PPR repair Physical Address High: User chooses to force repair specifc address
+**/
+  UINT32                      PprRepairPhysicalAddrHigh;
+
+/** Offset 0x0D08 - PPR Repair BankGroup
+  PPR repair BankGroup: User chooses to force repair specifc address
+**/
+  UINT8                       PprRepairBankGroup;
+
+/** Offset 0x0D09 - PPR Repair Bank
+  PPR repair Bank: User chooses to force repair specifc address
+**/
+  UINT8                       PprRepairBank;
+
+/** Offset 0x0D0A - DIMM CA ODT Split Training
+  Enable/Disable DIMM CA ODT Split Training
+  $EN_DIS
+**/
+  UINT8                       DIMMODTCASPLIT;
+
+/** Offset 0x0D0B - CMD Drive Strength Split
+  Enable/Disable CMD Drive Strength Split
+  $EN_DIS
+**/
+  UINT8                       CMDDSSPLIT;
+
+/** Offset 0x0D0C - CMD Slew Rate Split Training
+  Enable/Disable CMD Slew Rate Split Training
+  $EN_DIS
+**/
+  UINT8                       CMDSRSPLIT;
+
+/** Offset 0x0D0D
+**/
+  UINT8                       SaFspmUpdRsvd[23];
 
 /** Offset 0x0D24 - TotalFlashSize
   Enable/Disable. 0: Disable, define default value of TotalFlashSize , 1: enable
@@ -4976,9 +5055,14 @@ typedef struct {
 **/
   UINT8                       NguVoltageMode;
 
-/** Offset 0x0DFD
+/** Offset 0x0DFD - NGU Ratio
+  Sets the Ratio for NGU when SAGV is enabled, using SAVG B2P Mailbox cmd 0x22 and
+  subcommand 0x1. When this value is zero, dynamic mode is selected and NGU ratio
+  can be modified using OCMB cmd 0x11. When valid ratio value is set, static mode
+  is selected with the fixed ratio specified by this value.. <b>0: Hardware defaults.</b>
+  Range: 0-85
 **/
-  UINT8                       Rsvd400[1];
+  UINT8                       NguRatio;
 
 /** Offset 0x0DFE - NGU voltage override
   The NGU voltage override which is applied to the entire range of cpu NGU frequencies.
