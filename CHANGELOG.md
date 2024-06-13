@@ -12,6 +12,8 @@ features apply to your model and firmware version, see the
 - tgl: Updated VBT to 250
 - Updated Rust toolchain to nightly-2024-05-11
 - mtl: Updated FSP to D.0.A8.20
+- adl: Fixed USB 3.0 hubs in Type-C ports
+- rpl: Fixed USB 3.0 hubs in Type-C ports
 
 ## 2024-05-17
 
