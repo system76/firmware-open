@@ -1,0 +1,166 @@
+# Container for building System76 Open Firmware
+
+ARG CONTAINER_IMAGE="docker.io/library/debian:12.5-slim"
+
+ARG COREBOOT_REPO="https://github.com/coreboot/coreboot.git"
+ARG COREBOOT_COMMIT="24.02"
+
+ARG SDCC_REPO="https://svn.code.sf.net/p/sdcc/code"
+ARG SDCC_REV="14648"
+ARG SDCC_VERSION="4.4.0"
+
+ARG RUST_DEFAULT_TOOLCHAIN="1.77.2"
+ARG RUST_TOOLCHAIN="nightly-2023-09-07"
+
+# Build coreboot toolchains
+FROM ${CONTAINER_IMAGE} as crossgcc-build
+ARG COREBOOT_COMMIT
+ARG COREBOOT_REPO
+WORKDIR /tmp
+
+RUN apt-get --quiet update && \
+    apt-get --quiet install --no-install-recommends --assume-yes \
+        bash \
+        bison \
+        bzip2 \
+        ca-certificates \
+        curl \
+        flex \
+        g++ \
+        gcc \
+        git \
+        gnat \
+        libssl-dev \
+        m4 \
+        make \
+        patch \
+        pkgconf \
+        python-is-python3 \
+        python3 \
+        tar \
+        xz-utils \
+        zlib1g-dev && \
+    apt-get clean
+
+RUN git clone ${COREBOOT_REPO} && \
+    cd coreboot && \
+    git checkout ${COREBOOT_COMMIT}
+
+RUN make -C coreboot \
+        CPUS=$(nproc) BUILD_LANGUAGES=ada,c,c++ DEST=/opt/xgcc \
+        crossgcc-i386 crossgcc-x64 && \
+    rm -rf coreboot
+
+# Build SDCC
+FROM ${CONTAINER_IMAGE} as sdcc-build
+ARG SDCC_REPO
+ARG SDCC_REV
+ARG SDCC_VERSION
+WORKDIR /tmp
+
+RUN apt-get --quiet update && \
+    apt-get --quiet install --no-install-recommends --assume-yes \
+        autoconf \
+        automake \
+        bison \
+        ca-certificates \
+        flex \
+        g++ \
+        gcc \
+        libboost-dev \
+        make \
+        subversion \
+        zlib1g-dev && \
+    apt-get clean
+
+RUN svn checkout \
+    --depth infinity \
+    --revision ${SDCC_REV} \
+    ${SDCC_REPO}/tags/sdcc-${SDCC_VERSION}/sdcc \
+    sdcc
+
+# Only the MCS-51 port is needed.
+RUN cd sdcc && \
+    sh ./configure \
+        --disable-z80-port \
+        --disable-z180-port \
+        --disable-r2k-port \
+        --disable-r2ka-port \
+        --disable-r3ka-port \
+        --disable-sm83-port \
+        --disable-tlcs90-port \
+        --disable-ez80_z80-port \
+        --disable-z80n-port \
+        --disable-ds390-port \
+        --disable-ds400-port \
+        --disable-pic14-port \
+        --disable-pic16-port \
+        --disable-hc08-port \
+        --disable-s08-port \
+        --disable-stm8-port \
+        --disable-pdk13-port \
+        --disable-pdk14-port \
+        --disable-pdk15-port \
+        --disable-mos6502-port \
+        --disable-ucsim \
+        --disable-sdcdb \
+        --disable-non-free \
+        --prefix= && \
+    make -j $(nproc) && \
+    make install DESTDIR=/opt/sdcc
+
+# Set up environment for building firmware-open
+FROM ${CONTAINER_IMAGE}
+ARG RUST_DEFAULT_TOOLCHAIN
+ARG RUST_TOOLCHAIN
+COPY --from=crossgcc-build /opt/xgcc /opt/xgcc
+COPY --from=sdcc-build /opt/sdcc /opt/sdcc
+ENV COREBOOT_COMMIT "${COREBOOT_COMMIT}"
+ENV XGCCPATH "/opt/xgcc/bin"
+ENV SDCC_PATH "/opt/sdcc"
+ENV SDCC_REV "${SDCC_REV}"
+ENV SDCC_VERSION "${SDCC_VERSION}"
+ENV CARGO_HOME "/root/.cargo"
+ENV PATH "$XGCCPATH:$SDCC_PATH/bin:$CARGO_HOME/bin:$PATH"
+
+RUN apt-get --quiet update && \
+    apt-get --quiet install --no-install-recommends --assume-yes \
+        bash \
+        binutils \
+        ca-certificates \
+        ccache \
+        cmake \
+        curl \
+        dosfstools \
+        g++ \
+        gcc \
+        git \
+        git-lfs \
+        libnss3-dev \
+        libssl-dev \
+        make \
+        mtools \
+        parted \
+        pkgconf \
+        python-is-python3 \
+        python3 \
+        udev \
+        uuid-dev \
+        xxd \
+    && apt-get clean
+
+RUN curl --proto '=https' --tlsv1.3 -sSf https://sh.rustup.rs \
+        | sh -s -- -y --profile minimal --default-toolchain ${RUST_DEFAULT_TOOLCHAIN} && \
+    rustup toolchain install \
+        --profile minimal \
+        --component=clippy,rust-src,rustfmt \
+        ${RUST_TOOLCHAIN}
+
+# XXX: firmware-setup is stuck on 2023-01-21
+RUN rustup toolchain install \
+        --profile minimal \
+        --component=clippy,rust-src,rustfmt \
+        nightly-2023-01-21
+
+WORKDIR /workspace
+CMD ["bash"]
