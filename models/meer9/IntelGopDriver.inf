@@ -1,0 +1,9 @@
+[Defines]
+  INF_VERSION                    = 0x00010005
+  BASE_NAME                      = IntelGopDriver
+  FILE_GUID                      = 767222f4-a9f4-41ba-9faa-edaa1405a486
+  MODULE_TYPE                    = UEFI_DRIVER
+  VERSION_STRING                 = 1.0
+
+[Binaries.X64]
+  PE32|IntelGopDriver.efi|*
