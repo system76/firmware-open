@@ -14,6 +14,7 @@ features apply to your model and firmware version, see the
 - Fixed touchpad in PS/2 mode
 - tgl: Updated CSME to 15.0.49.2573
 - Fixed unlock prompt showing when system is already unlocked
+- lemp13-b: Added support for units with 5600 MT/s soldered RAM
 
 ## 2024-05-28
 
