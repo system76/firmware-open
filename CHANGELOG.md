@@ -8,14 +8,18 @@ features apply to your model and firmware version, see the
 
 ## unreleased
 
-- tgl: Updated Intel GOP driver to 17.0.1077
-- tgl: Updated VBT to 250
-- Updated Rust toolchain to nightly-2024-05-11
 - mtl: Updated FSP to D.0.A8.20
 - adl: Fixed USB 3.0 hubs in Type-C ports
 - rpl: Fixed USB 3.0 hubs in Type-C ports
 - Fixed touchpad in PS/2 mode
 - tgl: Updated CSME to 15.0.49.2573
+- Fixed unlock prompt showing when system is already unlocked
+
+## 2024-05-28
+
+- tgl: Updated Intel GOP driver to 17.0.1077
+- tgl: Updated VBT to 250
+- Updated Rust toolchain to nightly-2024-05-11
 
 ## 2024-05-17
 
