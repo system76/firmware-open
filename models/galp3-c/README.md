@@ -11,4 +11,4 @@ https://system76.com/guides/galp3
   - HAP: false
 - [ME](./me.rom)
   - Size: 6140 KB
-  - Version: 12.0.49.1536
+  - Version: 12.0.94.2428
