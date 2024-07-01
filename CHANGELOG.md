@@ -15,6 +15,7 @@ features apply to your model and firmware version, see the
 - tgl: Updated CSME to 15.0.49.2573
 - Fixed unlock prompt showing when system is already unlocked
 - lemp13-b: Added support for units with 5600 MT/s soldered RAM
+- cml-h: Updated CSME to 14.1.74.2355v6 (14.1.72.2287)
 
 ## 2024-05-28
 
