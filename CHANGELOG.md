@@ -8,6 +8,12 @@ features apply to your model and firmware version, see the
 
 ## unreleased
 
+- cml-h: Updated CSME to 14.1.74.2355v6 (14.1.72.2287)
+- cml-u: Updated CSME to 14.1.74.2355v6 (14.1.74.2373)
+- Reverted unlock prompt change to restore intended behavior
+
+## 2024-07-01
+
 - mtl: Updated FSP to D.0.A8.20
 - adl: Fixed USB 3.0 hubs in Type-C ports
 - rpl: Fixed USB 3.0 hubs in Type-C ports
@@ -15,8 +21,6 @@ features apply to your model and firmware version, see the
 - tgl: Updated CSME to 15.0.49.2573
 - Fixed unlock prompt showing when system is already unlocked
 - lemp13-b: Added support for units with 5600 MT/s soldered RAM
-- cml-h: Updated CSME to 14.1.74.2355v6 (14.1.72.2287)
-- cml-u: Updated CSME to 14.1.74.2355v6 (14.1.74.2373)
 
 ## 2024-05-28
 
