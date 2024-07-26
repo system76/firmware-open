@@ -12,6 +12,7 @@ features apply to your model and firmware version, see the
 - cml-u: Updated CSME to 14.1.74.2355v6 (14.1.74.2373)
 - Reverted unlock prompt change to restore intended behavior
 - darp10: Fixed reporting of the second fan
+- Changed the EC version to be distinct from the SBIOS version
 
 ## 2024-07-01
 
