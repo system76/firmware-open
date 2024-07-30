@@ -11,6 +11,8 @@ features apply to your model and firmware version, see the
 - darp10: Fixed reporting of the second fan
 - darp10: Updated fan points
 - Fixed IT8587E hang when reading keyboard matrix
+- darp10: Fixed using USB3 devices at USB3 speeds in all ports
+- mtl: Fixed detection of USB3 hubs in Type-C ports
 
 ## 2024-07-08
 
