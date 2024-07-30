@@ -8,10 +8,15 @@ features apply to your model and firmware version, see the
 
 ## unreleased
 
+- darp10: Fixed reporting of the second fan
+- darp10: Updated fan points
+- Fixed IT8587E hang when reading keyboard matrix
+
+## 2024-07-08
+
 - cml-h: Updated CSME to 14.1.74.2355v6 (14.1.72.2287)
 - cml-u: Updated CSME to 14.1.74.2355v6 (14.1.74.2373)
 - Reverted unlock prompt change to restore intended behavior
-- darp10: Fixed reporting of the second fan
 
 ## 2024-07-01
 
