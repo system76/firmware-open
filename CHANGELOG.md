@@ -20,6 +20,7 @@ features apply to your model and firmware version, see the
 - bonw15-b: Added initial release of open firmware with System76 EC
 - Changed fan mechanism from calculated interpolation/smoothing to a fixed
   step to limit rapid changes in duty over short periods
+- Updated coreboot to 24.08
 
 ## 2024-07-08
 
