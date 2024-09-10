@@ -8,20 +8,19 @@ with import <nixpkgs> { };
 mkShellNoCC {
   buildInputs = [
     ccache
+    flashrom
     gnat12 # gcc with ada
-    #gnatboot # gnat1
     git
     git-lfs
-    python3
-    ncurses # make menuconfig
     m4 flex bison # Generate flashmap descriptor parser
-    #clang
-    zlib
-    #acpica-tools # iasl
-    pkg-config
+    ncurses # make menuconfig
     openssl
-    rustup
+    pkg-config
+    python3
     qemu # test the image
+    rustup
+    util-linux
+    zlib
   ];
   shellHook = ''
     # TODO remove?
