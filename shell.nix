@@ -12,8 +12,10 @@ mkShellNoCC {
     gnat12 # gcc with ada
     git
     git-lfs
+    libossp_uuid
     m4 flex bison # Generate flashmap descriptor parser
     ncurses # make menuconfig
+    nss
     openssl
     pkg-config
     python3
