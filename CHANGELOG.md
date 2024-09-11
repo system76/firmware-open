@@ -8,12 +8,22 @@ features apply to your model and firmware version, see the
 
 ## unreleased
 
+- whl-u: Updated CSME to 12.0.95.2489v2 (12.0.94.2428)
+- cfl: Updated CSME to 12.0.94.2380v9 (12.0.94.2428)
+- mtl: Fixed detection of USB3 hubs in Type-C ports
+- darp10: Fixed reporting of the second fan
+- darp10: Fixed using USB3 devices at USB3 speeds in all ports
+- darp10: Updated fan tables
+- Fixed IT8587E hang when reading keyboard matrix
+- Changed fans to use highest reported temperature to calculate duty instead
+  of using the highest calculated duty across all fans
+- bonw15-b: Added initial release of open firmware with System76 EC
+
+## 2024-07-08
+
 - cml-h: Updated CSME to 14.1.74.2355v6 (14.1.72.2287)
 - cml-u: Updated CSME to 14.1.74.2355v6 (14.1.74.2373)
 - Reverted unlock prompt change to restore intended behavior
-- darp10: Fixed reporting of the second fan
-- whl-u: Updated CSME to 12.0.95.2489v2 (12.0.94.2428)
-- cfl: Updated CSME to 12.0.94.2380v9 (12.0.94.2428)
 
 ## 2024-07-01
 
