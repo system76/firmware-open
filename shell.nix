@@ -12,6 +12,7 @@ mkShellNoCC {
     gnat12 # gcc with ada
     git
     git-lfs
+    hidapi
     libossp_uuid
     m4 flex bison # Generate flashmap descriptor parser
     ncurses # make menuconfig
