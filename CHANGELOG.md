@@ -8,6 +8,8 @@ features apply to your model and firmware version, see the
 
 ## unreleased
 
+## 2024-11-15
+
 - whl-u: Updated CSME to 12.0.95.2489v2 (12.0.94.2428)
 - cfl: Updated CSME to 12.0.94.2380v9 (12.0.94.2428)
 - mtl: Fixed detection of USB3 hubs in Type-C ports
@@ -21,6 +23,7 @@ features apply to your model and firmware version, see the
 - Changed fan mechanism from calculated interpolation/smoothing to a fixed
   step to limit rapid changes in duty over short periods
 - Updated coreboot to 24.08
+- mtl: Enabled NPU device
 
 ## 2024-07-08
 
