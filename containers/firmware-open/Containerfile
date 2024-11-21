@@ -167,15 +167,5 @@ RUN . "${HOME}/.cargo/env" \
         --component=clippy,rustfmt \
         ${RUST_TOOLCHAIN}
 
-# XXX: firmware-setup is stuck on 2023-01-21
-# Ref: https://github.com/system76/firmware-setup/issues/47
-RUN . "${HOME}/.cargo/env" \
-    && rustup toolchain install \
-        --no-self-update \
-        --target x86_64-unknown-uefi \
-        --profile minimal \
-        --component=clippy,rustfmt \
-        nightly-2023-01-21
-
 WORKDIR /workspace
 CMD ["bash"]
