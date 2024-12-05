@@ -46,3 +46,7 @@
 	path = tools/intel-spi
 	url = https://github.com/system76/intel-spi.git
 	branch = master
+[submodule "tools/PSPTool"]
+	path = tools/PSPTool
+	url = https://github.com/PSPReverse/PSPTool.git
+	branch = master
