@@ -8,6 +8,8 @@ features apply to your model and firmware version, see the
 
 ## unreleased
 
+- meer9: Added initial release of open firmware
+
 ## 2024-11-15
 
 - whl-u: Updated CSME to 12.0.95.2489v2 (12.0.94.2428)
