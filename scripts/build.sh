@@ -39,7 +39,6 @@ EDK2_ARGS=(
 )
 
 # Rebuild firmware-setup (used by edk2)
-touch apps/firmware-setup/Cargo.toml
 make -C apps/firmware-setup
 EDK2_ARGS+=(
     -D FIRMWARE_OPEN_FIRMWARE_SETUP="firmware-setup/firmware-setup.inf"
@@ -48,7 +47,6 @@ EDK2_ARGS+=(
 # Rebuild gop-policy (used by edk2)
 if [ -e "${MODEL_DIR}/IntelGopDriver.inf" ] && [ -e "${MODEL_DIR}/vbt.rom" ]
 then
-    touch apps/gop-policy/Cargo.toml
     FIRMWARE_OPEN_VBT="${MODEL_DIR}/vbt.rom" \
         make -C apps/gop-policy
     EDK2_ARGS+=(
@@ -98,7 +96,6 @@ then
     # Rebuild firmware-update
     export BASEDIR="system76_${MODEL}_${VERSION}"
     pushd apps/firmware-update >/dev/null
-      rm -rf "build/x86_64-unknown-uefi"
       make "build/x86_64-unknown-uefi/boot.img"
       cp -v "build/x86_64-unknown-uefi/boot.img" "${USB}.partial"
     popd >/dev/null
