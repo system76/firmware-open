@@ -9,6 +9,7 @@ features apply to your model and firmware version, see the
 ## unreleased
 
 - meer9: Added initial release of open firmware
+- Changed the EC version to be distinct from the SBIOS version
 
 ## 2024-11-15
 
