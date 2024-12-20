@@ -11,9 +11,8 @@ then
 fi
 UEFIPAYLOAD="$(realpath "$1")"
 
-PACKAGE=UefiPayloadPkg
+PACKAGE=System76PayloadPkg
 BUILD_TYPE=RELEASE
-#BUILD_TYPE=DEBUG
 TOOLCHAIN=COREBOOT
 
 COREBOOT_TOOLS_DEF="$XGCCPATH/../share/edk2config/tools_def.txt"
@@ -32,6 +31,7 @@ pushd edk2 >/dev/null
     -b "${BUILD_TYPE}" \
     -t "${TOOLCHAIN}" \
     -p "${PACKAGE}/${PACKAGE}.dsc" \
+    -DBUILD_ARCH=X64 \
     "${@:2}"
 
   cp -v \

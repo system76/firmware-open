@@ -67,7 +67,7 @@ then
     done < "${MODEL_DIR}/edk2.config"
 fi
 
-# Rebuild UefiPayloadPkg using edk2
+# Rebuild edk2 payload
 PACKAGES_PATH="${MODEL_DIR}:$(realpath apps)" \
     ./scripts/_build/edk2.sh \
         "${UEFIPAYLOAD}" \
