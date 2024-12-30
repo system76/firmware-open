@@ -8,6 +8,10 @@ features apply to your model and firmware version, see the
 
 ## unreleased
 
+- Enabled boot timeout control via UEFI variable "Timeout"
+
+## 2024-12-09
+
 - meer9: Added initial release of open firmware
 
 ## 2024-11-15
