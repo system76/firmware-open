@@ -9,6 +9,8 @@ features apply to your model and firmware version, see the
 ## unreleased
 
 - Enabled boot timeout control via UEFI variable "Timeout"
+- Updated Intel microcode to microcode-20241112
+- meer9: Enabled NPU device
 
 ## 2024-12-09
 
