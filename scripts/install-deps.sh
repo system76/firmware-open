@@ -33,7 +33,6 @@ if [[ "${ID}" =~ "debian" ]] || [[ "${ID_LIKE}" =~ "debian" ]]; then
     parted \
     pkgconf \
     python-is-python3 \
-    python3-distutils \
     uuid-dev \
     zlib1g-dev
 elif [[ "${ID}" =~ "fedora" ]] || [[ "${ID_LIKE}" =~ "fedora" ]]; then
@@ -70,7 +69,6 @@ elif [[ "${ID}" =~ "arch" ]] || [[ "${ID_LIKE}" =~ "arch" ]]; then
     parted \
     patch \
     python \
-    python-distutils-extra \
     systemd-libs
 else
   msg "Unknown system ID: ${ID}"
