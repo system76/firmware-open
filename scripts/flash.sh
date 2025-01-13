@@ -51,7 +51,12 @@ then
 fi
 
 # Locate EFI partition mount path
-EFI_PATH="$(bootctl --print-esp-path)"
+EFI_PATH="${EFI_PATH:-/boot/efi}"
+if command -v bootctl >/dev/null 2>&1
+then
+    EFI_PATH="$(bootctl --print-esp-path)"
+fi
+
 if [ -z "${EFI_PATH}" ] || [ ! -d "${EFI_PATH}" ]
 then
     echo "EFI system partition '${EFI_PATH}' not found" >&2
