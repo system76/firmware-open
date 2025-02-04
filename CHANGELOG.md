@@ -12,6 +12,13 @@ features apply to your model and firmware version, see the
 - Updated Intel microcode to microcode-20241112
 - meer9: Enabled NPU device
 - meer9: Enabled support for `power_on_after_fail` CMOS option
+- Changed dynamic keymap to load/save to last sector of EC flash instead of a
+  hard-coded address of 128 KiB
+- Added persistent battery charging thresholds by writing them to EC flash
+- Changed fan update interval to 1 second
+- Changed fan duty calculations to use a moving average of temperatures over 1
+  second instead of instantaneous reads
+- Added EC support for manual fan control via target PWM
 
 ## 2024-12-09
 
