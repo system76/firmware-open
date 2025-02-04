@@ -11,6 +11,7 @@ features apply to your model and firmware version, see the
 - Enabled boot timeout control via UEFI variable "Timeout"
 - Updated Intel microcode to microcode-20241112
 - meer9: Enabled NPU device
+- meer9: Enabled support for `power_on_after_fail` CMOS option
 
 ## 2024-12-09
 
