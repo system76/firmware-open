@@ -85,8 +85,13 @@ pipeline {
 
                 sh """#!/bin/bash
                     # Install dependencies
-                    #./scripts/install-deps.sh
+                    ./scripts/install-deps.sh
+                    ./scripts/install-rust.sh
                     . "${HOME}/.cargo/env"
+                    ./ec/scripts/deps.sh
+
+                    # Build coreboot toolchain
+                    ./scripts/coreboot-sdk.sh
 
                     # Reset
                     git submodule update --init --recursive --checkout
