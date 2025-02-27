@@ -5,99 +5,96 @@
 
 set -eE
 
-msg() {
-  echo -e "\x1B[1m$*\x1B[0m" >&2
-}
-
-trap 'msg "\x1B[31mFailed to install dependencies!"' ERR
-
 . /etc/os-release
-
-msg "Installing system build dependencies"
 if [[ "${ID}" =~ "debian" ]] || [[ "${ID_LIKE}" =~ "debian" ]]; then
-  sudo apt-get --quiet update
-  sudo apt-get --quiet install \
-    --no-install-recommends \
-    --assume-yes \
-    build-essential \
-    ccache \
-    cmake \
-    curl \
-    dosfstools \
-    flashrom \
-    git-lfs \
-    libncurses-dev \
-    libssl-dev \
-    libudev-dev \
-    mtools \
-    parted \
-    pkgconf \
-    python-is-python3 \
-    uuid-dev \
-    zlib1g-dev
+    sudo apt-get --quiet update
+    sudo apt-get --quiet install --no-install-recommends --assume-yes \
+        bison \
+        build-essential \
+        bzip2 \
+        ca-certificates \
+        ccache \
+        cmake \
+        curl \
+        dosfstools \
+        flashrom \
+        flex \
+        g++ \
+        gcc \
+        git-lfs \
+        gnat \
+        libncurses-dev \
+        libnss3-dev \
+        libssl-dev \
+        libudev-dev \
+        make \
+        mtools \
+        parted \
+        patch \
+        pkgconf \
+        python-is-python3 \
+        tar \
+        uuid-dev \
+        xz-utils \
+        zlib1g-dev
 elif [[ "${ID}" =~ "fedora" ]] || [[ "${ID_LIKE}" =~ "fedora" ]]; then
-  sudo dnf group install c-development
-  sudo dnf install \
-    --assumeyes \
-    ccache \
-    cmake \
-    curl \
-    dosfstools \
-    flashrom \
-    git-lfs \
-    libuuid-devel \
-    mtools \
-    ncurses-devel \
-    openssl-devel \
-    parted \
-    patch \
-    python-unversioned-command \
-    python3 \
-    systemd-devel \
-    zlib-devel
+    sudo dnf group install c-development
+    sudo dnf install --assumeyes \
+        bison \
+        bzip2 \
+        ca-certificates \
+        ccache \
+        cmake \
+        curl \
+        dosfstools \
+        flashrom \
+        flex \
+        gcc \
+        gcc-c++ \
+        gcc-gnat \
+        git-lfs \
+        libuuid-devel \
+        make \
+        mtools \
+        ncurses-devel \
+        nss-devel \
+        openssl-devel \
+        parted \
+        patch \
+        python-unversioned-command \
+        python3 \
+        rustup \
+        systemd-devel \
+        tar \
+        xz \
+        zlib-devel
 elif [[ "${ID}" =~ "arch" ]] || [[ "${ID_LIKE}" =~ "arch" ]]; then
-  sudo pacman -S \
-    --noconfirm \
-    ccache \
-    cmake \
-    curl \
-    dosfstools \
-    flashrom \
-    git-lfs \
-    mtools \
-    ncurses \
-    parted \
-    patch \
-    python \
-    systemd-libs
+    sudo pacman -S --noconfirm \
+        bison \
+        bzip2 \
+        ca-certificates \
+        ccache \
+        cmake \
+        curl \
+        dosfstools \
+        flashrom \
+        flex \
+        gcc \
+        gcc-ada \
+        git-lfs \
+        make \
+        mtools \
+        ncurses \
+        nss \
+        parted \
+        patch \
+        python \
+        rustup \
+        systemd-libs \
+        tar \
+        xz \
+        zlib
 else
-  msg "Unknown system ID: ${ID}"
-  msg "Please add support for your distribution to: $0"
-  exit 1
+    echo "unsupported host: ${ID}"
+    exit 1
 fi
-
-# Don't run on Jenkins
-if [ -z "${CI}" ]; then
-    msg "Installing GIT LFS hooks"
-    git lfs install
-
-    msg "Downloading GIT LFS artifacts"
-    git lfs pull
-fi
-
-msg "Initializing submodules"
-git submodule update --init --recursive --checkout --progress
-
-msg "Building coreboot toolchains"
-./scripts/coreboot-sdk.sh
-
-msg "Installing Rust toolchain and components"
-./scripts/install-rust.sh
-
-msg "Installing EC dependencies"
-pushd ec
-./scripts/deps.sh
-popd
-
-msg "\x1B[32mSuccessfully installed dependencies"
-echo "Ready to run ./scripts/build.sh [model]" >&2

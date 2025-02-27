@@ -1,9 +1,12 @@
 # Building
 
-Dependencies can be installed with the provided script.
+Dependencies can be installed with the provided scripts.
 
 ```
 ./scripts/install-deps.sh
+./scripts/install-rust.sh
+./scripts/coreboot-sdk.sh
+pushd ec; ./scripts/deps.sh; popd
 ```
 
 If rustup was installed for the first time, it will be required to source the
