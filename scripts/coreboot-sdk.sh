@@ -61,6 +61,8 @@ else
     exit 1
 fi
 
-make -C coreboot CPUS="$(nproc)" crossgcc-i386
-make -C coreboot CPUS="$(nproc)" crossgcc-x64
-make -C coreboot gitconfig
+make -C coreboot \
+    crossgcc-x64 \
+    crossgcc-i386 \
+    CPUS="$(nproc)" \
+    "${@}"
