@@ -11,7 +11,7 @@ ARG SDCC_REPO="https://svn.code.sf.net/p/sdcc/code"
 ARG SDCC_REV="14648"
 ARG SDCC_VERSION="4.4.0"
 
-ARG RUST_TOOLCHAIN="nightly-2024-05-11"
+ARG RUST_TOOLCHAIN="1.85.0"
 
 # Build coreboot toolchains
 FROM ${CONTAINER_IMAGE} as crossgcc-build

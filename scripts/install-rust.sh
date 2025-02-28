@@ -19,9 +19,7 @@ if ! command -v rustup >/dev/null 2>&1; then
     . "${HOME}/.cargo/env"
 fi
 
-# XXX: rustup has no command to install a toolchain from a TOML file.
-# Rely on the fact that `show` will install the default toolchain.
-rustup show
+rustup show active-toolchain || rustup toolchain install
 
 if [ "$RUSTUP_NEW_INSTALL" = "1" ]; then
     printf "\e[33m>> rustup was just installed. Ensure cargo is on the PATH with:\e[0m\n"

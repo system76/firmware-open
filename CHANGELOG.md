@@ -8,6 +8,10 @@ features apply to your model and firmware version, see the
 
 ## unreleased
 
+- Updated Rust toolchain to 1.85.0
+
+## 2025-02-04
+
 - Enabled boot timeout control via UEFI variable "Timeout"
 - Updated Intel microcode to microcode-20241112
 - meer9: Enabled NPU device
