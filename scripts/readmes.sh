@@ -8,9 +8,9 @@ README_DIRS=(
 
 set -e
 
-cargo build --manifest-path "scripts/modeltool/Cargo.toml" --release
+cargo build --manifest-path "tools/modeltool/Cargo.toml" --release
 
-MODELTOOL="$(realpath "scripts/modeltool/target/release/modeltool")"
+MODELTOOL="$(realpath "tools/modeltool/target/release/modeltool")"
 
 readme_model() {
     echo -e "\x1B[1m$1\x1B[0m" >&2
