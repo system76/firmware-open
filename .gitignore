@@ -1,3 +1,8 @@
+# SPDX-License-Identifier: CC0-1.0
+# SPDX-FileCopyrightText: NONE
+
+/build/
+/extract/
+/target/
+/vendor/
 backup.rom
-build/
-extract/

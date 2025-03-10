@@ -1,7 +1,7 @@
 use ecflash::{Ec, EcFile};
 use intelflash::{Me, Rom};
-use std::{env, fs, process};
 use std::path::Path;
+use std::{env, fs, process};
 
 fn ec(path: &Path) {
     println!("- [EC]({})", path.display());
@@ -13,7 +13,7 @@ fn ec(path: &Path) {
                 println!("  - Model: {}", ec.project());
                 println!("  - Version: {}", ec.version());
             }
-        },
+        }
         Err(err) => {
             println!("  - *Read Error: {}*", err);
         }
@@ -26,21 +26,19 @@ fn fd(path: &Path) {
         Ok(data) => {
             println!("  - Size: {} KB", data.len() / 1024);
             match Rom::new(&data) {
-                Ok(rom) => {
-                    match rom.high_assurance_platform() {
-                        Ok(hap) => {
-                            println!("  - HAP: {}", hap);
-                        },
-                        Err(err) => {
-                            println!("  - *HAP Error: {}*", err);
-                        }
+                Ok(rom) => match rom.high_assurance_platform() {
+                    Ok(hap) => {
+                        println!("  - HAP: {}", hap);
+                    }
+                    Err(err) => {
+                        println!("  - *HAP Error: {}*", err);
                     }
                 },
                 Err(err) => {
                     println!("  - *Parse Error: {}*", err);
                 }
             }
-        },
+        }
         Err(err) => {
             println!("  - *Read Error: {}*", err);
         }
@@ -57,12 +55,12 @@ fn me(path: &Path) {
                     if let Some(version) = me.version() {
                         println!("  - Version: {}", version);
                     }
-                },
+                }
                 Err(err) => {
                     println!("  - *Parse Error: {}*", err);
                 }
             }
-        },
+        }
         Err(err) => {
             println!("  - *Read Error: {}*", err);
         }
