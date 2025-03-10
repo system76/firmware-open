@@ -8,9 +8,7 @@ README_DIRS=(
 
 set -e
 
-cargo build --manifest-path "tools/modeltool/Cargo.toml" --release
-
-MODELTOOL="$(realpath "tools/modeltool/target/release/modeltool")"
+cargo build --release -p modeltool
 
 readme_model() {
     echo -e "\x1B[1m$1\x1B[0m" >&2
@@ -19,7 +17,7 @@ readme_model() {
         cp README.md.in README.md
 
         echo -e "\n## Contents\n" >> README.md
-        "$MODELTOOL" . >> README.md
+        cargo run --release -q -p modeltool . >> README.md
     popd > /dev/null
 }
 

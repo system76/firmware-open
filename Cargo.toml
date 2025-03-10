@@ -1,0 +1,27 @@
+# SPDX-License-Identifier: GPL-3.0-only
+# SPDX-File-Copyright: 2025 System76, Inc.
+
+[workspace]
+resolver = "3"
+members = [
+    "tools/modeltool",
+]
+exclude = [
+    "apps/firmware-setup",
+    "apps/firmware-update",
+    "apps/gop-policy",
+]
+
+[workspace.package]
+edition = "2024"
+license = "GPL-3.0-only"
+publish = false
+repository = "https://github.com/system76/firmware-open"
+rust-version = "1.85.0"
+
+[workspace.dependencies]
+redox_intelflash = "0.1.3"
+system76_ecflash = "0.1.3"
+
+[workspace.lints.rust]
+[workspace.lints.clippy]
