@@ -26,12 +26,13 @@ jobs:
         fetch-tags: true
         fetch-depth: 0
 
-    - name: Get coreboot toolchain
+    - name: Check coreboot toolchain exists
       id: get_coreboot_toolchain
       uses: actions/cache@v4
       with:
         path: ${{ env.XGCC_DIR }}
         key: coreboot-${{ hashFiles('coreboot/util/crossgcc/sum/*') }}
+        lookup-only: true
 
     - name: Build coreboot toolchain
       if: steps.get_coreboot_toolchain.outputs.cache-hit != 'true'
