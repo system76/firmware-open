@@ -21,10 +21,11 @@ jobs:
     steps:
     - uses: actions/checkout@v4
       with:
-        lfs: true
-        submodules: recursive
-        fetch-tags: true
+        filter: tree:0
         fetch-depth: 0
+
+    - name: Checkout coreboot
+      run: git submodule update --init --checkout --force coreboot
 
     - name: Check coreboot toolchain exists
       id: get_coreboot_toolchain
