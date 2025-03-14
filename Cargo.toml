@@ -10,6 +10,8 @@ exclude = [
     "apps/firmware-setup",
     "apps/firmware-update",
     "apps/gop-policy",
+    "ec/ecspy",
+    "tools/coreboot-collector",
 ]
 
 [workspace.package]
