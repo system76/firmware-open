@@ -10,6 +10,7 @@ exclude = [
     "apps/firmware-setup",
     "apps/firmware-update",
     "apps/gop-policy",
+    "ec/ecflash",
     "ec/ecspy",
     "tools/coreboot-collector",
 ]
