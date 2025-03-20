@@ -9,6 +9,8 @@ features apply to your model and firmware version, see the
 ## unreleased
 
 - Updated Rust toolchain to 1.85.0
+- darp11: Added initial release of open firmware
+- darp11-b: Added initial release of open firmware
 
 ## 2025-02-04
 
