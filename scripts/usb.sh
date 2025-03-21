@@ -39,7 +39,7 @@ cp -v "apps/firmware-update/build/x86_64-unknown-uefi/boot.img" "${USB}.partial"
 
 # Copy firmware to USB image
 mmd -i "${USB}.partial@@1M" "::${BASEDIR}/firmware"
-mcopy -v -i "${USB}.partial@@1M" "${COREBOOT}" "::${BASEDIR}/firmware/firmware.rom"
+mcopy -v -i "${USB}.partial@@1M" "${BUILD}/firmware.rom" "::${BASEDIR}/firmware/firmware.rom"
 if [ -e "${BUILD}/ec.rom" ]; then
     mcopy -v -i "${USB}.partial@@1M" "${BUILD}/ec.rom" "::${BASEDIR}/firmware/ec.rom"
 elif [ -e "${MODEL_DIR}/ec.rom" ]; then
