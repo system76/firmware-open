@@ -31,7 +31,6 @@ rm -rf "${BUILD}"
 mkdir -p "${BUILD}"
 
 UEFIPAYLOAD="${BUILD}/UEFIPAYLOAD.fd"
-COREBOOT="${BUILD}/firmware.rom"
 EDK2_ARGS=(
     -D SHELL_TYPE=NONE
     -D SOURCE_DEBUG_ENABLE=FALSE
@@ -79,7 +78,7 @@ FIRMWARE_OPEN_UEFIPAYLOAD="${UEFIPAYLOAD}" \
 KERNELVERSION="${VERSION}" \
     ./scripts/_build/coreboot.sh \
         "${MODEL_DIR}/coreboot.config" \
-        "${COREBOOT}"
+        "${BUILD}/firmware.rom"
 
 # Rebuild EC firmware for System76 EC models
 if [ ! -e  "${MODEL_DIR}/ec.rom" ] && [ -e "${MODEL_DIR}/ec.config" ]
