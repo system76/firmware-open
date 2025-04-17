@@ -8,6 +8,11 @@ features apply to your model and firmware version, see the
 
 ## unreleased
 
+- Updated coreboot to 25.03
+- Updated Intel microcode to microcode-20250211
+
+## 2025-04-03
+
 - Updated Rust toolchain to 1.85.0
 - darp11: Added initial release of open firmware
 - darp11-b: Added initial release of open firmware
