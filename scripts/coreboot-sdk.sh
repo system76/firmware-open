@@ -61,8 +61,12 @@ else
     exit 1
 fi
 
+BUILDGCC_OPTIONS+="--mirror"
+export BUILDGCC_OPTIONS
+
 make -C coreboot \
     crossgcc-x64 \
     crossgcc-i386 \
     CPUS="$(nproc)" \
+    BUILDGCC_OPTIONS="${BUILDGCC_OPTIONS}" \
     "${@}"
