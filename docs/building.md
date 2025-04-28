@@ -1,12 +1,18 @@
 # Building
 
+After cloning the repo, ensure all submodules are cloned.
+
+```
+git submodule update --init --checkout --recursive
+```
+
 Dependencies can be installed with the provided scripts.
 
 ```
 ./scripts/install-deps.sh
 ./scripts/install-rust.sh
 ./scripts/coreboot-sdk.sh
-pushd ec; ./scripts/deps.sh; popd
+./ec/scripts/deps.sh
 ```
 
 If rustup was installed for the first time, it will be required to source the
