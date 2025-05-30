@@ -10,6 +10,8 @@ features apply to your model and firmware version, see the
 
 - Updated coreboot to 25.03
 - Updated Intel microcode to microcode-20250211
+- Added SMBIOS slot descriptions for storage slots
+- addw4: Disabled GPU Boost to prevent crash under load
 
 ## 2025-04-03
 
