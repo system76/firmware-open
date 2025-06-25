@@ -120,7 +120,8 @@ ENV XGCCPATH "/opt/xgcc/bin"
 ENV SDCC_PATH "/opt/sdcc"
 ENV SDCC_REV "${SDCC_REV}"
 ENV SDCC_VERSION "${SDCC_VERSION}"
-ENV PATH "$XGCCPATH:$SDCC_PATH/bin:$PATH"
+ENV CARGO_HOME "/root/.cargo"
+ENV PATH "$XGCCPATH:$SDCC_PATH/bin:$CARGO_HOME/bin:$PATH"
 
 RUN apt-get --quiet update \
     && apt-get --quiet install --no-install-recommends --assume-yes \
@@ -154,13 +155,12 @@ RUN apt-get --quiet update \
 
 # TODO: Use distro rustup package when available (Trixie).
 RUN curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs \
-    | sh -s -- -y --default-toolchain stable
+    | sh -s -- -y --no-modify-path --default-toolchain stable
 
 # XXX: rustup 1.27 does not recognize toolchain if preceding option specifies
 # a comma separated list as an argument with a space.
 # Ref: https://github.com/rust-lang/rustup/issues/4073
-RUN . "${HOME}/.cargo/env" \
-    && rustup toolchain install \
+RUN rustup toolchain install \
         --no-self-update \
         --target x86_64-unknown-linux-gnu,x86_64-unknown-uefi \
         --profile minimal \
