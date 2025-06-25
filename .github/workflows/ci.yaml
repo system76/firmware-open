@@ -4,8 +4,8 @@
 name: CI
 on:
   push:
-    branches-ignore:
-    - 'wip/*'
+    branches:
+    - 'master'
   pull_request:
 
 env:
