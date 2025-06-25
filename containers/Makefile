@@ -11,8 +11,7 @@ MAKEFLAGS += --silent
 endif
 
 PODMAN := $(shell command -v podman)
-
-CONTAINER_TAG := latest
+CONTAINER_TAG := $(shell git describe --always --abbrev=12)
 
 .PHONY: firmware-open
 firmware-open:

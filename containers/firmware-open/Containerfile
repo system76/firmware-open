@@ -2,10 +2,10 @@
 
 # NOTE: The repository is specified in the image name to make it explicit
 # which source is being trusted to provide the image.
-ARG CONTAINER_IMAGE="docker.io/library/debian:bookworm-20241016-slim"
+ARG CONTAINER_IMAGE="docker.io/library/debian:bookworm-20250520-slim"
 
 ARG COREBOOT_REPO="https://github.com/coreboot/coreboot.git"
-ARG COREBOOT_COMMIT="24.08"
+ARG COREBOOT_COMMIT="25.03"
 
 ARG SDCC_REPO="https://svn.code.sf.net/p/sdcc/code"
 ARG SDCC_REV="14648"
@@ -157,7 +157,7 @@ RUN curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs \
     | sh -s -- -y --default-toolchain stable
 
 # XXX: rustup 1.27 does not recognize toolchain if preceding option specifies
-# a comma seprates list as an argument with a space.
+# a comma separated list as an argument with a space.
 # Ref: https://github.com/rust-lang/rustup/issues/4073
 RUN . "${HOME}/.cargo/env" \
     && rustup toolchain install \
