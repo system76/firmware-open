@@ -1,0 +1,113 @@
+id 5570 rev 7
+A0: data 0 mirror 0 pot 0 control 00
+A1: data 0 mirror 0 pot 0 control 00
+A2: data 0 mirror 0 pot 0 control 00
+A3: data 1 mirror 1 pot 0 control 80
+A4: data 0 mirror 0 pot 0 control 00
+A5: data 0 mirror 0 pot 0 control 00
+A6: data 0 mirror 0 pot 0 control 00
+A7: data 0 mirror 0 pot 0 control 00
+B0: data 0 mirror 0 pot 0 control 84
+B1: data 1 mirror 1 pot 0 control 84
+B2: data 1 mirror 1 pot 0 control 84
+B3: data 1 mirror 1 pot 0 control 80
+B4: data 1 mirror 1 pot 0 control 40
+B5: data 0 mirror 0 pot 0 control 80
+B6: data 1 mirror 1 pot 0 control 40
+B7: data 1 mirror 1 pot 0 control 80
+C0: data 1 mirror 1 pot 0 control 80
+C1: data 1 mirror 1 pot 0 control 04
+C2: data 1 mirror 1 pot 0 control 04
+C3: data 0 mirror 0 pot 0 control 04
+C4: data 0 mirror 0 pot 0 control 84
+C5: data 0 mirror 0 pot 0 control 04
+C6: data 1 mirror 1 pot 0 control 40
+C7: data 1 mirror 1 pot 0 control 40
+D0: data 1 mirror 1 pot 0 control 40
+D1: data 1 mirror 1 pot 0 control 44
+D2: data 1 mirror 1 pot 0 control 00
+D3: data 1 mirror 1 pot 0 control 80
+D4: data 1 mirror 1 pot 0 control 80
+D5: data 1 mirror 1 pot 0 control 40
+D6: data 0 mirror 0 pot 0 control 02
+D7: data 1 mirror 1 pot 0 control 02
+E0: data 1 mirror 1 pot 0 control 04
+E1: data 1 mirror 1 pot 0 control 40
+E2: data 1 mirror 1 pot 0 control 40
+E3: data 1 mirror 1 pot 0 control 40
+E4: data 1 mirror 1 pot 0 control 40
+E5: data 1 mirror 1 pot 0 control 40
+E6: data 1 mirror 1 pot 0 control 80
+E7: data 1 mirror 1 pot 0 control 04
+F0: data 0 mirror 0 pot 0 control 44
+F1: data 1 mirror 1 pot 0 control 40
+F2: data 1 mirror 1 pot 0 control 44
+F3: data 1 mirror 1 pot 0 control 40
+F4: data 1 mirror 1 pot 0 control 04
+F5: data 1 mirror 1 pot 0 control 04
+F6: data 0 mirror 0 pot 0 control 00
+F7: data 0 mirror 0 pot 0 control 40
+G0: data 1 mirror 1 pot 0 control 40
+G1: data 1 mirror 1 pot 0 control 40
+G2: data 1 mirror 1 pot 0 control 80
+G3: data 0 mirror 0 pot 0 control 00
+G4: data 0 mirror 0 pot 0 control 00
+G5: data 0 mirror 0 pot 0 control 00
+G6: data 0 mirror 0 pot 0 control 40
+G7: data 0 mirror 0 pot 0 control 00
+H0: data 1 mirror 1 pot 0 control 40
+H1: data 1 mirror 1 pot 0 control 80
+H2: data 0 mirror 0 pot 0 control 40
+H3: data 1 mirror 1 pot 0 control 40
+H4: data 1 mirror 1 pot 0 control 80
+H5: data 0 mirror 0 pot 0 control 40
+H6: data 1 mirror 1 pot 0 control 80
+H7: data 1 mirror 1 pot 0 control 80
+I0: data 0 mirror 0 pot 0 control 00
+I1: data 0 mirror 0 pot 0 control 00
+I2: data 0 mirror 0 pot 0 control 00
+I3: data 0 mirror 0 pot 0 control 00
+I4: data 0 mirror 0 pot 0 control 00
+I5: data 0 mirror 0 pot 0 control 00
+I6: data 1 mirror 1 pot 0 control 40
+I7: data 0 mirror 0 pot 0 control 00
+J0: data 1 mirror 1 pot 0 control 40
+J1: data 1 mirror 1 pot 0 control 40
+J2: data 1 mirror 1 pot 0 control 80
+J3: data 0 mirror 0 pot 0 control 80
+J4: data 1 mirror 1 pot 0 control 40
+J5: data 0 mirror 0 pot 0 control 40
+J6: data 0 mirror 0 pot 0 control 44
+J7: data 1 mirror 1 pot 0 control 40
+M0: data 0 mirror 0 control 06
+M1: data 1 mirror 0 control 06
+M2: data 1 mirror 1 control 06
+M3: data 1 mirror 1 control 06
+M4: data 1 mirror 0 control 06
+M5: data 0 mirror 0 control 00
+M6: data 1 mirror 1 control 86
+M7: data 0 mirror 0 control 00
+GCR: 0x04
+GCR1: 0x00
+GCR2: 0x00
+GCR3: 0x40
+GCR4: 0x00
+GCR5: 0x00
+GCR6: 0x00
+GCR7: 0x00
+GCR8: 0x10
+GCR9: 0x20
+GCR10: 0x02
+GCR11: 0x00
+GCR12: 0x00
+GCR13: 0x00
+GCR14: 0x00
+GCR15: 0x10
+GCR16: 0x00
+GCR17: 0x00
+GCR18: 0x00
+GCR19: 0x01
+GCR20: 0x00
+GCR21: 0x00
+GCR22: 0x80
+GCR23: 0x01

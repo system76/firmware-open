@@ -1,0 +1,51 @@
+/* SPDX-License-Identifier: GPL-2.0-only */
+
+#include <device/azalia_device.h>
+
+const u32 cim_verb_data[] = {
+	/* Nvidia, GenericHDMI */
+	0x10de00ae, /* Vendor ID */
+	0x10de0000, /* Subsystem ID */
+	6, /* Number of entries */
+	AZALIA_SUBVENDOR(0, 0x10de0000),
+	AZALIA_RESET(1),
+	AZALIA_PIN_CFG(0, 0x04, 0x585600f0),
+	AZALIA_PIN_CFG(0, 0x05, 0x185600f0),
+	AZALIA_PIN_CFG(0, 0x06, 0x585600f0),
+	AZALIA_PIN_CFG(0, 0x07, 0x585600f0),
+	/* Realtek, ALC255 */
+	0x10ec0255, /* Vendor ID */
+	0x15582560, /* Subsystem ID */
+	12, /* Number of entries */
+	AZALIA_SUBVENDOR(0, 0x15582560),
+	AZALIA_RESET(1),
+	AZALIA_PIN_CFG(0, 0x12, 0x90a60130),
+	AZALIA_PIN_CFG(0, 0x14, 0x90170110),
+	AZALIA_PIN_CFG(0, 0x17, 0x40000000),
+	AZALIA_PIN_CFG(0, 0x18, 0x411111f0),
+	AZALIA_PIN_CFG(0, 0x19, 0x411111f0),
+	AZALIA_PIN_CFG(0, 0x1a, 0x411111f0),
+	AZALIA_PIN_CFG(0, 0x1b, 0x411111f0),
+	AZALIA_PIN_CFG(0, 0x1d, 0x41e79b45),
+	AZALIA_PIN_CFG(0, 0x1e, 0x411111f0),
+	AZALIA_PIN_CFG(0, 0x21, 0x04211020),
+	/* Intel, RaptorLakePHDMI */
+	0x8086281f, /* Vendor ID */
+	0x80860101, /* Subsystem ID */
+	11, /* Number of entries */
+	AZALIA_SUBVENDOR(2, 0x80860101),
+	AZALIA_RESET(1),
+	AZALIA_PIN_CFG(2, 0x04, 0x18560010),
+	AZALIA_PIN_CFG(2, 0x06, 0x18560010),
+	AZALIA_PIN_CFG(2, 0x08, 0x18560010),
+	AZALIA_PIN_CFG(2, 0x0a, 0x18560010),
+	AZALIA_PIN_CFG(2, 0x0b, 0x18560010),
+	AZALIA_PIN_CFG(2, 0x0c, 0x18560010),
+	AZALIA_PIN_CFG(2, 0x0d, 0x18560010),
+	AZALIA_PIN_CFG(2, 0x0e, 0x18560010),
+	AZALIA_PIN_CFG(2, 0x0f, 0x18560010),
+};
+
+const u32 pc_beep_verbs[] = {};
+
+AZALIA_ARRAY_SIZES;
