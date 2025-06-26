@@ -12,6 +12,7 @@ features apply to your model and firmware version, see the
 - Updated Intel microcode to microcode-20250211
 - Added SMBIOS slot descriptions for storage slots
 - addw4: Reduce GPU Boost TPP value to 45W to prevent crash under load
+- gaze20: Added initial release of open firmware
 
 ## 2025-04-03
 

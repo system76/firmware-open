@@ -11,7 +11,7 @@ def all_models = "addw2 addw3 addw4 " +
     "bonw14 bonw15 bonw15-b " +
     "darp5 darp6 darp7 darp8 darp9 darp10 darp10-b darp11 darp11-b " +
     "galp3-c galp4 galp5 galp6 galp7 " +
-    "gaze15 gaze16-3050 gaze16-3060 gaze16-3060-b gaze16-3050 gaze16-3060-b gaze17-3050 gaze17-3060-b gaze18 " +
+    "gaze15 gaze16-3050 gaze16-3060 gaze16-3060-b gaze16-3050 gaze16-3060-b gaze17-3050 gaze17-3060-b gaze18 gaze20 " +
     "lemp9 lemp10 lemp11 lemp12 lemp13 lemp13-b " +
     "meer9 " +
     "oryp5 oryp6 oryp7 oryp8 oryp9 oryp10 oryp11 oryp12 " +
