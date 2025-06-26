@@ -1,12 +1,12 @@
 id 5570 rev 7
-A0: data 1 mirror 1 pot 0 control 00
+A0: data 0 mirror 0 pot 0 control 00
 A1: data 0 mirror 0 pot 0 control 00
 A2: data 0 mirror 0 pot 0 control 00
-A3: data 0 mirror 1 pot 0 control 80
+A3: data 1 mirror 1 pot 0 control 80
 A4: data 0 mirror 0 pot 0 control 00
 A5: data 0 mirror 0 pot 0 control 00
 A6: data 0 mirror 0 pot 0 control 00
-A7: data 1 mirror 1 pot 0 control 00
+A7: data 0 mirror 0 pot 0 control 00
 B0: data 0 mirror 0 pot 0 control 84
 B1: data 1 mirror 1 pot 0 control 84
 B2: data 1 mirror 1 pot 0 control 84
@@ -80,10 +80,10 @@ J5: data 0 mirror 0 pot 0 control 40
 J6: data 0 mirror 0 pot 0 control 44
 J7: data 1 mirror 1 pot 0 control 40
 M0: data 0 mirror 0 control 06
-M1: data 0 mirror 1 control 06
+M1: data 1 mirror 0 control 06
 M2: data 1 mirror 1 control 06
 M3: data 1 mirror 1 control 06
-M4: data 1 mirror 1 control 06
+M4: data 1 mirror 0 control 06
 M5: data 0 mirror 0 control 00
 M6: data 1 mirror 1 control 86
 M7: data 0 mirror 0 control 00
