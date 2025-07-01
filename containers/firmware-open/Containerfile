@@ -120,7 +120,8 @@ ENV XGCCPATH "/opt/xgcc/bin"
 ENV SDCC_PATH "/opt/sdcc"
 ENV SDCC_REV "${SDCC_REV}"
 ENV SDCC_VERSION "${SDCC_VERSION}"
-ENV PATH "$XGCCPATH:$SDCC_PATH/bin:$PATH"
+ENV CARGO_BIN_PATH "/root/.cargo/bin"
+ENV PATH "$CARGO_BIN_PATH:$XGCCPATH:$SDCC_PATH/bin:$PATH"
 
 RUN apt-get --quiet update \
     && apt-get --quiet install --no-install-recommends --assume-yes \
@@ -156,15 +157,11 @@ RUN apt-get --quiet update \
 RUN curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs \
     | sh -s -- -y --default-toolchain stable
 
-# XXX: rustup 1.27 does not recognize toolchain if preceding option specifies
-# a comma seprates list as an argument with a space.
-# Ref: https://github.com/rust-lang/rustup/issues/4073
-RUN . "${HOME}/.cargo/env" \
-    && rustup toolchain install \
+RUN rustup toolchain install \
         --no-self-update \
         --target x86_64-unknown-linux-gnu,x86_64-unknown-uefi \
         --profile minimal \
-        --component=clippy,rustfmt \
+        --component clippy,rustfmt \
         ${RUST_TOOLCHAIN}
 
 WORKDIR /workspace
