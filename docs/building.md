@@ -1,9 +1,15 @@
 # Building
 
-After cloning the repo, ensure all submodules are cloned.
+After cloning the repo ensure all submodules are cloned.
 
 ```
 git submodule update --init --checkout --recursive
+```
+
+pull lfs objects
+
+```
+git lfs fetch --all && git lfs pull && git submodule foreach --recursive 'git lfs fetch --all && git lfs pull'
 ```
 
 Dependencies can be installed with the provided scripts.
