@@ -6,7 +6,7 @@ After cloning the repo ensure all submodules are cloned.
 git submodule update --init --checkout --recursive
 ```
 
-pull lfs objects
+If you don't have Git LFS installed when cloning the repository, you'll need to pull the LFS objects
 
 ```
 git lfs fetch --all && git lfs pull && git submodule foreach --recursive 'git lfs fetch --all && git lfs pull'
