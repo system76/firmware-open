@@ -13,6 +13,7 @@ features apply to your model and firmware version, see the
 - Added SMBIOS slot descriptions for storage slots
 - addw4: Reduce GPU Boost TPP value to 45W to prevent crash under load
 - gaze20: Added initial release of open firmware
+- Updated EDK2 to edk2-stable202505
 
 ## 2025-04-03
 
