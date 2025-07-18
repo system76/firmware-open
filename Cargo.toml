@@ -13,6 +13,7 @@ exclude = [
     "ec/ecflash",
     "ec/ecsim",
     "ec/ecspy",
+    "ec/tool",
     "tools/coreboot-collector",
     "tools/intel-spi",
 ]
