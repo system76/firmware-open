@@ -8,11 +8,26 @@ features apply to your model and firmware version, see the
 
 ## unreleased
 
+- lemp11: Fixed memory init
+
+## 2025-07-29
+
+- gaze20: Added support for RAM speeds up to 6400 MT/s
+
+## 2025-07-24
+
+- gaze20: Fixed USB, iGPU DDI configs
+
+## 2025-06-24
+
+- gaze20: Added initial release of open firmware
+
+## 2025-05-30
+
 - Updated coreboot to 25.03
 - Updated Intel microcode to microcode-20250211
 - Added SMBIOS slot descriptions for storage slots
-- addw4: Reduce GPU Boost TPP value to 45W to prevent crash under load
-- gaze20: Added initial release of open firmware
+- addw4: Reduced GPU Boost TPP value to 45W to prevent crash under load
 
 ## 2025-04-03
 
@@ -22,12 +37,12 @@ features apply to your model and firmware version, see the
 
 ## 2025-02-04
 
-- Enabled boot timeout control via UEFI variable "Timeout"
+- Enabled boot timeout control via UEFI variable `Timeout`
 - Updated Intel microcode to microcode-20241112
 - meer9: Enabled NPU device
 - meer9: Enabled support for `power_on_after_fail` CMOS option
 - Changed dynamic keymap to load/save to last sector of EC flash instead of a
-  hard-coded address of 128 KiB
+  hard-coded address of 127 KiB
 - Added persistent battery charging thresholds by writing them to EC flash
 - Changed fan update interval to 1 second
 - Changed fan duty calculations to use a moving average of temperatures over 1
@@ -127,6 +142,8 @@ features apply to your model and firmware version, see the
 
 - darp8: Fixed suspend issue on new boards by switching to S0ix by default
 - darp9: Fixed suspend issue on new boards by switching to S0ix by default
+
+## 2023-12-12
 
 ## 2023-10-20
 
