@@ -12,7 +12,7 @@ Dependencies can be installed with the provided scripts.
 ./scripts/install-deps.sh
 ./scripts/install-rust.sh
 ./scripts/coreboot-sdk.sh
-./ec/scripts/deps.sh
+cd ec; ./scripts/deps.sh; cd ../
 ```
 
 If rustup was installed for the first time, it will be required to source the
