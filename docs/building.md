@@ -1,15 +1,9 @@
 # Building
 
-After cloning the repo ensure all submodules are cloned.
+After cloning the repo, ensure all submodules are cloned.
 
 ```
 git submodule update --init --checkout --recursive
-```
-
-If you don't have Git LFS installed when cloning the repository, you'll need to pull the LFS objects
-
-```
-git lfs fetch --all && git lfs pull && git submodule foreach --recursive 'git lfs fetch --all && git lfs pull'
 ```
 
 Dependencies can be installed with the provided scripts.
@@ -19,6 +13,13 @@ Dependencies can be installed with the provided scripts.
 ./scripts/install-rust.sh
 ./scripts/coreboot-sdk.sh
 ./ec/scripts/deps.sh
+```
+
+If you didn't have Git LFS installed when cloning the repository, you'll need to pull the LFS objects.
+This will also install Git LFS, so it's not necessary when re-cloning in the same environment.
+
+```
+git lfs pull
 ```
 
 If rustup was installed for the first time, it will be required to source the
