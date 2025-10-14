@@ -145,6 +145,8 @@ features apply to your model and firmware version, see the
 
 ## 2023-12-12
 
+- Documentation update
+
 ## 2023-10-20
 
 - tgl-u: Fixed CPU not going lower than C2 due to card reader LTR
