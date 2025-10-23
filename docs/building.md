@@ -15,6 +15,13 @@ Dependencies can be installed with the provided scripts.
 ./ec/scripts/deps.sh
 ```
 
+If you didn't have Git LFS installed when cloning the repository, you'll need to pull the LFS objects.
+This will also install Git LFS, so it's not necessary when re-cloning in the same environment.
+
+```
+git lfs pull
+```
+
 If rustup was installed for the first time, it will be required to source the
 environment file it installed to use the correct Rust toolchain.
 
