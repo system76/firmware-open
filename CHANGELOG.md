@@ -8,6 +8,10 @@ features apply to your model and firmware version, see the
 
 ## unreleased
 
+- Changed the EC version to be distinct from the SBIOS version
+
+## 2025-08-11
+
 - lemp11: Fixed memory init
 
 ## 2025-07-29
