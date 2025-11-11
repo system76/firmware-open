@@ -8,6 +8,10 @@ features apply to your model and firmware version, see the
 
 ## unreleased
 
+- Disabled NVIDIA GPU Boost due to crashing the GPU while under load
+
+## 2025-08-11
+
 - lemp11: Fixed memory init
 
 ## 2025-07-29
