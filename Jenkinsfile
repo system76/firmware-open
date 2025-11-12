@@ -85,7 +85,10 @@ pipeline {
 
                 sh """#!/bin/bash
                     # Install dependencies
-                    #./scripts/install-deps.sh
+                    ./scripts/install-deps.sh
+                    ./scripts/install-rust.sh
+                    ./scripts/coreboot-sdk.sh
+                    ./ec/scripts/deps.sh
                     . "${HOME}/.cargo/env"
 
                     # Reset
