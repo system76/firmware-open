@@ -61,7 +61,7 @@ else
     exit 1
 fi
 
-BUILDGCC_OPTIONS+="--mirror"
+#BUILDGCC_OPTIONS+="--mirror"
 export BUILDGCC_OPTIONS
 
 make -C coreboot \
