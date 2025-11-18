@@ -10,6 +10,8 @@ features apply to your model and firmware version, see the
 
 - Disabled NVIDIA GPU Boost due to crashing the GPU while under load
 - Changed the GOP Policy driver to search for the VBT file in the UEFI FFS
+- Fixed PE32 alignment of Rust UEFI modules
+- Improved PS/2 compatibility
 
 ## 2025-08-11
 
