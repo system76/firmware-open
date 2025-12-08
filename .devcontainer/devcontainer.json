@@ -1,0 +1,15 @@
+{
+  "name": "System76 Open Firmware",
+  "build": {
+    "dockerfile": "../tools/containers/firmware-open/Containerfile"
+  },
+  "customizations": {
+    "vscode": {
+      "settings": {},
+      "extensions": [
+        "EditorConfig.EditorConfig",
+        "rust-lang.rust-analyzer"
+      ]
+    }
+  }
+}
