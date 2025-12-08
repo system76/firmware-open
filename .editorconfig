@@ -1,0 +1,23 @@
+# SPDX-License-Identifier: CC0-1.0
+# SPDX-FileCopyrightText: NONE
+
+# EditorConfig: https://editorconfig.org/
+
+root = true
+
+[*]
+charset = utf-8
+end_of_line = lf
+indent_size = 4
+indent_style = space
+insert_final_newline = true
+trim_trailing_whitespace = true
+
+[*.md]
+indent_size = 2
+
+[{Makefile,*.mk}]
+indent_style = tab
+
+[*.{json,yaml,yml}]
+indent_size = 2
