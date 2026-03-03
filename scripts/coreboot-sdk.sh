@@ -39,7 +39,7 @@ elif [ "$ID" = "fedora" ] || [[ "$ID_LIKE" =~ "fedora" ]]; then
         tar \
         xz \
         zlib-devel
-elif [ "$ID" = "ubuntu" ] || [[ "$ID_LIKE" =~ "debian" ]]; then
+elif [ "$ID" = "debian" ] || [ "$ID" = "ubuntu" ] || [[ "$ID_LIKE" =~ "debian" ]]; then
     sudo apt-get --quiet update
     sudo apt-get --quiet install --no-install-recommends --assume-yes \
         bison \

@@ -33,6 +33,7 @@ if [[ "${ID}" =~ "debian" ]] || [[ "${ID_LIKE}" =~ "debian" ]]; then
         patch \
         pkgconf \
         python-is-python3 \
+        rustup \
         tar \
         uuid-dev \
         xz-utils \
