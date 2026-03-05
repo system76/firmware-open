@@ -71,24 +71,30 @@ then
 fi
 
 # Get the Video BIOS Table and GOP driver for Intel systems
-if sudo [ -e /sys/kernel/debug/dri/1/i915_vbt ]
-then
-    sudo cat /sys/kernel/debug/dri/1/i915_vbt > "${MODEL_DIR}/vbt.rom"
-
-    INTEL_GOP_DRIVER_GUID="7755CA7B-CA8F-43C5-889B-E1F59A93D575"
-    EXTRACT_DIR="extract"
-
-    if [ -n "${BIOS_IMAGE}" ]
+for dri_id in 0 1
+do
+    vbt_path="/sys/kernel/debug/dri/${dri_id}/i915_vbt"
+    if sudo [ -e "${vbt_path}" ]
     then
-        if "${SCRIPT_DIR}/extract.sh" "${BIOS_IMAGE}" "${INTEL_GOP_DRIVER_GUID}" -o "${EXTRACT_DIR}" > /dev/null
+        sudo cat "${vbt_path}" > "${MODEL_DIR}/vbt.rom"
+
+        INTEL_GOP_DRIVER_GUID="7755CA7B-CA8F-43C5-889B-E1F59A93D575"
+        EXTRACT_DIR="extract"
+
+        if [ -n "${BIOS_IMAGE}" ]
         then
-            cp -v "$(find "${EXTRACT_DIR}" | grep IntelGopDriver | grep PE32 | grep body.bin)" "${MODEL_DIR}/IntelGopDriver.efi"
-            rm -rf "${EXTRACT_DIR}"
-        else
-            echo "IntelGopDriver not present in firmware image"
+            if "${SCRIPT_DIR}/extract.sh" "${BIOS_IMAGE}" "${INTEL_GOP_DRIVER_GUID}" -o "${EXTRACT_DIR}" > /dev/null
+            then
+                cp -v "$(find "${EXTRACT_DIR}" | grep IntelGopDriver | grep PE32 | grep body.bin)" "${MODEL_DIR}/IntelGopDriver.efi"
+                rm -rf "${EXTRACT_DIR}"
+            else
+                echo "IntelGopDriver not present in firmware image"
+            fi
         fi
+
+        break
     fi
-fi
+done
 
 # XXX: More reliable way to determine if system has an EC?
 DMI_CHASSIS_TYPE=$(cat /sys/class/dmi/id/chassis_type)
