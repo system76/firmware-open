@@ -9,4 +9,4 @@
   - HAP: true
 - [ME](./me.rom)
   - Size: 9176 KB
-  - Version: 21.0.2.1380
+  - Version: 21.0.2.1482
