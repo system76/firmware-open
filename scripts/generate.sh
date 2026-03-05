@@ -100,7 +100,7 @@ then
         cp "${EC_ROM}" "${MODEL_DIR}/ec.rom"
     else
         echo "Generating output for System76 EC firmware"
-        pushd ec/ecspy
+        pushd ec/tools/ecspy
         cargo build --release
         # TODO: Set backlights and fans to max and restore after
         sudo target/release/ecspy > "${MODEL_DIR}/ecspy.txt"
