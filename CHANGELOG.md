@@ -10,6 +10,8 @@ features apply to your model and firmware version, see the
 
 - Fixed PE32 alignment of Rust UEFI modules
 - Improved touchpad PS/2 compatibility
+- Updated coreboot to 26.03
+- Updated Intel microcode to microcode-20260227
 
 ## 2025-11-11
 
