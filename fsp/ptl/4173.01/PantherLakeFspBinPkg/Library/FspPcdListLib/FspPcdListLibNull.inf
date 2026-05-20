@@ -1,0 +1,75 @@
+## @file
+# Library instance to list all DynamicEx PCD FSP consumes.
+#
+#  @copyright
+#  INTEL CONFIDENTIAL
+#  Copyright (C) 2019 Intel Corporation.
+#
+#  This software and the related documents are Intel copyrighted materials,
+#  and your use of them is governed by the express license under which they
+#  were provided to you ("License"). Unless the License provides otherwise,
+#  you may not use, modify, copy, publish, distribute, disclose or transmit
+#  this software or the related documents without Intel's prior written
+#  permission.
+#
+#  This software and the related documents are provided as is, with no
+#  express or implied warranties, other than those that are expressly stated
+#  in the License.
+#
+# @par Specification Reference:
+#
+##
+
+[Defines]
+  INF_VERSION                    = 0x00010017
+  BASE_NAME                      = FspPcdListLibNull
+  FILE_GUID                      = C5D4D79E-3D5C-4EB6-899E-6F1563CB0B32
+  VERSION_STRING                 = 1.0
+  MODULE_TYPE                    = BASE
+  LIBRARY_CLASS                  = NULL
+#
+# The following information is for reference only and not required by the build tools.
+#
+# VALID_ARCHITECTURES = IA32 X64 IPF EBC
+#
+
+[LibraryClasses]
+  BaseLib
+
+[Packages]
+  MdePkg/MdePkg.dec
+  MdeModulePkg/MdeModulePkg.dec
+  UefiCpuPkg/UefiCpuPkg.dec
+  OneSiliconPkg/SiPkg.dec
+
+[Sources]
+  FspPcdListLibNull.c
+
+[Pcd]
+  #
+  # List all the DynamicEx PCDs that FSP will consume.
+  # FSP Dispatch mode bootloader will include this INF to ensure all the PCDs are
+  # built into PCD database.
+  #
+  gEfiMdeModulePkgTokenSpaceGuid.PcdPcieResizableBarSupport            ## CONSUMES
+  gUefiCpuPkgTokenSpaceGuid.PcdCpuMaxLogicalProcessorNumber            ## CONSUMES
+  gSiPkgTokenSpaceGuid.PcdSiPciExpressBaseAddress                      ## CONSUMES
+  gSiPkgTokenSpaceGuid.PcdPciExpressRegionLength                       ## CONSUMES
+  gUefiCpuPkgTokenSpaceGuid.PcdCpuMicrocodePatchAddress                ## CONSUMES
+  gUefiCpuPkgTokenSpaceGuid.PcdCpuMicrocodePatchRegionSize             ## CONSUMES
+  gUefiCpuPkgTokenSpaceGuid.PcdCpuApLoopMode                           ## CONSUMES
+  gUefiCpuPkgTokenSpaceGuid.PcdCpuApTargetCstate                       ## CONSUMES
+  gEfiMdeModulePkgTokenSpaceGuid.PcdAcpiS3Enable                       ## CONSUMES
+  gUefiCpuPkgTokenSpaceGuid.PcdCpuS3DataAddress                        ## CONSUMES
+  gUefiCpuPkgTokenSpaceGuid.PcdCpuFeaturesSetting                      ## CONSUMES
+  gUefiCpuPkgTokenSpaceGuid.PcdCpuProcTraceMemSize                     ## CONSUMES
+  gUefiCpuPkgTokenSpaceGuid.PcdCpuProcTraceOutputScheme                ## CONSUMES
+  gUefiCpuPkgTokenSpaceGuid.PcdCpuProcTraceBspOnly                     ## CONSUMES
+  gUefiCpuPkgTokenSpaceGuid.PcdCpuProcTracePerformanceCollecting       ## CONSUMES
+  gUefiCpuPkgTokenSpaceGuid.PcdCpuFeaturesCapability                   ## CONSUMES
+  gEfiMdeModulePkgTokenSpaceGuid.PcdGhcbBase                           ## CONSUMES
+  gEfiMdeModulePkgTokenSpaceGuid.PcdS3BootScriptTablePrivateDataPtr    ## CONSUMES
+  gEfiMdeModulePkgTokenSpaceGuid.PcdS3BootScriptTablePrivateSmmDataPtr ## CONSUMES
+  gEfiMdeModulePkgTokenSpaceGuid.PcdGhcbSize                           ## CONSUMES
+  gUefiCpuPkgTokenSpaceGuid.PcdSevEsIsEnabled                          ## CONSUMES
+
