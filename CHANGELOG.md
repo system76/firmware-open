@@ -12,6 +12,9 @@ features apply to your model and firmware version, see the
 - Improved touchpad PS/2 compatibility
 - Updated coreboot to 26.03
 - Updated Intel microcode to microcode-20260227
+- Fixed GraphicsOutputDxe for MTL+
+- Fixed PCI enumeration in EDK2
+- Fixed adding BGRT to ACPI table
 
 ## 2025-11-11
 
