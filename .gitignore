@@ -6,3 +6,5 @@
 /target/
 /vendor/
 backup.rom
+models/*/gpio.c
+models/*/hda_verb.c
