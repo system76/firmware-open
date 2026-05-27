@@ -68,7 +68,7 @@ These can be purchased from many places for around 15 USD. Make sure that the
 one you get has a ROM clip. Here are some examples:
 
 - [Amazon.com, Organizer.](https://www.amazon.com/Organizer-Socket-Adpter-Programmer-CH341A/dp/B07R5LPTYM)
-- [Amazon.com, KeeYees.](https://www.amazon.com/KeeYees-SOIC8-EEPROM-CH341A-Programmer/dp/B07SHSL9X9) 
+- [Amazon.com, KeeYees.](https://www.amazon.com/KeeYees-SOIC8-EEPROM-CH341A-Programmer/dp/B07SHSL9X9)
 - [AliExpress.com, TZT.](https://aliexpress.com/item/32725360255.html)
 
 **Then you can follow these steps to flash the ROM chip:**
