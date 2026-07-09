@@ -93,6 +93,12 @@ do
         0x??000c00 | 0x??000d00 | 0x??000e00 | 0x??000f00)
             echo -e "\tPAD_CFG_NF(${parts[0]}, ${term}, ${reset}, NF3),"
             ;;
+        0x??001000 | 0x??001100 | 0x??001200 | 0x??001300)
+            echo -e "\tPAD_CFG_NF(${parts[0]}, ${term}, ${reset}, NF4),"
+            ;;
+        0x??002000 | 0x??002100 | 0x??002200 | 0x??002300)
+            echo -e "\tPAD_CFG_NF(${parts[0]}, ${term}, ${reset}, NF8),"
+            ;;
         *)
             echo -e "\t_PAD_CFG_STRUCT(${parts[0]}, ${parts[1]}, ${parts[2]}),"
             ;;
