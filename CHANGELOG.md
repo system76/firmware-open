@@ -8,14 +8,23 @@ features apply to your model and firmware version, see the
 
 ## unreleased
 
-- Fixed PE32 alignment of Rust UEFI modules
-- Improved touchpad PS/2 compatibility
+- Update Secure Boot keys from Microsoft
+- meer9: Set system type to MiniPC
+- Increased SMMSTORE size to 512 KiB
+
+## 2026-05-22
+
 - Updated coreboot to 26.03
 - Updated Intel microcode to microcode-20260227
 - Fixed GraphicsOutputDxe for MTL+
+- Fixed waiting for NV power rails before enabling dGPU
 - Fixed PCI enumeration in EDK2
 - Fixed adding BGRT to ACPI table
-- Update Secure Boot keys from Microsoft
+
+## 2026-01-27
+
+- Fixed PE32 alignment of Rust UEFI modules
+- Improved touchpad PS/2 compatibility
 
 ## 2025-11-11
 
