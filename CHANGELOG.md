@@ -15,6 +15,7 @@ features apply to your model and firmware version, see the
 - Fixed GraphicsOutputDxe for MTL+
 - Fixed PCI enumeration in EDK2
 - Fixed adding BGRT to ACPI table
+- Update Secure Boot keys from Microsoft
 
 ## 2025-11-11
 
