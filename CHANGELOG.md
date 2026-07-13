@@ -11,6 +11,7 @@ features apply to your model and firmware version, see the
 - Update Secure Boot keys from Microsoft
 - meer9: Set system type to MiniPC
 - Increased SMMSTORE size to 512 KiB
+- mtl,arl: Updated Intel microcode to microcode-20260227
 
 ## 2026-05-22
 
