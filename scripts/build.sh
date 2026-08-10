@@ -43,12 +43,11 @@ EDK2_ARGS+=(
 )
 
 # Rebuild gop-policy (used by edk2)
-if [ -e "${MODEL_DIR}/IntelGopDriver.inf" ] && [ -e "${MODEL_DIR}/vbt.rom" ]
+if [ -e "${MODEL_DIR}/IntelGopDriver.efi" ] && [ -e "${MODEL_DIR}/vbt.rom" ]
 then
     make -C apps/gop-policy
     EDK2_ARGS+=(
         -D FIRMWARE_OPEN_GOP_POLICY="gop-policy/gop-policy.inf"
-        -D FIRMWARE_OPEN_GOP="IntelGopDriver.inf"
     )
 fi
 
