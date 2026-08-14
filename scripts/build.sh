@@ -58,7 +58,12 @@ then
     do
         if [[ "$line" != "#"* ]]
         then
-            EDK2_ARGS+=(-D "$line")
+            if [[ "$line" == "pcd:"* ]]
+            then
+                EDK2_ARGS+=(--pcd "${line#pcd:}")
+            else
+                EDK2_ARGS+=(-D "$line")
+            fi
         fi
     done < "${MODEL_DIR}/edk2.config"
 fi
