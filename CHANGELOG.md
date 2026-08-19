@@ -12,6 +12,10 @@ features apply to your model and firmware version, see the
 - meer9: Set system type to MiniPC
 - Increased SMMSTORE size to 512 KiB
 - mtl,arl: Updated Intel microcode to microcode-20260227
+- Moved EC e-flash signature from 0x40 to 0x80
+- Fixed EC programming of PNP modules
+- Updated firmware GUI to better match COSMIC design
+- Updated Rust toolchain to 1.95.0
 
 ## 2026-05-22
 
