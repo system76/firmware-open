@@ -110,5 +110,5 @@ READMEs.
 
 [external-programmer]: ./flashing.md#external-programmer
 [intel-microcode]: https://github.com/system76/intel-microcode
-[mega2560]: https://github.com/system76/ec/blob/master/doc/mega2560.md
+[mega2560]: https://github.com/system76/ec/blob/master/docs/mega2560.md
 [smart-amp]: https://github.com/system76/smart-amp
