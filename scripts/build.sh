@@ -43,12 +43,11 @@ EDK2_ARGS+=(
 )
 
 # Rebuild gop-policy (used by edk2)
-if [ -e "${MODEL_DIR}/IntelGopDriver.inf" ] && [ -e "${MODEL_DIR}/vbt.rom" ]
+if [ -e "${MODEL_DIR}/IntelGopDriver.efi" ] && [ -e "${MODEL_DIR}/vbt.rom" ]
 then
     make -C apps/gop-policy
     EDK2_ARGS+=(
         -D FIRMWARE_OPEN_GOP_POLICY="gop-policy/gop-policy.inf"
-        -D FIRMWARE_OPEN_GOP="IntelGopDriver.inf"
     )
 fi
 
@@ -59,12 +58,17 @@ then
     do
         if [[ "$line" != "#"* ]]
         then
-            EDK2_ARGS+=(-D "$line")
+            if [[ "$line" == "pcd:"* ]]
+            then
+                EDK2_ARGS+=(--pcd "${line#pcd:}")
+            else
+                EDK2_ARGS+=(-D "$line")
+            fi
         fi
     done < "${MODEL_DIR}/edk2.config"
 fi
 
-# Rebuild UefiPayloadPkg using edk2
+# Rebuild edk2 payload
 PACKAGES_PATH="${MODEL_DIR}:$(realpath apps)" \
     ./scripts/_build/edk2.sh \
         "${UEFIPAYLOAD}" \
