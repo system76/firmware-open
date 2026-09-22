@@ -1,11 +1,9 @@
 # Container for building System76 Open Firmware
 
-# NOTE: The repository is specified in the image name to make it explicit
-# which source is being trusted to provide the image.
-ARG CONTAINER_IMAGE="docker.io/library/debian:bookworm-20250520-slim"
+ARG CONTAINER_IMAGE="docker.io/library/debian:trixie-20260713-slim@sha256:53dfdbcd6fbc78c5052f35d2a5c798259f4c615cd93582b4ff5ad4f04249c7e3"
 
 ARG COREBOOT_REPO="https://github.com/coreboot/coreboot.git"
-ARG COREBOOT_COMMIT="25.03"
+ARG COREBOOT_COMMIT="26.03"
 
 ARG SDCC_REPO="https://svn.code.sf.net/p/sdcc/code"
 ARG SDCC_REV="14648"
