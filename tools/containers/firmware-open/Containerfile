@@ -1,6 +1,6 @@
 # Container for building System76 Open Firmware
 
-ARG CONTAINER_IMAGE="docker.io/library/debian:trixie-20260713-slim@sha256:53dfdbcd6fbc78c5052f35d2a5c798259f4c615cd93582b4ff5ad4f04249c7e3"
+ARG CONTAINER_IMAGE="docker.io/library/debian:trixie-20260713-slim@sha256:9bb8a3626890e084ab54e888fdd7c4b6d2f119071cd4c5dc5fecb4d73062aa5f"
 
 ARG COREBOOT_REPO="https://github.com/coreboot/coreboot.git"
 ARG COREBOOT_COMMIT="26.03"
