@@ -1,6 +1,6 @@
 # Container for building System76 Open Firmware
 
-ARG CONTAINER_IMAGE="docker.io/library/debian:trixie-20260713-slim@sha256:53dfdbcd6fbc78c5052f35d2a5c798259f4c615cd93582b4ff5ad4f04249c7e3"
+ARG CONTAINER_IMAGE="docker.io/library/debian:trixie-20260713-slim@sha256:9bb8a3626890e084ab54e888fdd7c4b6d2f119071cd4c5dc5fecb4d73062aa5f"
 
 ARG COREBOOT_REPO="https://github.com/coreboot/coreboot.git"
 ARG COREBOOT_COMMIT="26.03"
@@ -145,21 +145,17 @@ RUN apt-get --quiet update \
         pkgconf \
         python-is-python3 \
         python3 \
+        rustup \
         shellcheck \
         uncrustify \
         uuid-dev \
         xxd \
     && apt-get clean
 
-# TODO: Use distro rustup package when available (Trixie).
-RUN curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs \
-    | sh -s -- -y --no-modify-path --default-toolchain stable
-
 # XXX: rustup 1.27 does not recognize toolchain if preceding option specifies
 # a comma separated list as an argument with a space.
 # Ref: https://github.com/rust-lang/rustup/issues/4073
 RUN rustup toolchain install \
-        --no-self-update \
         --target x86_64-unknown-linux-gnu,x86_64-unknown-uefi \
         --profile minimal \
         --component=clippy,rustfmt \
