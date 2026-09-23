@@ -17,6 +17,7 @@ features apply to your model and firmware version, see the
 - Updated firmware GUI to better match COSMIC design
 - Updated Rust toolchain to 1.95.0
 - Changed fan algorithm from fixed step back to interpolation
+- Updated coreboot to 26.09
 
 ## 2026-05-22
 
