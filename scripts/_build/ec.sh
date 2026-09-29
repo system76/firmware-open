@@ -20,5 +20,5 @@ done < "$1"
 BUILD_DIR="build"
 
 make -C ec BUILD="$BUILD_DIR" clean
-make -C ec VERSION="${VERSION}" "${EC_ARGS[@]}" BUILD="$BUILD_DIR" -j "$(nproc)"
+make -C ec "${EC_ARGS[@]}" BUILD="$BUILD_DIR" -j "$(nproc)"
 cp "ec/$BUILD_DIR/ec.rom" "$2"
