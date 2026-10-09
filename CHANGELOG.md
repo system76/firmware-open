@@ -18,6 +18,8 @@ features apply to your model and firmware version, see the
 - Updated Rust toolchain to 1.95.0
 - Changed fan algorithm from fixed step back to interpolation
 - Updated EDK2 to mrchromebox/uefipayload_2605 (edk2-stable202605)
+- Updated coreboot to 26.09
+- Updated Intel microcode to microcode-20260812
 
 ## 2026-05-22
 
