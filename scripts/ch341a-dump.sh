@@ -11,7 +11,11 @@ MODEL="$1"
 
 . scripts/_ch341a.sh
 
-flashrom -p ch341a_spi -c "${CHIP}" -r build/dump.rom
+flashrom \
+    --programmer ch341a_spi \
+    --chip "${CHIP}" \
+    --progress \
+    --read build/dump.rom
 
 ./coreboot/build/cbfstool build/dump.rom read -r CONSOLE -f build/dump.log
 
