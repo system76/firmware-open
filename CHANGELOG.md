@@ -18,6 +18,7 @@ features apply to your model and firmware version, see the
 - Updated Rust toolchain to 1.95.0
 - Changed fan algorithm from fixed step back to interpolation
 - Updated EDK2 to mrchromebox/uefipayload_2605 (edk2-stable202605)
+- Changed the EC version to be distinct from the SBIOS version
 
 ## 2026-05-22
 
