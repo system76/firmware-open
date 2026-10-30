@@ -30,15 +30,9 @@ BUILD="$(realpath "build/${MODEL}")"
 rm -rf "${BUILD}"
 mkdir -p "${BUILD}"
 
-UEFIPAYLOAD="${BUILD}/UEFIPAYLOAD.fd"
-EDK2_ARGS=(
-    -D SHELL_TYPE=NONE
-    -D SOURCE_DEBUG_ENABLE=FALSE
-)
-
 # Rebuild firmware-setup (used by edk2)
 make -C apps/firmware-setup
-EDK2_ARGS+=(
+EDK2_CUSTOM_BUILD_PARAMS+=(
     -D FIRMWARE_OPEN_FIRMWARE_SETUP="firmware-setup/firmware-setup.inf"
 )
 
@@ -46,42 +40,20 @@ EDK2_ARGS+=(
 if [ -e "${MODEL_DIR}/IntelGopDriver.efi" ] && [ -e "${MODEL_DIR}/vbt.rom" ]
 then
     make -C apps/gop-policy
-    EDK2_ARGS+=(
+    EDK2_CUSTOM_BUILD_PARAMS+=(
         -D FIRMWARE_OPEN_GOP_POLICY="gop-policy/gop-policy.inf"
     )
 fi
 
-# Add any arguments in edk2.config
-if [ -e "${MODEL_DIR}/edk2.config" ]
-then
-    while read line
-    do
-        if [[ "$line" != "#"* ]]
-        then
-            if [[ "$line" == "pcd:"* ]]
-            then
-                EDK2_ARGS+=(--pcd "${line#pcd:}")
-            else
-                EDK2_ARGS+=(-D "$line")
-            fi
-        fi
-    done < "${MODEL_DIR}/edk2.config"
-fi
-
-# Rebuild edk2 payload
-PACKAGES_PATH="${MODEL_DIR}:$(realpath apps)" \
-    ./scripts/_build/edk2.sh \
-        "${UEFIPAYLOAD}" \
-        "${EDK2_ARGS[@]}"
-
-# Rebuild coreboot
+# Rebuild coreboot and edk2 payload
 # NOTE: coreboot expects paths to be relative to it
+PACKAGES_PATH="${MODEL_DIR}:$(realpath apps)" \
 FIRMWARE_OPEN_MODEL_DIR="../models/${MODEL}" \
-FIRMWARE_OPEN_UEFIPAYLOAD="${UEFIPAYLOAD}" \
 KERNELVERSION="${VERSION}" \
     ./scripts/_build/coreboot.sh \
         "${MODEL_DIR}/coreboot.config" \
-        "${BUILD}/firmware.rom"
+        "${BUILD}/firmware.rom" \
+        "${BUILD}/UEFIPAYLOAD.fd"
 
 # Rebuild EC firmware for System76 EC models
 if [ ! -e  "${MODEL_DIR}/ec.rom" ] && [ -e "${MODEL_DIR}/ec.config" ]
