@@ -11,4 +11,8 @@ MODEL="$1"
 
 . scripts/_ch341a.sh
 
-flashrom -p ch341a_spi -c "${CHIP}" -w "build/${MODEL}/firmware.rom"
+flashrom \
+    --programmer ch341a_spi \
+    --chip "${CHIP}" \
+    --progress \
+    --write "build/${MODEL}/firmware.rom"
